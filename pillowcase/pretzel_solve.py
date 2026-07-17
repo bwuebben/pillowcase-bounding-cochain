@@ -7,12 +7,9 @@ the deformed differential (triangles + quadrilaterals), and the Maurer-Cartan da
 with rank(partial_b) = (n - I^natural)/2 (i.e. deformed HF = I^natural) that also
 satisfies MC. Caches per-k JSON so the search can be re-run cheaply.
 
-I^natural(P(-2,3,2k+1)) (documented; Smith's l=u method, = sum|Alexander coeffs|):
-  k=2  P(-2,3,5)=T(3,5)   : 7
-  k=3  P(-2,3,7)          : 9
-  k=5  P(-2,3,11)         : 13
-  k=6  P(-2,3,13)         : 15
-(pattern rank I^natural = 2k+3; each is naive HF + 2, a single bigon cancellation.)
+rank I^natural(P(-2,3,q)) = q+2 rigorously for all odd q (Theorem A; see INAT
+below). The correction direction varies: deficit (b cancels a bigon) for det<3
+(q=5,7), excess (b creates a differential) for det>3 (q>=11).
 """
 import sys, json, itertools
 from deform import (build_pretzel, bigon_matrix, triangle_contributions_P, rank_f2)
@@ -21,7 +18,10 @@ from maurer_cartan import orbit_group, monogon, self_polygon
 from solve_b2 import deformed, entries
 from earring import P_point
 
-INAT = {2: 7, 3: 9, 5: 13, 6: 15}
+# rank I^natural(P(-2,3,2k+1)) = (2k+1)+2, RIGOROUS (Theorem A, RESEARCH_LOG
+# sec 37 / paper2 Thm 1.1): l = sum|Delta| = q+2 (skein_alexander.py, validated)
+# = u = dim Kh_r = q+2 (Manion NYJM 24 (2018) Thm 1.1) squeezes I^natural.
+INAT = {k: (2 * k + 1) + 2 for k in (2, 3, 5, 6, 8, 9)}
 
 
 def mu1_matrix(blue, orbs, window=230):
