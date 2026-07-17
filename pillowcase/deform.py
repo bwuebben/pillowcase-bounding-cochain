@@ -34,10 +34,23 @@ def build_geometry():
 
 def build_geometry_p(blue_eps=0.05, red_eps=0.10, red_phi=0.25):
     """Parametric geometry -- for perturbation-stability checks (RESEARCH_LOG sec 30)."""
+    return build_pretzel(2, blue_eps, red_eps, red_phi)
+
+
+def build_pretzel(k, blue_eps=0.05, red_eps=0.16, red_phi=0.40):
+    """The pillowcase Lagrangians for P(-2,3,2k+1) = num(Q_{-1/2}+Q_{1/3}+Q_{1/(2k+1)})
+    (RESEARCH_LOG sec 33). blue = R_t(Q_{1/3}+Q_{1/(2k+1)}) (the perturbed Conway sum,
+    resolved); red = R^natural(hat Q_{-1/2}) (the earring, FIXED across the family).
+    Requires gcd(2k+1,3)=1 (else corner circles appear and resolve fails). NOTE the
+    default red perturbation (0.16,0.40) is GENERIC for the family; (0.10,0.25) is
+    degenerate for k=3 (collapses 13 generators to 9)."""
+    q = 2 * k + 1
+    assert (q % 3) != 0, f"P(-2,3,{q}) needs gcd({q},3)=1 (corner-circle-free)"
     s3 = segments(curve(south_twists(3)))[0]
-    s5 = segments(curve(south_twists(5)))[0]
-    circ = fiber_circles(s3, s5)
-    blue_polys, xinfo = resolve(tangle_sum(s3, s5), circ, eps=blue_eps)
+    sq = segments(curve(south_twists(q)))[0]
+    circ = fiber_circles(s3, sq)
+    blue_polys, xinfo = resolve(tangle_sum(s3, sq), circ, eps=blue_eps)
+    assert len(blue_polys) == 1, f"blue has {len(blue_polys)} components"
     blue = simplify(blue_polys[0], 3e-4)
     red = simplify(f8((2, 1), eps=red_eps, phi=red_phi)[0], 2e-4)
     return red, blue, xinfo
