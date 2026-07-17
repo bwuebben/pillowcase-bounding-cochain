@@ -3,8 +3,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{microtype}
-\usepackage{tikz}
-\usetikzlibrary{decorations.markings}
+\usepackage{graphicx}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
 
 \theoremstyle{plain}
@@ -361,13 +360,11 @@ from the pillowcase analysis but not from Theorem~\ref{thm:inat}.
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[scale=1.6]
-\input{fig_q5}
-\end{tikzpicture}
+\includegraphics[height=0.62\textheight]{fig_q5.pdf}
 \caption{The two Lagrangians at $q=5$ on the fundamental domain $[0,\pi]\times[0,2\pi)$ of the
 pillowcase, plotted from the computed curves themselves (the pillowcase counterpart of Smith's
-Figure~31). Blue (thick) is the perturbed Conway sum $\Rp_t(Q_{1/3}+Q_{1/5})$, a single immersed
-circle with forty self-intersections clustered along the seams; red (thin) is the earring
+Figure~31). Blue is the perturbed Conway sum $\Rp_t(Q_{1/3}+Q_{1/5})$, a single immersed
+circle with forty self-intersections clustered along the seams; red is the earring
 figure-eight $\Rnat(\Qh{-1/2})$, the doubled line of direction $(2,1)$ closing through the corner
 folds. Across the interior the blue strands run \emph{nearly parallel} to red (slopes $8/15$ vs
 $1/2$), so each interior band is a red line riding a blue one --- this near-tangency (crossing angle
