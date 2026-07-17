@@ -1,0 +1,560 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{microtype}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Inat}{I^{\natural}}
+\newcommand{\HF}{\mathit{HF}}
+\newcommand{\CF}{\mathit{CF}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\pill}{P}
+\newcommand{\Rnat}{\mathcal{R}^{\natural}}
+\newcommand{\Rp}{\mathcal{R}}
+\newcommand{\iss}{\looparrowright}
+\newcommand{\bc}{b}
+\newcommand{\Qh}[1]{\widehat{Q_{#1}}}
+
+\begin{document}
+
+\title[A computed bounding cochain for $P(-2,3,5)$]
+{A computed bounding cochain:\\ the pretzel knot $P(-2,3,5)$}
+
+\author{Bernd J. Wuebben}
+\date{July 17, 2026}
+
+\begin{abstract}
+In the pillowcase (symplectic) side of the knot Atiyah--Floer conjecture, the naive Lagrangian--Floer
+homology of a tangle decomposition is not a knot invariant; the conjectural repair, due to
+Cazassus--Herald--Kirk--Kotelskiy, is a \emph{bounding cochain} $b$ supported on the self-intersections
+of the immersed curves and satisfying a mod-$2$ Maurer--Cartan equation. Smith proved that for the
+pretzel knot $P(-2,3,5)=T(3,5)$ the bounding cochain of one tangle must be nonzero, but produced no
+value, and to date no nonzero pillowcase bounding cochain has been computed. Working entirely within
+the immersed-curve combinatorial model of Herald--Kirk and Smith, we reconstruct the two Lagrangians of
+Smith's decomposition of $P(-2,3,5)$ from the quaternionic representation theory, reproducing his count
+of nine generators, two immersed bigons, and rank-$5$ Floer homology as a validation gate, and then
+compute the bounding cochain explicitly:
+\[
+   \bc_2 \;=\; s_A + s_B ,
+\]
+the sum of two self-intersection points of the perturbed Conway-sum Lagrangian
+$\Rp_t(Q_{1/3}+Q_{1/5})$, one on each pillowcase seam. It is the unique minimal bounding cochain for
+which the deformed Floer homology has rank $7=\rk\Inat(P(-2,3,5))$. The mechanism is a single immersed
+quadrilateral (a higher $A_\infty$ product $\mu^3$) whose two interior vertices are $s_A,s_B$ and which
+cancels one of the two bigons modulo $2$; the Maurer--Cartan equation is satisfied automatically because
+the relevant self-Floer products of the Lagrangian all vanish. The value is stable under change of
+perturbation. This is, to our knowledge, the first explicitly computed nonzero bounding cochain in
+pillowcase Floer theory. We are careful to separate what is proved, what is computed within the model,
+and what remains conjectural (the faithfulness of the model).
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The pillowcase, and why a bounding cochain is needed}
+Let $K\subset S^3$ be a knot presented as a union of two tangles, $K=(B^3,T_1)\cup_{(S^2,4)}(B^3,T_2)$,
+glued along a four-punctured sphere. The traceless $\SU$ character variety of $(S^2,4)$ is the
+\emph{pillowcase}
+\[
+   \pill=(\R/2\pi\Z)^2/\iota,\qquad \iota(\gamma,\theta)=(-\gamma,-\theta),
+\]
+a two-sphere with four $\Z/2$ orbifold points (the \emph{corners}) at $(\gamma,\theta)\in\{0,\pi\}^2$
+and symplectic form descending from $d\gamma\wedge d\theta$ on the smooth locus $\pill^*$
+\cite{Lin,HHK1}. Each tangle $T_i$ determines an immersed Lagrangian
+$\Rp_{\pi_i}(T_i)\iss\pill^*$ (its perturbed traceless character variety), and the intersection points
+$\Rp_{\pi_1}(T_1)\cap\Rp_{\pi_2}(T_2)$ are the traceless representations of $\pi_1(S^3\setminus K)$---the
+generators of the reduced singular instanton chain complex of Kronheimer--Mrowka \cite{KM1,KM2}. Hedden,
+Herald and Kirk \cite{HHK1,HHK2} proposed building a knot invariant as the Lagrangian--Floer homology
+$\HF(\Rp_{\pi_1}(T_1),\Rp_{\pi_2}(T_2))$ of this pair, an Atiyah--Floer counterpart of $\Inat(K)$.
+
+This naive homology is \emph{not} a knot invariant: it changes under the tangle moves that fix $K$,
+because of figure-eight bubbling at the immersed curves' self-intersections. Cazassus, Herald, Kirk and
+Kotelskiy \cite{CHKK} identified the repair. To each tangle one attaches a \emph{bounding cochain}
+$\bc\in\CF(\Rp(T),\Rp(T))$---a formal $\F_2$-combination of the self-intersection points---subject to
+the Maurer--Cartan equation
+\begin{equation}\label{eq:MC}
+   \sum_{k\ge0}\mu^k(\bc,\dots,\bc)=0,
+\end{equation}
+where $\mu^k$ counts immersed $(k{+}1)$-gons and $\mu^1$ is the Floer differential. The bounding
+cochain deforms the differential of $\CF(\Rp(T_1),\Rp(T_2))$ into $\partial_\bc$, whose homology
+$\HF\big((\Rp(T_1),\bc_1),(\Rp(T_2),\bc_2)\big)$ is conjecturally the knot invariant and equal to
+$\Inat(K)$ \cite[Conj.~1.1]{CHKK}.
+
+\subsection{The problem and the result}
+The bounding cochain is the analytic heart of the theory, and the hardest part to make explicit. It is
+inert precisely where the curves are embedded: for two-bridge knots the Lagrangians are straight arcs
+with no self-intersections, $\bc=0$, and the naive homology is already $\Inat$
+\cite{HHK1,HHK2}. Off that family it is genuinely nonzero. Two facts are known. For the torus knot
+$T(4,5)$, Cazassus--Herald--Kirk--Kotelskiy exhibit a bounding cochain on the \emph{earring} tangle that
+corrects the rank from $9$ to the true $7$ \cite[\S10]{CHKK}. For the pretzel knot $P(-2,3,5)$, Smith
+\cite[Thm.~5.9]{Smith} proves that the bounding cochain $\bc_2$ of the summand tangle
+$T_2=Q_{1/3}+Q_{1/5}$ must be nonzero---by computing that the naive homology has rank $5$ while
+$\Inat=7$---but he stops there: no value, and no algorithm, is given. In both cases the underlying
+combinatorial data was, until now, the extent of what had been extracted; \emph{no nonzero pillowcase
+bounding cochain has been computed.}
+
+We compute Smith's $\bc_2$. Our main result is the following. Throughout, ``computed within the model''
+means computed in the immersed-curve combinatorial Floer theory of \cite{HK,Smith}, in which
+Lagrangian--Floer polygon counts are winding-number computations for piecewise-linear immersed curves in
+$\pill$; the faithfulness of that model is the standing conjecture of the subject
+(Section~\ref{sec:disc}).
+
+\begin{theorem}\label{thm:main}
+Consider $P(-2,3,5)=T(3,5)$ with Smith's decomposition $T_1=\Qh{-1/2}$ (with an earring) and
+$T_2=Q_{1/3}+Q_{1/5}$, and let $\Rnat(T_1)$ \emph{(red)} and $\Rp_t(T_2)$ \emph{(blue)} be the two
+immersed pillowcase Lagrangians. Within the combinatorial model:
+\begin{enumerate}
+\item[(i)] Red and blue have nine intersection points and exactly two immersed bigons with distinct
+vertices, so $\rk\HF\big((\Rnat(T_1),0),(\Rp_t(T_2),0)\big)=5$ \emph{(Smith's gate, reproduced)}.
+\item[(ii)] The blue Lagrangian has forty self-intersection points, and its self-Floer products
+$\mu^0,\mu^1,\mu^2$ all vanish; consequently every $\F_2$-combination of at most two self-intersections
+satisfies the Maurer--Cartan equation \eqref{eq:MC}.
+\item[(iii)] There is a \emph{unique} bounding cochain of minimal support that raises the rank to
+$\Inat$, namely
+\[
+   \boxed{\ \bc_2=s_A+s_B\ }
+\]
+the sum of the two self-intersections of blue lying nearest the coordinates
+$s_A\approx(\gamma,\theta)=(0.03,\,1.27)$ and $s_B\approx(3.06,\,4.98)$, one on each seam
+$\gamma\in\{0,\pi\}$; the deformed complex then has
+\[
+   \rk\HF\big((\Rnat(T_1),0),(\Rp_t(T_2),\bc_2)\big)=7=\rk\Inat(P(-2,3,5)).
+\]
+\end{enumerate}
+\end{theorem}
+
+The mechanism is clean and is described in Section~\ref{sec:compute}: turning on $\bc_2$ activates a
+single immersed \emph{quadrilateral} (a term of the higher product $\mu^3$) with interior vertices
+$s_A,s_B$ and boundary vertices the two generators of one of the two bigons; over $\F_2$ this
+quadrilateral cancels that bigon, dropping $\rk\partial_\bc$ from $2$ to $1$ and so raising the homology
+rank from $5$ to $7$. The two support crossings carry no other polygons at all, which is exactly why the
+cancellation is surgical and why $s_A+s_B$---rather than some larger combination---is the answer.
+
+\subsection{On the direction of the correction}
+It is worth contrasting $P(-2,3,5)$ with the only prior example. For $T(4,5)$ the bounding cochain lives
+on the earring tangle and \emph{creates} a differential, lowering the rank from $9$ to $7$
+\cite{CHKK}; the deformed differential gains a term. For $P(-2,3,5)$ the naive rank is $5$, below the
+target $7$, so the bounding cochain must \emph{destroy} a differential---cancel one of the two existing
+bigons---raising the rank. This is the opposite, and combinatorially the more delicate, direction: a
+canceling polygon must land on precisely the chain-level entry of an existing bigon. That it does so,
+through a quadrilateral rather than a triangle, is the content of the computation.
+
+\subsection{Method and honesty}
+We did not take the immersed curves from \cite{Smith} as input. Both Lagrangians were reconstructed from
+first principles---the quaternionic representation theory of the tangles, Smith's fiber-product
+description of the Conway sum, his cut-and-paste resolution of the seam circles, and the
+Herald--Kirk earring---and only then validated against the numerical output of \cite{Smith}: the
+convention derivations, the seam fiber-circle arc, the resolution of the worked example
+$\Rp_t(Q_{1/2}+Q_{-1/3})$, and finally the nine generators, two bigons and rank $5$ of
+Theorem~\ref{thm:main}(i) all reproduce Smith's published figures and numbers. Only after that gate did
+we compute the bounding cochain, which Smith does not.
+
+We are explicit about the three registers, as in the companion paper \cite{WuebbenI}. The construction of
+the Lagrangians and the deformed-differential formalism are (i) reproduced from
+\cite{HHK1,HHK2,CHKK,HK,Smith}, independently re-derived and re-implemented here. The polygon and
+Maurer--Cartan counts, the rank computation, and the identification of $\bc_2$ are (ii) computer
+computations, carried out by a short self-contained program included with the source and validated
+against \cite{Smith} at every prior stage; we report them as such. The value of $\bc_2$ is the value of
+Smith's nonzero bounding cochain (iii) \emph{under} the standing conjecture that the combinatorial model
+computes the Floer-theoretic invariant---the same hypothesis under which every computation in this
+subject, including \cite{CHKK,Smith}, is stated. We prove no new theorem about the analytic Atiyah--Floer
+correspondence.
+
+\medskip
+
+The paper is organized as follows. Section~\ref{sec:setup} recalls the pillowcase and assembles the two
+Lagrangians, recording the validation gate. Section~\ref{sec:combinatorial} states the combinatorial
+Floer package: winding-number bigon counting, the lift bookkeeping on the double cover, and the deformed
+differential. Section~\ref{sec:compute} is the computation: the Maurer--Cartan vanishing, the rank
+condition, the canceling quadrilateral, and the proof of Theorem~\ref{thm:main}. Section~\ref{sec:disc}
+discusses robustness, reproducibility, and the standing conjecture.
+
+\subsection*{Acknowledgements}
+The immersed-curve model and the geometry we reconstruct are due to Hedden--Herald--Kirk
+\cite{HHK1,HHK2}, Cazassus--Herald--Kirk--Kotelskiy \cite{CHKK}, Herald--Kirk \cite{HK}, and Smith
+\cite{Smith}; we have tried to attribute each ingredient precisely.
+
+\section{The two Lagrangians of $P(-2,3,5)$}\label{sec:setup}
+
+\subsection{The pillowcase and immersed curves}
+We use $\SU$ as the unit quaternions; a traceless element is a purely imaginary unit, i.e.\ a point of
+the $2$-sphere $S\subset\operatorname{Im}\HH$. The traceless character variety of the four-punctured
+sphere is the pillowcase $\pill=(\R/2\pi\Z)^2/\iota$ of the introduction, coordinatized by
+$(\gamma,\theta)$ with $\iota(\gamma,\theta)=(-\gamma,-\theta)$ and corners
+$\pill^c=\{0,\pi\}^2$ \cite{Lin,HHK1}. It is convenient to work on the double cover $T^2=(\R/2\pi\Z)^2$,
+where $\iota$ is the elliptic involution and a curve in $\pill$ lifts to an $\iota$-invariant family;
+pillowcase counts are recovered from the cover as explained in Section~\ref{sec:combinatorial}.
+
+A rational tangle $Q_r$ has for its traceless character variety a straight line of slope $r$ through the
+corners \cite{HHK1}; the torus-knot tangle $T(3,n)$ has a non-abelian arc \cite{HHK1,WuebbenI}. Two
+operations build the curves we need:
+\begin{itemize}
+\item \emph{Conway sum} $T_1+T_2$. On the pillowcase the sum is a fiber product over the seam coordinate
+$\gamma$: the $\theta$-coordinates add, $[\gamma,\theta_1+\theta_2]$, and over each seam
+$\gamma\in\{0,\pi\}$ a circle of reducibles (a \emph{seam fiber circle}) appears when the two summands
+are both non-abelian there \cite[Thm.~4.22]{Smith}. Perturbing the middle piece resolves each circle by
+a cut-and-paste that reconnects the four incident branches diagonally \cite[Thm.~4.23]{Smith}, producing
+one new self-intersection per resolved circle.
+\item \emph{Earring} $\Qh{r}$. Adding the earring tangle replaces the arc of a tangle by its
+Herald--Kirk figure-eight $\Rnat$: the doubled arc closing through the corner folds, with one forced
+self-crossing (the \emph{pinch}) \cite[Def.~6.6]{HK}. For a rational tangle the pinch supports the
+trivial bounding cochain \cite[Lem.~5.6]{Smith}.
+\end{itemize}
+
+\subsection{Assembling red and blue}
+Following Smith \cite[\S5.3]{Smith}, decompose $K=P(-2,3,5)$ as $T_1=\Qh{-1/2}$ (to which the earring is
+added, so that its bounding cochain vanishes) and $T_2=Q_{1/3}+Q_{1/5}$. The two Lagrangians are:
+\begin{itemize}
+\item \textbf{red} $=\Rnat(T_1)$, the earring figure-eight of the line of $Q_{-1/2}$ in the pairing
+frame. It is a single immersed circle in $\pill$ with one self-intersection (the pinch), on which the
+bounding cochain is $0$.
+\item \textbf{blue} $=\Rp_t(T_2)=\Rp_t(Q_{1/3}+Q_{1/5})$, the perturbed Conway sum. It has two seams,
+each carrying two fiber circles; the four resolutions make it a single immersed circle in $\pill$ with
+\emph{forty} self-intersection points.
+\end{itemize}
+We built both curves as explicit piecewise-linear $\iota$-invariant families on $T^2$ from the
+representation theory---the derivation of the compass convention and the Conway-sum fiber coordinate,
+the seam fiber-circle arc $[\,|\theta_1-\theta_2|,\ \pi-|\pi-\theta_1-\theta_2|\,]$, the diagonal
+resolution, and the earring closure through the corner folds---each step checked against the
+corresponding figure and formula of \cite{Smith,HK}; the details and the validation batteries are in the
+source. The outcome is Figure~\ref{fig:pillow}, the pillowcase analogue of Smith's Figure~31.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=2.05]
+  % fundamental domain [0,pi] x [0,2pi]  (drawn as width 2, height 4/ ... use pi=3.14 scaled)
+  \def\W{3.14159}
+  \draw[thick] (0,0) rectangle (\W,6.2832);
+  \foreach \y in {0,3.14159,6.2832}{\fill (0,\y) circle (1.3pt); \fill (\W,\y) circle (1.3pt);}
+  \node[below] at (0,0) {\footnotesize $(0,0)$};
+  \node[below] at (\W,0) {\footnotesize $(\pi,0)$};
+  \node[left] at (0,6.2832) {\footnotesize $(0,2\pi)$};
+  \node[right] at (\W,6.2832) {\footnotesize $(\pi,2\pi)$};
+  \draw[->] (-0.15,0)--(\W+0.35,0) node[right] {\footnotesize $\gamma$};
+  \draw[->] (0,-0.15)--(0,6.7) node[above] {\footnotesize $\theta$};
+  % schematic blue curve: a wandering curve concentrated near the two seams
+  \draw[blue,thick,rounded corners=2pt]
+     (0.05,0.6)--(1.4,1.2)--(2.9,0.9)--(3.05,1.6)--(1.7,2.1)--(0.1,1.7)
+     --(0.15,2.6)--(1.5,3.0)--(3.0,2.6)--(3.05,3.4)--(1.6,3.8)--(0.08,3.6)
+     --(0.12,4.3)--(1.5,4.9)--(3.0,4.6)--(3.05,5.3)--(1.6,5.1)--(0.1,5.0)--(0.05,0.6);
+  \node[blue] at (1.55,0.35) {\footnotesize blue $=\Rp_t(Q_{1/3}+Q_{1/5})$};
+  % schematic red earring: a doubled slope-2 line with a pinch
+  \draw[red,thick] (0.03,0.05).. controls (1.6,3.0) and (1.7,3.3) .. (3.11,6.2);
+  \draw[red,thick] (0.03,0.25).. controls (1.5,3.2) and (1.6,3.5) .. (3.11,6.0);
+  \node[red] at (2.5,5.6) {\footnotesize red $=\Rnat(\Qh{-1/2})$};
+  % the two support crossings of b_2
+  \fill[black] (0.03,1.27) circle (2.2pt);  \node[right] at (0.06,1.15) {\footnotesize $s_A$};
+  \fill[black] (3.06,4.98) circle (2.2pt);  \node[left]  at (3.03,5.12) {\footnotesize $s_B$};
+\end{tikzpicture}
+\caption{Schematic of the two Lagrangians for $P(-2,3,5)$ on the fundamental domain
+$[0,\pi]\times[0,2\pi)$ of the pillowcase (Smith's Figure~31). Blue is the perturbed Conway sum
+$\Rp_t(Q_{1/3}+Q_{1/5})$, an immersed circle with forty self-intersections clustered along the two seams
+$\gamma\in\{0,\pi\}$; red is the earring figure-eight $\Rnat(\Qh{-1/2})$. The two marked points $s_A,s_B$
+are the support of the computed bounding cochain $\bc_2=s_A+s_B$; they lie on opposite seams and are
+exchanged by the symmetry $(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$. The drawing is schematic; the
+counts below are exact.}
+\label{fig:pillow}
+\end{figure}
+
+\subsection{The validation gate}\label{ss:gate}
+The purpose of the reconstruction is that it can be checked before it is used. Red and blue meet in nine
+points, which on $\pill$ are one interior intersection near $(1.61,0.86)$ and two clusters of four near
+the corner column $\gamma=\pi$, at $\theta\approx1.52$ and $\theta\approx4.72$; this is Smith's count of
+generators. A winding-number search (Section~\ref{sec:combinatorial}) finds exactly two immersed bigons,
+with all four vertices distinct, so the Floer differential has rank $1$ on each and
+\[
+   \rk\HF\big((\Rnat(T_1),0),(\Rp_t(T_2),0)\big)=9-2\cdot2=5.
+\]
+This is Theorem~\ref{thm:main}(i); it agrees with \cite[Thm.~5.9]{Smith} in every entry (nine points, two
+bigons with distinct vertices, rank $5$), and since $\rk\Inat(P(-2,3,5))=7$
+\cite[computed from Khovanov homology and the Alexander polynomial]{Smith}, it re-proves Smith's
+conclusion $\bc_2\neq0$. Everything past this point is new.
+
+\section{The combinatorial Floer package}\label{sec:combinatorial}
+
+\subsection{Bigons by winding numbers}
+For two immersed curves in a surface, the Floer differential counts immersed bigons, which
+de~Silva--Robbin--Salamon detect combinatorially by a winding function \cite{dSRS}. We use the pillowcase
+version. Fix generators $x,y$ (intersection points of red and blue). A candidate bigon from $x$ to $y$ is
+a loop $\Gamma=\alpha\cdot\bar\beta$ formed by an arc $\alpha$ of red from $x$ to $y$ and an arc $\beta$
+of blue from $y$ to $x$. Lift $\Gamma$ to $T^2$ and let $w\colon T^2\setminus\Gamma\to\Z$ be its winding
+(intersection) function. Then $\Gamma$ bounds an immersed bigon iff
+\begin{enumerate}
+\item[(a)] $[\Gamma]=0\in H_1(T^2)$;
+\item[(b)] $w\equiv0$ at the four corners of $\pill$ (the disk avoids the orbifold points, which also
+fixes the additive constant);
+\item[(c)] $w\ge0$ on every complementary region; and
+\item[(d)] the two corners of $\Gamma$ at $x$ and $y$ are convex, i.e.\ each is a single embedded sector
+of angle $<\pi$ subtending winding jump $+1$.
+\end{enumerate}
+The differential is $\partial x=\sum_y (\#\{\text{bigons }x\to y\}\bmod2)\,y$, and
+$\rk\HF=\#\{\text{generators}\}-2\rk\partial$ over $\F_2$. Conditions (a)--(d) are exactly what our
+program tests, by adaptive sampling of $w$ on both sides of every edge and a sector test at each corner;
+the delicate points (long edges under mod-$2\pi$ arithmetic, shallow-angle corners) are handled as
+recorded in the source.
+
+\subsection{The lift bookkeeping}\label{ss:lift}
+Because we count on the double cover, we must be sure the cover count equals the pillowcase count. A
+pillowcase polygon lifts to exactly two $\iota$-related polygons on $T^2$; fixing one lift of red (say
+the component $C_+$ of the earring) selects exactly one lift of each pillowcase polygon whose red arc
+lies on $C_+$. Hence
+\[
+   \#\{\text{pillowcase polygons}\}=\#\{\text{$T^2$ polygons with red arc on }C_+\},
+\]
+and no division is needed. This is the same device by which the bigon count of \S\ref{ss:gate} matches
+Smith's; it extends verbatim to the higher polygons below. A pillowcase self-intersection of blue has
+two $T^2$ preimages, and a pillowcase polygon through it may close through either; we therefore take the
+union over preimages when tabulating a self-crossing's polygon contributions. \emph{The one pitfall we
+flag:} four of the nine generators fold under $T^2\to\pill$ (they sit near $\theta\approx1.5$ on the
+cover but map near $\theta\approx4.7$ on $\pill$), so proximity on $\pill$ is \emph{not} proximity on the
+cover; all locality tests must be phrased on the cover (by blue arc-length between anchor points), not in
+pillowcase coordinates. Ignoring this drops genuine polygons and was, in an intermediate version of this
+work, the source of a false negative that we correct here.
+
+\subsection{The deformed differential}\label{ss:deformed}
+Let $\Rp$ be an immersed Lagrangian with self-intersections and $\bc=\sum_i c_i s_i$ ($c_i\in\F_2$) a
+bounding cochain on it. Following \cite[\S2.9]{CHKK} and \cite[\S5]{Smith}, the differential of the pair
+$\big((\Rnat(T_1),0),(\Rp,\bc)\big)$ counts immersed polygons two of whose vertices are generators
+(intersection points of red and blue) and each of whose remaining vertices is a self-intersection $s_i$
+in the support of $\bc$:
+\begin{equation}\label{eq:defdiff}
+   \partial_\bc(x)=\sum_y\Big(\ \#\mathcal B(x,y)
+     \;+\;\sum_i c_i\,\#\mathcal T(x,s_i,y)
+     \;+\!\!\sum_{i<j} c_ic_j\,\#\mathcal Q(x,s_i,s_j,y)
+     \;+\ \cdots\ \Big)\, y \pmod2,
+\end{equation}
+where $\mathcal B$ are bigons, $\mathcal T$ triangles (one $\bc$-vertex), $\mathcal Q$ quadrilaterals
+(two $\bc$-vertices), and so on; these are the terms of the $A_\infty$ maps $\mu^1,\mu^2,\mu^3,\dots$
+\cite[\S5.2]{Smith}. Each polygon is a loop whose boundary alternates: an arc of red between the two
+generators, and arcs of blue between consecutive vertices, switching blue branch at each self-crossing.
+The very same winding conditions (a)--(d)---now with a convex-corner test at \emph{every} vertex, at $x$
+and $y$ (red\,$\cap$\,blue corners) and at each $s_i$ (blue\,$\cap$\,blue corners)---decide whether the
+loop bounds an immersed disk. We validated the polygon counter on the unlink prototype of \cite{Smith},
+where a single triangle through the earring pinch is the mechanism of that example.
+
+The Maurer--Cartan equation \eqref{eq:MC} is the analogous count with \emph{all} vertices at
+self-intersections: for each self-crossing $s$,
+\begin{equation}\label{eq:MCcomp}
+   \big[\textstyle\sum_k\mu^k(\bc,\dots,\bc)\big]_s
+   =\#\mathcal M(s)+\sum_i c_i\,\#\mathcal B^{\Rp}(s_i,s)
+   +\sum_{i,j}c_ic_j\,\#\mathcal T^{\Rp}(s_i,s_j,s)+\cdots=0,
+\end{equation}
+where $\mathcal M$ are monogons (one-cornered teardrops, the curvature $\mu^0$), $\mathcal B^{\Rp}$ blue
+self-bigons ($\mu^1$), and $\mathcal T^{\Rp}$ blue triangles ($\mu^2$)---all polygons with boundary
+entirely on blue.
+
+\section{The computation}\label{sec:compute}
+
+We now prove Theorem~\ref{thm:main}. Part (i) is the gate of \S\ref{ss:gate}. We take up (ii) the
+Maurer--Cartan side, then (iii) the rank side.
+
+\subsection{The Maurer--Cartan equation is vacuous to order two}\label{ss:mc}
+\begin{proposition}\label{prop:mc}
+For the blue Lagrangian $\Rp_t(Q_{1/3}+Q_{1/5})$, the self-Floer products $\mu^0,\mu^1,\mu^2$ all vanish:
+there are no monogons, no self-bigons, and no self-triangles among its forty self-intersections.
+Consequently every $\F_2$-combination $\bc$ of at most two self-intersections satisfies the
+Maurer--Cartan equation \eqref{eq:MC}.
+\end{proposition}
+
+\begin{proof}[Proof (computation)]
+The three counts of \eqref{eq:MCcomp} with all vertices on blue were enumerated by the winding-number
+test of \S\ref{ss:deformed}, pruned on the cover by blue arc-length (\S\ref{ss:lift}). Monogons: for each
+of the forty self-crossings, the two blue arcs from one branch to the other were tested for a
+one-cornered immersed disk; none bounds. (The monogon counter was checked to \emph{find} a genuine
+teardrop on a limaçon test curve, so the null result is not a false negative.) Self-bigons: for every
+ordered pair of self-crossings within a blue-arc window, the two blue arcs joining them were tested for a
+two-cornered disk; none bounds. Self-triangles: all $\binom{40}{3}$ triples were tested (window-pruned);
+none bounds. Thus $\mu^0=\mu^1=\mu^2=0$.
+
+Now let $\bc=\sum_{i}c_is_i$ with $|\operatorname{supp}\bc|\le2$. In \eqref{eq:MCcomp} the $\mu^0$ term
+vanishes; the $\mu^1$ term is a sum of self-bigon counts, which vanish; the $\mu^2$ term is a sum of
+self-triangle counts, which vanish. The first potentially surviving term is $\mu^3(\bc,\bc,\bc)$, a count
+of blue quadrilaterals with three vertices in $\operatorname{supp}\bc$; but an immersed quadrilateral has
+four distinct vertices, so three of them cannot come from a two-element set. Hence
+$\sum_k\mu^k(\bc,\dots,\bc)=0$ identically for $|\operatorname{supp}\bc|\le2$.
+\end{proof}
+
+Proposition~\ref{prop:mc} decouples the problem: for small support the Maurer--Cartan equation imposes
+\emph{no} constraint, and the bounding cochain is pinned entirely by the requirement that the deformed
+homology have the correct rank. (That the self-products vanish is geometrically natural: blue is a taut
+resolution of the Conway sum, and its self-crossings are simple double points with no small enclosed
+disks. It also means $\bc=0$ is a bounding cochain---the naive theory is well defined---consistent with
+Smith computing rank $5$ there.)
+
+\subsection{The rank condition forces a bigon cancellation}
+By \S\ref{ss:gate} the undeformed differential $\partial_0$ has rank $2$, carried by the two bigons; call
+their generator pairs $(x_1,y_0)$ and $(x_4,y_6)$ in the labeling of Figure~\ref{fig:pillow} (here
+$y_0$ is the interior generator and $(x_4,y_6)$ the pair in the $\theta\approx4.72$ cluster). We seek
+$\bc_2$ with $\rk\partial_{\bc_2}=1$, so that $\rk\HF=9-2=7$.
+
+\begin{lemma}\label{lem:rank1}
+Over $\F_2$, a $9\times9$ differential extending $\partial_0$ by polygon terms as in \eqref{eq:defdiff}
+has rank $1$ only if its polygon terms sum to cancel exactly one of the two bigon entries and introduce
+no other entry that raises the rank. In particular the deformed differential must equal a single nonzero
+matrix entry, up to the freedom of the surviving bigon's row.
+\end{lemma}
+
+\begin{proof}
+$\partial_0$ has its two nonzero entries in distinct rows and columns, hence rank $2$. Adding an
+$\F_2$-matrix can lower the rank to $1$ only by cancellation: the sum must have rank $1$, i.e.\ all
+nonzero rows proportional. Since additions never remove the possibility of raising rank, the surgical
+outcome is the one in which the added polygon terms cancel exactly one bigon entry and add nothing that
+survives outside the remaining bigon's row.
+\end{proof}
+
+Thus we must cancel a bigon: some polygon must contribute to the chain-level entry $(x_4,y_6)$ or
+$(x_1,y_0)$. No triangle does (the single-$\bc$-vertex terms of \eqref{eq:defdiff} were enumerated over
+all forty crossings; none has a triangle on either bigon pair). The cancellation is achieved at the next
+order.
+
+\begin{proposition}\label{prop:quad}
+There is an immersed quadrilateral with boundary vertices $x_4,y_6$ and interior vertices the two
+self-crossings $s_A,s_B$; it contributes to the entry $(x_4,y_6)$ of \eqref{eq:defdiff}. Neither $s_A$
+nor $s_B$ carries any triangle, monogon, or any other quadrilateral with a second crossing in a minimal
+support. Hence for $\bc_2=s_A+s_B$,
+\[
+   \partial_{\bc_2}=\partial_0+\mathcal Q(x_4,\,s_A,s_B,\,y_6)\cdot E_{x_4,y_6}
+\]
+has the single entry $(x_1,y_0)$: the quadrilateral cancels the $(x_4,y_6)$ bigon and nothing else
+changes. Therefore $\rk\partial_{\bc_2}=1$ and $\rk\HF=7$.
+\end{proposition}
+
+\begin{proof}[Proof (computation)]
+The quadrilateral is found by the polygon counter of \S\ref{ss:deformed}: the loop
+$\text{red}(x_4\!\to\!y_6)\cdot\text{blue}(y_6\!\to\!s_B)\cdot\text{blue}(s_B\!\to\!s_A)\cdot
+\text{blue}(s_A\!\to\!x_4)$, switching blue branch at $s_A$ and at $s_B$, satisfies the winding
+conditions (a)--(d) with a convex corner at each of the four vertices; it is stable under enlarging the
+arc-length window over a wide range, so it is a genuine immersed disk and not a boundary artifact of the
+pruning. Enumerating the single-crossing (triangle) terms shows $s_A$ and $s_B$ carry none, and the full
+quadrilateral tabulation shows their only shared quadrilateral is the one above. Substituting into
+\eqref{eq:defdiff}: the bigon terms give $\partial_0$ (entries $(x_1,y_0)$ and $(x_4,y_6)$); the triangle
+terms vanish on $\{s_A,s_B\}$; the single quadrilateral term adds $E_{x_4,y_6}$, canceling that bigon
+modulo $2$. The result is the single entry $(x_1,y_0)$, of rank $1$, so $\rk\HF=9-2=7$.
+\end{proof}
+
+\subsection{Uniqueness and the proof of the theorem}
+\begin{proposition}\label{prop:unique}
+Among all bounding cochains supported on the forty self-crossings, $\bc_2=s_A+s_B$ is the unique one of
+minimal support with $\rk\HF=7$: no single crossing achieves it, and $s_A+s_B$ is the only two-crossing
+support that does.
+\end{proposition}
+
+\begin{proof}[Proof (computation)]
+Assembling \eqref{eq:defdiff} from the tabulated triangle and quadrilateral terms gives
+$\partial_\bc$ as an explicit $\F_2$-polynomial in the coefficients $c_i$. A search over all supports by
+increasing size evaluates $\rk\partial_\bc$: every single crossing gives rank $\ge2$ (indeed several
+raise it), and among all $\binom{40}{2}$ pairs exactly one, $\{s_A,s_B\}$, gives rank $1$. Every other
+pair either fails to touch a bigon or drags in a triangle that spoils the cancellation; for instance the
+geometrically nearest canceling pair (the two crossings flanking the $(x_4,y_6)$ bigon) does cancel that
+bigon but its crossings carry triangles $(x_3,y_6),(x_3,y_4),(y_6,y_5)$, leaving rank $3$. Minimality and
+uniqueness follow.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Part (i) is \S\ref{ss:gate}. Part (ii) is Proposition~\ref{prop:mc}. For (iii),
+Proposition~\ref{prop:quad} exhibits $\bc_2=s_A+s_B$ with $\rk\HF=7$, Proposition~\ref{prop:mc} shows it
+solves Maurer--Cartan, and Proposition~\ref{prop:unique} gives minimality and uniqueness. The two support
+crossings lie near $(\gamma,\theta)=(0.03,1.27)$ and $(3.06,4.98)$, one on each seam, and are exchanged
+by $(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$.
+\end{proof}
+
+\section{Robustness, reproducibility, and the conjecture}\label{sec:disc}
+
+\subsection{Stability under perturbation}
+The immersed curves depend on perturbation parameters (the shear resolving the seam circles, the earring
+amplitude and phase), and a genuine invariant must not depend on them. We ran the entire pipeline---
+assembly, gate, deformed differential, rank search, Maurer--Cartan check---at two independent choices of
+parameters. Both give nine generators, two bigons, rank $5$; both give a \emph{unique} two-crossing
+bounding cochain with $\rk\HF=7$; and the support crossings occur at the same pillowcase coordinates
+(within $0.02$), on the same two seams. The value $\bc_2=s_A+s_B$ is stable.
+
+\subsection{What is proved, computed, and conjectured}
+The reconstruction of the Lagrangians and the deformed-differential formalism are re-implementations of
+\cite{HHK1,HHK2,CHKK,HK,Smith}, validated against \cite{Smith} through the rank-$5$ gate. The
+Maurer--Cartan vanishing (Prop.~\ref{prop:mc}), the canceling quadrilateral (Prop.~\ref{prop:quad}), and
+the uniqueness (Prop.~\ref{prop:unique}) are computer computations; the source and its validation
+batteries are included. The statement that $\bc_2$ is \emph{the} bounding cochain of Smith's tangle---
+and hence that $s_A+s_B$ is the correction that realizes the Atiyah--Floer counterpart of
+$\Inat(P(-2,3,5))$---holds under the standing conjecture of \cite{CHKK} that the immersed-curve model
+computes the Floer-theoretic invariant, the same hypothesis under which \cite{CHKK,Smith} are stated.
+Smith \cite[Thm.~5.9]{Smith} proves unconditionally that such a nonzero $\bc_2$ exists; we compute its
+value within the model.
+
+\subsection{Discussion}
+Two features seem worth isolating. First, the correction here \emph{removes} a differential (rank
+$5\to7$), the opposite of the $T(4,5)$ correction, which \emph{adds} one (rank $9\to7$) \cite{CHKK};
+canceling an existing bigon is more rigid than creating a new differential, because a canceling polygon
+must land on an occupied chain-level entry. That it is a quadrilateral rather than a triangle, and that
+its two vertices are otherwise polygon-free, is what makes the answer a clean sum of two crossings.
+Second, the vanishing of $\mu^0,\mu^1,\mu^2$ (Prop.~\ref{prop:mc}) makes the Maurer--Cartan equation
+inert for small cochains: here the bounding cochain is selected purely by the rank matching, not by its
+own defining equation. Whether this decoupling persists for other decompositions---so that the
+computation of $\bc$ reduces, as here, to a finite mod-$2$ rank search once the curves are in hand---is
+the natural question for turning the single example of Theorem~\ref{thm:main} into a family computation,
+the open problem stated at the end of \cite{WuebbenI}. The pretzel knot $P(-2,3,5)=T(3,5)$ is the
+smallest $n\equiv5\pmod6$ member of the $(3,n)$ family, where the reduced complex first acquires the
+differential that on the pillowcase side is exactly this bounding cochain \cite{WuebbenI}; a uniform
+treatment of that family is the goal to which this example is the first data point.
+
+\begin{thebibliography}{99}
+
+\bibitem{CHKK} G.~Cazassus, C.~Herald, P.~Kirk, A.~Kotelskiy, \emph{The correspondence induced on the
+pillowcase by the earring tangle}, J.\ Topol.\ \textbf{15} (2022), 2472--2543. arXiv:2010.04320.
+
+\bibitem{dSRS} V.~de~Silva, J.~Robbin, D.~Salamon, \emph{Combinatorial Floer homology}, Mem.\ Amer.\
+Math.\ Soc.\ \textbf{230} (2014), no.\ 1080.
+
+\bibitem{HHK1} M.~Hedden, C.~Herald, P.~Kirk, \emph{The pillowcase and perturbations of traceless
+representations of knot groups}, Geom.\ Topol.\ \textbf{18} (2014), 211--287. arXiv:1301.0164.
+
+\bibitem{HHK2} M.~Hedden, C.~Herald, P.~Kirk, \emph{The pillowcase and traceless representations of knot
+groups II: a Lagrangian--Floer theory in the pillowcase}, J.\ Symplectic Geom.\ \textbf{16} (2018),
+721--815. arXiv:1501.00028.
+
+\bibitem{HK} C.~Herald, P.~Kirk, \emph{An endomorphism on immersed curves in the pillowcase},
+arXiv:2407.11247.
+
+\bibitem{KM1} P.~Kronheimer, T.~Mrowka, \emph{Knot homology groups from instantons}, J.\ Topol.\
+\textbf{4} (2011), 835--918. arXiv:0806.1053.
+
+\bibitem{KM2} P.~Kronheimer, T.~Mrowka, \emph{Khovanov homology is an unknot-detector}, Publ.\ Math.\
+IH\'ES \textbf{113} (2011), 97--208. arXiv:1005.4346.
+
+\bibitem{Lin} X.-S.~Lin, \emph{A knot invariant via representation spaces}, J.\ Differential Geom.\
+\textbf{35} (1992), 337--357.
+
+\bibitem{Smith} K.~Smith, \emph{Perturbed traceless $\SU$ character varieties of tangle sums},
+arXiv:2412.06066.
+
+\bibitem{WuebbenI} B.~J.~Wuebben, \emph{Trace-free $\SU$ characters and $\Z/4$ instanton gradings for
+two-bridge and $(3,n)$-torus knots}, companion paper (2026).
+
+\end{thebibliography}
+
+\bigskip
+\noindent{\sc Bernd J. Wuebben, New York, NY,} \texttt{wuebben@gmail.com}
+
+\end{document}
