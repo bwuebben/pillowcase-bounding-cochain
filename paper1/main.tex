@@ -31,29 +31,29 @@
 
 \begin{document}
 
-\title[Trace-free characters and instanton gradings for $2$-bridge and $(3,n)$ knots]
-{Trace-free $\SU$ characters and $\Z/4$ instanton gradings\\ for two-bridge and $(3,n)$-torus knots}
+\title[Traceless characters and instanton gradings for $2$-bridge and $(3,n)$ knots]
+{Traceless $\SU$ characters and $\Z/4$ instanton gradings\\ for two-bridge and $(3,n)$-torus knots}
 
 \author{Bernd J. Wuebben}
 \subjclass[2020]{57R58 (primary); 57K10, 57K31, 53D40, 58J30 (secondary)}
 \keywords{Instanton knot homology, traceless character varieties,
 pillowcase, Atiyah--Floer conjecture, two-bridge knots, torus knots,
 binary dihedral representations, spectral flow}
-\date{July 13, 2026}
+\date{July 19, 2026}
 
 \begin{abstract}
 We assemble, and where possible independently verify, the representation-theoretic data underlying
 the pillowcase (symplectic) side of the Atiyah--Floer conjecture for knots, for two families: the
 two-bridge knots and the $(3,n)$-torus knots. For a two-bridge knot $\bp(p,q)$ we give a short,
-self-contained proof that every irreducible trace-free $\SU$ representation is binary-dihedral; these
+self-contained proof that every irreducible traceless $\SU$ representation is binary-dihedral; these
 are the $(p-1)/2$ dihedral characters at meridian angles $\cos(2\pi k/p)$, independent of $q$, and the
-trace-free Riley polynomial is the explicit product $\phi_p(u)=\prod_k\bigl(u+4\sin^2(\pi k/p)\bigr)$,
+traceless Riley polynomial is the explicit product $\phi_p(u)=\prod_k\bigl(u+4\sin^2(\pi k/p)\bigr)$,
 monic of degree $(p-1)/2$ with constant term $\det K$. We use this to give a transparent account of the
 Hedden--Herald--Kirk theorem that pillowcase homology equals reduced singular instanton knot homology
 $\Inat$ on this family, and of why the figure-eight bubbling and bounding cochains that obstruct the
 general conjecture are structurally inert there. For the $(3,n)$-torus knots we compute the full
-trace-free character variety and prove a dihedral dichotomy: exactly $(\det-1)/2$ characters are
-dihedral, so for $n$ odd every irreducible trace-free character is \emph{non}-dihedral. Passing to the
+traceless character variety and prove a dihedral dichotomy: exactly $(\det-1)/2$ characters are
+dihedral, so for $n$ odd every irreducible traceless character is \emph{non}-dihedral. Passing to the
 double branched cover $\Sig(2,3,n)$, we self-compute the $\Z/4$ spectral-flow gradings of the generators
 from the Fintushel--Stern index and the equivariant $\rho$-invariant, calibrated against the
 Poudel--Saveliev and Anvari computations; for $n$ odd the gradings split evenly between $1$ and $3$,
@@ -83,9 +83,9 @@ singularities of $M(\Sigma)$ and by figure-eight bubbling in the adiabatic limit
 
 There is a knot-theoretic analogue in which the pillowcase plays the role of $M(\Sigma)$. Let
 $K\subset S^3$ be a knot, and cut $S^3$ along a Conway sphere meeting $K$ in four points into two
-$2$-string tangles. A representation $\rho\colon\pi_1(S^3\setminus K)\to\SU$ is \emph{trace-free} if every
-meridian maps to a trace-free element (conjugate to $\operatorname{diag}(i,-i)$); this is the boundary
-condition of Kronheimer--Mrowka's singular instanton theory~\cite{KM1,KM2}. Restricting trace-free flat
+$2$-string tangles. A representation $\rho\colon\pi_1(S^3\setminus K)\to\SU$ is \emph{traceless} if every
+meridian maps to a traceless element (conjugate to $\operatorname{diag}(i,-i)$); this is the boundary
+condition of Kronheimer--Mrowka's singular instanton theory~\cite{KM1,KM2}. Restricting traceless flat
 connections of each tangle to the four-punctured sphere and applying holonomy perturbations, one obtains
 immersed Lagrangians $L_0,L_1$ in the \emph{pillowcase}
 \[
@@ -100,7 +100,7 @@ singular instanton knot homology $\Inat(K)$.
 \subsection{Purpose and scope}
 This paper is a computational and expository consolidation. Its aim is to make explicit, for two
 tractable infinite families, the representation-theoretic data on which the pillowcase construction
-rests: the trace-free character variety (the generators), the $\Z/4$ spectral-flow gradings, and the
+rests: the traceless character variety (the generators), the $\Z/4$ spectral-flow gradings, and the
 differential. We are careful throughout to separate three kinds of statement:
 \begin{itemize}
 \item[(i)] results proved here (self-contained, though some are surely classical);
@@ -113,16 +113,17 @@ knots it is a theorem of Hedden--Herald--Kirk~\cite{HHK1,HHK2}, and for the toru
 instanton side and the character-variety side, not the analytic identification of the two. The explicit
 verifications reported below---the exact-arithmetic check of Theorem~\ref{thm:A}, the counts of
 Proposition~\ref{prop:count}, and the gradings of Section~\ref{sec:grading}---are carried out by a short
-computer computation included with the source.
+computer computation, available with all supporting code at the public repository
+\url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
 
 \subsection{Results}
-Section~\ref{sec:pillow} records the pillowcase and the trace-free characters as generators.
+Section~\ref{sec:pillow} records the pillowcase and the traceless characters as generators.
 Section~\ref{sec:2bridge} proves:
 
 \begin{theorem}[Dihedral rigidity for two-bridge knots]\label{thm:A}
-Let $K=\bp(p,q)$ be a two-bridge knot, $p=\det K$. Every irreducible trace-free $\SU$ representation of
+Let $K=\bp(p,q)$ be a two-bridge knot, $p=\det K$. Every irreducible traceless $\SU$ representation of
 $\pi_1(S^3\setminus K)$ is binary-dihedral. There are exactly $(p-1)/2$ of them, at meridian-pair angles
-$\cos\omega=\cos(2\pi k/p)$ for $k=1,\dots,(p-1)/2$, independent of $q$; equivalently the trace-free
+$\cos\omega=\cos(2\pi k/p)$ for $k=1,\dots,(p-1)/2$, independent of $q$; equivalently the traceless
 Riley polynomial in $u=2\cos\omega-2$ is
 \[
 \phi_p(u)=\prod_{k=1}^{(p-1)/2}\Bigl(u+4\sin^2\tfrac{\pi k}{p}\Bigr),
@@ -137,10 +138,10 @@ expectation about the earring correspondence.
 Section~\ref{sec:3n} computes the $(3,n)$-torus knot characters and proves:
 
 \begin{theorem}[Dihedral dichotomy for $(3,n)$-torus knots]\label{thm:B}
-Let $\gcd(3,n)=1$. The irreducible trace-free $\SU$ characters of $T(3,n)$ are in bijection with the
+Let $\gcd(3,n)=1$. The irreducible traceless $\SU$ characters of $T(3,n)$ are in bijection with the
 admissible representation arcs of Section~\ref{sec:3n}, one per arc. Exactly $(\det-1)/2$ of them are
 binary-dihedral: one if $n$ is even $(\det=3)$ and none if $n$ is odd $(\det=1)$. In particular, for $n$
-odd every irreducible trace-free character of $T(3,n)$ is non-dihedral.
+odd every irreducible traceless character of $T(3,n)$ is non-dihedral.
 \end{theorem}
 
 Section~\ref{sec:grading} passes to the double branched cover $\Sig(2,3,n)$ and self-computes the
@@ -155,11 +156,11 @@ The literature computations reproduced here are due to Hedden--Herald--Kirk~\cit
 Cazassus--Herald--Kirk--Kotelskiy~\cite{CHKK}, Poudel--Saveliev~\cite{PS}, and Anvari~\cite{Anvari};
 we have tried to attribute each precisely.
 
-\section{The pillowcase and trace-free characters}\label{sec:pillow}
+\section{The pillowcase and traceless characters}\label{sec:pillow}
 
-We work with $\SU$ as the unit quaternions. An element is trace-free iff it is a purely imaginary unit
+We work with $\SU$ as the unit quaternions. An element is traceless iff it is a purely imaginary unit
 quaternion (eigenvalues $\pm i$, squaring to $-1$); as a rotation it is a rotation by $\pi$. The
-trace-free elements form a $2$-sphere $S\subset\operatorname{Im}\HH\cong\R^3$.
+traceless elements form a $2$-sphere $S\subset\operatorname{Im}\HH\cong\R^3$.
 
 \begin{proposition}[Classical; cf.~\cite{Lin,HHK1}]\label{prop:pillow}
 The traceless $\SU$ character variety of the four-punctured sphere is the pillowcase
@@ -207,29 +208,29 @@ bound no bigon. The earring correspondence bends such an arc into a figure-eight
 
 For a knot $K$ with a two-tangle decomposition, a representation of $\pi_1(S^3\setminus K)$ is a
 compatible pair of tangle representations, i.e.\ a point of $L_0\cap L_1$. Thus the intersection points
-are exactly the trace-free representations of the knot group, and (after perturbation) the generators of
+are exactly the traceless representations of the knot group, and (after perturbation) the generators of
 the singular instanton chain complex~\cite{KM1,KM2}. In what follows a representation is determined up to
 conjugacy by the single invariant $\cos\omega=\langle a,b\rangle$, the cosine of the angle between the
 axes of two chosen meridians $a,b\in S$.
 
 \section{Two-bridge knots}\label{sec:2bridge}
 
-\subsection{Trace-free characters are dihedral}
+\subsection{Traceless characters are dihedral}
 Recall Riley's parametrization~\cite{Riley}: for a two-bridge knot the nonabelian $\mathrm{SL}_2(\C)$
 representations with meridian eigenvalue $s$ are
 \[
 \rho(a)=\begin{pmatrix}s&1\\0&s^{-1}\end{pmatrix},\qquad
 \rho(b)=\begin{pmatrix}s&0\\-u&s^{-1}\end{pmatrix},
 \]
-cut out by a polynomial $\Phi_{p,q}(s,u)$ of degree $(p-1)/2$ in $u$; the trace-free locus is $s=i$.
+cut out by a polynomial $\Phi_{p,q}(s,u)$ of degree $(p-1)/2$ in $u$; the traceless locus is $s=i$.
 
 \begin{proof}[Proof of Theorem~\ref{thm:A}]
 A binary-dihedral representation sends meridians into the reflection coset $e^{i\phi}j$ of
-$\Pin=S^1\cup jS^1$, whose elements are trace-free; hence every irreducible dihedral representation is
-trace-free, so there are \emph{at least} $(p-1)/2$ irreducible trace-free characters (the number of
+$\Pin=S^1\cup jS^1$, whose elements are traceless; hence every irreducible dihedral representation is
+traceless, so there are \emph{at least} $(p-1)/2$ irreducible traceless characters (the number of
 irreducible metabelian representations of a knot with $|H_1(\Sigma_2)|=p$ odd). On the other hand the
-trace-free Riley polynomial $\Phi_{p,q}(i,u)$ has $u$-degree at most $(p-1)/2$, so there are \emph{at
-most} $(p-1)/2$. The bounds coincide, so every irreducible trace-free character is one of the dihedral
+traceless Riley polynomial $\Phi_{p,q}(i,u)$ has $u$-degree at most $(p-1)/2$, so there are \emph{at
+most} $(p-1)/2$. The bounds coincide, so every irreducible traceless character is one of the dihedral
 ones. A dihedral character with $\rho(ab)$ of rotation angle $4\pi k/p$ has
 $\cos\omega=\cos(2\pi k/p)$; distinct $k\in\{1,\dots,(p-1)/2\}$ give distinct characters, and these
 values depend only on $p$. Finally $\phi_p(u)=\prod_k(u-u_k)$ with
@@ -240,7 +241,7 @@ $\prod_k 4\sin^2(\pi k/p)=p$ and its root-sum is $\sum_k(2\cos(2\pi k/p)-2)=-1-(
 \begin{remark}
 Small cases: $\phi_3=u+3$, $\phi_5=u^2+5u+5$, $\phi_7=u^3+7u^2+14u+7$, $\phi_9=u^4+9u^3+27u^2+30u+9$. For
 $p$ prime, $\phi_p$ is, after $u=2c-2$, the minimal polynomial of $2\cos(2\pi/p)$, irreducible of degree
-$(p-1)/2$. Theorem~\ref{thm:A} is elementary and is essentially classical (the trace-free/metabelian
+$(p-1)/2$. Theorem~\ref{thm:A} is elementary and is essentially classical (the traceless/metabelian
 coincidence for two-bridge knots is implicit in~\cite{Riley}); we include the proof because it fixes the
 interior generators exactly and $q$-independently, which is what the pillowcase picture needs. The
 statement was verified by exact Gaussian-integer computation of the Riley word for all $p\le 9$,
@@ -293,15 +294,15 @@ with $\ell_1\in\{1,2\}$, $0<\ell_2<n$, and the central-sign match $\ell_1\equiv\
 $\theta=\angle(\hat u,\hat v)\in(0,\pi)$ is the only remaining modulus; each admissible pair
 $(\ell_1,\ell_2)$ is a one-parameter arc of irreducible characters (Klassen~\cite{Klassen}).
 
-\subsection{The trace-free locus}
-The meridian is $\mu=x^ay^b$ with $an+3b=1$; it is well defined modulo the center, and trace-freeness is
+\subsection{The traceless locus}
+The meridian is $\mu=x^ay^b$ with $an+3b=1$; it is well defined modulo the center, and tracelessness is
 insensitive to that ambiguity (multiplying $\mu$ by $z$ negates $\rho(\mu)$, preserving trace $0$). A
 direct quaternion computation gives
 \[
 \tfrac12\tr\rho(\mu)=\operatorname{Re}\rho(\mu)
 =\cos(a\alpha)\cos(b\beta)-\sin(a\alpha)\sin(b\beta)\cos\theta,
 \]
-which is affine in $\cos\theta$. Hence each arc contains exactly one trace-free character, at
+which is affine in $\cos\theta$. Hence each arc contains exactly one traceless character, at
 \begin{equation}\label{eq:tf}
 \cos\theta=\cot(a\alpha)\,\cot(b\beta),
 \end{equation}
@@ -309,13 +310,13 @@ provided the right side lies in $[-1,1]$ (otherwise the arc carries none). We ve
 the resulting $\rho$ satisfies $\rho(x)^3=\rho(y)^n=-1$ and $\tr\rho(\mu)=0$ exactly.
 
 \begin{proposition}[Count]\label{prop:count}
-The number of irreducible trace-free $\SU$ characters of $T(3,n)$ is
+The number of irreducible traceless $\SU$ characters of $T(3,n)$ is
 \[
 N(3,n)=\begin{cases}
 2(n-1)/3,& n\equiv1,\\ (2n-1)/3,& n\equiv2,\\ (2n+1)/3,& n\equiv4,\\ 2(n+1)/3,& n\equiv5,
 \end{cases}\pmod 6,
 \]
-together with one abelian trace-free character; thus $N(3,n)\sim 2n/3$.
+together with one abelian traceless character; thus $N(3,n)\sim 2n/3$.
 \end{proposition}
 
 The values $N(3,n)$ for $n=2,4,5,7,8,10,11,13$ are $1,3,4,4,5,7,8,8$. These count the admissible arcs,
@@ -325,12 +326,12 @@ enumeration of the admissible arcs for all $n\le 25$.
 \subsection{The dihedral dichotomy}
 \begin{proof}[Proof of Theorem~\ref{thm:B}]
 In $\Pin=S^1\cup jS^1$ every element is a rotation (in $S^1$) or a reflection (in $jS^1$); reflections
-are exactly the trace-free elements, and an irreducible dihedral representation must send a generator to
-a reflection. Now $\rho(x)$ has trace $2\cos(\pi\ell_1/3)=\pm1\neq0$, so it is never trace-free (as $3$
-is odd); and $\rho(y)$ is trace-free iff $\beta=\pi/2$ iff $\ell_2=n/2$, possible only for $n$ even. Hence
-the number of irreducible dihedral trace-free characters is $1$ if $n$ is even and $0$ if $n$ is odd,
+are exactly the traceless elements, and an irreducible dihedral representation must send a generator to
+a reflection. Now $\rho(x)$ has trace $2\cos(\pi\ell_1/3)=\pm1\neq0$, so it is never traceless (as $3$
+is odd); and $\rho(y)$ is traceless iff $\beta=\pi/2$ iff $\ell_2=n/2$, possible only for $n$ even. Hence
+the number of irreducible dihedral traceless characters is $1$ if $n$ is even and $0$ if $n$ is odd,
 which equals $(\det T(3,n)-1)/2$ since $\det T(3,n)=3$ for $n$ even and $1$ for $n$ odd. In particular,
-for $n$ odd there are no dihedral characters, so every irreducible trace-free character is non-dihedral.
+for $n$ odd there are no dihedral characters, so every irreducible traceless character is non-dihedral.
 \end{proof}
 
 Theorem~\ref{thm:B} is the exact opposite of Theorem~\ref{thm:A}: two-bridge knots are entirely
@@ -352,7 +353,7 @@ $(m_1,m_2,m_3)=(1,m_2,m_3)$ indexing the three singular fibers, with $m_2,m_3$ e
 $0<m_3<n$. Since $2$ is the only even value in $(0,3)$, necessarily $m_2=2$, and $m_3$ ranges over the
 even integers in $(0,n)$ meeting the spherical-triangle inequalities on the angles
 $(\pi/2,2\pi/3,\pi m_3/n)$. (These $m_i$ index the branched cover and are not the $(\ell_1,\ell_2)$ of
-Section~\ref{sec:3n}.) Their number is $a=-\sigma(T(3,n))/4$, and each lifts to two trace-free knot
+Section~\ref{sec:3n}.) Their number is $a=-\sigma(T(3,n))/4$, and each lifts to two traceless knot
 characters, so
 \begin{equation}\label{eq:N2a}
 N(3,n)=2a\qquad(n\text{ odd}),\qquad \sigma(T(3,n))=-2N(3,n),
@@ -409,7 +410,7 @@ $n\bmod 6$:
 \begin{cases}1+4a, & n\equiv1\pmod 6\quad(\partial=0),\\[2pt]
 4a-1=(1+4a)-2, & n\equiv5\pmod 6\quad(\operatorname{rank}\partial=1).\end{cases}
 \]
-For $n\equiv1$ the Alexander lower bound $\sum_i|\Delta|=1+4a$ meets the chain rank, forcing $\partial=0$
+For $n\equiv1$ the Alexander lower bound \cite{Lim,KM1} $\sum_i|\Delta|=1+4a$ meets the chain rank, forcing $\partial=0$
 and $\Inat=IC^\natural=(1+a,a,a,a)$ (Anvari~\cite[Ex.~6.2]{Anvari} proves this family). For $n\equiv5$ the
 differential is nonzero; the smallest case is $T(3,5)=P(-2,3,5)=10_{124}$, where $\operatorname{rank}\Inat
 =7$ (not $9$), pinned by $\ell=u=7$~\cite{Smith}, and where on the pillowcase side the nonzero bounding
@@ -424,9 +425,12 @@ type the irreducibles give $(a,a,a,a)$, and $\Theta$ adds one to grading $0$, gi
 $IC^\natural=(1+a,a,a,a)$ of chain rank $1+4a$. The even split (hence this chain complex) is proved for
 $n\equiv1\pmod6$ by Anvari~\cite[Ex.~6.2]{Anvari} and verified here by direct evaluation
 of~\eqref{eq:FS}--\eqref{eq:rho} for all odd $n\le43$. For the homology, $\sum_i|\Delta_{T(3,n)}|=1+4a$
-when $n\equiv1$ and $4a-1$ when $n\equiv5$; since the Khovanov--Alexander bounds give
-$\sum_i|\Delta|\le\operatorname{rank}\Inat\le\operatorname{rank}\widetilde{Kh}$ and, for these knots,
-$\operatorname{rank}\widetilde{Kh}=\sum_i|\Delta|$, the differential vanishes iff $n\equiv1$; for
+when $n\equiv1$ and $4a-1$ when $n\equiv5$; since the Alexander and Khovanov bounds give
+$\sum_i|\Delta|\le\operatorname{rank}\Inat\le\operatorname{rank}\widetilde{Kh}$ (rational
+coefficients) \cite{Lim,KM1,KM2} and, for the $(3,n)$-torus knots,
+$\operatorname{rank}\widetilde{Kh}=\sum_i|\Delta|$ --- from Turner's rational Khovanov homology of
+$(3,q)$-torus links \cite{Turner}, the unreduced theory being two shifted copies of the reduced one
+over $\mathbb{Q}$ \cite{Shumakovitch} --- the differential vanishes iff $n\equiv1$; for
 $n\equiv5$ it has rank $1$. (The case $T(3,5)$ is Smith's~\cite{Smith}, rigorous with $\ell=u=7$.)
 \end{proof}
 
@@ -448,7 +452,7 @@ $\operatorname{rank}\Inat$ & $\mathbf 7$ & $9$ & $\mathbf{15}$ & $17$ & $\mathbf
  & $\mathbf{31}$ & $33$\\
 \end{tabular}
 \medskip
-\caption{For $T(3,n)$, $n$ odd coprime to $3$: the trace-free character count $N=2a$, the chain rank
+\caption{For $T(3,n)$, $n$ odd coprime to $3$: the traceless character count $N=2a$, the chain rank
 $\dim IC^\natural=1+4a$ (Proposition~\ref{prop:split}), and the homology rank
 $\operatorname{rank}\Inat=\sum_i|\Delta_{T(3,n)}|$. The two coincide for $n\equiv1\pmod6$ (differential
 zero) but differ by $2$ for $n\equiv5\pmod6$ (bold; differential rank $1$). $T(3,5)=P(-2,3,5)=10_{124}$
@@ -467,7 +471,7 @@ For $n$ even the double cover $\Sig(2,3,n)$ carries nontrivial reducibles ($H_1\
 complex acquires a differential. We treat the smallest case, $8_{19}=T(3,4)$, in two ways.
 
 \subsection{Structural derivation}
-By Theorem~\ref{thm:B} and Proposition~\ref{prop:count}, $T(3,4)$ has three irreducible trace-free
+By Theorem~\ref{thm:B} and Proposition~\ref{prop:count}, $T(3,4)$ has three irreducible traceless
 characters---two non-dihedral (at $\theta\approx125.3^\circ,54.7^\circ$) and one dihedral (at $90^\circ$)
 ---together with one abelian character. Via the double cover $\Sig(2,3,4)$, whose first homology is
 $\Z/3$: the two non-dihedral characters are the two lifts of the single $\Sig$-irreducible; the dihedral
@@ -578,6 +582,9 @@ arXiv:2407.11247.
 \bibitem[KM11b]{KM2} P.~Kronheimer, T.~Mrowka, \emph{Khovanov homology is an unknot-detector}, Publ.\ Math.\
 IH\'ES \textbf{113} (2011), 97--208. arXiv:1005.4346.
 
+\bibitem[Lim10]{Lim} Y.~Lim, \emph{Instanton homology and the Alexander polynomial}, Proc.\ Amer.\ Math.\
+Soc.\ \textbf{138} (2010), 3759--3768.
+
 \bibitem[Lin92]{Lin} X.-S.~Lin, \emph{A knot invariant via representation spaces}, J.\ Differential Geom.\
 \textbf{35} (1992), 337--357.
 
@@ -587,8 +594,14 @@ Algebr.\ Geom.\ Topol.\ \textbf{17} (2017), 2635--2685. arXiv:1502.03116.
 \bibitem[Ril84]{Riley} R.~Riley, \emph{Nonabelian representations of $2$-bridge knot groups}, Quart.\ J.\ Math.\
 Oxford \textbf{35} (1984), 191--208.
 
+\bibitem[Shu14]{Shumakovitch} A.~Shumakovitch, \emph{Torsion of the Khovanov homology}, Fund.\ Math.\
+\textbf{225} (2014), 343--364. arXiv:math/0405474.
+
 \bibitem[Smi24]{Smith} K.~Smith, \emph{Perturbed traceless $\SU$ character varieties of tangle sums},
 arXiv:2412.06066.
+
+\bibitem[Tur08]{Turner} P.~Turner, \emph{A spectral sequence for Khovanov homology with an application to
+$(3,q)$-torus links}, Algebr.\ Geom.\ Topol.\ \textbf{8} (2008), 869--884. arXiv:math/0606369.
 
 \end{thebibliography}
 

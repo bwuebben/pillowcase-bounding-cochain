@@ -49,7 +49,7 @@
 \keywords{Singular instanton homology, pretzel knots, pillowcase,
 Lagrangian Floer homology, bounding cochains, Atiyah--Floer conjecture,
 Khovanov homology}
-\date{July 17, 2026}
+\date{July 19, 2026}
 
 \begin{abstract}
 We prove that the reduced singular instanton knot homology of the pretzel knots $P(-2,3,q)$ has rank
@@ -70,10 +70,10 @@ cochains --- the correction terms conjectured by Cazassus--Herald--Kirk--Kotelsk
 deficiency: for $q=5$ a unique two-crossing cochain acting through an immersed quadrilateral, for $q=7$
 a unique single crossing acting through a triangle (each \emph{cancelling} a bigon and raising the rank
 by $2$), and for $q=11$ single-crossing cochains acting in the \emph{opposite} direction (creating a
-differential and lowering the rank by $2$). These are, to our knowledge, the first explicitly computed
-nonzero bounding cochains in pillowcase Floer theory, and they realize both directions of the
-conjectured correction within a single family, with a marked rigidity asymmetry: cancellation admits a
-unique minimal cochain, creation many. We separate throughout what is proved unconditionally, what is
+differential and lowering the rank by $2$). These are, to our knowledge, the first computed nonzero
+bounding cochains on Conway-sum tangles, and the first anywhere acting by cancellation; they realize
+both directions of the conjectured correction within a single family, with a marked rigidity
+asymmetry: cancellation admits a unique minimal cochain, creation many. We separate throughout what is proved unconditionally, what is
 computed within the combinatorial model, and what remains conjectural.
 \end{abstract}
 
@@ -89,6 +89,7 @@ homology \cite{KM2}; hence
 \begin{equation}\label{eq:squeeze}
    \ell(K):=\textstyle\sum_i |a_i(\Delta_K)| \;\le\; \rk \Inat(K) \;\le\; \dim \Kh_r(K)=:u(K).
 \end{equation}
+(Here and throughout, ranks and dimensions are taken with rational coefficients.)
 On the symplectic side sits the pillowcase program of Hedden--Herald--Kirk \cite{HHK1,HHK2}. Present
 $K=(B^3,T_1)\cup_{(S^2,4)}(B^3,T_2)$ as a union of two tangles. The traceless $\SU$ character variety
 of the four-punctured sphere is the \emph{pillowcase}
@@ -109,11 +110,12 @@ Maurer--Cartan equation
 \begin{equation}\label{eq:MC}
    \sum_{k\ge0}\mu^k(\bc,\dots,\bc)=0
 \end{equation}
-($\mu^k$ counts immersed $(k{+}1)$-gons), and the $\bc$-deformed Floer homology
-$\HF\big((\Rp(T_1),\bc_1),(\Rp(T_2),\bc_2)\big)$ is conjecturally the knot invariant, equal to
-$\Inat(K)$ \cite[Conj.~1.1]{CHKK}. Before this work, one bounding cochain had been exhibited (on the
-earring tangle of $T(4,5)$ \cite[\S10]{CHKK}), one had been proven nonzero without being computed (the
-Conway-sum tangle of $P(-2,3,5)$, Smith \cite[Thm.~5.9]{Smith}), and none had been computed.
+($\mu^k$ counts immersed $(k{+}1)$-gons), and the deformed Floer homology
+$\HF\big((\Rp(T_1),\bc_1),(\Rp(T_2),\bc_2)\big)$ is conjectured to be the knot invariant
+$\Inat(K)$ \cite[Conj.~1.1]{CHKK}. Before this work, one bounding cochain had been exhibited, on the
+earring tangle of $T(4,5)$ \cite[\S10]{CHKK}, acting by creation; one had been proven nonzero without
+being computed, on the Conway-sum tangle of $P(-2,3,5)$ (Smith \cite[Thm.~5.9]{Smith}); no cochain had
+been computed on a Conway-sum tangle, and none anywhere acting by cancellation.
 
 This paper studies both sides for the pretzel family
 \begin{equation}\label{eq:family}
@@ -241,7 +243,7 @@ suitable crossing. Rank-matching alone thus pins the cochain at deficit members 
 members; selecting \emph{the} cochain of the tangle at an excess member requires the (conjectural)
 naturality data, not just the rank.
 
-\subsection{Method and honesty}
+\subsection{Method and scope of claims}
 Nothing on the pillowcase side was taken from \cite{Smith} as input. Both Lagrangians were
 reconstructed from first principles --- the quaternionic representation theory, Smith's fiber-product
 description of the Conway sum and his cut-and-paste resolution of the seam circles, and the
@@ -249,8 +251,8 @@ Herald--Kirk earring --- and validated against the published output of \cite{Smi
 generators, two bigons, rank $5$, and the worked resolution example) before anything new was computed.
 The three registers are: (a) \emph{proved unconditionally} --- Theorem~\ref{thm:inat}; (b)
 \emph{computed within the model} --- the naive ranks, the deficiency law at its five members, the
-cochains, all by a self-contained program included with the source, with polygon counts by validated
-winding-number tests; (c) \emph{conjectural} --- the faithfulness of the combinatorial model
+cochains, all by a self-contained program included with the source (Section~\ref{sec:disc} gives the
+public repository), with polygon counts by validated winding-number tests; (c) \emph{conjectural} --- the faithfulness of the combinatorial model
 \cite[Conj.~1.1]{CHKK} (under which the computed cochains are the values of the invariant-theoretic
 ones), and the deficiency law beyond $q=13$. We prove no theorem about the analytic Atiyah--Floer
 correspondence.
@@ -624,7 +626,10 @@ might have suggested, but to the deficiency sign.
 
 \subsection{Reproducibility}
 All computations are pure Python (standard library), included with the source; each module is a
-self-checking battery. The Alexander recursion is validated by the eleven-coefficient Lehmer match at
+self-checking battery. The code, the data, and both papers are public at
+\begin{center}
+\url{https://github.com/bwuebben/pillowcase-bounding-cochain}\,.
+\end{center} The Alexander recursion is validated by the eleven-coefficient Lehmer match at
 $q=7$; the curve reconstruction by Smith's $q=5$ numbers; the polygon counter by the unlink prototype
 and synthetic teardrop/lens tests; the naive ranks and cochains by independent perturbations.
 $\rk\Inat$ in Table~\ref{tab:family} is Theorem~\ref{thm:inat} and is independent of all of this.
@@ -671,7 +676,7 @@ Math.\ \textbf{24} (2018), 1076--1100. arXiv:1303.3303.
 \bibitem[Smi24]{Smith} K.~Smith, \emph{Perturbed traceless $\SU$ character varieties of tangle sums},
 arXiv:2412.06066.
 
-\bibitem[Wue26]{WuebbenI} B.~J.~Wuebben, \emph{Trace-free $\SU$ characters and $\Z/4$ instanton gradings for
+\bibitem[Wue26]{WuebbenI} B.~J.~Wuebben, \emph{Traceless $\SU$ characters and $\Z/4$ instanton gradings for
 two-bridge and $(3,n)$-torus knots}, companion paper (2026).
 
 \end{thebibliography}

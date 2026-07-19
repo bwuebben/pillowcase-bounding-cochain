@@ -20,8 +20,9 @@ verified at q = 3, 5, 7, 11, 13 (naive ranks 5, 5, 7, 15, 17 vs I♮ = 5, 7, 9, 
 independent perturbations each. The direction flips at det = 3 — equivalently, where the double
 branched cover stops being a homology sphere.
 
-**The bounding cochains (computed; the first nonzero ones in pillowcase Floer theory).** The
-correction conjectured by Cazassus–Herald–Kirk–Kotelskiy is realized in **both directions**:
+**The bounding cochains (the first computed on Conway-sum tangles, and the first anywhere acting by
+cancellation).** The correction conjectured by Cazassus–Herald–Kirk–Kotelskiy is realized in **both
+directions**:
 
 > **P(−2,3,5)**: unique minimal b = s_A + s_B (two seam self-crossings); a μ³ **quadrilateral**
 > cancels a bigon, rank 5 → 7.
@@ -36,7 +37,7 @@ correction conjectured by Cazassus–Herald–Kirk–Kotelskiy is realized in **
   bounding cochains in the pillowcase*. The main paper: the theorem, the deficiency law, and the
   three cochains. Figure 1 is generated from the computed curves (`pillowcase/make_figure.py` →
   `paper2/fig_q5.tex`).
-- **`paper1/main.tex`** — *Trace-free SU(2) characters and ℤ/4 instanton gradings for
+- **`paper1/main.tex`** — *Traceless SU(2) characters and ℤ/4 instanton gradings for
   two-bridge and (3,n)-torus knots* (companion). Assembles and independently verifies the
   representation-theoretic data (character varieties, ℤ/4 spectral-flow gradings, the first
   nonzero differential 8₁₉) underlying the pillowcase construction. Paper 2 takes up the
@@ -97,7 +98,7 @@ python3 pretzel_solve.py 5   # P(-2,3,11): 55 creation cochains, HF 15 -> 13 = I
 | `pert_check.py` | perturbation-stability: reruns the whole pipeline at a second perturbation |
 | `diag_geometry.py`, `diag_cancel.py` | diagnostics used while developing the computation |
 
-## Method and honesty
+## Method and scope of claims
 
 The computations are carried out **within the immersed-curve combinatorial model** of
 Herald–Kirk and Smith, in which Lagrangian–Floer polygon counts are winding-number
