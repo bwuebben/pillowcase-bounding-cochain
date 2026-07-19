@@ -65,6 +65,9 @@ python3 polygons.py    # generalized immersed-polygon counter              (2/2)
 # --- the theorem's Alexander input ---
 python3 skein_alexander.py   # sum|Delta(P(-2,3,q))| = q+2, Lehmer-validated   (13/13)
 
+# --- paper 1's grading computation ---
+python3 fs_gradings.py       # Z/4 spectral-flow gradings of IC♮(T(3,n)), Anvari-verified
+
 # --- the results ---
 python3 b2_result.py         # P(-2,3,5): b = s_A + s_B, rank HF 5 -> 7 = I♮  (7/7, ~12s)
 python3 pretzel_solve.py 3   # P(-2,3,7): b = one crossing (cancel), HF 7 -> 9 = I♮  (~3 min)
@@ -90,6 +93,7 @@ python3 pretzel_solve.py 5   # P(-2,3,11): 55 creation cochains, HF 15 -> 13 = I
 | `pretzel_solve.py`| **the family solver** `python3 pretzel_solve.py k`: builds P(−2,3,2k+1), searches for the MC-valid bounding cochain matching I♮ = q+2 (k=2: P(−2,3,5); k=3: P(−2,3,7); k=5: P(−2,3,11) creation direction) |
 | `skein_alexander.py`| **Theorem input**: closed-form Alexander polynomials of the family via the validated Conway-skein Chebyshev recursion (Lehmer match at q=7); Σ\|Δ\| = q+2 |
 | `make_figure.py`  | generates paper2's Figure 1 (`paper2/fig_q5.tex`) from the computed curves |
+| `fs_gradings.py`  | **paper 1's grading computation**: Fintushel–Stern / equivariant-ρ spectral-flow gradings assembling the chain complex IC♮(T(3,n)) = (1+a, a, a, a), verified against Anvari Ex. 6.1 |
 | `pert_check.py` | perturbation-stability: reruns the whole pipeline at a second perturbation |
 | `diag_geometry.py`, `diag_cancel.py` | diagnostics used while developing the computation |
 
