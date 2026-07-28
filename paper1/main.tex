@@ -112,9 +112,10 @@ We do \emph{not} claim any new theorem about the knot Atiyah--Floer conjecture i
 knots it is a theorem of Hedden--Herald--Kirk~\cite{HHK1,HHK2}, and for the torus knots we treat the
 instanton side and the character-variety side, not the analytic identification of the two. The explicit
 verifications reported below---the exact-arithmetic check of Theorem~\ref{thm:A}, the counts of
-Proposition~\ref{prop:count}, and the gradings of Section~\ref{sec:grading}---are carried out by a short
-computer computation, available with all supporting code at the public repository
-\url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
+Proposition~\ref{prop:count}, and the gradings of Section~\ref{sec:grading}---are carried out by short
+computer programs, included as ancillary files with this preprint and also available at the public
+repository \url{https://github.com/bwuebben/pillowcase-bounding-cochain}. Each is a self-checking
+battery in pure Python; the first works in exact Gaussian-integer arithmetic.
 
 \subsection{Results}
 Section~\ref{sec:pillow} records the pillowcase and the traceless characters as generators.
@@ -307,7 +308,8 @@ which is affine in $\cos\theta$. Hence each arc contains exactly one traceless c
 \cos\theta=\cot(a\alpha)\,\cot(b\beta),
 \end{equation}
 provided the right side lies in $[-1,1]$ (otherwise the arc carries none). We verified in each case that
-the resulting $\rho$ satisfies $\rho(x)^3=\rho(y)^n=-1$ and $\tr\rho(\mu)=0$ exactly.
+the resulting $\rho$ satisfies $\rho(x)^3=\rho(y)^n=(-1)^{\ell_1}$ and $\tr\rho(\mu)=0$ exactly; both
+central signs occur, and for $n$ odd the traceless characters split evenly between the two sheets.
 
 \begin{proposition}[Count]\label{prop:count}
 The number of irreducible traceless $\SU$ characters of $T(3,n)$ is
