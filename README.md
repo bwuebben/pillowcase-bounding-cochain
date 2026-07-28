@@ -21,8 +21,9 @@ independent perturbations each for q ≥ 5, and by the Hedden–Herald–Kirk co
 q = 3, which our pipeline cannot build (gcd(3,3) ≠ 1). The direction flips at det = 3 —
 equivalently, where the double branched cover stops being a homology sphere.
 
-**The bounding cochains (the first computed on Conway-sum tangles, and the first anywhere acting by
-cancellation).** The correction conjectured by Cazassus–Herald–Kirk–Kotelskiy is realized in **both
+**The bounding cochains (the first computed on Conway-sum tangles; the first in the pillowcase
+theory acting by cancellation).** (On closed surfaces, a hand-computed cancelling example appears
+in Zhang, arXiv:2409.19744 §5.) The correction conjectured by Cazassus–Herald–Kirk–Kotelskiy is realized in **both
 directions**:
 
 > **P(−2,3,5)**: unique minimal b = s_A + s_B (two seam self-crossings); a μ³ **quadrilateral**
@@ -81,6 +82,7 @@ python3 fs_gradings.py       # Prop 5.2: Z/4 spectral-flow gradings of IC♮(T(3
 python3 b2_result.py         # P(-2,3,5): b = s_A + s_B, rank HF 5 -> 7 = I♮  (7/7, ~12s)
 python3 pretzel_solve.py 3   # P(-2,3,7): b = one crossing (cancel), HF 7 -> 9 = I♮  (~3 min)
 python3 pretzel_solve.py 5   # P(-2,3,11): 55 creation cochains, HF 15 -> 13 = I♮ (use do_quad=False for speed)
+python3 surgery_check.py     # surgery lemma: ∂_b = bigons of the SURGERED curve, entrywise (q=5,7; ~2 min)
 ```
 
 ### Module guide
@@ -107,6 +109,7 @@ python3 pretzel_solve.py 5   # P(-2,3,11): 55 creation cochains, HF 15 -> 13 = I
 | `check_paper1_numbers.py`, `check_paper2_numbers.py` | **numeric-integrity gates**: recompute every published quantity in the respective paper (φ_p exactly, N values, gradings, Table cells, ranks, dets, crossing counts) and assert each appears in the compiled PDF, with a residual-numeral sweep; nonzero exit on any miss |
 | `fs_gradings.py`  | **paper 1, Prop 5.2**: Fintushel–Stern / equivariant-ρ spectral-flow gradings assembling the chain complex IC♮(T(3,n)) = (1+a, a, a, a), verified against Anvari Ex. 6.1 |
 | `pert_check.py` | perturbation-stability: reruns the whole pipeline at a second perturbation |
+| `surgery_check.py` | **the combinatorial surgery lemma, machine-verified** (both deficit members): smoothing blue ι-equivariantly at the cochain's support crossings and recounting bigons reproduces ∂_b entrywise — the deformed differential is an honest bigon count of the surgered curve; the other sector choice reproduces the naive complex (the two CF(L,L) generators at the crossing, made visible) |
 | `diag_geometry.py`, `diag_cancel.py` | diagnostics used while developing the computation |
 
 ## Method and scope of claims
