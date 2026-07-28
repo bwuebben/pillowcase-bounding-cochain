@@ -39,7 +39,7 @@
 \keywords{Instanton knot homology, traceless character varieties,
 pillowcase, Atiyah--Floer conjecture, two-bridge knots, torus knots,
 binary dihedral representations, spectral flow}
-\date{July 19, 2026}
+\date{July 27, 2026}
 
 \begin{abstract}
 We assemble, and where possible independently verify, the representation-theoretic data underlying
@@ -278,8 +278,9 @@ Herald--Kirk~\cite{HK} prove, at the regular-homotopy level, that $E$ sends an a
 genuine figure-eight curve with one self-crossing per corner, while doubling loop-type curves that avoid
 the corners. Thus $E\circ L_1$ is immersed, and all of its new geometry is confined to the four corners.
 For two-bridge knots the net effect is nonetheless trivial (zero bounding cochain suffices), and every
-known example with nonzero bounding cochain---the $(4,5)$-torus knot~\cite{CHKK} and the pretzel knot
-$P(-2,3,5)$~\cite{Smith}---is non-alternating.
+known example with nonzero bounding cochain---the $(4,5)$-torus knot~\cite{CHKK}, the pretzel knot
+$P(-2,3,5)$~\cite{Smith}, and the further pretzel members computed in the companion
+paper~\cite{WuebbenII}---is non-alternating.
 \end{remark}
 
 \section{The \texorpdfstring{$(3,n)$}{(3,n)}-torus knots}\label{sec:3n}
@@ -307,9 +308,11 @@ which is affine in $\cos\theta$. Hence each arc contains exactly one traceless c
 \begin{equation}\label{eq:tf}
 \cos\theta=\cot(a\alpha)\,\cot(b\beta),
 \end{equation}
-provided the right side lies in $[-1,1]$ (otherwise the arc carries none). We verified in each case that
+provided the right side lies in $(-1,1)$ (otherwise the arc carries none; the boundary case never
+occurs, as the proof below shows). We verified in each case that
 the resulting $\rho$ satisfies $\rho(x)^3=\rho(y)^n=(-1)^{\ell_1}$ and $\tr\rho(\mu)=0$ exactly; both
-central signs occur, and for $n$ odd the traceless characters split evenly between the two sheets.
+central signs occur, and for $n$ odd the traceless characters split evenly between the two sheets
+(see the proof of Proposition~\ref{prop:count}).
 
 \begin{proposition}[Count]\label{prop:count}
 The number of irreducible traceless $\SU$ characters of $T(3,n)$ is
@@ -321,9 +324,29 @@ N(3,n)=\begin{cases}
 together with one abelian traceless character; thus $N(3,n)\sim 2n/3$.
 \end{proposition}
 
-The values $N(3,n)$ for $n=2,4,5,7,8,10,11,13$ are $1,3,4,4,5,7,8,8$. These count the admissible arcs,
-i.e.\ those on which the right side of~\eqref{eq:tf} lies in $[-1,1]$; the formula was checked by direct
-enumeration of the admissible arcs for all $n\le 25$.
+\begin{proof}
+From $an+3b=1$ we get $\gcd(a,3)=\gcd(b,n)=1$. Since $\ell_1\in\{1,2\}$ and $3\nmid a\ell_1$, the
+first cotangent in~\eqref{eq:tf} always has $|\cot(a\alpha)|=\cot(\pi/3)=1/\sqrt3$; so an arc is
+admissible iff $|\cot(b\beta)|<\sqrt3$, iff $\pi b\ell_2/n$ lies in $(\pi/6,5\pi/6)$ modulo $\pi$,
+iff the residue $m=b\ell_2\bmod n$ lies in the open interval $(n/6,\,5n/6)$. Equality never occurs:
+it would force $6\mid n$, impossible with $\gcd(3,n)=1$, so the boundary case $\cos\theta=\pm1$ does
+not arise. The parity constraint assigns to each $\ell_2\in\{1,\dots,n-1\}$ exactly one $\ell_1$
+($\ell_1=1$ for $\ell_2$ odd, $\ell_1=2$ for $\ell_2$ even), and $\ell_2\mapsto m=b\ell_2\bmod n$ is
+a bijection of $\{1,\dots,n-1\}$; hence
+\[
+N(3,n)=\#\{m\in\Z:\ n/6<m<5n/6\}=\lfloor 5n/6\rfloor-\lfloor n/6\rfloor,
+\]
+which evaluates, in the four residues $n\equiv1,2,4,5\pmod6$, to the stated cases. Distinct arcs
+give distinct characters, since $\tr\rho(y)=2\cos(\pi\ell_2/n)$ separates them, and the abelian
+traceless character (every meridian to a fixed traceless element) is unique up to conjugacy.
+Finally, for $n$ odd the involution $\ell_2\mapsto n-\ell_2$ flips the parity of $\ell_2$ (hence
+exchanges the sheets $\ell_1=1\leftrightarrow2$) and preserves admissibility, since $m\mapsto n-m$
+preserves the interval; being fixed-point-free, it splits the $N(3,n)$ traceless characters evenly
+between the two central-sign sheets, as claimed above.
+\end{proof}
+
+The values $N(3,n)$ for $n=2,4,5,7,8,10,11,13$ are $1,3,4,4,5,7,8,8$. As a check, the formula was
+also verified by direct enumeration of the admissible arcs for all $n\le 25$.
 
 \subsection{The dihedral dichotomy}
 \begin{proof}[Proof of Theorem~\ref{thm:B}]
@@ -344,7 +367,10 @@ metabelian world.
 
 \begin{remark}
 There is a visible symmetry: $(\ell_1,\ell_2)\mapsto(3-\ell_1,\,n-\ell_2)$ preserves $\theta$
-in~\eqref{eq:tf}, pairing the two central-sign sheets $\rho(x)^3=\pm1$ at equal meridian angle.
+in~\eqref{eq:tf} (both cotangents change sign), and it respects the parity constraint
+$\ell_1\equiv\ell_2\pmod2$ exactly when $n$ is odd; in that case it pairs the two central-sign
+sheets $\rho(x)^3=\pm1$ at equal meridian angle---the even split in the proof of
+Proposition~\ref{prop:count}.
 \end{remark}
 
 \section{The \texorpdfstring{$\Z/4$}{Z/4} gradings via the double branched cover}\label{sec:grading}
@@ -539,9 +565,11 @@ the single case $n=4$~\cite{PS}.
 
 \emph{Second, and harder, the pillowcase side:} to compute the bounding-cochain-deformed pillowcase
 invariant and match it to $\Inat$. No bounding cochain has been computed for an infinite family in any
-setting; the record is the $(4,5)$-torus knot (correct rank~\cite{CHKK}) and $P(-2,3,5)$ (nonzero
-only~\cite{Smith}). The immersed-curve machinery of~\cite{HK} is the natural tool, but its assembly into
-a family computation is not yet in place. Both problems lie beyond the present, purely
+setting; before the companion paper the record was the $(4,5)$-torus knot (correct rank~\cite{CHKK})
+and $P(-2,3,5)$ (nonzero only~\cite{Smith}). The companion~\cite{WuebbenII} computes bounding cochains
+for three members of the pretzel family $P(-2,3,q)$, within the immersed-curve combinatorial model
+of~\cite{HK,Smith}---cancelling at $q=5,7$, creating at $q=11$---but the family-wide computation, and
+the analytic identification, remain open there too. Both problems lie beyond the present, purely
 representation-theoretic, account.
 
 \begin{thebibliography}{CHKK22}
@@ -604,6 +632,9 @@ arXiv:2412.06066.
 
 \bibitem[Tur08]{Turner} P.~Turner, \emph{A spectral sequence for Khovanov homology with an application to
 $(3,q)$-torus links}, Algebr.\ Geom.\ Topol.\ \textbf{8} (2008), 869--884. arXiv:math/0606369.
+
+\bibitem[Wue26]{WuebbenII} B.~J.~Wuebben, \emph{The instanton homology of the $(-2,3,q)$ pretzel knots
+and computed bounding cochains in the pillowcase}, companion paper (2026).
 
 \end{thebibliography}
 

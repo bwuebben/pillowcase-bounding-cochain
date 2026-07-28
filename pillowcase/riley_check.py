@@ -19,9 +19,15 @@ gcd(p,q) = 1) we use the classical presentation
   b(3,1): w = b a          -> a b a = b a b            (trefoil)
   b(5,3): w = b a^-1 b^-1 a -> the classical figure-eight relator.
 
-In this normalization b(p,q) = b(p,q') iff q' = q^{+-1} mod 2p.  Rolfsen's
-even-q labels are reached by q -> q + p; in particular 6_1 = b(9,2) appears
-here as b(9,11), the mirror of b(9,7).
+The exponent word depends only on q mod 2p, and q - 2p in (-p, 0) is the
+standard signed representative, so the presentation is valid across the whole
+range 0 < q < 2p.  In this normalization b(p,q) = b(p,q') iff q' = q^{+-1}
+mod 2p (Schubert; two-bridge knots are invertible, so this also classifies
+them unoriented).  Rolfsen's even-q labels are reached by q -> q + p, which
+preserves the unoriented knot (q + p = q mod p); in particular 6_1 = b(9,2)
+appears here as b(9,11), the mirror of b(9,7).  The traceless root set is
+mirror-invariant and depends only on p, so chirality conventions do not
+affect any check below.
 
 Riley's parametrization (paper 1, Sec. 3.1):
 

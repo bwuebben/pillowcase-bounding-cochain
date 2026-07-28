@@ -16,9 +16,10 @@ homology of the family's natural tangle decomposition differs from I♮ by *exac
 
 > naive rank − rank I♮ = 2·sgn(det K − 3),  det K = |q − 6|,
 
-verified at q = 3, 5, 7, 11, 13 (naive ranks 5, 5, 7, 15, 17 vs I♮ = 5, 7, 9, 13, 15) at two
-independent perturbations each. The direction flips at det = 3 — equivalently, where the double
-branched cover stops being a homology sphere.
+verified at q = 3, 5, 7, 11, 13 (naive ranks 5, 5, 7, 15, 17 vs I♮ = 5, 7, 9, 13, 15) — at two
+independent perturbations each for q ≥ 5, and by the Hedden–Herald–Kirk computation of 8₁₉ for
+q = 3, which our pipeline cannot build (gcd(3,3) ≠ 1). The direction flips at det = 3 —
+equivalently, where the double branched cover stops being a homology sphere.
 
 **The bounding cochains (the first computed on Conway-sum tangles, and the first anywhere acting by
 cancellation).** The correction conjectured by Cazassus–Herald–Kirk–Kotelskiy is realized in **both
@@ -68,7 +69,12 @@ python3 skein_alexander.py   # sum|Delta(P(-2,3,q))| = q+2, Lehmer-validated   (
 
 # --- paper 1's verifications ---
 python3 riley_check.py       # Thm 1.1: the traceless Riley polynomial, exactly over Z[i][u]  (91 checks)
-python3 torus_characters.py  # Prop 4.1 / Thm 1.2: the (3,n) traceless character count        (59 checks)
+python3 torus_characters.py  # Prop 4.1 / Thm 1.2: the (3,n) traceless character count        (65 checks)
+
+# --- numeric-integrity gates: every published number in each paper, recomputed
+# --- from the scripts above and asserted present in the compiled PDF (needs poppler's pdftotext)
+python3 check_paper1_numbers.py
+python3 check_paper2_numbers.py
 python3 fs_gradings.py       # Prop 5.2: Z/4 spectral-flow gradings of IC♮(T(3,n)), Anvari-verified
 
 # --- the results ---
@@ -97,7 +103,8 @@ python3 pretzel_solve.py 5   # P(-2,3,11): 55 creation cochains, HF 15 -> 13 = I
 | `skein_alexander.py`| **Theorem input**: closed-form Alexander polynomials of the family via the validated Conway-skein Chebyshev recursion (Lehmer match at q=7); Σ\|Δ\| = q+2 |
 | `make_figure.py`  | generates paper2's Figure 1 (`paper2/fig_q5.tex`) from the computed curves |
 | `riley_check.py`  | **paper 1, Thm 1.1**: the Riley word of 𝔟(p,q) at meridian eigenvalue s = i, computed exactly in Z[i][u]; the traceless Riley polynomial as a gcd over Q(i), matched against φ_p = ∏(u + 4sin²(πk/p)) built as an exact integer polynomial. Also proves the binary-dihedral identity A(AB)A⁻¹ = (AB)⁻¹ symbolically |
-| `torus_characters.py` | **paper 1, Prop 4.1 / Thm 1.2**: direct enumeration of the (3,n) representation arcs and their traceless characters for all n ≤ 25; the count, the dihedral dichotomy, and the cross-check N(3,n) = 2a against `fs_gradings.py` |
+| `torus_characters.py` | **paper 1, Prop 4.1 / Thm 1.2**: direct enumeration of the (3,n) representation arcs and their traceless characters for all n ≤ 25 (independent check of the closed-form count, now proved in the paper); the dihedral dichotomy; and the cross-check N(3,n) = 2a against `fs_gradings.py` for all odd n ≤ 43 |
+| `check_paper1_numbers.py`, `check_paper2_numbers.py` | **numeric-integrity gates**: recompute every published quantity in the respective paper (φ_p exactly, N values, gradings, Table cells, ranks, dets, crossing counts) and assert each appears in the compiled PDF, with a residual-numeral sweep; nonzero exit on any miss |
 | `fs_gradings.py`  | **paper 1, Prop 5.2**: Fintushel–Stern / equivariant-ρ spectral-flow gradings assembling the chain complex IC♮(T(3,n)) = (1+a, a, a, a), verified against Anvari Ex. 6.1 |
 | `pert_check.py` | perturbation-stability: reruns the whole pipeline at a second perturbation |
 | `diag_geometry.py`, `diag_cancel.py` | diagnostics used while developing the computation |

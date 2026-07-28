@@ -50,7 +50,7 @@
 \keywords{Singular instanton homology, pretzel knots, pillowcase,
 Lagrangian Floer homology, bounding cochains, Atiyah--Floer conjecture,
 Khovanov homology}
-\date{July 19, 2026}
+\date{July 27, 2026}
 
 \begin{abstract}
 We prove that the reduced singular instanton knot homology of the pretzel knots $P(-2,3,q)$ has rank
@@ -165,7 +165,8 @@ pair for the family members through $q=13$, at two independent perturbations eac
 (Table~\ref{tab:family}):
 
 \begin{computation}[Deficiency law]\label{comp:law}
-For $q\in\{3,5,7,11,13\}$, at every tested perturbation,
+For $q\in\{5,7,11,13\}$ at every tested perturbation, and for $q=3$ by the computation of
+\cite[\S11.6]{HHK2},
 \[
    \rk\HF\big((\Rnat(T_1),0),(\Rp_t(T_2),0)\big)\;-\;\rk\Inat(K_q)
    \;=\; 2\,\sgn\!\big(\det K_q-3\big),
@@ -188,8 +189,9 @@ $q=11,13$ ($\det\ge5$).
  $13$ & $P(-2,3,13)$ & $7$ & $17$ & $15$ & $+2$ & (predicted) \\
 \end{tabular}
 \medskip
-\caption{The family \eqref{eq:family}. Naive ranks are computed in the combinatorial model at two
-independent perturbations each (identical values). $\rk\Inat=q+2$ is Theorem~\ref{thm:inat},
+\caption{The family \eqref{eq:family}. Naive ranks for $q\ge5$ are computed in the combinatorial
+model at two independent perturbations each (identical values); the $q=3$ value is the
+Hedden--Herald--Kirk computation \cite[\S11.6]{HHK2}. $\rk\Inat=q+2$ is Theorem~\ref{thm:inat},
 unconditional. The deficiency is $\pm2$ or $0$ --- always exactly one differential --- with the sign
 governed by $\det\gtrless3$; equivalently by the number $d=(\det-1)/2$ of binary-dihedral traceless
 characters ($d=0$: deficit; $d=1$: exact; $d\ge2$: excess).}
@@ -198,7 +200,8 @@ characters ($d=0$: deficit; $d=1$: exact; $d\ge2$: excess).}
 
 We emphasize the register: the naive ranks are computed within the immersed-curve combinatorial model
 (as is every computation in this subject); the law of Computation~\ref{comp:law} is verified at five
-members and two perturbations each, and is a conjecture beyond them. What makes it sharp is
+members --- two perturbations each for $q\ge5$, and \cite[\S11.6]{HHK2} for $q=3$ --- and is a
+conjecture beyond them. What makes it sharp is
 Theorem~\ref{thm:inat}: without the unconditional value of $\rk\Inat$ the deficiency could not be
 measured at all. Note also what the law killed: the naive rank is \emph{not} monotone in any obvious
 knot complexity (it is $5,5,7,15,17$), and simpler candidate laws (e.g.\ deficiency proportional to
@@ -226,7 +229,8 @@ bounding cochains with deformed rank $13=\rk\Inat$; each acts through an immerse
 \emph{creates} one new differential, and all but a handful of the created differentials flow into one
 distinguished generator.
 \end{enumerate}
-All values are stable under change of the perturbation parameters, and each cochain satisfies the
+All ranks and support identifications are stable under change of the perturbation parameters (the
+supporting crossings move by less than the perturbation amplitude), and each cochain satisfies the
 Maurer--Cartan equation \eqref{eq:MC} to the computed orders (for $q=5$ the equation is vacuous on
 small support; for $q=7,11$ the self-differential $\mu^1$ is nonzero and the support crossings are
 $\mu^1$-closed).
@@ -369,8 +373,9 @@ For the decomposition \eqref{eq:family} the $-2$ band is constant, so
 \textbf{red} $=\Rnat(\Qh{-1/2})$ is \emph{independent of $q$} (one immersed circle, one pinch), while
 \textbf{blue} $=\Rp_t(Q_{1/3}+Q_{1/q})$ varies: two seams, four resolved circles, a single immersed
 circle whose self-intersection count grows with $q$ (forty at $q=5$, eighty-two at $q=7$, two hundred
-twenty-five at $q=11$). We require $\gcd(q,3)=1$ (else corner circles appear); this excludes $q=9,15,\dots$
-from the pillowcase analysis but not from Theorem~\ref{thm:inat}.
+twenty-five at $q=11$). We require $\gcd(q,3)=1$ (else corner circles appear); this excludes
+$q=3,9,15,\dots$ from our pipeline --- the $q=3$ naive value is Hedden--Herald--Kirk's, from their
+own presentation (\S\ref{ss:gate}) --- but not from Theorem~\ref{thm:inat}.
 
 \begin{figure}[ht]
 \centering
@@ -525,9 +530,9 @@ boundary map for immersed Lagrangian Floer theory in a setting where figure-eigh
 rather than excluded, and which settles the uniqueness conjecture of \cite[\S10.4]{CHKK} in the
 affirmative. Extending that analysis to $k\ge2$, and past the four orbifold points of $\pill$, would
 remove Hypothesis~\ref{hyp:comb}. We note that every crossing carrying a cochain below lies in the
-smooth stratum $\pill^*$ at distance at least $0.6$ from each corner (see the proof of
-Proposition~\ref{prop:unobstructed}), which is why we expect the closed-surface picture to be the
-relevant one.
+smooth stratum $\pill^*$, at distance at least $0.27$ from each corner ($0.87$ for the deficit-member
+cochains; see the proof of Proposition~\ref{prop:unobstructed}), which is why we expect the
+closed-surface picture to be the relevant one.
 
 Fix generators $x,y$. A candidate bigon from $x$ to $y$ is a loop
 $\Gamma=\alpha\cdot\bar\beta$ with $\alpha\subset$ red from $x$ to $y$ and $\beta\subset$ blue from $y$
@@ -573,8 +578,9 @@ The blue Lagrangians bound no teardrops: $\mu^0=0$, so \eqref{eq:MC} is a genuin
 A teardrop is a Maslov-index-one disk with one corner, placing $\mu^0$ in degree $2$ of
 $\CF(\Rp,\Rp)$; but a transverse self-intersection of a curve in a surface contributes generators in
 degrees $0$ and $1$ only \cite{AkahoJoyce}, so $\CF^2=0$. (The argument requires disks in the smooth
-stratum, where a $\Z$-grading exists; computationally every self-intersection lies at distance
-$\ge0.6$ from every corner. Direct monogon counts confirm $\mu^0=0$, and the counter detects a genuine
+stratum, where a $\Z$-grading exists; computationally every self-intersection of every computed
+member lies at distance $\ge0.23$ from every corner --- $0.61$, $0.42$, $0.27$, $0.23$ for
+$q=5,7,11,13$. Direct monogon counts confirm $\mu^0=0$, and the counter detects a genuine
 teardrop on a test curve.) This is the standard mechanism by which graded curves in surfaces are
 unobstructed; we record it because it is what makes the deformed theory well posed.
 \end{proof}
@@ -606,8 +612,9 @@ again a cancellation. Here a triangle suffices: a single self-crossing $s\approx
 an immersed triangle whose generator pair coincides with one bigon of $\partial_0$; $s$ carries no
 other generator-touching polygon and is $\mu^1$-closed (it is the tail of no self-bigon), so $\bc=s$
 satisfies \eqref{eq:MC} and cancels that bigon: $\rk\HF=13-4=9$. The search over all single crossings,
-filtered by the Maurer--Cartan check, returns exactly this one; it is the unique minimal solution, and
-it recurs at the same pillowcase coordinate under change of perturbation. This proves
+filtered by the Maurer--Cartan check, returns exactly this one; it is the unique minimal solution at
+each of the two perturbations, recurring at $(0.042,5.405)$ and $(0.058,5.413)$ --- the same crossing
+of blue to within the perturbation amplitude. This proves
 Computation~\ref{comp:cochains}(ii). The contrast with $q=5$ --- triangle where a quadrilateral was
 forced --- shows the polygon order of the correction is not a family invariant even within the deficit
 regime.
@@ -664,7 +671,7 @@ wants is a theorem identifying those counts with the $A_\infty$ operations of th
 algebra of the pillowcase. Zhang \cite{Zhang1,Zhang2} has proved the corresponding statement for the
 differential on closed surfaces, by constructing the holomorphic quilt that lifts a given bigon and
 showing it is unique, in the presence of the figure-eight bubbling that the Wehrheim--Woodward
-argument excludes. Two extensions would suffice for the computations reported here: to the higher
+argument \cite{WW} excludes. Two extensions would suffice for the computations reported here: to the higher
 products $\mu^k$, $k\ge2$, which are what the bounding cochains act through, and past the four
 $\Z/2$ points of $\pill$. The second may be the milder of the two, since the crossings supporting our
 cochains are uniformly interior to the smooth stratum.
@@ -721,6 +728,9 @@ Math.\ \textbf{24} (2018), 1076--1100. arXiv:1303.3303.
 
 \bibitem[Smi24]{Smith} K.~Smith, \emph{Perturbed traceless $\SU$ character varieties of tangle sums},
 arXiv:2412.06066.
+
+\bibitem[WW09]{WW} K.~Wehrheim, C.~Woodward, \emph{Floer cohomology and geometric composition of
+Lagrangian correspondences}, arXiv:0905.1368.
 
 \bibitem[Wue26]{WuebbenI} B.~J.~Wuebben, \emph{Traceless $\SU$ characters and $\Z/4$ instanton gradings for
 two-bridge and $(3,n)$-torus knots}, companion paper (2026).

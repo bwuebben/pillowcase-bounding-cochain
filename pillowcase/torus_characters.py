@@ -39,11 +39,11 @@ What is verified
     rho(x)^3 = rho(y)^n (central match), rho(z) = (-1)^{l1}, tr rho(mu) = 0,
     and irreducibility (theta strictly interior, so the axes are independent).
 
-    NOTE ON A DETAIL OF Sec. 4.2.  The paper writes "rho(x)^3 = rho(y)^n = -1".
-    That holds on the l1 = 1 sheet; on the l1 = 2 sheet rho(x)^3 = rho(y)^n = +1.
-    Both sheets carry traceless characters, and they are exchanged by the
-    symmetry (l1,l2) -> (3-l1, n-l2) of Remark 4.4, which preserves (*).  The
-    two sheets are reported separately below.
+    The central sign is (-1)^{l1}, as the paper states (Sec. 4.2): the l1 = 1
+    sheet has rho(x)^3 = rho(y)^n = -1, the l1 = 2 sheet has +1, and for n odd
+    the traceless characters split evenly between the two sheets, exchanged by
+    the symmetry (l1,l2) -> (3-l1, n-l2), which preserves (*).  The two sheets
+    are reported separately below.
 
 (4) THEOREM B (dihedral dichotomy).  rho(x) has trace 2 cos(pi l1 / 3) = +-1,
     never 0, so x never goes to a reflection; rho(y) is traceless iff l2 = n/2,
@@ -51,12 +51,14 @@ What is verified
     DIHEDRAL characters is 1 for n even and 0 for n odd, which is checked here
     to equal (det T(3,n) - 1)/2 with det = 3 (n even), 1 (n odd).
 
-(5) N(3,n) = 2a FOR n ODD, where a = -sigma(T(3,n))/4 is the number of
-    irreducible flat SU(2) connections on the double branched cover
+(5) N(3,n) = 2a FOR ALL ODD n <= 43, where a = -sigma(T(3,n))/4 is the number
+    of irreducible flat SU(2) connections on the double branched cover
     Sigma(2,3,n), counted by the spherical triangle inequalities.  This is the
-    relation used in Sec. 5 to pass from the character count to the signature.
-    The triangle count is imported from fs_gradings.py, so the two scripts are
-    checked against each other rather than each against itself.
+    relation used in Sec. 5 to pass from the character count to the signature,
+    and n <= 43 matches the range claimed in the paper.  N is recomputed here
+    by direct arc enumeration; the triangle count is imported from
+    fs_gradings.py, so the two scripts are checked against each other rather
+    than each against itself.
 
 Run:  python3 torus_characters.py     (pure standard library, < 1 s)
 """
@@ -245,8 +247,8 @@ def main():
           " traceless character is non-dihedral)")
 
     # (5) N(3,n) = 2a for n odd, against fs_gradings.py ---------------------
-    print("\n(5) N(3,n) = 2a for n odd, a = -sigma/4 = #(spherical triangles),"
-          " vs fs_gradings.py")
+    print("\n(5) N(3,n) = 2a for all odd n <= 43, a = -sigma/4 = #(spherical"
+          " triangles), vs fs_gradings.py")
     try:
         from fs_gradings import valid
     except ImportError:
@@ -254,7 +256,7 @@ def main():
         valid = None
     if valid is not None:
         line = []
-        for n in range(5, 26, 2):
+        for n in range(5, 44, 2):
             if gcd(3, n) != 1:
                 continue
             a_count = len([l3 for l3 in range(2, n, 2) if valid(n, l3)])
@@ -265,7 +267,7 @@ def main():
             line.append(f"n={n}: N={N}, 2a={2*a_count} {'ok' if good else 'FAIL'}")
         for i in range(0, len(line), 3):
             print("    " + ";  ".join(line[i:i + 3]))
-        print("    => sigma(T(3,n)) = -2 N(3,n) for all odd n <= 25")
+        print("    => sigma(T(3,n)) = -2 N(3,n) for all odd n <= 43")
 
     print(f"\n{'ALL PASS' if ok else 'FAILURES PRESENT'}  ({n_checks} checks)")
     return 0 if ok else 1
