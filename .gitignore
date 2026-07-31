@@ -10,3 +10,6 @@ __pycache__/
 *.pyc
 # scratch computation caches
 *.json
+# built PDFs are committed only under their distinctive names
+paper1/main.pdf
+paper2/main.pdf
