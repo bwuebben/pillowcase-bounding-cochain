@@ -35,11 +35,13 @@ directions**:
 
 ## The two papers
 
-- **`paper2/main.tex`** — *The instanton homology of the (−2,3,q) pretzel knots and computed
+- **`paper2/main.tex`** (**arXiv:2607.26096**) — *The instanton homology of the (−2,3,q) pretzel
+  knots and computed
   bounding cochains in the pillowcase*. The main paper: the theorem, the deficiency law, and the
   three cochains. Figure 1 is generated from the computed curves (`pillowcase/make_figure.py` →
   `paper2/fig_q5.tex`).
-- **`paper1/main.tex`** — *Traceless SU(2) characters and ℤ/4 instanton gradings for
+- **`paper1/main.tex`** (**arXiv:2607.26095**) — *Traceless SU(2) characters and ℤ/4 instanton
+  gradings for
   two-bridge and (3,n)-torus knots* (companion). Assembles and independently verifies the
   representation-theoretic data (character varieties, ℤ/4 spectral-flow gradings, the first
   nonzero differential 8₁₉) underlying the pillowcase construction. Paper 2 takes up the
@@ -47,6 +49,19 @@ directions**:
 
 Build either with `pdflatex main.tex` (run twice for cross-references); each compiles
 independently with a standard TeX distribution. Compiled PDFs are included.
+
+## The methods note
+
+- **`note/main.tex`** (compiled: `note/cochain-search-note.pdf`) — *Finding the pillowcase
+  bounding cochains: the search behind the P(−2,3,q) computations, in complete detail* (12 pp).
+  A correspondence note, written for Zuyi Zhang, expanding §§4–5 of paper 2 to full operational
+  detail. Part I is the complete search strategy — the lift bookkeeping, the pruning discipline,
+  the traps that produced wrong answers along the way, and the acceptance criteria; the parts
+  usually left in the source code — written so the same search can be run on other pillowcase
+  pairs. Part II collects what can currently be said about the analytic question (the surgery and
+  double-cover reductions, the polygon-lifting problem, and concrete test cases). Nothing in
+  Part I is new relative to paper 2 and the code in this repository; every number quoted there is
+  re-derived by it.
 
 ## The code
 
@@ -148,5 +163,6 @@ the law predicts naive rank 21.) See §1.5 and §6 of `paper2` for the precise s
 
 ## License
 
-Code is released under the MIT License (`LICENSE`). The papers (`paper1/`, `paper2/`) are
+Code is released under the MIT License (`LICENSE`). The papers and the note (`paper1/`,
+`paper2/`, `note/`) are
 © Bernd J. Wuebben; you may read and redistribute them for scholarly purposes with attribution.
