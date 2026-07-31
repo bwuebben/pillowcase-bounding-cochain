@@ -46,21 +46,26 @@ We assemble, and where possible independently verify, the representation-theoret
 the pillowcase (symplectic) side of the Atiyah--Floer conjecture for knots, for two families: the
 two-bridge knots and the $(3,n)$-torus knots. For a two-bridge knot $\bp(p,q)$ we give a short,
 self-contained proof that every irreducible traceless $\SU$ representation is binary-dihedral; these
-are the $(p-1)/2$ dihedral characters at meridian angles $\cos(2\pi k/p)$, independent of $q$, and the
+are the $(p-1)/2$ dihedral characters, at meridian-pair angles $\omega$ with
+$\cos\omega=\cos(2\pi k/p)$, independent of $q$, and the
 traceless Riley polynomial is the explicit product $\phi_p(u)=\prod_k\bigl(u+4\sin^2(\pi k/p)\bigr)$,
 monic of degree $(p-1)/2$ with constant term $\det K$. We use this to give a transparent account of the
 Hedden--Herald--Kirk theorem that pillowcase homology equals reduced singular instanton knot homology
 $\Inat$ on this family, and of why the figure-eight bubbling and bounding cochains that obstruct the
 general conjecture are structurally inert there. For the $(3,n)$-torus knots we compute the full
 traceless character variety and prove a dihedral dichotomy: exactly $(\det-1)/2$ characters are
-dihedral, so for $n$ odd every irreducible traceless character is \emph{non}-dihedral. Passing to the
-double branched cover $\Sig(2,3,n)$, we self-compute the $\Z/4$ spectral-flow gradings of the generators
-from the Fintushel--Stern index and the equivariant $\rho$-invariant, calibrated against the
-Poudel--Saveliev and Anvari computations; for $n$ odd the gradings split evenly between $1$ and $3$,
-giving the singular-instanton \emph{chain} complex $IC^\natural(T(3,n))=(1+a,a,a,a)$, $a=-\sigma/4$. The
+dihedral, where $\det$ is the knot determinant, so for $n$ odd every irreducible traceless character is
+\emph{non}-dihedral. Passing to the
+double branched cover $\Sig(2,3,n)$, we compute the $\Z/4$ spectral-flow gradings of the generators
+directly from the Fintushel--Stern index and the equivariant $\rho$-invariant, independently of, and
+checked against, the Poudel--Saveliev and Anvari computations; for $n$ odd the gradings split evenly
+between $1$ and $3$,
+giving the singular-instanton \emph{chain} complex $IC^\natural(T(3,n))=(1+a,a,a,a)$ (ranks in
+gradings $0,1,2,3$), $a=-\sigma/4$. The
 \emph{homology} $\Inat$ equals this for $n\equiv1\pmod6$ (differential zero) but is smaller by $2$ for
-$n\equiv5$, where the differential is nonzero: $\operatorname{rank}\Inat=\sum_i|\Delta_{T(3,n)}|$
-throughout, and $T(3,5)=P(-2,3,5)=10_{124}$ has rank $7$, not $9$. Finally we reproduce the first
+$n\equiv5$, where the differential is nonzero: $\operatorname{rank}\Inat=\sum_i|\Delta_{T(3,n)}|$, the
+sum of the absolute values of the Alexander coefficients, throughout, and
+$T(3,5)=P(-2,3,5)=10_{124}$ has rank $7$, not $9$. Finally we reproduce the first
 nonzero pillowcase differential, for $8_{19}=T(3,4)$, and identify it as the corner figure-eight bigon
 that is absent on two-bridge knots. Throughout we distinguish carefully between results proved here,
 classical facts, and computations reproduced from the literature.
@@ -118,8 +123,9 @@ instanton side and the character-variety side, not the analytic identification o
 verifications reported below---the exact-arithmetic check of Theorem~\ref{thm:A}, the counts of
 Proposition~\ref{prop:count}, and the gradings of Section~\ref{sec:grading}---are carried out by short
 computer programs, included as ancillary files with this preprint and also available at the public
-repository \url{https://github.com/bwuebben/pillowcase-bounding-cochain}. Each is a self-checking
-battery in pure Python; the first works in exact Gaussian-integer arithmetic.
+repository \url{https://github.com/bwuebben/pillowcase-bounding-cochain}. Each is a short
+self-contained Python program that checks its own output; the first works in exact Gaussian-integer
+arithmetic.
 
 \subsection{Results}
 Section~\ref{sec:pillow} records the pillowcase and the traceless characters as generators.
@@ -127,7 +133,9 @@ Section~\ref{sec:2bridge} proves:
 
 \begin{theorem}[Dihedral rigidity for two-bridge knots]\label{thm:A}
 Let $K=\bp(p,q)$ be a two-bridge knot, $p=\det K$. Every irreducible traceless $\SU$ representation of
-$\pi_1(S^3\setminus K)$ is binary-dihedral. There are exactly $(p-1)/2$ of them, at meridian-pair angles
+$\pi_1(S^3\setminus K)$ is binary-dihedral. There are exactly $(p-1)/2$ of them: writing $\omega$ for
+the meridian-pair angle (the angle between the axes of two chosen meridians, the conjugacy invariant
+of Section~\ref{sec:pillow}), they occur at
 $\cos\omega=\cos(2\pi k/p)$ for $k=1,\dots,(p-1)/2$, independent of $q$; equivalently the traceless
 Riley polynomial in $u=2\cos\omega-2$ is
 \[
@@ -144,16 +152,17 @@ Section~\ref{sec:3n} computes the $(3,n)$-torus knot characters and proves:
 
 \begin{theorem}[Dihedral dichotomy for $(3,n)$-torus knots]\label{thm:B}
 Let $\gcd(3,n)=1$. The irreducible traceless $\SU$ characters of $T(3,n)$ are in bijection with the
-admissible representation arcs of Section~\ref{sec:3n}, one per arc. Exactly $(\det-1)/2$ of them are
+admissible representation arcs of Section~\ref{sec:3n} (the arcs of irreducible characters that
+contain a traceless point), one per arc. Exactly $(\det-1)/2$ of them are
 binary-dihedral: one if $n$ is even $(\det=3)$ and none if $n$ is odd $(\det=1)$. In particular, for $n$
 odd every irreducible traceless character of $T(3,n)$ is non-dihedral.
 \end{theorem}
 
-Section~\ref{sec:grading} passes to the double branched cover $\Sig(2,3,n)$ and self-computes the
-$\Z/4$ gradings, obtaining for $n$ odd the chain complex $IC^\natural(T(3,n))=(1+a,a,a,a)$, $a=-\sigma/4$,
-whose homology $\Inat$ equals it for $n\equiv1\pmod6$ but is smaller by $2$ for $n\equiv5$ (where the
-differential is nonzero), the even $\mu\in\{1,3\}$ split accounting for the chain
-(Proposition~\ref{prop:split}). Section~\ref{sec:819} reproduces the $8_{19}$ differential and
+Section~\ref{sec:grading} passes to the double branched cover $\Sig(2,3,n)$ and computes the
+$\Z/4$ gradings directly, obtaining for $n$ odd the chain complex $IC^\natural(T(3,n))=(1+a,a,a,a)$,
+$a=-\sigma/4$, whose homology $\Inat$ equals it for $n\equiv1\pmod6$ but is smaller by $2$ for
+$n\equiv5$ (where the differential is nonzero); the gradings split evenly between $\mu=1$ and
+$\mu=3$, which yields the chain-level ranks (Proposition~\ref{prop:split}). Section~\ref{sec:819} reproduces the $8_{19}$ differential and
 identifies its geometric source. Section~\ref{sec:open} states the genuinely open direction.
 
 \subsection*{Acknowledgements}
@@ -275,7 +284,7 @@ homology is isomorphic to $\Inat$ with zero bounding cochain, of rank $\det$. We
 \emph{their} theorem; Theorem~\ref{thm:A} only clarifies why the interior generators are exactly the
 dihedral characters and why the obstruction is corner-localized.
 
-\begin{remark}[A correction]\label{rmk:earring}
+\begin{remark}[Correcting a naive expectation]\label{rmk:earring}
 It is tempting to hope that composing the straight Lagrangians with the Cazassus--Herald--Kirk--Kotelskiy
 earring correspondence $E\subset\pill^-\times\pill$~\cite{CHKK} preserves straightness. It does not:
 Herald--Kirk~\cite{HK} prove, at the regular-homotopy level, that $E$ sends an arc-type Lagrangian to a
@@ -297,8 +306,11 @@ $z=x^3=y^n$ is central, so any irreducible $\SU$ representation sends $z\mapsto\
 \alpha=\tfrac{\pi\ell_1}{3},\ \ \beta=\tfrac{\pi\ell_2}{n},
 \]
 with $\ell_1\in\{1,2\}$, $0<\ell_2<n$, and the central-sign match $\ell_1\equiv\ell_2\pmod2$. The angle
-$\theta=\angle(\hat u,\hat v)\in(0,\pi)$ is the only remaining modulus; each admissible pair
-$(\ell_1,\ell_2)$ is a one-parameter arc of irreducible characters (Klassen~\cite{Klassen}).
+$\theta=\angle(\hat u,\hat v)\in(0,\pi)$ is the only remaining modulus; each such pair
+$(\ell_1,\ell_2)$ is a one-parameter arc of irreducible characters (Klassen~\cite{Klassen}), and we
+call these the \emph{representation arcs}. Call an arc \emph{admissible} if it contains a traceless
+character; the criterion, derived in the proof of Proposition~\ref{prop:count} below, is
+$|\cot(b\beta)|<\sqrt3$.
 
 \subsection{The traceless locus}
 The meridian is $\mu=x^ay^b$ with $an+3b=1$; it is well defined modulo the center, and tracelessness is
@@ -392,7 +404,8 @@ N(3,n)=2a\qquad(n\text{ odd}),\qquad \sigma(T(3,n))=-2N(3,n),
 \end{equation}
 which we verified (independent triangle-inequality count) for all odd $n\le43$. Thus the character count
 of Proposition~\ref{prop:count} determines the signature and, with the grading formulae below, the
-graded homology.
+graded homology. Throughout this section a relatively $\Z/4$-graded group is recorded by its rank
+vector $(r_0,r_1,r_2,r_3)$, the ranks in gradings $0,1,2,3$.
 
 \subsection{The grading formula}
 The $\Z/4$ grading is the spectral flow of the extended Hessian mod $4$, relative to the trivial
@@ -418,8 +431,8 @@ $b_2\equiv(2q)^{-1}$, $b_3\equiv(2p)^{-1}$.
 \begin{example}\label{ex:237}
 For $\Sig(2,3,7)$ the two connections $(1,2,2)$ and $(1,2,4)$ give
 $\gr=175\equiv7$ and $\gr=251\equiv3\pmod8$, $\rho=3$ in both cases, and
-$\mu=87\equiv3$ and $\mu=125\equiv1\pmod4$. This reproduces Anvari's Example~6.1~\cite{Anvari} to the raw
-values, and calibrates our implementation.
+$\mu=87\equiv3$ and $\mu=125\equiv1\pmod4$. This agrees with Anvari's Example~6.1~\cite{Anvari} at the
+level of the unreduced values, confirming our evaluation of \eqref{eq:FS}--\eqref{eq:rho}.
 \end{example}
 
 \subsection{The gradings of $T(3,n)$, $n$ odd}
@@ -427,7 +440,8 @@ Evaluating~\eqref{eq:FS}--\eqref{eq:rho} over the admissible connections gives t
 
 \begin{proposition}\label{prop:split}
 Let $n$ be odd and coprime to $3$, and set $a=-\sigma(T(3,n))/4=N(3,n)/2$ (an even integer). Under the
-grading~\eqref{eq:FS} the $a$ irreducible connections of $\Sig(2,3,n)$ split evenly: $a/2$ have $\mu=1$
+grading~\eqref{eq:FS}, the irreducible connections of $\Sig(2,3,n)$ (there are $a$ of them) split
+evenly: $a/2$ have $\mu=1$
 and $a/2$ have $\mu=3$ (never $0$ or $2$). Consequently the reduced singular-instanton \emph{chain}
 complex is
 \[
@@ -436,7 +450,8 @@ IC^\natural(T(3,n))=(1+a,\,a,\,a,\,a),\qquad \chi=+1,
 with the trivial generator $\Theta$ in grading $0$. This is the Poudel--Saveliev chain-level
 statement~\cite[\S7.4]{PS} (Anvari~\cite{Anvari} computes exactly these generators and gradings; the
 irreducible part is Daemi--Scaduto's~\cite{DScaduto}). The \emph{homology} $\Inat$ then splits by
-$n\bmod 6$:
+$n\bmod 6$ (here $\sum_i|\Delta|$ is the sum of the absolute values of the coefficients of the
+Alexander polynomial):
 \[
 \operatorname{rank}\Inat(T(3,n))=\sum_i\bigl|\Delta_{T(3,n)}\bigr|=
 \begin{cases}1+4a, & n\equiv1\pmod 6\quad(\partial=0),\\[2pt]
@@ -445,7 +460,8 @@ $n\bmod 6$:
 For $n\equiv1$ the Alexander lower bound \cite{Lim,KM1} $\sum_i|\Delta|=1+4a$ meets the chain rank, forcing $\partial=0$
 and $\Inat=IC^\natural=(1+a,a,a,a)$ (Anvari~\cite[Ex.~6.2]{Anvari} proves this family). For $n\equiv5$ the
 differential is nonzero; the smallest case is $T(3,5)=P(-2,3,5)=10_{124}$, where $\operatorname{rank}\Inat
-=7$ (not $9$), pinned by $\ell=u=7$~\cite{Smith}, and where on the pillowcase side the nonzero bounding
+=7$ (not $9$), pinned by the coinciding Alexander and Khovanov bounds, both equal to
+$7$~\cite{Smith}, and where on the pillowcase side the nonzero bounding
 cochain of Smith~\cite{Smith} enacts the cancellation.
 \end{proposition}
 
@@ -463,7 +479,7 @@ coefficients) \cite{Lim,KM1,KM2} and, for the $(3,n)$-torus knots,
 $\operatorname{rank}\widetilde{Kh}=\sum_i|\Delta|$ --- from Turner's rational Khovanov homology of
 $(3,q)$-torus links \cite{Turner}, the unreduced theory being two shifted copies of the reduced one
 over $\mathbb{Q}$ \cite{Shumakovitch} --- the differential vanishes iff $n\equiv1$; for
-$n\equiv5$ it has rank $1$. (The case $T(3,5)$ is Smith's~\cite{Smith}, rigorous with $\ell=u=7$.)
+$n\equiv5$ it has rank $1$. (The case $T(3,5)$ is Smith's~\cite{Smith}, with both bounds equal to $7$.)
 \end{proof}
 
 Explicitly $a=(n-1)/3$ for $n\equiv1$ and $a=(n+1)/3$ for $n\equiv5\pmod6$; either way
@@ -488,7 +504,8 @@ $\operatorname{rank}\Inat$ & $\mathbf 7$ & $9$ & $\mathbf{15}$ & $17$ & $\mathbf
 $\dim IC^\natural=1+4a$ (Proposition~\ref{prop:split}), and the homology rank
 $\operatorname{rank}\Inat=\sum_i|\Delta_{T(3,n)}|$. The two coincide for $n\equiv1\pmod6$ (differential
 zero) but differ by $2$ for $n\equiv5\pmod6$ (bold; differential rank $1$). $T(3,5)=P(-2,3,5)=10_{124}$
-is rigorous ($\ell=u=7$,~\cite{Smith}); the graded ranks for $n\equiv1$ are $(1+a,a,a,a)$.}
+is rigorous (Alexander and Khovanov bounds both equal $7$;~\cite{Smith}); the graded ranks for
+$n\equiv1$ are $(1+a,a,a,a)$.}
 \label{tab:3n}
 \end{table}
 
@@ -500,7 +517,8 @@ single bigon---is $8_{19}=T(3,4)$, to which we now turn.
 \section{A nonzero differential: \texorpdfstring{$8_{19}=T(3,4)$}{8\_19 = T(3,4)}}\label{sec:819}
 
 For $n$ even the double cover $\Sig(2,3,n)$ carries nontrivial reducibles ($H_1\neq0$), and the pillowcase
-complex acquires a differential. We treat the smallest case, $8_{19}=T(3,4)$, in two ways.
+complex acquires a differential. We treat the smallest case, $8_{19}=T(3,4)$, in two ways. (Rank
+vectors $(r_0,r_1,r_2,r_3)$ record ranks in gradings $0,1,2,3$, as in Section~\ref{sec:grading}.)
 
 \subsection{Structural derivation}
 By Theorem~\ref{thm:B} and Proposition~\ref{prop:count}, $T(3,4)$ has three irreducible traceless
@@ -508,8 +526,9 @@ characters---two non-dihedral (at $\theta\approx125.3^\circ,54.7^\circ$) and one
 ---together with one abelian character. Via the double cover $\Sig(2,3,4)$, whose first homology is
 $\Z/3$: the two non-dihedral characters are the two lifts of the single $\Sig$-irreducible; the dihedral
 character is the nontrivial reducible; the abelian character is $\Theta$. Through the grading framework
-(irreducible $\to$ four generators at $(\mu,\mu,\mu{+}1,\mu{+}1)$, nontrivial reducible $\to$ two,
-$\Theta\to$ one at $\sigma\bmod4=2$), with $\mu_{\mathrm{irr}}=3$ and $\mu_{\mathrm{red}}=1$, the chain
+(an irreducible contributes four generators, two in grading $\mu$ and two in grading $\mu+1$; the
+nontrivial reducible two; $\Theta$ one, in grading $\sigma\bmod4=2$), with $\mu_{\mathrm{irr}}=3$ and
+$\mu_{\mathrm{red}}=1$, the chain
 complex assembles to
 \[
 C^\natural=(2,1,2,2),\qquad \chi=+1,
@@ -518,7 +537,7 @@ matching the instanton computation of Poudel--Saveliev~\cite[Ex.~7.9]{PS}. A fin
 grading-respecting differentials shows that the \emph{only} differential compatible with homology
 $(2,1,1,1)$ is a single rank-one map $\partial_3\colon C_3\to C_2$: one bigon from a grading-$3$
 generator (a lift of the irreducible, an interior point) to a grading-$2$ generator (the
-reducible/$\Theta$, a corner point). We derived this before consulting~\cite{HHK2}; it predicts an
+reducible/$\Theta$, a corner point). This derivation is independent of~\cite{HHK2}, and it predicts an
 interior-to-corner bigon.
 
 \subsection{The explicit bigon}
@@ -572,7 +591,8 @@ invariant and match it to $\Inat$. No bounding cochain has been computed for an 
 setting; before the companion paper the record was the $(4,5)$-torus knot (correct rank~\cite{CHKK})
 and $P(-2,3,5)$ (nonzero only~\cite{Smith}). The companion~\cite{WuebbenII} computes bounding cochains
 for three members of the pretzel family $P(-2,3,q)$, within the immersed-curve combinatorial model
-of~\cite{HK,Smith}---cancelling at $q=5,7$, creating at $q=11$---but the family-wide computation, and
+of~\cite{HK,Smith}: at $q=5$ and $q=7$ the cochain cancels a differential of the undeformed complex,
+and at $q=11$ it creates one. The family-wide computation, and
 the analytic identification, remain open there too. Both problems lie beyond the present, purely
 representation-theoretic, account.
 
@@ -644,7 +664,7 @@ arXiv:2412.06066.
 $(3,q)$-torus links}, Algebr.\ Geom.\ Topol.\ \textbf{8} (2008), 869--884. arXiv:math/0606369.
 
 \bibitem[Wue26]{WuebbenII} B.~J.~Wuebben, \emph{The instanton homology of the $(-2,3,q)$ pretzel knots
-and computed bounding cochains in the pillowcase}, companion paper (2026).
+and computed bounding cochains in the pillowcase}, companion paper, arXiv:2607.26096.
 
 \end{thebibliography}
 
