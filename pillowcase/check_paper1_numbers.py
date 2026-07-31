@@ -236,7 +236,7 @@ check("8_19 rank 5 > det 3", "5 > det = 3", anchor="non-thin")
 
 # (6) headline abstract facts and knot names
 assert alex_sum(5) == 7
-check("abstract: T(3,5) rank 7 not 9", "rank 7, not 9", anchor="10124")
+check("abstract: T(3,5) rank 7 not 9", "rank 7, not the chain rank 9", anchor="10124")
 check("knot name 10_124 for T(3,5)=P(-2,3,5)", "10124", anchor="P (−2, 3, 5)")
 check("knot name 8_19 = T(3,4)", "819 = T (3, 4)")
 

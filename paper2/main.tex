@@ -70,7 +70,8 @@ vanishing for the torus member $q=3$ and changing direction as the determinant $
 cochains --- the correction terms conjectured by Cazassus--Herald--Kirk--Kotelskiy --- that repair the
 deficiency: for $q=5$ a unique two-crossing cochain acting through an immersed quadrilateral, for $q=7$
 a unique single crossing acting through a triangle (each \emph{cancelling} a bigon and raising the rank
-by $2$), and for $q=11$ single-crossing cochains acting in the \emph{opposite} direction (creating a
+by $2$), and for $q=11$, fifty-five single-crossing cochains, each acting in the \emph{opposite}
+direction (creating a
 differential and lowering the rank by $2$). These are, to our knowledge, the first computed nonzero
 bounding cochains on Conway-sum tangles, and the first in the pillowcase theory acting by
 cancellation; they realize
@@ -128,9 +129,10 @@ This paper studies both sides for the pretzel family
    K_q := P(-2,3,q)=\operatorname{num}\big(Q_{-1/2}+Q_{1/3}+Q_{1/q}\big),
    \qquad q\ge3 \text{ odd},
 \end{equation}
-whose smallest members are the torus knots $K_3=T(3,4)=8_{19}$ and $K_5=T(3,5)=10_{124}$ (whose
+where $\operatorname{num}$ denotes the numerator closure of the tangle sum. The smallest members
+are the torus knots $K_3=T(3,4)=8_{19}$ and $K_5=T(3,5)=10_{124}$ (whose
 instanton chain complexes and $\Z/4$ gradings are treated in the companion paper \cite{WuebbenI}),
-and which contains the celebrated $K_7=P(-2,3,7)$. We prove an unconditional theorem on the instanton side,
+and the family contains the celebrated $K_7=P(-2,3,7)$. We prove an unconditional theorem on the instanton side,
 measure the pillowcase side against it, and compute the correcting cochains.
 
 \subsection{The instanton side: a theorem}
@@ -198,7 +200,7 @@ $q=11,13$ ($\det\ge5$).
  $5$ & $10_{124}=T(3,5)$ & $1$ & $5$ & $7$ & $-2$ & cancel a bigon \\
  $7$ & $P(-2,3,7)$ & $1$ & $7$ & $9$ & $-2$ & cancel a bigon \\
  $11$ & $P(-2,3,11)$ & $5$ & $15$ & $13$ & $+2$ & create a differential \\
- $13$ & $P(-2,3,13)$ & $7$ & $17$ & $15$ & $+2$ & (predicted) \\
+ $13$ & $P(-2,3,13)$ & $7$ & $17$ & $15$ & $+2$ & create (predicted) \\
 \end{tabular}
 \medskip
 \caption{The family \eqref{eq:family}. Naive ranks for $q\ge5$ are computed in the combinatorial
@@ -210,7 +212,8 @@ characters ($d=0$: deficit; $d=1$: exact; $d\ge2$: excess).}
 \label{tab:family}
 \end{table}
 
-We emphasize the register: the naive ranks are computed within the immersed-curve combinatorial model
+We emphasize the status of these claims: the naive ranks are computed within the immersed-curve
+combinatorial model
 (as is every computation in this subject); the law of Computation~\ref{comp:law} is verified at five
 members --- two perturbations each for $q\ge5$, and \cite[\S11.6]{HHK2} for $q=3$ --- and is a
 conjecture beyond them. What makes it sharp is
@@ -566,7 +569,7 @@ generators fold under $T^2\to\pill$, so proximity in $\pill$ is not proximity on
 locality restriction must be imposed in blue-arc position on the cover --- a bounded \emph{window} of
 consecutive blue-arc positions, within which all vertices of a candidate polygon must lie (the
 triangle enumeration runs unrestricted, as a check on the window). A pillowcase-metric restriction
-is genuinely wrong: in an intermediate version of this work it silently discarded the $q=5$
+is genuinely wrong: in an intermediate version of this work it wrongly excluded the $q=5$
 quadrilateral of \S\ref{ss:b5}.
 
 \subsection{The deformed differential and the Maurer--Cartan equation}\label{ss:deformed}
@@ -594,8 +597,8 @@ $\CF(\Rp,\Rp)$; but a transverse self-intersection of a curve in a surface contr
 degrees $0$ and $1$ only \cite{AkahoJoyce}, so $\CF^2=0$. (The argument requires disks in the smooth
 stratum, where a $\Z$-grading exists; computationally every self-intersection of every computed
 member lies at distance $\ge0.23$ from every corner --- $0.61$, $0.42$, $0.27$, $0.23$ for
-$q=5,7,11,13$. A direct enumeration of monogons on each curve returns zero; the same enumeration,
-applied to a curve known to bound a teardrop, finds it, so the count is not vacuous.) This is the standard mechanism by which graded curves in surfaces are
+$q=5,7,11,13$. There are no monogons on any computed curve, while the same count applied to a
+curve known to bound a teardrop is nonzero, so the enumeration is not vacuous.) This is the standard mechanism by which graded curves in surfaces are
 unobstructed; we record it because it is what makes the deformed theory well posed.
 \end{proof}
 
@@ -629,8 +632,9 @@ Thirteen generators, three bigons, naive rank $7$; target $9=\rk\Inat$ means ran
 again a cancellation. Here a triangle suffices: a single self-crossing $s\approx(0.05,5.41)$ carries
 an immersed triangle whose generator pair coincides with one bigon of $\partial_0$; $s$ carries no
 other generator-touching polygon and is $\mu^1$-closed (it is the tail of no self-bigon), so $\bc=s$
-satisfies \eqref{eq:MC} and cancels that bigon: $\rk\HF=13-4=9$. The search over all single crossings,
-filtered by the Maurer--Cartan check, returns exactly this one; it is the unique minimal solution at
+satisfies \eqref{eq:MC} and cancels that bigon: $\rk\HF=13-4=9$. Among all single crossings, exactly
+this one satisfies the Maurer--Cartan constraint and reaches the target rank; it is the unique
+minimal solution at
 each of the two perturbations, recurring at $(0.042,5.405)$ and $(0.058,5.413)$ --- the same crossing
 of blue to within the perturbation amplitude. This proves
 Computation~\ref{comp:cochains}(ii). The contrast with $q=5$ --- triangle where a quadrilateral was
@@ -668,7 +672,8 @@ suggest where a proof might come from. First, $\det=|q-6|<3$ happens exactly whe
 cover $\Sig_2(K_q)$ is an integral homology sphere; the deficit regime is the homology-sphere regime.
 Second, with $d=(\det-1)/2$ the number of binary-dihedral traceless characters, the law reads
 $\mathrm{naive}-\Inat=2\,\sgn(d-1)$: one binary-dihedral character is exactly compensated; zero leaves
-a deficit; two or more leave an excess. Since the binary-dihedral characters sit at the pillowcase
+a deficit; two or more leave an excess. Since the binary-dihedral characters (the traceless
+characters of metabelian representations) sit at the pillowcase
 seams --- where the Conway-sum fiber circles are resolved --- a curve-level explanation seems within
 reach of the combinatorial model, and we pose it as the main open problem: \emph{prove the deficiency
 law for all odd $q$ coprime to $3$.} A proof would convert Table~\ref{tab:family} from data into the

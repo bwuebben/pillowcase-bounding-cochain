@@ -65,7 +65,7 @@ gradings $0,1,2,3$), $a=-\sigma/4$. The
 \emph{homology} $\Inat$ equals this for $n\equiv1\pmod6$ (differential zero) but is smaller by $2$ for
 $n\equiv5$, where the differential is nonzero: $\operatorname{rank}\Inat=\sum_i|\Delta_{T(3,n)}|$, the
 sum of the absolute values of the Alexander coefficients, throughout, and
-$T(3,5)=P(-2,3,5)=10_{124}$ has rank $7$, not $9$. Finally we reproduce the first
+$T(3,5)=P(-2,3,5)=10_{124}$ has rank $7$, not the chain rank $9$. Finally we reproduce the first
 nonzero pillowcase differential, for $8_{19}=T(3,4)$, and identify it as the corner figure-eight bigon
 that is absent on two-bridge knots. Throughout we distinguish carefully between results proved here,
 classical facts, and computations reproduced from the literature.
@@ -102,7 +102,11 @@ the traceless $\SU$ character variety of the four-punctured sphere: a two-sphere
 orbifold points~\cite{Lin,HHK1}. The \emph{knot Atiyah--Floer conjecture} of Hedden--Herald--Kirk and
 Cazassus--Herald--Kirk--Kotelskiy~\cite{HHK1,CHKK} asserts that a bounding-cochain-deformed Lagrangian
 Floer homology of $(L_0,L_1)$ is isomorphic, as a relatively $\Z/4$-graded group, to the reduced
-singular instanton knot homology $\Inat(K)$.
+singular instanton knot homology $\Inat(K)$. (A \emph{bounding cochain} is a formal combination of
+self-intersection points of an immersed Lagrangian that deforms the Floer differential by
+higher-polygon counts --- the standard device by which Lagrangian Floer theory absorbs disk bubbling
+\cite{Auroux,CHKK}; \emph{figure-eight bubbling} is the degeneration of holomorphic strips, specific
+to immersed Lagrangians, that makes the correction necessary here \cite{CHKK}.)
 
 \subsection{Purpose and scope}
 This paper is a computational and expository consolidation. Its aim is to make explicit, for two
@@ -305,7 +309,8 @@ $z=x^3=y^n$ is central, so any irreducible $\SU$ representation sends $z\mapsto\
 \rho(x)=e^{\alpha\hat u},\quad\rho(y)=e^{\beta\hat v},\qquad
 \alpha=\tfrac{\pi\ell_1}{3},\ \ \beta=\tfrac{\pi\ell_2}{n},
 \]
-with $\ell_1\in\{1,2\}$, $0<\ell_2<n$, and the central-sign match $\ell_1\equiv\ell_2\pmod2$. The angle
+with $\hat u,\hat v$ unit imaginary quaternions, $\ell_1\in\{1,2\}$, $0<\ell_2<n$, and the
+central-sign match $\ell_1\equiv\ell_2\pmod2$. The angle
 $\theta=\angle(\hat u,\hat v)\in(0,\pi)$ is the only remaining modulus; each such pair
 $(\ell_1,\ell_2)$ is a one-parameter arc of irreducible characters (Klassen~\cite{Klassen}), and we
 call these the \emph{representation arcs}. Call an arc \emph{admissible} if it contains a traceless
@@ -542,9 +547,11 @@ interior-to-corner bigon.
 
 \subsection{The explicit bigon}
 Hedden--Herald--Kirk~\cite[\S11.6]{HHK2} realize exactly this. With $L_0$ the earring figure-eight and
-$L_1$ the perturbed character variety of the torus-knot tangle $(p,q,r,s)=(3,4,3,-2)$, the singular
-unperturbed variety (a ``$\varphi$-curve'') resolves into an arc $R_0$ and a vertically monotone circle
-$R_1$. The seven generators are $r_+$ (corner, $\gr=2$), $x_1^\pm$ (arc), and $x_2^\pm,x_3^\pm$ (circle);
+$L_1$ the perturbed character variety of the torus-knot tangle with the parameters
+$(p,q,r,s)=(3,4,3,-2)$ of \cite[\S11]{HHK2}, the singular
+unperturbed variety --- shaped like the letter $\varphi$, a circle with an arc through it, whence
+the name ``$\varphi$-curve'' of \cite[\S11.6]{HHK2} --- resolves under perturbation into an arc
+$R_0$ and a vertically monotone circle $R_1$. The seven generators are $r_+$ (corner, $\gr=2$), $x_1^\pm$ (arc), and $x_2^\pm,x_3^\pm$ (circle);
 the gradings are $\gr(x_1^+)=0$, $\gr(x_1^-)=3$, and the circle contributes one generator in each
 grading. There is exactly one bigon, $x_1^-\to r_+$, running into the corner along $R_0$ and the earring,
 giving $\partial x_1^-=r_+$---a rank-one map from grading $3$ to grading $2$. The circle bounds no bigon.
@@ -574,7 +581,9 @@ $n\equiv5$ is, on the pillowcase side, precisely Smith's nonzero bounding cochai
 appears for $n\equiv5$ (odd) and for all $n$ even; two problems, of increasing difficulty, remain.
 
 \emph{First, the instanton side.} For every torus knot the irreducible singular instanton homology is
-$\Z_{(1)}^{\lceil-\sigma/4\rceil}\oplus\Z_{(3)}^{\lfloor-\sigma/4\rfloor}$ with vanishing
+$\Z_{(1)}^{\lceil-\sigma/4\rceil}\oplus\Z_{(3)}^{\lfloor-\sigma/4\rfloor}$ (subscripts denote the
+grading, superscripts the rank: the rank vector is $(0,\lceil-\sigma/4\rceil,0,
+\lfloor-\sigma/4\rfloor)$) with vanishing
 differential~\cite{DScaduto}. For $n$ even, however, $\Sig(2,3,n)$ carries a nontrivial reducible
 ($\det=3$, so $H_1=\Z/3$), and the reduced complex has the shape
 \[
