@@ -1,0 +1,17 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+# Python
+__pycache__/
+*.pyc
+# scratch computation caches
+*.json
+# built PDFs are committed only under their distinctive names
+paper1/main.pdf
+paper2/main.pdf
+paper3/main.pdf
+note/main.pdf

@@ -1,0 +1,673 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{conjecture}[lemma]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{question}[lemma]{Question}
+\newtheorem{step}{Step}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Inat}{I^{\natural}}
+\newcommand{\HF}{\mathit{HF}}
+\newcommand{\CF}{\mathit{CF}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\pill}{P}
+\newcommand{\Rnat}{\mathcal{R}^{\natural}}
+\newcommand{\Rp}{\mathcal{R}}
+\newcommand{\iss}{\looparrowright}
+\newcommand{\bc}{b}
+\newcommand{\Qh}[1]{\widehat{Q_{#1}}}
+
+\begin{document}
+
+\title[Finding the pillowcase bounding cochains]{Finding the pillowcase bounding cochains:\\
+the search behind the $P(-2,3,q)$ computations,\\ in complete detail}
+
+\author{Bernd J. Wuebben}
+\date{July 30, 2026}
+
+\begin{abstract}
+A correspondence note, written for Zuyi Zhang, expanding \S\S4--5 of the pretzel paper
+\cite{P2} to full operational detail. Part I (\S\S\ref{sec:problem}--\ref{sec:yours}) is the
+answer to ``the argument in the paper is too brief to follow'': the complete strategy by which
+the bounding cochains of $P(-2,3,q)$ were found, including the parts that are usually left in
+the source code --- the lift bookkeeping, the pruning discipline, the traps that produced wrong
+answers along the way, and the acceptance criteria. It is written so that the same search can
+be run on other pillowcase pairs, in particular on Kai Smith's examples \cite{Smi} where the
+naive homology differs from $\Inat$. Part II (\S\ref{sec:analytic}) collects what I can currently say about
+the analytic question we are both stuck on --- identifying the immersed polygons that carry the
+higher operations with objects on the quilted side --- including two proposed reductions that
+would sidestep the polygon-lifting problem for the deformed differential, and the smallest
+concrete test cases I can offer. Nothing in Part I is new relative to \cite{P2} and its
+ancillary code; every number quoted here is re-derived by that code.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+%=====================================================================
+\part{The search, step by step}
+%=====================================================================
+
+\section{The problem, and the one precondition}\label{sec:problem}
+
+\subsection{The problem}
+Fix a Conway-sum decomposition $K=(B^3,T_1)\cup_{(S^2,4)}(B^3,T_2)$ and the two immersed
+Lagrangians in the pillowcase $\pill=(\R/2\pi\Z)^2/\iota$, $\iota(\gamma,\theta)=(-\gamma,-\theta)$:
+in the pretzel family, $\mathrm{red}=\Rnat(\Qh{-1/2})$ (the earring tangle, whose own cochain
+vanishes by Smith \cite[Lemma~5.6]{Smi}) and $\mathrm{blue}=\Rp_t(Q_{1/3}+Q_{1/q})$; here
+$\Rp(T)$ is the traceless-character image of a tangle in the pillowcase, $\Rp_t$ its
+holonomy-perturbed version, and $\Rnat$ the earring-added version ($\Qh{r}$ likewise denotes
+$Q_r$ with the earring added), in the notation of \cite{P2}. The naive Lagrangian--Floer homology of the pair generally differs from
+$\rk\Inat(K)$, Kronheimer--Mrowka's reduced singular instanton knot homology, and the
+Cazassus--Herald--Kirk--Kotelskiy conjecture \cite{CHKK} says a bounding cochain
+$\bc\in\CF(\Rp(T_2),\Rp(T_2))$ repairs it. The computational problem is:
+\begin{quote}
+\emph{find the minimal $\F_2$-combination $\bc$ of self-intersections of blue such that
+$\bc$ satisfies the Maurer--Cartan equation to the computed orders (triangles and
+quadrilaterals, \S\ref{sec:deformed}) and
+$\rk\HF(\partial_\bc)=\rk\Inat(K)$.}
+\end{quote}
+
+\subsection{The precondition that makes the search well posed}\label{ss:precondition}
+The single most important structural point --- the one I would fix first for any new example ---
+is that \emph{the target rank must be known independently, before any pillowcase computation
+happens}. Two reasons.
+
+First, the Maurer--Cartan equation alone does not pin $\bc$: $\bc=0$ always satisfies it, and
+(as $q=11$ shows, \S\ref{ss:q11}) even the rank condition can admit dozens of solutions. The
+search needs an external answer to converge to.
+
+Second, without a target there is no stopping criterion. The search enumerates supports of
+increasing size (\S\ref{sec:search}); ``no solution of size $\le r$'' is only meaningful
+relative to a rank one is trying to hit.
+
+For the pretzel family the target is Theorem~1.1 of \cite{P2}:
+$\rk\Inat(P(-2,3,q))=q+2$ for all odd $q\ge3$, proved unconditionally by squeezing
+\[
+   \ell(K)=\textstyle\sum_i|a_i(\Delta_K)|\;\le\;\rk\Inat(K)\;\le\;\dim\mathit{Kh}_r(K)
+\]
+between the Alexander lower bound of Kronheimer--Mrowka/Lim and the Khovanov upper bound of
+Kronheimer--Mrowka, with both ends computed in closed form (a Conway-skein Chebyshev recursion
+for $\Delta$; Manion's theorem for $\mathit{Kh}_r$). The squeeze is exportable: for any knot
+where $\sum_i|a_i(\Delta)|=\dim\mathit{Kh}_r$ --- which includes many small knots and, by
+Manion's closed forms, all $3$-strand pretzels $P(-2,3,q)$ --- the instanton rank comes for
+free. For Kai's examples this is the first thing I would check; if the squeeze does not close,
+some independent determination of $\rk\Inat$ is needed before the cochain search can be
+trusted to mean anything.
+
+\subsection{The direction of the correction}
+Over $\F_2$, homology rank moves in steps of $2$: a deformation either \emph{cancels} an
+existing entry of the differential (rank $\HF$ goes up by $2$) or \emph{creates} a new
+independent one (down by $2$). So the sign of $\text{naive}-\Inat$ dictates the mechanism
+before the search starts: deficit $\Rightarrow$ the added polygon terms must land exactly on an
+occupied entry of $\partial_0$ and remove it; excess $\Rightarrow$ they must land on an empty
+entry. In the pretzel family the sign is governed by the determinant:
+$\text{naive}-\rk\Inat=2\,\sgn(\det K-3)$ at all five computed members, with $\det=|q-6|$.
+The deficit regime $\det<3$ is exactly the regime where the double branched cover is an
+integral homology sphere.
+
+\section{The frame: the double cover, and the two bookkeeping rules}\label{sec:frame}
+
+All computations happen on the torus double cover $T^2\to\pill=T^2/\iota$, with curves stored
+as $\iota$-invariant closed polylines (a few hundred vertices each; blue at $q=5$ has $460$
+edges after adaptive refinement). The pillowcase itself is used only for reporting
+coordinates. Two bookkeeping rules make the cover counts equal the pillowcase counts, and both
+were hard-won.
+
+\subsection{The $C_+$ lift rule}\label{ss:cplus}
+Red lifts to two $\iota$-related circles on $T^2$; fix one of them, $C_+$, once and for all.
+A pillowcase polygon lifts to exactly two $\iota$-related $T^2$ polygons, and exactly one of
+the two has its red arc on $C_+$. Therefore: \emph{count on $T^2$, keeping only polygons whose
+red arc lies on $C_+$, and the result is the pillowcase count --- no division by two, no
+orbifold correction}. This is Lemma-level, but it is the reason the whole computation can be run
+on the cover, where the winding-number machinery of \S\ref{sec:naive} is available.
+
+A pillowcase self-intersection of blue, by contrast, has \emph{two} $T^2$ preimages, and a
+polygon may close through either; contributions of both preimages are accumulated. (Missing
+the second preimage silently halves some triangle counts; the code carries both throughout.)
+
+\subsection{The folding trap: locality lives in edge index, not in distance}\label{ss:folding}
+(The fold here is the quotient $T^2\to\pill$ --- no relation to the quilt folding trick of
+Part~II.) An immersed polygon among our curves is a small disk, so its vertices --- the two
+generators and the $\bc$-crossings (call a self-intersection of blue a \emph{$\bc$-crossing}
+when it is a candidate summand of the support of $\bc$) --- sit in one geometric cluster, and
+enumeration is pruned accordingly. The trap: \emph{some generators fold under $T^2\to\pill$}. At $q=5$, four of the
+nine generators lie near $\theta\approx1.5$ on the cover but at $\theta\approx4.7$ in $\pill$;
+points close in $\pill$ can be far apart on the cover and vice versa. A pillowcase-metric
+pruning is therefore wrong on both sides, and in an intermediate version of this work it
+silently discarded a genuine quadrilateral --- the $q=5$ cochain quadrilateral itself --- and
+produced ``no cochain exists'' as the answer. The correct locality test is the
+\emph{circular edge-index window}: the blue boundary of a small immersed disk traverses a
+contiguous band of blue edges, so the anchor edges of all vertices (each generator's blue edge
+index, each crossing's two branch indices) must fit inside a circular window on the blue edge
+cycle. The window used in every reported computation is $230$ edge indices, deliberately loose --- pruning is a
+tractability device, never a correctness device, and the triangle enumeration
+(\S\ref{ss:tables}) runs unpruned as a check on exactly this class of error.
+
+\section{The naive complex}\label{sec:naive}
+
+\subsection{Generators and the bigon predicate}
+Generators are the transverse intersections $\mathrm{red}\cap\mathrm{blue}$ (fiber products on
+the cover, in Zhang's sense --- distinct preimages are distinct generators). A candidate bigon
+from $x$ to $y$ is a closed loop $\Gamma=\alpha\cdot\bar\beta$, $\alpha\subset$ red from $x$
+to $y$, $\beta\subset$ blue from $y$ to $x$. On the cover, let $w$ be its winding function.
+Then $\Gamma$ bounds an immersed bigon iff
+\begin{itemize}
+\item[(a)] $[\Gamma]=0\in H_1(T^2)$;
+\item[(b)] $w=0$ at (the preimages of) the four pillowcase corners;
+\item[(c)] $w\ge0$ on every complementary face, and $w>0$ somewhere;
+\item[(d)] the corners at $x$ and $y$ are convex: a single embedded sector of angle $<\pi$,
+across which $w$ jumps by exactly $+1$.
+\end{itemize}
+The differential is $\partial x=\sum_y(\#\{\text{bigons }x\to y\}\bmod2)\,y$ and
+$\rk\HF=\#\text{gens}-2\rk_{\F_2}\partial$.
+
+(For embedded curves this winding-number criterion is de~Silva--Robbin--Salamon's
+combinatorial Floer homology; the immersed extension used here is that of \cite[\S4]{P2}.)
+
+Implementation notes that matter in practice: $w$ is evaluated at
+probe points offset from each edge midpoint on both sides, with the offset adapted to the
+clearance from the other edges --- a fixed offset either steps over a thin face or lands on a
+neighboring edge; near-parallel arcs are the norm here, not the exception (at $q=5$ the
+interior blue strands cross red at angle $\approx0.026$); corner convexity uses an explicit
+sector test rather than a sign heuristic, precisely because of those shallow angles.
+
+\subsection{Validation before use}\label{ss:gates}
+The programs are validated against everything the literature provides before any new number is
+computed. At $q=5$ the reconstruction reproduces Smith's published output \cite{Smi} in every particular:
+nine generators (one interior, two clusters of four), exactly two bigons, naive rank $5$, and
+his worked example of the seam-circle resolution (the diagonal cut-and-paste that replaces each
+seam circle of reducibles by embedded arcs with one new self-crossing). The polygon counter
+(\S\ref{ss:tables}) reproduces
+the one known higher-polygon mechanism --- the single $\mu^2$ triangle through the earring's
+pinch self-crossing, on the unlink example Smith uses as his simplest test case --- and is
+exercised on synthetic teardrop and lens configurations
+where the right answer is forced. Only after these checks pass is anything new computed.
+
+\subsection{The perturbation discipline}\label{ss:pert}
+Both curve constructions carry perturbation parameters (the seam-circle resolution amplitude
+for blue; the earring perturbation for red), and nothing is reported from a single
+perturbation. The rules:
+\begin{itemize}
+\item Every rank and every cochain is recomputed at two independently chosen perturbations.
+Generator \emph{counts} are not invariants and do vary ($19$ vs $23$ at $q=11$; $25$ vs $27$
+at $q=13$); the homology ranks must agree, and do in every reported case.
+\item A cochain is accepted only if its support recurs as \emph{the same geometric crossing}
+at both perturbations, within the perturbation amplitude. The $q=7$ cochain, for instance,
+recurs at $(0.042,5.405)$ and $(0.058,5.413)$.
+\item Degenerate perturbations exist and must be screened for: one non-generic earring
+perturbation at $q=7$ collapses the thirteen generators to nine. The screen is exactly the
+two-perturbation comparison --- a collapse shows up as a generator-count discrepancy that
+persists under refinement.
+\end{itemize}
+
+\section{The deformed differential as a table}\label{sec:deformed}
+
+\subsection{The polygon tables}\label{ss:tables}
+The bigon predicate generalizes verbatim to $(k{+}2)$-gons: the boundary loop now alternates
+between red and blue arcs and switches branches at self-crossings of blue, the corner test of
+\S\ref{sec:naive}(d) is applied at \emph{every} vertex, and conditions (a)--(c) are unchanged.
+With $n$ generators and the $\bc$-crossings
+ranged over the pillowcase self-crossings of blue ($40$ at $q=5$; $82$ at $q=7$; $225$ at
+$q=11$), two tables are precomputed:
+\begin{align*}
+\mathrm{Tri}[S]_{xy}&=\#\{\text{immersed triangles }x\to y\text{ with }\bc\text{-vertex }S\}
+\bmod 2\quad (n\times n\text{ over }\F_2),\\
+\mathrm{Quad}[\{S,S'\}]_{xy}&=\#\{\text{quadrilaterals }x\to y\text{, }\bc\text{-vertices }
+S,S'\text{, both cyclic orders}\}\bmod 2.
+\end{align*}
+Each entry accumulates over both $T^2$ preimages of each crossing (\S\ref{ss:cplus}). The
+triangle sweep is exhaustive (no pruning); the quadrilateral sweep is pruned by the circular
+edge-index window of \S\ref{ss:folding} only. For any support $\bc=\{S_i\}$,
+\[
+   \partial_\bc \;=\; \partial_0
+   \;\oplus\;\bigoplus_{S\in\bc}\mathrm{Tri}[S]
+   \;\oplus\;\bigoplus_{\{S,S'\}\subseteq\bc}\mathrm{Quad}[\{S,S'\}] ,
+\]
+evaluated by table lookup, so the search of \S\ref{sec:search} costs one $\F_2$ rank
+computation per candidate. Higher orders were not needed at any computed member: at $q=5$ the
+question ``are $\mu^4$ pentagon terms required?'' was answered by construction --- the
+tri$+$quad tables already contain a rank-target solution, and a pentagon enumeration built as
+a check found nothing that changes it. If a new example fails at tri$+$quad order, the same
+architecture extends: the pentagon table is indexed by crossing triples.
+
+\subsection{The Maurer--Cartan data}\label{ss:mc}
+The same counter, run with \emph{all} vertices at self-crossings of blue, produces the
+Maurer--Cartan data: monogons ($\mu^0$), self-bigons ($\mu^1$ on $\CF(\mathrm{blue},
+\mathrm{blue})$, stored as a crossing-by-crossing matrix), self-triangles ($\mu^2$). Two
+structural facts:
+\begin{itemize}
+\item $\mu^0=0$ always, for the standard degree reason (Proposition~4.2 of \cite{P2}): a
+teardrop would sit in degree $2$ of the self-Floer complex, but a transverse self-intersection
+of a curve in a surface contributes generators only in degrees $0$ and $1$ (Akaho--Joyce).
+This is what makes the Maurer--Cartan equation a genuine equation. The counter nevertheless
+computes monogon counts directly ($0$ everywhere, and it does detect a genuine teardrop on a
+synthetic test curve).
+\item $\mu^1$ is \emph{not} always zero: at $q=5$ it vanishes (and all
+window-pruned self-triangle triples with it, so Maurer--Cartan is vacuous on small support),
+but at $q=7$ and $q=11$ blue carries two self-bigons each, and $\mu^1$-closedness of the
+support becomes a real constraint that kills candidates in the search.
+\end{itemize}
+
+\section{The search}\label{sec:search}
+
+\subsection{The search procedure}
+\begin{step}[Active set]
+Restrict to crossings carrying at least one generator-touching polygon (an entry in some
+$\mathrm{Tri}$ or $\mathrm{Quad}$ table). A crossing outside this set cannot change
+$\partial_\bc$; adding it to a support only risks new Maurer--Cartan violations. Minimal
+solutions therefore live in the active set. (At $q=11$: $108$ of $225$ crossings are active
+through triangles.)
+\end{step}
+\begin{step}[Increasing support size]
+For $r=1,2,3,\dots$: enumerate all $r$-subsets of the active set, evaluate
+$\rk_{\F_2}\partial_\bc$ by table lookup, and keep the subsets hitting the target rank
+$(n-\rk\Inat)/2$.
+\end{step}
+\begin{step}[Maurer--Cartan filter]
+For each rank solution check, in order: $\mu^0=0$ at each support crossing; then, at
+\emph{every} crossing $s$ of blue, the component of $\mu^1(\bc)+\mu^2(\bc,\bc)$ at $s$
+vanishes --- the $\mu^1$ part from the self-bigon matrix, the $\mu^2$ part by counting
+self-triangles with two vertices in the support and the third at $s$, over all orderings and
+both preimages.
+\end{step}
+\begin{step}[Stop at first success; minimality by exhaustion]
+The loop stops at the first size $r$ admitting Maurer--Cartan-valid rank solutions; minimality
+is then a statement about exhaustion, not heuristics --- every smaller support was tested and
+failed, and the failures are reproducible.
+\end{step}
+\begin{step}[Perturbation stability]
+Re-run everything at the second perturbation (\S\ref{ss:pert}); accept only supports that
+recur as the same geometric crossings.
+\end{step}
+
+\subsection{Near-misses are informative}
+The search log is worth reading, not just the answer. At $q=5$ the geometrically most tempting
+candidate --- the pair of crossings nearest the surviving bigon --- reaches the right entry but
+drags three triangle terms along and lands at rank $3$, not $1$. That failure is what forced
+the recognition that cancellation is an \emph{exact-incidence} condition: the added polygon
+terms must land on the occupied entry and nowhere else. It is also why a search that stops at
+triangles is wrong at $q=5$: no triangle through any of the forty crossings reaches either
+bigon of $\partial_0$ --- the correction is forced one polygon order up, to the quadrilateral.
+A triangles-only search reports ``no cochain exists''; this is the single most likely failure
+mode I would expect on a new example.
+
+\section{The three runs, with all the numbers}\label{sec:runs}
+
+\subsection{$q=5$ (deficit; unique; quadrilateral)}\label{ss:q5}
+Nine generators; bigons at entries $(x_1,y_0)$ and $(x_4,y_6)$; naive rank $5$; target
+$\rk\partial_\bc=1$. Size-$1$ search: no single crossing achieves rank $1$. Size-$2$: exactly
+one pair does, $\bc=s_A+s_B$ with $s_A$ at $(\gamma,\theta)\approx(0.028,1.272)$ and $s_B$ at
+$(3.057,4.981)$,
+one on each pillowcase seam, exchanged by the symmetry
+$(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$. Mechanism: a single immersed quadrilateral with
+generator vertices $x_4,y_6$ and $\bc$-vertices $s_A,s_B$; neither crossing carries any other
+generator-touching polygon, so $\partial_\bc=\partial_0+E_{x_4y_6}$, leaving the single entry
+$(x_1,y_0)$: $\rk\HF=9-2=7=\rk\Inat$. Maurer--Cartan is vacuous here ($\mu^1=0$, $\mu^2=0$ on
+all tested triples).
+
+\subsection{$q=7$ (deficit; unique; triangle)}\label{ss:q7}
+Thirteen generators; three bigons; naive rank $7$; target $\rk\partial_\bc=2$. Here a single
+crossing suffices: $s$ at $(\gamma,\theta)\approx(0.05,5.41)$ carries an immersed triangle whose generator pair
+coincides with one bigon of $\partial_0$, carries no other generator-touching polygon, and is
+$\mu^1$-closed (blue has two self-bigons at $q=7$, so this is a real constraint). The
+size-$1$ search, Maurer--Cartan filtered, returns exactly this crossing, at both
+perturbations. $\rk\HF=13-4=9=\rk\Inat$. The polygon order of the correction is thus not
+constant even within the deficit regime: quadrilateral at $q=5$, triangle at $q=7$.
+
+\subsection{$q=11$ (excess; abundant; triangles)}\label{ss:q11}
+Nineteen generators at the reported perturbation; naive rank $15>13=\rk\Inat$; the correction
+must \emph{create} a differential, raising $\rk\partial_\bc$ from $2$ to $3$. Creation is
+combinatorially generic: any triangle through a single crossing whose generator pair is not
+already occupied adds an entry. Of $225$ crossings, $108$ carry triangles; after the rank and
+Maurer--Cartan filters, \emph{fifty-five} single-crossing bounding cochains remain, each with
+$\rk\HF=19-6=13$. Fifty of the fifty-five created differentials flow into a single common
+target generator. The asymmetry against \S\ref{ss:q5}--\ref{ss:q7} is structural:
+cancellation is an exact-incidence condition and pins the cochain uniquely; creation is an
+avoidance condition and manifestly does not. Rank-matching therefore cannot select \emph{the}
+cochain of the tangle at excess members --- whatever universal rule attaches the cochain (in
+the sense of your Remark~6.2, on which more in \S\ref{ss:universal}) must use more than the
+rank.
+
+\section{Running it on your and Kai's examples}\label{sec:yours}
+
+The search needs three inputs: (i) the two curves, either as closed polylines on the $T^2$
+cover or as tangle data from which the representation-variety construction can rebuild them
+(for Conway sums of rational tangles the code does this from the fractions alone); (ii) a
+validation anchor --- any independently known count for one member (a generator count, a bigon
+count, a published rank) to anchor the reconstruction; (iii) the target rank
+(\S\ref{ss:precondition}). Cost is minutes per member on a laptop, pure Python standard
+library, the quadrilateral sweep dominating.
+
+Everything is public at
+\url{https://github.com/bwuebben/pillowcase-bounding-cochain}
+(and ships as ancillary files with the arXiv postings \cite{P1,P2}); Appendix~\ref{app:files} maps each
+step above to its module. If any of Kai's homology-discrepancy examples comes with an
+independently known instanton rank, I would genuinely like to run the search on it --- and if
+the naive/instanton discrepancy there exceeds one differential, the outcome (minimal support
+size, uniqueness or abundance) would be the first data point beyond $|{\det}-3|$-governed
+behavior of the pretzel family.
+
+%=====================================================================
+\part{The analytic question}
+%=====================================================================
+
+\section{On polygons, quilts, and the folding trick}\label{sec:analytic}
+
+This part responds to your question --- how to identify the polygons carrying the higher
+operations with objects on the quilted side, given that the folding trick is built for strips
+--- with the caveat stated plainly: I do not have a proof either. What I can offer is (i) a
+separation of the problem into independent pieces, (ii) two proposed reductions that would
+remove the piece my computations actually need without ever lifting a polygon, (iii) a precise
+map of where your strip machinery would need to change if one lifts polygons directly, and
+(iv) concrete test cases.
+
+\subsection{Separating the two gaps}\label{ss:twogaps}
+Two logically independent things are unproved, and they fail differently.
+\begin{itemize}
+\item[(G1)] \emph{Faithfulness of the combinatorial model} (Hypothesis~4.1 of \cite{P2}): the
+winding-number counts of \S\ref{ss:tables} compute the $\mu^k$ of the immersed Fukaya algebra
+of $\pill^*$, the pillowcase with its four orbifold points removed. This is a statement about one surface; no correspondence, no quilt appears in
+it. Your uniqueness theorem is its $k=1$ case on closed surfaces.
+\item[(G2)] \emph{The instanton comparison} (Conjecture~1.1 of \cite{CHKK}): the $\bc$-deformed Floer
+homology is $\Inat$. This is where quilts, strip shrinking, and figure-eight bubbling live ---
+and where your Theorem~5.1 (strips upstairs from strips downstairs) and the Bottman--Wehrheim
+program sit.
+\end{itemize}
+Everything computed in Part I is a statement inside (G1)'s model and is agnostic about (G2).
+The polygon-lifting question you raised is (G2)-flavored, but --- and this is the point of the
+two reductions below --- the deformed \emph{differential} may not need polygon lifting at all.
+
+One more separation, within (G1) itself, because your two papers divide exactly along it. A
+combinatorial computation of an operation needs three legs: \emph{existence} (every
+combinatorial polygon has a holomorphic representative --- your construction paper),
+\emph{uniqueness} (it has only one --- your uniqueness paper, within a smooth isotopy class
+with prescribed boundary image), and \emph{completeness} (there are no holomorphic solutions
+outside the combinatorial list). The third leg is the one CHKK flag themselves at the end of
+\cite[\S10.4]{CHKK} --- ``there may be quilts or polygons which we have overlooked'' --- and it is the leg
+their conjecture actually turns on, since ``this is the only differential'' is a statement
+about the whole moduli space, not about one homotopy class. Any use I make of your theorems
+below silently needs completeness too; I flag it here once rather than at every step.
+
+\subsection{Reduction 1: surgery instead of higher polygons}\label{ss:surgery}
+The deformed differential $\partial_\bc$ is expected to be computed by an ordinary bigon count
+after Lagrangian surgery. Concretely: let $L$ be an immersed curve, $s$ a transverse
+self-intersection, and $L_s$ the smoothing of $s$ in the sector distinguished by the degree
+convention on $\CF(L,L)$ (of the two smoothings of the crossing, the one rounding the sectors
+a polygon corner at $s$ occupies). The expectation, standard in spirit since
+Fukaya--Oh--Ohta--Ono's disk-trading analysis and proved in dimension $\ge2$ by
+Palmer--Woodward \cite{PW}, is
+\[
+   (L,\bc=s)\ \simeq\ (L_s,0)
+   \qquad\text{in the Fukaya category,}
+\]
+so that for any test object $R$: $\HF((R,0),(L,s))\cong\HF(R,L_s)$. On the combinatorial side
+this has a precise, checkable shadow:
+\begin{lemma}[combinatorial surgery lemma --- proposed]\label{lem:surgery}
+For transversely immersed curves $R,L$ on a surface and a self-crossing $s$ of $L$, the
+winding-number bigon counts of the pair $(R,L_s)$ equal the counts of the combinatorial
+$\partial_{\bc=s}$ of \S\ref{ss:tables}: bigons of $(R,L)$, plus, for each $k\ge1$, the
+$(k{+}2)$-gons of $(R,L)$ all of whose $\bc$-vertices ($k$ of them) lie at $s$ (triangles
+through $s$ once, quadrilaterals through $s$ twice, and so on).
+\end{lemma}
+The geometric content is local and elementary: smoothing the crossing rounds the corner, so a
+triangle with corner at $s$ becomes a bigon of $L_s$ passing once through the surgery site,
+a quadrilateral with corners at two smoothed crossings becomes a bigon passing both sites,
+and bigons avoiding the sites are untouched --- while a bigon of $\partial_0$ cancelled by the
+deformation reappears \emph{paired} with a polygon-turned-bigon and dies mod $2$. I have not
+written the general proof, but the lemma is \emph{verified entrywise at both deficit
+members} by direct recomputation (Appendix~\ref{app:files}): smoothing blue
+$\iota$-equivariantly at the support crossings --- both $T^2$ preimages, both sector
+choices --- and recounting bigons against red reproduces $\partial_\bc$ \emph{entrywise}. At
+$q=5$ the surgered pair's bigon matrix is exactly $\{(x_1,y_0)\}$ with $\HF=7$; at $q=7$ it is
+exactly the two surviving entries with $\HF=9$. The check also makes the degree bookkeeping
+visible: at $q=7$ one of the two smoothings of the crossing realizes the deformed complex and
+the other reproduces the naive one --- the two smoothings are the two generators of
+$\CF(L,L)$ at the crossing, behaving exactly as the sector convention predicts.
+
+Why this matters for your question: \emph{if} Lemma~\ref{lem:surgery} holds and \emph{if} the
+surgery equivalence holds for curves on surfaces, then the faithfulness of the deformed
+differential --- the only thing my computations need from (G1) beyond your theorem --- follows
+from the $k=1$ case alone. The chain is: combinatorial $\partial_\bc$ of $(R,L)$
+$\;=\;$ combinatorial $\partial$ of $(R,L_s)$ [the lemma] $\;=\;$ analytic $\partial$ of
+$(R,L_s)$ [your uniqueness theorem, applied to the surgered pair] $\;=\;$ analytic
+$\partial_\bc$ of $(R,(L,s))$ [surgery equivalence]. No polygon is ever lifted; the higher
+operations enter only through the surgered curve's bigons, which your theorem covers.
+
+Two caveats, stated so you can attack them. First, Palmer--Woodward prove surgery invariance
+in dimension $\ge2$; curves on surfaces are exactly the excluded edge case, so the analytic
+input is genuinely open here --- though the same low dimension is what makes a direct
+combinatorial proof plausible. Second, the sector bookkeeping (which smoothing corresponds to
+which degree convention at $s$) is exactly the kind of detail that flips signs in odd ways;
+over $\F_2$ it degrades to a two-case check, but the two cases must be matched to the two
+generators of $\CF(L,L)$ at $s$ correctly.
+
+\subsection{Reduction 2: the orbifold points, via the double cover}\label{ss:orbifold}
+The second extension you would need --- past the four $\Z/2$ points of $\pill$ --- I believe is
+the milder one, and \S\ref{ss:cplus} is the reason. The precise statement that would suffice:
+\begin{quote}
+\emph{Let polygons be constrained to a compact subsurface
+$\pill_\rho\subset\pill^*$ obtained by deleting $\rho$-disks around the four orbifold points.
+Then the immersed Floer theory of curves in $\pill_\rho$, with an $\iota$-invariant almost
+complex structure pulled back from $T^2$, is computed on the free double cover
+$T^2\setminus(4\text{ points})\to\pill_\rho$, with the $C_+$ normalization of
+\S\ref{ss:cplus} converting cover counts to base counts.}
+\end{quote}
+Every relevant object in the computed examples clears the corners by a definite margin: all
+self-crossings of every computed member lie at distance $\ge0.23$ from every corner (the
+minima are $0.61$, $0.42$, $0.27$, $0.23$ for $q=5,7,11,13$), the cochain-carrying crossings
+at distance $\ge0.27$, and the two deficit-member cochains at $\ge0.87$. So $\rho$ can be
+taken macroscopic. What the reduction does \emph{not} handle by itself is a compactness
+statement --- a limit of holomorphic disks escaping into the deleted disks. Here the concrete
+geometry should help: near a corner the two curves are a pair of near-straight arcs through
+the fold, and a disk limiting into the corner would have to carry area bounded below by the
+corner clearance, giving an energy threshold below which escape is impossible. That is an
+argument sketch, not a proof; but it is the reason I expect the closed-surface picture (i.e.\
+your setting) to be the true home of the problem, with the orbifold a bounded-geometry
+complication rather than a conceptual one.
+
+\subsection{If one does lift polygons: where the strip enters, on both sides}\label{ss:polylift}
+Reading your two papers with the polygon question in mind, I tried to list exactly where
+``the domain is a strip'' is used essentially --- because that list is the specification for
+any polygon version. The two halves break in different places.
+
+\subsubsection*{The construction half}
+In \cite{Z1}, as I read it:
+\begin{enumerate}
+\item The constant extension that seeds the implicit function theorem ($u_2'$, $u_1$, $u_1'$
+constant in $t$ on $\R\times[0,\delta]$) needs the seam to be a full boundary line with a
+product collar. A $(k{+}2)$-gon presented as a disk with boundary punctures has strip-like
+ends, and between punctures each boundary arc has a product collar --- so the constant
+extension survives \emph{locally along each arc}, and the question concentrates at the
+punctures and corners.
+\item The $\delta^{1/4}$ smallness of $\mathcal F_u(0)$, the $\delta$-uniform trace estimate,
+and the integration by parts with boundary terms on disjoint horizontal lines all use the
+product structure; on a punctured-disk domain the same estimates should localize to the collar
+pieces, with the corner contributions entering through the strip-like ends' asymptotics.
+\item The model operator at the ends ($\partial_s-J(x^\pm)\partial_t$ with Robbin--Salamon
+Fredholm theory) generalizes to $k+2$ ends; what changes is bookkeeping, not analysis.
+\item The index count does change: your Claim~5.9 uses index $1$ and the $\R$-translation to
+get a bounded right inverse on a complement of the kernel; a rigid polygon has index $0$ and
+no automorphism, which if anything simplifies that step.
+\end{enumerate}
+So my reading is that the analytic core of your \S5 is not strip-bound so much as
+\emph{collar-bound}, and the genuinely new difficulty for polygons is (i) the corner
+asymptotics at the $\bc$-vertices --- whose upstairs meaning is exactly the fiber-product
+identification of your Proposition~2.28, extended from generators of $\CF(L_1,F\circ L_2)$ to
+\emph{self}-intersections of the composed curve --- and (ii) the question I could not answer
+from \S5 as written even in the strip case: the identification
+$\mathcal X^Q\cong\mathcal X^Q_\delta$ across seam widths. The ratio of patch widths looks
+like a conformal modulus of the two-patch quilt, invariant under simultaneous rescaling, so I
+do not see how a width-$\delta$ quilt is identified with a width-$1$ quilt without deforming
+the almost complex structure along the way --- am I misreading the intended argument? I ask
+partly because the same point returns with force for polygons, where the seam position
+acquires genuine moduli.
+
+\subsubsection*{The uniqueness half}
+In \cite{Z2} the wall is sharper, and it is conformal. Your proof runs on exactly three
+boundary normalizations: the two strip ends, plus the point supplied by the
+$\R$-translation normalization $u_2^t(0,2)=w_2^t(0,2)$; after uniformizing the
+keyhole-excised domain and its image to the disk, three boundary points is precisely the
+dimension of $\operatorname{Aut}(\mathbb D)$, and rigidity does the rest. A $(k{+}2)$-gon
+domain has no translation action and carries $k-1$ real conformal moduli (cross-ratios of the
+boundary punctures), so two competing holomorphic polygons with the same corners need not
+even live on the same uniformized domain, and the three-point argument has no analogue. But I
+do not think this kills the program --- I think it says the statement must be reformulated.
+On a surface, the domain modulus of a rigid holomorphic polygon is not free: it is determined
+by the image region, because the region (an immersed disk with corners) carries its own
+conformal structure and the map is a uniformization of it. So the correct $k\ge2$ statement
+is presumably not ``unique for each marked domain'' but:
+\begin{quote}
+\emph{each combinatorial polygon (immersed disk with convex corners at the prescribed
+generators and crossings) is represented by a holomorphic $(k{+}2)$-gon for exactly one value
+of the domain modulus, uniquely up to reparametrization} ---
+\end{quote}
+uniqueness with the modulus floating, one rigid solution per region. That formulation
+restores the count $=\#\{\text{regions}\}$, which is what the combinatorial model uses, and
+it seems susceptible to exactly your keyhole-plus-uniformization method, run with the domain
+cross-ratios as unknowns rather than as givens. The quilted version acquires one more layer:
+the seam pattern of a quilted polygon (which patch meets which arc, in which cyclic order) is
+itself combinatorial data, and its degenerations are governed by the $2$-associahedra of
+Bottman; Ma'u--Wehrheim--Woodward's $A_\infty$-functor machinery \cite{MWW} is where quilted
+polygon domains are set up systematically, and may save you from reinventing the domain
+theory.
+
+\subsection{Perhaps polygons need not be lifted at all}\label{ss:broken}
+There is a reading of CHKK \S10.4 under which your question --- \emph{what} in the quilts
+corresponds to the downstairs polygons --- already has a proposed answer, and it is not a
+quilted polygon. In their degeneration picture \cite[Figures 22--23]{CHKK}, the object upstairs is
+a quilted \emph{bigon}; what happens under strip shrinking is that it limits onto a
+\emph{triangle downstairs with a figure-eight bubble attached}, the bubble outputting the
+cochain element. Read as a general mechanism, this says: the downstairs $\mu^2$-triangle
+through a crossing $s$ is not the shadow of a quilted triangle --- it is a \emph{boundary
+stratum of the moduli of quilted bigons}, the stratum where a figure-eight bubble forms with
+output $s$. Under the Bottman--Wehrheim proposal (cochains from figure-eight bubbles), the
+$\bc$-deformed downstairs differential would then be exactly the count of quilted-bigon ends:
+the interior of the moduli contributes the naive bigons, the figure-eight boundary strata
+contribute the $\mu^{k\ge2}$ corrections, and the deformed complex is the statement that the
+two ends of a compact one-manifold cancel. If that is the right picture, the polygon-lifting
+problem dissolves: one never lifts a triangle; one proves instead that the figure-eight
+boundary strata of the bigon-quilt moduli are in bijection with the combinatorial
+triangles-through-$s$. Your Example~3.6 mechanism in \cite{Z2} (the mean-value argument
+forcing blow-up at the bifold, in your terminology) reads like the existence half of exactly that bijection, at
+the first interesting crossing. I do not know how to prove the bijection in general --- but
+it has a checkable shadow, namely Lemma~\ref{lem:surgery}, and the two computed cancelling
+cochains of Part~I are the two smallest instances in which the bijection's count is forced by
+rank alone.
+
+\subsection{Your fold-created crossings and ours are the same crossings}\label{ss:universal}
+One structural observation that I think connects your Remark~4.1 and Remark~6.2 to the
+pretzel data. In your setting, the composed curve acquires self-intersections from the fold
+singularities of the projection, non-transverse ones that need local Hamiltonian
+perturbation. In the pillowcase, the Conway-sum curve acquires its cochain-relevant
+self-intersections from resolving the seam fiber circles --- Smith's diagonal cut-and-paste,
+one crossing per circle, which is precisely a local perturbation of a non-transverse
+composition artifact. All three computed cochains are supported on exactly these
+composition-created crossings. Your torus example \cite[\S5]{Z1} reads the same way to me:
+the cochain generator sits on the composed curve, born of the fold, and its triangle terms
+cancel the composition-side bigon (the deformed differential $\mu_1^{\bc}$ vanishes) ---
+cancellation in precisely the sense of
+the deficit members of Part~I, and, as far as I can now tell, the first such example in the
+literature (a point my accompanying letter returns to, since it obliges a wording change and
+a citation in \cite{P2}). So the pretzel family reads as data for your Remark~6.2's
+question (a universal, functorial rule attaching cochains): the rule must select
+composition-created crossings; at deficit members it is forced (unique minimal cochain), at
+excess members rank-matching leaves a $55$-fold ambiguity --- fifty of which share one
+common target generator --- so whatever pins the cochain there must come from the naturality
+data itself, not from the homology. If your closed-surface pictures show the same
+concentration of the cochain on composition-created crossings, that would be worth knowing;
+it suggests the universal rule is a statement about the composition map, not about the
+curves.
+
+\subsection{Test cases}\label{ss:tests}
+The smallest polygons any $k\ge2$ identification must handle, with explicit coordinates and
+machine-checkable data (windings, corner sectors, perturbation stability) available on
+request or from the repository:
+\begin{itemize}
+\item the $q=7$ triangle: one $\bc$-vertex at $(\gamma,\theta)\approx(0.05,5.41)$, generator pair
+coinciding with a bigon of $\partial_0$; the minimal cancelling configuration;
+\item the $q=5$ quadrilateral: $\bc$-vertices $s_A$ at $(\gamma,\theta)\approx(0.028,1.272)$
+and $s_B$ at $(3.057,4.981)$, generator vertices $x_4,y_6$; minimal configuration where no
+triangle exists --- any theory in which triangles exhaust the $k=2$ corrections is refuted by
+this example;
+\item any of the fifty-five $q=11$ creating triangles, as the abundance regime.
+\end{itemize}
+All corner sectors sit in the smooth stratum with the clearances of \S\ref{ss:orbifold}, so
+these are simultaneously test cases for the closed-surface statement and for the orbifold
+reduction.
+
+\appendix
+
+\section{Map from steps to modules}\label{app:files}
+All modules are pure Python~3 standard library; each is a self-checking battery
+(\textsc{pass/fail}), and the arXiv ancillary \texttt{README} maps every published number to
+the file producing it.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Step & Module(s)\\
+\midrule
+curve reconstruction (representation theory) & \texttt{grounded.py}, \texttt{tangles.py}\\
+seam-circle resolution; earring & \texttt{resolve.py}, \texttt{earring.py}\\
+generators and bigons (\S\ref{sec:naive}) & \texttt{bigons.py}\\
+general polygon predicate (\S\ref{ss:tables}) & \texttt{polygons.py}\\
+triangle/quadrilateral tables & \texttt{deform.py}, \texttt{deform\_full.py}\\
+Maurer--Cartan data (\S\ref{ss:mc}) & \texttt{maurer\_cartan.py}\\
+the search (\S\ref{sec:search}) & \texttt{solve\_b2.py}, \texttt{pretzel\_solve.py}\\
+perturbation stability (\S\ref{ss:pert}) & \texttt{pert\_check.py}\\
+the $q=5$ result battery (\S\ref{ss:q5}) & \texttt{b2\_result.py}\\
+the surgery lemma check (\S\ref{ss:surgery}) & \texttt{surgery\_check.py}\\
+Alexander recursion (the target, \S\ref{ss:precondition}) & \texttt{skein\_alexander.py}\\
+published-number integrity gates & \texttt{check\_paper2\_numbers.py}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{CHKK22}
+
+\bibitem[P1]{P1} B.~J.~Wuebben, \emph{Traceless $\mathrm{SU}(2)$ characters and $\Z/4$
+instanton gradings for two-bridge and $(3,n)$-torus knots}, arXiv:2607.26095.
+
+\bibitem[P2]{P2} B.~J.~Wuebben, \emph{The instanton homology of the $(-2,3,q)$ pretzel knots
+and computed bounding cochains in the pillowcase}, arXiv:2607.26096.
+
+\bibitem[CHKK22]{CHKK} G.~Cazassus, C.~Herald, P.~Kirk, A.~Kotelskiy, \emph{The
+correspondence induced on the pillowcase by the earring tangle}, J.\ Topol.\ \textbf{15}
+(2022), 2472--2543. arXiv:2010.04320.
+
+\bibitem[Smi24]{Smi} K.~Smith, \emph{Perturbed traceless $\mathrm{SU}(2)$ character varieties
+of tangle sums}, arXiv:2412.06066.
+
+\bibitem[MWW18]{MWW} S.~Ma'u, K.~Wehrheim, C.~Woodward, \emph{$A_\infty$ functors for
+Lagrangian correspondences}, Selecta Math.\ \textbf{24} (2018), 1913--2002. arXiv:1601.04919.
+
+\bibitem[PW19]{PW} J.~Palmer, C.~Woodward, \emph{Invariance of immersed Floer cohomology under
+Lagrangian surgery}, arXiv:1903.01943.
+
+\bibitem[Zha24]{Z1} Z.~Zhang, \emph{Construction of holomorphic quilts in Cartesian product of
+closed surfaces}, arXiv:2409.19744.
+
+\bibitem[Zha25]{Z2} Z.~Zhang, \emph{Uniqueness of holomorphic quilts lifted from holomorphic
+bigons on surfaces}, arXiv:2504.09284.
+
+\end{thebibliography}
+
+\bigskip
+\noindent{\sc Bernd J. Wuebben, New York, NY,} \texttt{wuebben@gmail.com}
+
+\end{document}
