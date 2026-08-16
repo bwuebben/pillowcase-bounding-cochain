@@ -32,15 +32,16 @@ selection genuinely depends on a local-support hypothesis. Separately, the Lagra
 correspondence induced by the `Q_{1/3}` line is immersed with a triple point, hence not embedded,
 so Gao's wrapped representability theorem does not apply to it.
 
-**Paper III exact-action theorem.** For the pillowcase composition associated to
-`Q_{1/3}+Q_{1/7}`, the small-perturbation correspondence is exact on generic symmetric compact
-truncations, and a half-period symmetry fixes the relative primitive between the two output arcs.
-The singular path word has 58 seam-overlap candidates, exactly 50 of which persist for small
-positive perturbation: 28 diagonal–circle and 22 circle–circle roots. Their limiting actions are
-computed exactly as rational multiples of π². Forty-two are negative, eight are positive, none
-vanishes, and the minimum absolute limiting action is π²/42. The complete census and all signs
-persist for sufficiently small positive perturbation. This theorem makes no holomorphic-quilt
-count, compactification, bounding-cochain, or instanton–pillowcase comparison claim.
+**Paper III exact-action theorem.** For the compactly truncated main component of the pillowcase
+composition associated to `Q_{1/3}+Q_{1/7}`, the small-perturbation correspondence is exact, and a
+half-period symmetry fixes the relative primitive between the two output arcs. The singular
+first-arc data have 58 seam-overlap candidates, exactly 50 of which persist on the main component
+for small positive perturbation: 28 diagonal–circle and 22 circle–circle roots. Their limiting
+actions are computed exactly as rational multiples of π². Forty-two are negative, eight are
+positive, none vanishes, and the minimum absolute limiting action is π²/42. The complete count and
+all signs persist for sufficiently small positive perturbation. Smith's possible auxiliary circle
+components and the noncompact puncture ends are outside the theorem, as are holomorphic-quilt
+counts, compactification, bounding cochains, and the instanton–pillowcase comparison.
 
 **Finite pillowcase computations.** The pillowcase code reports finite polygon computations for
 explicitly specified piecewise-linear immersed curves: finite bigon matrices, triangle and
@@ -74,11 +75,12 @@ finite-polygon claims. Both papers carry an Appendix A itemizing every change fr
 
 ## The three papers
 
-- **`paper3/main.tex`** (**full draft, August 15, 2026**) — *Exact action separation for a
-  pretzel-tangle composition in the pillowcase*. Proves exactness and half-period normalization for
-  the `Q_{1/3}+Q_{1/7}` composition, the six-fold and 21-sheet description, the exact 50-root
-  census, the 42-negative/eight-positive action split, and small-perturbation persistence. It
-  explicitly stops before any quilt count or bounding-cochain conclusion.
+- **`paper3/main.tex`** (**arXiv v1 candidate, August 15, 2026**) — *Exact action separation on the
+  main component of a pretzel-tangle composition in the pillowcase*. Proves exactness and
+  half-period normalization for the compact main component of the `Q_{1/3}+Q_{1/7}` composition,
+  the six-fold and 21-sheet description, the exact 50-root count, the 42-negative/eight-positive
+  action split, and small-perturbation persistence. It excludes auxiliary components, puncture
+  ends, quilt counts, and bounding-cochain conclusions.
 - **`paper2/main.tex`** (**arXiv:2607.26096**) — *The instanton homology of the (−2,3,q) pretzel
   knots and Maurer–Cartan deformations in the two-arc algebra of the pillowcase*. The main paper:
   the integral instanton theorem, the finiteness lemma for morphism complexes over the two-arc
@@ -213,9 +215,10 @@ proved unconditionally from cited results — no pillowcase model enters. The q 
 second-closure propositions are algebraic statements in the specified two-arc category, verified
 without truncation of word length.
 Paper III is likewise unconditional but narrower: it proves the finite exact geometry and action
-filtration of one composed curve. Its final energy statement is only an obstruction for any exact
-configuration already satisfying Stokes' identity; it does not assert that a quilted moduli space
-exists or that any positive-action root is counted.
+filtration of the compact main component of one composed curve. It does not classify Smith's
+possible auxiliary circle components or the puncture ends. Its final energy statement is only an
+obstruction for any exact configuration already satisfying Stokes' identity; it does not assert
+that a quilted moduli space exists or that any positive-action root is counted.
 The remaining identification of that selected deformation with the instanton tangle object is
 conditional on the CHKK correspondence and the q = 7 figure-eight local-support hypothesis. The
 other bigon statistics and candidate supports are finite computations within the model,

@@ -24,31 +24,32 @@
 \begin{document}
 
 \title[Exact action separation in the pillowcase]
-{Exact action separation for a pretzel-tangle composition in the pillowcase}
+{Exact action separation on the main component of a pretzel-tangle composition in the pillowcase}
 
-\author{Bernd J. Wuebben}
+\author{Bernd Johannes Wuebben}
 \subjclass[2020]{53D12 (primary); 53D40, 57K18, 57K31 (secondary)}
 \keywords{Pillowcase, traceless character variety, Lagrangian correspondence,
 immersed curve, action filtration, rational tangle}
 \date{August 15, 2026}
 
 \begin{abstract}
-Let $P$ be the smooth stratum of the traceless $\mathrm{SU}(2)$ character variety of the
-four-punctured sphere.  We study the immersed curve obtained by composing the rational-tangle
-arcs for $Q_{1/3}$ and $Q_{1/7}$ with the small-holonomy-perturbation correspondence associated
-to a three-strand tangle.  After fixing an equivariant Liouville completion of $P$, we prove that
-the truncated correspondence is exact for every sufficiently small positive perturbation and
-that a half-period symmetry fixes the relative primitive on the two components of the output.
+Let $P=(S^1\times S^1)/\{(\gamma,\theta)\sim(-\gamma,-\theta)\}$ be the pillowcase and let
+$P^*$ be its smooth stratum.  We compose the rational-tangle arcs for $Q_{1/3}$ and $Q_{1/7}$
+with the small-holonomy-perturbation correspondence of the three-strand tangle.  Smith's
+cross-resolution distinguishes a main output, obtained by resolving six internal circle fibers
+and continuing the branches away from them.  After a symmetric compact truncation, we prove that
+the correspondence is exact and that a half-period symmetry fixes the relative primitive on the
+two components of this main output.
 
-The singular composition consists of $21$ separated graph sheets joined across six fold circles.
-Their twelve endpoints have nondegenerate hyperbolic smoothing germs.  From the resulting exact
-path word we enumerate $58$ seam-overlap candidates.  Rational interval certificates for the
-normal-displacement equations retain exactly $50$ transverse ordered self-intersection generators.
-An area-residue calculation evaluates every limiting action as a rational multiple of $\pi^2$:
+In the singular limit the main output consists of $21$ affine branches joined across the six
+circle fibers.  Their twelve endpoints have nondegenerate hyperbolic smoothing models.  The
+branch-intersection equations have $58$ limiting candidates, exactly $50$ of which continue to
+transverse ordered self-intersections for every sufficiently small positive perturbation.  An
+area--residue calculation evaluates each limiting action as a rational multiple of $\pi^2$:
 $42$ are negative and $8$ are positive, no action vanishes, and the smallest absolute limiting
-action is $\pi^2/42$.  The census and all action signs persist for sufficiently small positive
-perturbation.  The proof is accompanied by a pure-rational executable certificate.  No
-holomorphic-quilt count, bounding cochain, or instanton-pillowcase comparison is asserted.
+action is $\pi^2/42$.  The count and all action signs persist under perturbation.  No claim is made
+about auxiliary circle components allowed by the cross-resolution, the noncompact puncture ends,
+holomorphic-quilt counts, bounding cochains, or the instanton--pillowcase comparison.
 \end{abstract}
 
 \maketitle
@@ -66,23 +67,43 @@ gives an immersed Lagrangian correspondence
 \[
  C_t=C_{3,t}^{\mathrm{reg}}\iss(P_1^*)^-\times(P_2^*)^-\times P_3^*
 \]
-for small $t>0$ \cite{HeraldKirk,Smith}.  We consider the direct fiber product and its output immersion
+for small $t>0$ \cite{HeraldKirk,Smith}.  We first form the full direct fiber product
 \begin{equation}\label{eq:composition}
- \widetilde L_t=(A_{1/3}\times A_{1/7})
+ \widetilde L_t^{\mathrm{full}}=(A_{1/3}\times A_{1/7})
        \times_{P_1\times P_2} C_t,
  \qquad
- L_t=\pi_3(\widetilde L_t)\iss P_3^*.
+ L_t^{\mathrm{full}}=\pi_3(\widetilde L_t^{\mathrm{full}})\iss P_3^*.
 \end{equation}
+Smith's cross-resolution theorem singles out a main subspace obtained by resolving the internal
+circle fibers and continuing the off-circle branches; it also permits auxiliary circle components
+that collapse toward isolated singular images as $t\to0$ \cite[Thm.~4.22]{Smith}.  Fix a generic
+symmetric truncation $P^\delta\subset P^*$ containing the six circle images and all intersections
+studied below.  We write
+\[
+ \widetilde L_t^\delta\subset \widetilde L_t^{\mathrm{full}},
+ \qquad
+ L_t^\delta=\pi_3(\widetilde L_t^\delta)\iss P^\delta
+\]
+for the compact main subspace and its output.  Auxiliary components and the portions in the
+deleted end collars are not included in $L_t^\delta$.
+
 The pair of slopes $1/3$ and $1/7$ is the character-variety composition associated to the
 pretzel-tangle presentation of $P(-2,3,7)$ used in the companion calculation \cite{WuebbenII}.
 
 The purpose of this paper is finite and geometric.  It determines the exact immersed-curve action
-data of \eqref{eq:composition}; it does not construct any moduli space of figure-eight bubbles.
+data of the compact main output $L_t^\delta$; it does not classify the auxiliary components of
+\eqref{eq:composition} or construct any moduli space of figure-eight bubbles.
 This distinction matters because strip shrinking can produce Morsified trees of several
 holomorphic components \cite{BottmanWehrheim}.  A list of candidate output generators is not a
 count of those trees.
 
-We fix the following terminology.  If a transverse self-intersection of $L_t$ has two preimages
+Following Smith, we call the loci $\gamma=0$ and $\gamma=\pi$ in an input pillowcase the
+\emph{seams}; these are not seams of a pseudoholomorphic quilt.  In the singular limit, the output
+branches are either affine graph segments or images of the six circle fibers.  We call an
+intersection of the two types a \emph{diagonal--circle intersection}, and an intersection of two
+circle images a \emph{circle--circle intersection}.
+
+We fix the remaining terminology.  If a transverse self-intersection of $L_t^\delta$ has two preimages
 $z_-$ and $z_+$, the orientation convention for immersed Floer theory selects one ordered pair
 $x=(z_-,z_+)$ in degree one.  We call this ordered generator a \emph{root}.  If $f_t$ is the
 primitive inherited from the exact fiber product, its action is
@@ -95,14 +116,14 @@ displacement of the ordinary closing loop used in the area-residue calculation; 
 separation, the construction first doubles the path and then removes that artificial factor of
 two.
 
-\begin{theorem}[Exact action census]\label{thm:main}
-There is an equivariant Liouville completion of the pillowcase and a number $t_0>0$ with the
-following properties for every $0<t<t_0$.
+\begin{theorem}[Exact action theorem]\label{thm:main}
+There are an equivariant Liouville completion of the pillowcase, a generic symmetric truncation
+$P^\delta$, and a number $t_0>0$ with the following properties for every $0<t<t_0$.
 \begin{enumerate}
-\item The compactly truncated correspondence $C_t$ is exact.  The direct output $L_t$ inherits a
+\item The compactly truncated correspondence $C_t^\delta$ is exact.  The main output $L_t^\delta$ inherits a
 primitive whose relative normalization across its two open parameter arcs is fixed by a
 half-period symmetry.
-\item The curve $L_t$ has exactly $50$ transverse degree-one roots arising from the singular
+\item The compact main output $L_t^\delta$ has exactly $50$ transverse degree-one roots arising from the singular
 composition: $28$ diagonal-circle roots and $22$ circle-circle roots.  They occur in $25$
 half-period pairs.
 \item The limiting actions as $t\to0^+$ are nonzero rational multiples of $\pi^2$.  Exactly $42$
@@ -121,19 +142,22 @@ The four positive half-period representatives have short deck classes and limiti
 \]
 \end{theorem}
 
+The theorem concerns the main subspace $L_t^\delta$.  It neither asserts that Smith's possible
+auxiliary circle components are absent from $L_t^{\mathrm{full}}$ nor assigns actions to them.
+
 Three ingredients make the statement exact.  First, the Liouville primitive is normalized
 equivariantly and its periods are checked on the full singular fiber, including seam-born and
 corner-link cycles.  Hamiltonian-composition flux then transports this vanishing to $t>0$.
-Second, the singular output is recorded as an exact piecewise-linear word.  Its only failures of
-the graph description occur at six explicitly determined stabilizer circles, whose endpoints
-carry hyperbolic smoothing germs.  Third, all circle-circle intersections reduce to quadratic
-equations over $\mathbb Q(2\cos(\pi/7))$.  Rational enclosures certify the physical roots and their
-derivative signs.  The action of each surviving root is then a signed area minus a lattice-residue
-term.
+Second, the singular output is recorded by exact piecewise-linear first-arc data.  Its only
+failures of the graph description occur at six explicitly determined stabilizer circles, whose
+endpoints carry hyperbolic smoothing germs.  Third, all circle--circle intersections reduce to quadratic
+equations over $\mathbb Q(2\cos(\pi/7))$.  Rational interval bounds isolate the physical solutions
+and determine their derivative signs.  The action of each surviving root is then a signed area
+minus a lattice-residue term.
 
 Section~\ref{sec:exactness} fixes the primitive and proves exactness.  Section~\ref{sec:geometry}
 describes the six folds, the hyperbolic smoothing, and the $21$ separated graph sheets.
-Section~\ref{sec:actions} proves the exact root census and action table.
+Section~\ref{sec:actions} proves the exact root count and action table.
 Section~\ref{sec:scope} records the precise energy consequence and the boundary of the result.
 
 \section{Exact primitives and half-period normalization}\label{sec:exactness}
@@ -153,28 +177,38 @@ Let
  \qquad
  \sigma[\gamma,\theta]=[\pi-\gamma,-\theta].
 \]
-There is a $\langle\tau,\sigma\rangle$-invariant corner truncation
-$P^\delta\subset P^*$ and a $\langle\tau,\sigma\rangle$-invariant Liouville completion
-$(\widehat P^\delta,\lambda)$ such that
+There is a $\langle\tau,\sigma\rangle$-invariant primitive $\lambda_0$ of the Goldman form on
+$P^*$ such that
 \[
- d\lambda=d\gamma\wedge d\theta\quad\text{on }P^\delta,
+ d\lambda_0=d\gamma\wedge d\theta,
  \qquad
- \lambda=(\gamma-\pi/2)\,d\theta
+ \lambda_0=(\gamma-\pi/2)\,d\theta
 \]
-near the circle $\{\gamma=\pi/2\}$.  The four oriented end residues of $\lambda$ are equal.
+near the circle $\{\gamma=\pi/2\}$.  Its four positively oriented puncture residues are all
+$-\pi^2/2$.  For every sufficiently small invariant corner truncation
+$P^\delta\subset P^*$, there is an invariant Liouville completion
+$(\widehat P^\delta,\lambda)$ whose primitive agrees with $\lambda_0$ on $P^\delta$.
 \end{lemma}
 
 \begin{proof}
-Choose the four deleted disks equivariantly.  Since the compact surface with boundary $P^\delta$
-has zero second cohomology, the restricted Goldman form has a primitive $\lambda'$.  On an annular
-neighborhood of $\{\gamma=\pi/2\}$, add a closed one-form to kill the period of
-$\lambda'-(\gamma-\pi/2)d\theta$, and then subtract the differential of a cutoff function to make
-the difference vanish there.  Average the construction over $\langle\tau,\sigma\rangle$.
-The group acts transitively on the corners, so the four oriented boundary periods agree.
+The noncompact surface $P^*$ has zero second cohomology, so its Goldman form has a primitive
+$\lambda'$.  On an annular neighborhood of $\{\gamma=\pi/2\}$, add a closed one-form to kill the
+period of $\lambda'-(\gamma-\pi/2)d\theta$, and then subtract the differential of a cutoff of the
+resulting local function.  Average the primitive and the closed correction over
+$\langle\tau,\sigma\rangle$.  Both the Goldman form and the displayed central primitive are
+invariant.  The group acts transitively on the four punctures, so the four residues agree.
 
-Adjust the primitive in disjoint boundary collars so that its Liouville vector field is outward
-transverse, and attach the positive symplectizations of the boundary circles.  These adjustments
-can be made equivariantly and do not change the primitive on the central annulus.
+The torus cover has area $4\pi^2$ and is generically two-to-one over $P$, hence the Goldman area of
+$P^*$ is $2\pi^2$.  Apply Stokes' theorem to an invariant exhaustion by compact surfaces.  With a
+counterclockwise meridian around a deleted point declared positive, the sum of the four limiting
+meridian periods is the negative of this area.  Equality of the residues therefore makes each one
+$-\pi^2/2$.  The averaged closed correction does not alter them: its four residue changes are
+equal and have sum zero.
+
+Finally choose the four deleted disks equivariantly.  Outside the prescribed compact truncation,
+modify the primitive in disjoint collars so that its Liouville vector field is outward transverse,
+and attach the positive symplectizations of the boundary circles.  These changes can be made
+equivariantly and leave $\lambda_0$ unchanged on $P^\delta$.
 \end{proof}
 
 Put
@@ -194,6 +228,18 @@ On a smooth torus-cover chart of the unperturbed correspondence, Smith's boundar
 \cite[Eqs.~(3.1.4)--(3.1.5)]{Smith}.  At $\gamma=\pi/2$, the normalized local primitive therefore
 satisfies $\Lambda_P|_{C_0}=0$.
 
+Let
+\[
+ \mathcal V_0=\{\sin\gamma\cos\alpha=0\},
+ \qquad
+ r_0=(r_1,r_2,r_3):\mathcal V_0^\delta\longrightarrow(P^\delta)^3
+\]
+be Smith's singular parameter fiber and its three boundary maps.  If $c$ is an oriented loop in
+$\mathcal V_0^\delta$, write
+\[
+ h(c)=-r_{1*}[c]-r_{2*}[c]+r_{3*}[c]\in H_1(P^*;\Z).
+\]
+
 \begin{proposition}[Exactness of the small perturbation]\label{prop:perturbed-exactness}
 For a generic symmetric truncation $P^\delta$ and every sufficiently small $t>0$,
 \[
@@ -205,21 +251,23 @@ all corner-link cycles.
 \end{proposition}
 
 \begin{proof}
-We first calculate on the full singular parameter fiber.  Smith's regular parameter space is a
-two-fold cover of $C_0$ and decomposes as
+We first calculate on the regular part of the singular parameter fiber.  Smith's parameter space
+$\mathcal V_0^*$ is a two-fold cover of the regular correspondence and decomposes as
 \[
  \mathcal V_0^*\cong
  \bigl[S^2\times(S^1\setminus S^0)\bigr]
  \sqcup
  \bigl[T^2\times(S^1\setminus S^0)\bigr]
 \]
-\cite[Def.~3.6]{Smith}.  The first summand has no first real cohomology.  On the second, represent
-the two torus generators at $\gamma=\pi/2$.  Equation~\eqref{eq:smith-boundary} gives angular
-increments $(2\pi,-2\pi,0)$ for the $\beta$-circle and $(0,2\pi,2\pi)$ for the $\theta$-circle.
-The normalized primitive vanishes on both generators.  Thus the period class vanishes on the
-regular part.
+\cite[Def.~3.6]{Smith}.  Each component of the first summand has zero first real cohomology.  On a
+component of the second summand, represent the two torus generators at $\gamma=\pi/2$.
+Equation~\eqref{eq:smith-boundary} gives angular increments $(2\pi,-2\pi,0)$ for the
+$\beta$-circle and $(0,2\pi,2\pi)$ for the $\theta$-circle.  The normalized primitive vanishes on
+both generators.  The parameter involution exchanges the two components of
+$S^1\setminus S^0$ and preserves the pulled-back one-form, so the period class vanishes on all of
+$\mathcal V_0^*$.
 
-It remains to include cycles through the singular seam.  The full zero set is
+It remains to include cycles through the singular seam.  Decompose the full zero set as
 \[
  \mathcal V_0=A\cup H_0\cup H_\pi,
  \qquad
@@ -227,17 +275,28 @@ It remains to include cycles through the singular seam.  The full zero set is
  \qquad
  H_0\sqcup H_\pi=\{\gamma=0,\pi\}\cong S^0\times S^1\times S^2.
 \]
-Cut $A$ along the four subtori $\beta=\epsilon\pi$ and
-$\theta-\beta=\epsilon\pi$, $\epsilon\in\{0,1\}$.  Mayer-Vietoris gives a spanning set for
-first homology consisting of the angular directions on these subtori, four $\gamma$-circles, and
-the two directions on every corner link.  The angular periods vanish by the preceding paragraph.
+and put
+\[
+ A_\epsilon=\{\beta=\epsilon\pi\},
+ \qquad
+ B_\epsilon=\{\theta-\beta=\epsilon\pi\},
+ \qquad \epsilon\in\{0,1\}.
+\]
+Cutting $A$ along these four subtori and applying Mayer--Vietoris to the two
+$S^1\times S^2$ pieces and the corner collars gives a redundant spanning set for first homology:
+the two circle directions on every $A_\epsilon$ and $B_\epsilon$, together with the two directions
+on every corner link.  The angular directions can be represented at $\gamma=\pi/2$ and have zero
+period by the preceding paragraph.  Denote the remaining $\gamma$-directions by
+$A_0^\gamma,A_\pi^\gamma,B_0^\gamma,B_\pi^\gamma$, using boundary-collar push-offs when needed.
 
-Orient the four pillowcase meridians positively and use
-$(m_{0\pi},m_{\pi0},m_{\pi\pi})$ as a basis.  If
-$\mathcal A_\delta=\int_{P^\delta}d\lambda$, direct substitution in the boundary formulas gives
+Orient the meridians $m_{00},m_{0\pi},m_{\pi0},m_{\pi\pi}$ positively about the four deleted
+points.  Their sum is zero, so use $(m_{0\pi},m_{\pi0},m_{\pi\pi})$ as a basis of
+$H_1(P^*;\Z)$.  Put $\mathcal A_\delta=\int_{P^\delta}d\lambda$.  Direct substitution in the
+boundary formulas, followed by Stokes' theorem on the intervening rectangles in a pillowcase
+fundamental domain, gives
 \begin{equation}\label{eq:singular-gamma-table}
 \begin{array}{c|c|c}
-c&[-p_1(c)-p_2(c)+p_3(c)]&
+c&h(c)\text{ in the displayed basis}&
  \displaystyle\int_c r_0^*\Lambda_P^{(00)}\\ \hline
 A_0^\gamma&(0,0,0)&0\\
 A_\pi^\gamma&(2,0,2)&\mathcal A_\delta\\
@@ -245,14 +304,23 @@ B_0^\gamma&(0,1,-1)&0\\
 B_\pi^\gamma&(-2,-1,-1)&-\mathcal A_\delta.
 \end{array}
 \end{equation}
-Here $\lambda^{(00)}$ is a primitive with meridian periods
-$(-\mathcal A_\delta,0,0,0)$.  The symmetric primitive has period
-$-\mathcal A_\delta/4$ on each meridian.  Pairing the difference with the middle column changes
-the final column by $0,-\mathcal A_\delta,0,\mathcal A_\delta$, respectively, so all four
-$\gamma$-periods vanish.
+Here $\lambda^{(00)}$ is a primitive whose positively oriented meridian periods are
+$(-\mathcal A_\delta,0,0,0)$, and
+$\Lambda_P^{(00)}=-\lambda_1^{(00)}-\lambda_2^{(00)}+\lambda_3^{(00)}$.  The middle column records
+the meridian crossed by each boundary projection as $\gamma$ passes $0$ or $\pi$; it therefore
+prints every sign and multiplicity used in the comparison.
 
-At a parameter corner $(g,h,k)\in\{0,1\}^3$, an oriented basis $(u,v)$ of its torus link has
-meridian winding triples
+On the four boundary meridians of the symmetric truncation, the restricted primitive $\lambda$
+has period $-\mathcal A_\delta/4$ by Stokes' theorem and symmetry.
+Thus $\lambda-\lambda^{(00)}$ is closed and has period $-\mathcal A_\delta/4$ on each basis
+meridian.  Pairing this period vector with the middle column changes the four entries in the final
+column by $0,-\mathcal A_\delta,0,\mathcal A_\delta$, respectively.  All four
+$\gamma$-periods therefore vanish.
+
+Index a parameter corner by $(g,h,k)\in\{0,1\}^3$, meaning
+$(\gamma,\theta,\beta)=(g\pi,h\pi,k\pi)$.  The value of $k$ does not affect the following winding
+calculation.  If $(u,v)$ is an oriented basis of its torus link, the meridian winding triples in
+$(P_1,P_2,P_3)$ are
 \begin{equation}\label{eq:corner-link-table}
 \begin{array}{c|c|c}
 (g,h)&(w_1,w_2,w_3)(u)&(w_1,w_2,w_3)(v)\\ \hline
@@ -263,43 +331,56 @@ meridian winding triples
 \end{array}
 \end{equation}
 Every vector satisfies $w_3=w_1+w_2$.  Since the four end residues agree, the signed period of a
-link circle is a common multiple of $-w_1-w_2+w_3$ and hence vanishes.  We have therefore proved
-that $r_0^*\Lambda_P$ has zero period on every class in
-$H_1(\mathcal V_0^\delta;\R)$.
+link circle is the common residue multiplied by $-w_1-w_2+w_3$, and hence vanishes.  The
+Mayer--Vietoris spanning set now shows that $r_0^*\Lambda_P$ has zero period on every class in
+$H_1(\mathcal V_0^\delta;\R)$, including the classes lost when one looks only at
+$\mathcal V_0^*$.
 
 For $t>0$, cut out the perturbation solid torus.  The perturbed correspondence is a geometric
 composition of a fixed restriction immersion with the solid-torus arc
 \[
  [e^{is}]\longmapsto[e^{is},e^{if_t(s)}],
 \]
-which is a Hamiltonian deformation \cite[Eq.~(6-4) and Sec.~6B]{CHK}.  If $v_t$ is the velocity of
-the composed family, the Lagrangian condition gives
+which is a Hamiltonian deformation \cite[Eq.~(6-4) and Sec.~6B]{CHK}.  If
+$v_t=\partial_t\ell_t$ is the vector field along the composed family, the Lagrangian condition gives
 \begin{equation}\label{eq:hamiltonian-flux}
  \ell_t^*\iota_{v_t}(-\omega_1-\omega_2+\omega_3)
  =-d(H_t\circ\operatorname{pr}),
 \end{equation}
 with the convention $\iota_{X_{H_t}}\omega=-dH_t$.  Hence
-$\ell^*\Lambda_P+G\,dt$ is closed on the smooth trace of the family.
+$\partial_t(\ell_t^*\Lambda_P)=dG_t$, where
+\[
+ G_t=\Lambda_P(v_t)-H_t\circ\operatorname{pr}.
+\]
+Equivalently, $\ell^*\Lambda_P+G_t\,dt$ is closed on the smooth trace of the family.
 
-Let $q_t:\mathcal V_t^\delta\to C_t^\delta$ be Smith's two-fold parameter cover.  The closure of
-its trace over $0\le t\le\epsilon$ is a compact subanalytic pair with the zero fiber, so it admits
-a compatible triangulation.  After decreasing $\epsilon$, a regular neighborhood of the zero
-fiber contains the trace and retracts onto that fiber.  Thus every one-cycle in a positive fiber
-is joined by a singular two-chain to a cycle in the full zero set; vanishing cycles are included.
-The Hamiltonian graph and all boundary maps extend analytically to $t=0$, so the trace form extends
-continuously and is smooth on each stratum of the triangulation.  Stokes' theorem applied stratum
-by stratum gives
+Let $q_t:\mathcal V_t^\delta\to C_t^\delta$ be Smith's two-fold parameter cover and let
+$\mathfrak V^\delta$ be the closure of its compact trace over $0\le t\le\epsilon$.  Smith's
+explicit equation and analytic boundary maps make
+$(\mathfrak V^\delta,\mathcal V_0^\delta)$ a compact subanalytic pair, hence a compatibly
+triangulable pair.  A regular neighborhood $N$ of the zero-fiber subcomplex retracts onto
+$\mathcal V_0^\delta$.  After decreasing $\epsilon$, the entire trace lies in $N$: otherwise a
+sequence outside $N$ with $t\to0$ would limit to a point of
+$\mathcal V_0^\delta\subset\operatorname{int}N$.  Consequently every one-cycle
+$\widetilde a_t$ in a positive fiber is joined inside the total trace by a singular two-chain to
+a cycle $a_0$ in the full zero set; a vanishing cycle is the case $a_0=0$.
+
+The Hamiltonian graph and all boundary maps extend analytically to $t=0$, so the pulled-back trace
+form extends continuously and is smooth on every simplex stratum.  Stokes' theorem applied
+stratum by stratum gives
 \[
  \int_{\widetilde a_t}q_t^*\ell_t^*\Lambda_P
  =\int_{a_0}r_0^*\Lambda_P=0.
 \]
-Pullback on first real cohomology under a finite cover is injective.  This proves the proposition.
+Thus $q_t^*[\ell_t^*\Lambda_P]=0$.  Pullback on first real cohomology under a finite cover is
+injective by averaging over the deck group, which proves the proposition.
 \end{proof}
 
 The rational arcs are contractible and can be normalized equivariantly, so
 $A_{1/3}\times A_{1/7}$ is exact.  Primitives add under transverse geometric composition.
 Proposition~\ref{prop:perturbed-exactness} therefore gives a primitive on every component of the
-direct fiber product \eqref{eq:composition}.  The output, however, passes through two deleted
+full direct fiber product \eqref{eq:composition}, and hence on its compact main subspace.  The main
+output, however, passes through two deleted
 corners in each lifted period.  Its two open arcs initially have independent additive constants;
 the next proposition fixes their relative normalization.
 
@@ -359,15 +440,15 @@ contains no all-corner point, so no residue detour is involved and
 
 \section{The six folds and the separated graph sheets}\label{sec:geometry}
 
-The partial composition
+The main part of the partial composition
 \[
- F_t=A_{1/3}\times_{P_1}C_t\iss P_2^-\times P_3
+ F_t^{\mathrm{main}}=A_{1/3}\times_{P_1}C_t\iss P_2^-\times P_3
 \]
 is used here only to describe the finite geometry of the direct output.  No associativity or
 curved-composition theorem is invoked.
 
 \begin{proposition}[Six-circle and fold table]\label{prop:six-fold-table}
-The singular partial composition has six stabilizer circles.  Their $P_2$ seam values, the
+The singular main partial composition has six stabilizer circles.  Their $P_2$ seam values, the
 corresponding $A_{1/3}$ angle $\theta_1$, and the image interval $[\ell_i,h_i]$ in the third
 pillowcase are
 \[
@@ -472,7 +553,7 @@ $-\sin\theta_1\sin\theta_2$ and $\sin\theta_1\sin\theta_2$, proving the formulas
 \end{proof}
 
 \begin{proposition}[Off-seam graph sheets]\label{prop:graph-sheets}
-Away from neighborhoods of the six seam values, every branch of $F_0$ is locally the graph of the
+Away from neighborhoods of the six seam values, every branch of $F_0^{\mathrm{main}}$ is locally the graph of the
 symplectic shear
 \[
  \phi_c(\gamma,\eta)=(\gamma,\eta+\gamma/3+c).
@@ -491,8 +572,12 @@ On the unperturbed main stratum, the three boundary coordinates are
 The first rational arc gives $\beta=\gamma/3+c$.  With $\eta=\theta-\beta$, this is the displayed
 shear, and
 $d\gamma\wedge d(\eta+\gamma/3+c)=d\gamma\wedge d\eta$.
-Smith's cross-resolution theorem confines every failure of this graph description to the six seam
-neighborhoods \cite[Thm.~4.22]{Smith}.
+By Smith's cross-resolution theorem, the main subspace is obtained from these graph branches by
+replacing neighborhoods of the six internal circle fibers with their local resolutions
+\cite[Thm.~4.22]{Smith}.  Thus every failure of the graph description within the main subspace is
+contained in those six neighborhoods.  The auxiliary circles allowed by Smith's theorem are
+separate components of the full fiber product and are not part of
+$F_t^{\mathrm{main}}$.
 
 Choose lifts
 \[
@@ -522,7 +607,7 @@ Use scaled coordinates on the canonical arc $I_0$:
 \]
 A vertical torus period changes $n$ by $42$, and the arc runs from $(0,0)$ to $(21,210)$.
 
-\begin{lemma}[Singular first-arc word]\label{lem:path-word}
+\begin{lemma}[Singular first-arc data]\label{lem:path-word}
 Between consecutive integral values of $s$, the singular first arc has slope
 $d\theta/d\gamma=10/21$.  Its twelve signed vertical jumps are
 \[
@@ -647,28 +732,73 @@ $P_{13}$ above $1$.  The signs in \eqref{eq:alpha-square} remove the extraneous 
 For equal symmetry types the two functions agree only at $x=a_i$, producing
 $\mathsf C,\mathsf F,\mathsf G$, and their derivatives are nonzero.
 
-The angle boxes are also rationally certified.  Machin's identity
+The angle boxes admit rational interval proofs.  Machin's identity
 \[
  \frac\pi4=4\arctan\frac15-\arctan\frac1{239}
 \]
 and alternating sums give a rational $\pi$-interval of width less than
 $1.84\times10^{-35}$.  Rational Taylor bounds for cosine then place every angle strictly inside
-its displayed box and certify the derivative signs.
+its displayed box and determine the derivative signs.
+\end{proof}
+
+\begin{lemma}[Area--residue identity on the torus cover]\label{lem:area-residue}
+Use scaled universal-cover coordinates
+\[
+ x=\gamma/\pi,\qquad y=\theta/\pi.
+\]
+Write $\widetilde\lambda_0$ for the lift of the normalized primitive from
+Lemma~\ref{lem:normalized-primitive}.  The deleted orbifold points lift to $\Z^2$, the lifted
+symplectic form is $\pi^2\,dx\wedge dy$, and $\widetilde\lambda_0$ has limiting period
+$-\pi^2$ around every positively oriented small meridian of a point in $\Z^2$.  Hence every
+piecewise smooth closed curve $\Gamma\subset\R^2\setminus\Z^2$ satisfies
+\begin{equation}\label{eq:closed-area-residue}
+ \frac1{\pi^2}\int_\Gamma\widetilde\lambda_0
+ =\operatorname{Area}(\Gamma)
+  -\sum_{z\in\Z^2}\operatorname{wind}_z(\Gamma),
+\end{equation}
+where
+$\operatorname{Area}(\Gamma)=\int_{\R^2}\operatorname{wind}_q(\Gamma)\,dq$ is signed area.
+
+Suppose a path segment has deck-related endpoints.  Concatenate it with its image under the
+pillowcase involution and join the remaining endpoints by an involution-paired choice of closing
+arcs.  If $a$ and $w$ denote the signed area and total lattice winding of the resulting closed
+curve, then the original segment has integral $\pi^2(a-w)/2$.  If the segment must first be
+doubled to obtain deck-related endpoints, its integral is $\pi^2(a-w)/4$.
+\end{lemma}
+
+\begin{proof}
+The torus cover has Goldman area $4\pi^2$ and is generically two-to-one over the pillowcase, so the
+pillowcase area is $2\pi^2$.  By Lemma~\ref{lem:normalized-primitive}, the four positively
+oriented meridian periods are equal.  Their sum is the negative of the total area by Stokes'
+theorem, so each is $-\pi^2/2$.  A small meridian about a lattice point in the torus cover maps
+with degree two to a pillowcase meridian; its lifted period is therefore $-\pi^2$.
+
+Apply Stokes' theorem to the winding-number two-chain bounded by $\Gamma$, with small disks about
+the lattice points removed.  The area term is $\pi^2\operatorname{Area}(\Gamma)$, and a puncture
+with winding $m$ contributes $m\pi^2$ from the clockwise boundary of its deleted disk.  Moving
+these boundary terms to the other side gives \eqref{eq:closed-area-residue}.
+
+The normalized primitive is invariant under the pillowcase involution.  The two closing arcs can
+be chosen as involution images with opposite orientations, so their integrals cancel, while the
+original segment and its involuted image have equal integrals.  The closed curve therefore has
+twice the integral of the segment.  If an initial deck-doubling was required, the doubled segment
+has twice the original integral once more.  This proves both factors.
 \end{proof}
 
 \begin{proposition}[Complete limiting action table]\label{prop:action-table}
-The path of Lemma~\ref{lem:path-word} has $58$ seam-overlap candidates.  Exactly $50$ persist as
-transverse degree-one roots for all sufficiently small $t>0$: $28$ are diagonal-circle roots and
-$22$ are the simple circle-circle roots of Lemma~\ref{lem:normal-roots}.  The eight excluded seam
-pairs are
+The interval data of Lemma~\ref{lem:path-word} have $58$ pairwise seam overlaps.  Within the
+compact main output, exactly $50$ persist as transverse degree-one roots for all sufficiently
+small $t>0$: $28$ are diagonal--circle roots and $22$ are the simple circle--circle roots of
+Lemma~\ref{lem:normal-roots}.  The eight excluded seam pairs are
 \[
  \{1,17\},\{4,14\},\{4,20\},\{5,9\},
  \{7,17\},\{9,11\},\{10,12\},\{12,16\}.
 \]
 
 The following table gives one representative of each half-period pair.  Here $d\in42\Z$ is the
-offset in $n$, $r$ is a normal root or $\mathrm{pt}$ for a diagonal-circle root, $D$ is the short
-deck class defined above, and $o$ is the degree-one ordering.  The columns $a,w,\kappa$ satisfy
+offset in $n$, $r$ is a normal solution or $\mathrm{pt}$ for a diagonal--circle root, $D$ is the
+short deck class defined above, and $o$ is the degree-one ordering.  The columns $a,w,\kappa$ are
+the area, winding, and doubling factor of Lemma~\ref{lem:area-residue}; thus
 \begin{equation}\label{eq:area-residue}
  \frac1{\pi^2}\int_j^k\lambda=\frac\kappa2(a-w).
 \end{equation}
@@ -714,8 +844,8 @@ limiting action is nonzero, and the minimum absolute value is $\pi^2/42$.
 For seams $j<k$, canonicalized output points agree precisely when their $n$-intervals overlap
 after a shift $d\in42\Z$.  Intersecting the twenty intervals in Lemma~\ref{lem:path-word} gives
 $58$ nonempty triples $(j,k,d)$.  Twenty-eight contain one diagonal point strictly inside a
-vertical interval.  The other thirty are circle-circle overlaps.  Substitution of the certified
-normal roots from Lemma~\ref{lem:normal-roots} leaves one simple root in $22$ and none in the eight
+vertical interval.  The other thirty are circle--circle overlaps.  Substitution of the isolated
+normal solutions from Lemma~\ref{lem:normal-roots} leaves one simple root in $22$ and none in the eight
 listed pairs.  The strict angle boxes lie inside their overlap intervals.
 
 At a diagonal-circle root, the limiting directions in scaled coordinates are
@@ -725,9 +855,16 @@ leading sign
  \operatorname{sgn}(\Delta n_j\Delta n_k)
  \operatorname{sgn}\bigl(G_i'(\theta)-G_{i'}'(\theta)\bigr).
 \]
-The rational derivative certificates therefore fix the degree-one ordering and prove
-transversality.  Proposition~\ref{prop:graph-sheets} excludes additional off-seam roots, while
-Proposition~\ref{prop:hyperbolic-normal-form} gives an embedded local resolution at each fold.
+The rational derivative bounds therefore fix the degree-one ordering and prove transversality.
+Choose mutually disjoint neighborhoods of the $50$ simple roots and of the twelve folds.  Every
+root neighborhood lies a positive distance from a fold because the diagonal points and the angle
+boxes are strict interior points of their overlap intervals.  On the complement of these
+neighborhoods in the compact main domain, Proposition~\ref{prop:graph-sheets} gives a positive
+minimum separation between every pair of output branches.  This separation persists under the
+$C^1$ small-$t$ deformation.  In a fold neighborhood,
+Proposition~\ref{prop:hyperbolic-normal-form} identifies the entire local main resolution with one
+embedded hyperbola.  The implicit-function theorem continues each of the $50$ simple roots
+uniquely.  These sets cover the compact main domain, so there are no additional roots there.
 
 For an overlap $(j,k,d)$ choose a common height $h$ and put
 \[
@@ -740,9 +877,9 @@ even, its endpoints differ by an ordinary torus deck transformation and $\kappa=
 odd, concatenate the path with its endpoint translate and divide the resulting integral by two;
 then $\kappa=1/2$.
 
-Concatenate this ordinary loop with its pillowcase-involuted image and close the remaining ends by
-mutually cancelling auxiliary arcs.  Stokes' theorem and the residue $-\pi^2$ at each lattice point
-give
+All paths lie in $P^\delta$, where $\lambda=\lambda_0$ by
+Lemma~\ref{lem:normalized-primitive}.  Apply Lemma~\ref{lem:area-residue}, using
+involution-paired closing arcs.  It gives
 \[
  \frac1{\pi^2}\int_p^q\lambda
  =\frac\kappa2\left(
@@ -760,11 +897,11 @@ $(a,w,\kappa)=(-116/21,-6,1/2)$, so the $4\to3$ action is $5\pi^2/42$.  The half
  (j,k,d)\longmapsto(21-k,21-j,d)
 \]
 and preserves the normalized action, ordering, and short deck class.  Each row therefore has
-multiplicity two.  Reading the last column proves the sign census and the minimum gap.
+multiplicity two.  Reading the last column proves the sign count and the minimum gap.
 \end{proof}
 
 \begin{corollary}[Small-perturbation persistence]\label{cor:persistence}
-There is $t_0>0$ such that, for every $0<t<t_0$, the curve $L_t$ has exactly the $50$ roots in
+There is $t_0>0$ such that, for every $0<t<t_0$, the compact main output $L_t^\delta$ has exactly the $50$ roots in
 Proposition~\ref{prop:action-table}, and all have the signs shown there.
 \end{corollary}
 
@@ -779,19 +916,19 @@ is $\pi^2/42$, every sign is constant after decreasing $t_0$.
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 Exactness is Proposition~\ref{prop:perturbed-exactness}, and the relative primitive is fixed by
 Proposition~\ref{prop:half-period}.  Proposition~\ref{prop:action-table} proves the complete root
-and limiting-action census.  Corollary~\ref{cor:persistence} proves persistence for small positive
+and limiting-action count.  Corollary~\ref{cor:persistence} proves persistence for small positive
 $t$.
 \end{proof}
 
 \section{Energy interpretation and scope}\label{sec:scope}
 
 The sign table has an elementary consequence for any exact holomorphic configuration that may be
-defined using $L_t$.  The statement does not assume that a compactified figure-eight operation
+defined using $L_t^\delta$.  The statement does not assume that a compactified figure-eight operation
 exists.
 
 \begin{lemma}[Root-action identity]\label{lem:energy-action}
 Let a finite tree of exact pseudoholomorphic or Morse components have no external inputs and one
-external root $x$ on $L_t$.  Suppose its seam and boundary lifts are fixed and every component has
+external root $x$ on $L_t^\delta$.  Suppose its seam and boundary lifts are fixed and every component has
 the usual Stokes energy identity.  Then
 \[
  E_{\mathrm{tot}}=\mathcal A_t(x).
@@ -821,19 +958,20 @@ would require compactification, transversality, gluing, local mod-two counts, an
 data that are not constructed here.
 \end{remark}
 
-\begin{remark}[Exact certificate]\label{rem:certificate}
-The command
+\begin{remark}[Reproducibility]\label{rem:reproducibility}
+In the arXiv source archive, the command
 \[
- \texttt{python3 pillowcase/q7\_exact\_actions.py}
+ \texttt{python3 anc/q7\_exact\_actions.py}
 \]
-reconstructs the path word, verifies the rational root enclosures and derivative signs, enumerates
-all $58$ overlaps, and prints the $25$-row area-residue table using exact rational arithmetic.
-The standard-library program is an independent reproducibility certificate for the finite
-calculations, not a numerical premise of the proof.
+reconstructs the singular first-arc data, verifies the rational root enclosures and derivative
+signs, enumerates all $58$ overlaps, and prints the $25$-row area--residue table using exact
+rational arithmetic.  The standard-library program reproduces the finite calculations; the proof
+does not depend on its execution.
 \end{remark}
 
-Theorem~\ref{thm:main} therefore supplies a complete finite action filtration for this composition.
-It leaves the holomorphic and categorical questions where they belong: outside the claimed result.
+Theorem~\ref{thm:main} therefore supplies the complete finite action filtration of the compact
+main output.  It does not extend that filtration to auxiliary components or the deleted end
+collars.  Holomorphic and categorical questions remain outside the claimed result.
 
 \raggedright
 \begin{thebibliography}{CHKK22}
@@ -866,8 +1004,8 @@ arXiv:2412.06066.
 
 \bibitem[Wue26]{WuebbenII}
 B.~J.~Wuebben,
-\emph{The instanton homology of the $(-2,3,q)$ pretzel knots and Maurer--Cartan deformations in
-the two-arc algebra of the pillowcase},
+\emph{The instanton homology of the $(-2,3,q)$ pretzel knots and computed bounding cochains in
+the pillowcase},
 arXiv:2607.26096.
 
 \end{thebibliography}
