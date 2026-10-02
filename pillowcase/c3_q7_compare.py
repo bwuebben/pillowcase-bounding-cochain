@@ -570,7 +570,7 @@ def analytic_switch_census(trace_result, base):
     """Census singleton surgeries at every crossing of the actual C3 trace."""
     pl_blue, pl_xinfo, pl_data, pl_precurve = base
     analytic_curve = q7.translate_to_kwz_chart(trace_result["curve"])
-    supports = orbit_group(analytic_curve)
+    supports = orbit_group(analytic_curve, tol=3e-3)
     if len(supports) != 50 or any(len(lifts) != 2 for _, lifts in supports):
         raise AssertionError("analytic switch census is not 50 two-lift orbits")
 

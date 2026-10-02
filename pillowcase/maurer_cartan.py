@@ -87,14 +87,18 @@ def self_polygon(blue, cross_list, maxspan=220):
     return total
 
 
-def orbit_group(blue):
-    """Blue self-crossings grouped into P-orbits: [(P_point, [preimage dicts])]."""
+def orbit_group(blue, tol=1e-7):
+    """Blue self-crossings grouped into P-orbits: [(P_point, [preimage dicts])].
+
+    The two torus preimages of a crossing of a piecewise-linear curve have the same
+    pillowcase image up to rounding, so the default tolerance is tight; numerically
+    traced curves are symmetric only to the accuracy of the trace and need a larger one."""
     scross = self_intersections_detailed(blue)
     orbs = []
     for s in scross:
         pp = list(P_point(s['pt']))
         for pr, lst in orbs:
-            if _tdist(pp, pr) < 1e-7:
+            if _tdist(pp, pr) < tol:
                 lst.append(s)
                 break
         else:
