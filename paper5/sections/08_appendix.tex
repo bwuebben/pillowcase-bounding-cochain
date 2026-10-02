@@ -1,0 +1,133 @@
+\section{Interval-arithmetic verifications}\label{app:interval}
+
+This appendix proves the three inequalities used in Section~\ref{sec:monotone}. Each is an inequality between
+explicit real-analytic functions of two variables on a compact domain, and each is reduced to finitely many
+evaluations in interval arithmetic~\cite{MooreInterval}: every elementary function is evaluated on a box by a routine
+that returns an interval containing all its values, with outward rounding, so that a strictly positive lower
+endpoint proves positivity on the box. We use the interval context of \texttt{mpmath}~\cite{mpmath} at a working precision
+of $30$ decimal digits, with $\pi$ enclosed in an interval.\footnote{The three computations are carried out by
+short Python scripts built on \texttt{mpmath}, which are available from the author on request. Each runs in under a
+minute on a laptop.} Where a function has a removable singularity we use the
+following enclosure of $\operatorname{sinc}y=\sin y/y$ on an interval $[y_0,y_1]\subset[0,\pi]$: $\operatorname{sinc}$ is decreasing there, so its range is
+$[\operatorname{sinc}y_1,\operatorname{sinc}y_0]$, and each endpoint is evaluated either directly or, for $y<10^{-6}$, by
+$1-y^2/6\le\operatorname{sinc}y\le1-y^2/6+y^4/120$.
+
+\subsection{The inequality for the non-central circles}
+
+\begin{lemma}\label{lem:ineqA}
+On the closed region $\Omega_+=\{0\le\delta\le\frac\pi2,\ \frac\pi4-\frac\delta2\le\psi\le\frac{3\pi}4-\frac\delta2\}$,
+\[
+F_0-0.851\,|F_1|\ \ge\ 1.648 .
+\]
+The same bound holds on $\Omega_-=\{-\frac\pi2\le\delta\le0,\ \frac\pi4-\frac\delta2\le\psi\le\frac{3\pi}4-\frac\delta2\}$.
+\end{lemma}
+
+\begin{proof}
+Parametrize $\Omega_+$ by $(t,\delta)\in[0,1]\times[0,\frac\pi2]$, $\psi=\frac\pi4-\frac\delta2+\frac\pi2t$; this map is a bijection onto $\Omega_+$.
+Subdivide $[0,1]\times[0,\frac\pi2]$ into $96\times96=9216$ boxes. On each box evaluate $F_0$ and $F_1$ in interval
+arithmetic, with $\psi$ and $\delta$ as interval inputs, and take the lower endpoint of $F_0$ minus $0.851$ times the
+larger endpoint of $|F_1|$. The smallest of these $9216$ numbers is $1.6482\ldots$, and none is negative. The
+statement for $\Omega_-$ follows from the invariance of $F_0$ and $F_1$ under $(\psi,\delta)\mapsto(\pi-\psi,-\delta)$, which maps
+$\Omega_-$ onto $\Omega_+$.
+
+As an independent check we also used Lipschitz bounds. With the same $(t,\delta)$ coordinates on either region one has
+$|\partial_tF_0|\le12\pi$, $|\partial_\delta F_0|\le8$, $|\partial_tF_1|\le6\pi$ and $|\partial_\delta F_1|\le10$, obtained by differentiating term by
+term. So $f=F_0-0.851|F_1|$ satisfies $|f(p)-f(q)|\le(12\pi+6\pi\cdot0.851)|\Delta t|+(8+10\cdot0.851)|\Delta\delta|$. Evaluating $f$ in
+interval arithmetic at the centres of a $240\times240$ grid on each of $\Omega_+$ and $\Omega_-$ and subtracting the Lipschitz
+slack gives $f\ge1.637$ on both regions.
+\end{proof}
+
+The constant $0.851$ is chosen just above $1/(2\sin(\pi/5))=0.850651\ldots$, the bound for $|\lambda|$ in the proof of
+Theorem~\ref{thm:noncentral}; a float evaluation on a fine grid shows that $F_0-c|F_1|>0$ on $\Omega_+$ for every $c<2$, so the
+margin is large.
+
+\subsection{The inequality for the central circle}
+
+For $n\equiv4$ let $D_4=\{(\xi,h):0\le h\le1,\ 0<\xi\le\pi/(2+h)\}$, and for $n\equiv5$ let
+$D_5=\{(\xi,h):0\le h\le\frac12,\ 0<\xi\le\pi/(2-h)\}$; the parameters of Section~\ref{subsec:central} lie in these domains.
+The functions $\mathcal E_4,\mathcal E_5$ are those of Lemma~\ref{lem:centralE}.
+
+\begin{lemma}\label{lem:ineqB}
+For $j=4,5$, the function $\mathcal E_j(\xi,h)/\xi^3$ is positive on $D_j$. More precisely, $\mathcal E_j$ is odd in $\xi$,
+\[
+\mathcal E_j=c_3\xi^3+c_5\xi^5+c_7\xi^7+O(\xi^9),
+\]
+with
+\begin{align*}
+n\equiv4:\quad& c_3=4(h+1)(h+2)(h+3),\quad c_5=-\tfrac25(h+1)(h+2)(h+3)(5h^2+8h+12),\\
+& c_7=\tfrac1{630}(h+1)(h+2)(h+3)(273h^4+960h^3+2080h^2+2160h+1520);\\
+n\equiv5:\quad& c_3=\tfrac43(2-h)(11-2h),\quad c_5=\tfrac2{15}(2-h)(18h^3-99h^2+152h-116),\\
+& c_7=\tfrac1{630}(h-2)(502h^5-3497h^4+9456h^3-14128h^2+11504h-4656),
+\end{align*}
+and one has $\mathcal E_4/\xi^3\ge22.06$, $\mathcal E_5/\xi^3\ge19.18$ for $\xi\le\frac14$, and $\mathcal E_4/\xi^3\ge0.798$, $\mathcal E_5/\xi^3\ge0.650$ for
+$\xi\ge\frac14$.
+\end{lemma}
+
+\begin{proof}
+\emph{The region $\xi\le\frac14$.} The Taylor coefficients are computed symbolically; the even ones vanish because
+$\mathcal E_j$ is odd. By Taylor's theorem $\mathcal E_j=c_3\xi^3+c_5\xi^5+c_7\xi^7+R$ with $|R|\le M_9\xi^9/9!$, where $M_9$ bounds
+$|\partial_\xi^9\mathcal E_j|$ on $[0,\frac14]\times[0,h_{\max}]$. To bound $M_9$, write $\mathcal E_j=S\,g+q$ with $S=\sin(\xi h)/h$ and $g$, $q$
+trigonometric polynomials in $\xi$ whose frequencies are linear in $h$. By the product-to-sum formulas,
+\begin{align*}
+n\equiv4:\quad g&=6+5\cos2\xi-3\cos(2+2h)\xi-2\cos(4+2h)\xi,\\
+q&=2\sin h\xi+\sin(2+h)\xi-\sin(2-h)\xi\\
+&\qquad-\tfrac12\bigl[\sin(4+3h)\xi+\sin(2+h)\xi+\sin(4+h)\xi+\sin(2+3h)\xi\bigr],\\
+n\equiv5:\quad g&=6-5\cos2\xi+3\cos(2-2h)\xi-2\cos(4-2h)\xi,\\
+q&=-2\sin h\xi+\sin(2+h)\xi-\sin(2-h)\xi\\
+&\qquad-\tfrac12\sin(4-h)\xi+\tfrac12\sin(2-3h)\xi-\tfrac12\sin(4-3h)\xi+\tfrac12\sin(2-h)\xi .
+\end{align*}
+Since $|S|\le\xi$ and $|\partial_\xi^jS|\le h^{j-1}$ for $j\ge1$, the Leibniz rule gives
+\[
+M_9\le\xi|g^{(9)}|+\sum_{j\ge1}\tbinom9j h^{j-1}|g^{(9-j)}|+|q^{(9)}|,
+\]
+and each derivative of a trigonometric polynomial
+$\sum a_i\cos\omega_i\xi$ is bounded by $\sum|a_i|\,|\omega_i|^k$. Bounding $h^{j-1}$ by $h_{\max}^{j-1}$ and each $|\omega_i|$ by its larger
+value at $h=0$ or $h=h_{\max}$ gives $M_9\le9.32\cdot10^7$ for $n\equiv4$ and $M_9\le2.43\cdot10^6$ for $n\equiv5$, hence
+$|R|/\xi^3\le0.063$, resp.\ $0.0017$, on $\xi\le\frac14$. Evaluating $c_3+c_5\xi^2+c_7\xi^4$ in interval arithmetic on
+$\xi\in[0,\frac14]$ and $64$ subintervals of $h$ gives the stated lower bounds.
+
+\emph{The region $\xi\ge\frac14$.} Cover the part of $D_j$ with $\xi\ge\frac14$ by $64\times64=4096$ boxes (for each of $64$
+subintervals of $h$, the interval of $\xi$ from $\frac14$ to the larger of the two endpoint values of $\pi/(2\pm h)$ is divided
+into $64$ parts). On each box evaluate $\mathcal E_j/\xi^3$ in interval arithmetic, writing $\sin(\xi h)/h=\xi\operatorname{sinc}(\xi h)$
+with the enclosure above; here $\xi h\le\pi/2$. All $4096$ lower endpoints are positive, with minimum $0.798$, resp.\
+$0.650$.
+\end{proof}
+
+As an independent check, the same inequality was verified with a different splitting point $\xi=0.2$ and
+adaptive subdivision of the boxes; this gives $\mathcal E_4/\xi^3\ge22.80$ and $\mathcal E_5/\xi^3\ge19.48$ near $\xi=0$, and positive lower
+bounds on all boxes.
+
+\subsection{The inequality for \texorpdfstring{$\gamma$}{gamma} on the central circle}
+
+Let $\mathcal N_4$ and $\mathcal N_5$ be the functions in the proof of Proposition~\ref{prop:gammaconf}, and put $p_4=3$, $p_5=4$.
+
+\begin{lemma}\label{lem:ineqC}
+For $j=4,5$, $\mathcal N_j(\xi,0)=0$ identically, and $\mathcal N_j/(h\,\xi^{p_j})$ extends to a positive real-analytic function on
+$D_j$, including $h=0$. Its value at $\xi=0$ is
+\[
+\tfrac43(h+1)(h+2)(3h+1)\quad(j=4),\qquad \tfrac23(2-h)(2h+1)\quad(j=5).
+\]
+\end{lemma}
+
+\begin{proof}
+\emph{The factor $h$.} With $\alpha=\xi h$, the sum-to-product formulas give the identities
+\begin{align*}
+\mathcal N_4&=2h\cos\xi\cdot\mathrm{Br}_4,\qquad \mathrm{Br}_4=(2+h)\,\xi\operatorname{sinc}\alpha-\sin(2\xi+\alpha)+2(1+h)\,h\,\xi^2\operatorname{sinc}^2\alpha\,\sin(2\xi+\alpha),\\
+\mathcal N_5&=h\sin\xi\cdot\mathrm{Br}_5,\qquad\ \ \mathrm{Br}_5=(2-h)\,\xi\operatorname{sinc}\alpha-\sin(2\xi-\alpha)+2h\,\xi^2\operatorname{sinc}^2\alpha\,\sin(2\xi-\alpha).
+\end{align*}
+For instance, for $j=4$: $\sin(\xi+\alpha)+\sin(3\xi+\alpha)=2\sin(2\xi+\alpha)\cos\xi$ and
+$2\sin(\xi+\alpha)\cos\xi=\sin(2\xi+\alpha)+\sin\alpha$, so $\mathcal N_4/(4\cos\xi)=\sin(2\xi+\alpha)\bigl[-\frac h2+(1+h)\sin^2\alpha\bigr]+\frac{2+h}2\sin\alpha$,
+and $\sin\alpha=h\,\xi\operatorname{sinc}\alpha$. On $D_4$ we have $\xi<\pi/2$, so $\cos\xi>0$, and on $D_5$ we have $\xi<\pi$, so $\sin\xi>0$.
+Hence $\mathcal N_j/(h\xi^{p_j})>0$ on $D_j$ if and only if $\mathrm{Br}_j/\xi^{p_j}>0$ there.
+
+\emph{The region $\xi\le0.3$.} The Taylor coefficients of $\mathcal N_j/h$ in $\xi$ are polynomials in $h$ with rational
+coefficients, computed symbolically; those below $\xi^{p_j}$ vanish, and the leading one is the stated value. Keep
+the terms of degree $p_j,\dots,p_j+5$. For the remainder, write $\mathcal N_j/h=\int_0^1\partial_h\mathcal N_j(\xi,th)\,dt$, so that
+$\partial_\xi^K(\mathcal N_j/h)$ lies in the convex hull of the values of $\partial_\xi^K\partial_h\mathcal N_j$ on $[0,0.3]\times[0,h]$; this hull is
+enclosed in interval arithmetic for $K=p_j+6$. On $64$ subintervals of $h$ this gives $\mathcal N_4/(h\xi^3)\ge2.48$ and
+$\mathcal N_5/(h\xi^4)\ge1.28$ for $\xi\le0.3$.
+
+\emph{The region $\xi\ge0.3$.} Evaluate $\mathrm{Br}_j/\xi^{p_j}$ in interval arithmetic on boxes covering the part of $D_j$
+with $\xi\ge0.3$, starting from a $64\times64$ grid and bisecting any box whose lower endpoint is not positive. The
+procedure terminates with $4100$, resp.\ $4124$, boxes, all with positive lower endpoints.
+\end{proof}

@@ -1,0 +1,462 @@
+\section{The pillowcase complex}\label{sec:complex}
+
+We now assemble the results of Sections~\ref{sec:variety}--\ref{sec:perturb} into a description of the
+complex $C(L_0,L_1)$ and prove Theorems~\ref{thm:main} and~\ref{thm:scomplex}. Throughout, $n\ge4$ is coprime
+to $3$, the decomposition is the one fixed in Section~\ref{sec:variety}, $\pi$ denotes the holonomy perturbation
+with sufficiently small parameters $(\epsilon_A,\epsilon_B)$ in the cone $\mathcal C_a$ of Definition~\ref{def:cone}, for a fixed
+$a>0$ (we write $\pi$ only as a subscript, in $R_\pi(Y,T)$ and $\Hnat(Y,T,\pi)$), and the earring parameter $\epsilon>0$ is
+chosen sufficiently small after the perturbation has been fixed. All statements about intersection points with $L_0$ hold
+for every sufficiently small $\epsilon$.
+
+\subsection{The curves and their lifts}\label{ss:curves}
+For $n\equiv4,5\pmod 6$ let $c_+$ and $c_-$ be the two points of $C_0\cap B$, labelled so that $\Pi(c_+)$ and
+$\Pi(c_-)$ are the points of the image of $B$ with $\gamma=\gamma_*$ and $\gamma=\pi-\gamma_*$
+(Proposition~\ref{prop:central}). They cut $B$ into three arcs: $B_0$, joining the endpoint of $B$ that maps
+to the corner $(0,0)$ to $c_+$; $B_1$, joining $c_+$ to $c_-$; and $B_2$, joining $c_-$ to the endpoint that maps to
+$(\pi,0)$. Each half of the central circle joins $c_+$ to $c_-$, and we orient both halves from $c_+$ to $c_-$. We
+use the following facts.
+\begin{enumerate}
+\item[(F1)] The image of $B$ is a straight segment from $(0,0)$ to $(\pi,0)$ in $P$, and along the lift of $B$
+starting at $(0,0)$ into $\{\gamma>0\}$ one has $\varphi=\gamma,\ 3\gamma,\ -3\gamma,\ -\gamma$ for
+$n\equiv1,2,4,5\pmod6$ (Proposition~\ref{prop:Bimage}).
+\item[(F2)] Along each half of $C_0$, $\varphi$ is strictly monotone with $d\varphi\neq0$ at interior points; on
+the lift starting at the lift of $c_+$, it changes by $\pi+6\gamma_*$ ($n\equiv4$) or $3\pi+2\gamma_*$ ($n\equiv5$); and
+$\gamma_*<\gamma<\pi-\gamma_*$ at interior points (Theorem~\ref{thm:central} and
+Propositions~\ref{prop:deltaphi},~\ref{prop:gammaconf}). Here $0<\gamma_*\le\pi/6$.
+\item[(F3)] Along each non-central circle $\varphi$ is strictly monotone with $d\varphi\neq0$ and changes by $\pm4\pi$
+over one period, and the circle misses the left and right edges (Theorem~\ref{thm:noncentral}).
+\item[(F4)] For sufficiently small $(\epsilon_A,\epsilon_B)\in\mathcal C_a$ (Section~\ref{sec:perturb}): $R_\pi(Y,T)$ consists of circles $C_l'$,
+$C^1$-close to the non-central circles, and of the curves obtained from $B\cup C_0$ by resolving the two
+double points $c_+,c_-$; away from $c_+,c_-$ and the abelian endpoints, the perturbed curves are $C^1$-close to
+$W$ (Proposition~\ref{prop:global}). Near $c_+$ and $c_-$ the image of the resolved curve is an immersed
+rounded corner on which $\varphi$ has at most one critical point; it has one exactly when the two joined
+half-branches move $\varphi$ in the same sense away from $c_+$ or $c_-$ (Proposition~\ref{lem:resolved}).
+Near the corners $(0,0)$ and $(\pi,0)$, the arc is described by the corner chart lemma
+(Lemma~\ref{cor:corners}): its limiting slope differs from that of $B$ by $O(|\epsilon_A|+|\epsilon_B|)$, it leaves $(0,0)$ on the same
+side of $\Delta_0$ as $B$, and $|d\varphi|$ is bounded below in arclength near the corner.
+\end{enumerate}
+
+At each of $c_+$, $c_-$ the perturbation selects one of the two resolutions of a transverse double point.
+The four possible combinations produce two combinatorial types. At $c_+$ the arc $B_0$ is joined to one half
+of $C_0$ and $B_1$ to the other; at $c_-$ the same holds for $B_2$ and $B_1$. If $B_0$ and $B_2$ are joined to the
+same half, the other half closes up with $B_1$; otherwise the arc component runs through $B_1$. Write $H$ for
+the half joined to $B_0$ and $H'$ for the other. In the \emph{joined} resolution $R_\pi(Y,T)$ contains a single arc built
+from all of $B\cup C_0$; in the \emph{split} resolution it contains an arc and a further circle, the
+\emph{remnant circle}, which contains $B_1$. Explicitly, up to the $C^1$-small changes of~(F4),
+\[
+\begin{array}{lll}
+n\equiv4,\ \text{split:} & A_0=B_0\cdot H\cdot B_2, & \text{remnant circle } B_1\cdot H'^{-1};\\
+n\equiv4,\ \text{joined:} & A_0=B_0\cdot H\cdot B_1^{-1}\cdot H'\cdot B_2;&\\
+n\equiv5,\ \text{split:} & A_0=B_0\cdot H\cdot B_2, & \text{remnant circle } B_1^{-1}\cdot H';\\
+n\equiv5,\ \text{joined:} & A_0=B_0\cdot H\cdot B_1^{-1}\cdot H'\cdot B_2.&
+\end{array}
+\]
+For $n\equiv1,2\pmod 6$ the variety $W$ is smooth, $B$ meets no circle, and the arc is $A_0=B$. In all
+cases let $A$ be the arc component of $L_1$, and let $\tilde A$ be the lift of $A$ to $\R^2$ that starts at the
+lattice point $(0,0)$ and enters $\{\gamma>0\}$; its interior lies in $\R^2\setminus(\pi\Z)^2$. Let $\tilde A_0$ be
+the corresponding concatenation of lifts of the unperturbed pieces.
+
+\begin{lemma}\label{lem:arcdesc}
+In each case of Table~\ref{tab:arcpieces}, $\tilde A$ joins $(0,0)$ to $(\pi,2\pi j)$ with the stated $j$, its
+interior lies in the open strip $0<\gamma<\pi$, it is embedded, and $\varphi$ along $\tilde A$ is piecewise
+monotone, taking the stated values at the ends of the pieces of $\tilde A_0$ up to $O(|\epsilon_A|+|\epsilon_B|)$. Near each
+junction at which the arrows in Table~\ref{tab:arcpieces} change direction, $\varphi$ has exactly one critical
+point on $\tilde A$; it has no other critical points. $\tilde A$ crosses exactly the lines
+$\Delta_k$ listed, each once and transversally, and meets no other line $\Delta_k$ except $\Delta_0$ at its initial
+point.
+\end{lemma}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{lllp{5.6cm}cl}
+\toprule
+$n\bmod6$ & resol. & $A_0$ & $\varphi$ along $\tilde A_0$ & $j$ & lines crossed\\
+\midrule
+$1$ & & $B$ & $0\nearrow\pi$ & $1$ & none\\
+$2$ & & $B$ & $0\nearrow3\pi$ & $2$ & $\Delta_1$\\
+$4$ & split & $B_0HB_2$ & $0\searrow-3\gamma_*\nearrow\pi+3\gamma_*\searrow\pi$ & $1$ & $\Delta_0$\\
+$4$ & joined & $B_0HB_1^{-1}H'B_2$ & $0\searrow-3\gamma_*\nearrow\pi+3\gamma_*\nearrow4\pi-3\gamma_*\nearrow5\pi+3\gamma_*\searrow5\pi$ & $3$ &
+$\Delta_0,\Delta_1,\Delta_2$\\
+$5$ & split & $B_0HB_2$ & $0\searrow-\gamma_*\nearrow3\pi+\gamma_*\searrow3\pi$ & $2$ & $\Delta_0,\Delta_1$\\
+$5$ & joined & $B_0HB_1^{-1}H'B_2$ & $0\searrow-\gamma_*\nearrow3\pi+\gamma_*\nearrow4\pi-\gamma_*\nearrow7\pi+\gamma_*\searrow7\pi$ & $4$ &
+$\Delta_0,\dots,\Delta_3$\\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The arc $A$ in the limit $(\epsilon_A,\epsilon_B)\to0$. The arrows describe $\varphi$ along consecutive pieces; the values
+are those of $\varphi$ at the ends of the pieces.}
+\label{tab:arcpieces}
+\end{table}
+
+\begin{proof}
+For $n\equiv1,2$, (F1) and~(F4) give the first two rows: $\varphi=\gamma$ or $3\gamma$ along a segment from $(0,0)$ to
+$(\pi,2\pi)$ or $(\pi,4\pi)$. Let $n\equiv4$. By (F1) the lift of $B_0$ runs from $(0,0)$ to $(\gamma_*,-2\gamma_*)$
+with $\varphi=-3\gamma$. By (F2) the lift of $H$ from there changes $\gamma$ by $\pi-2\gamma_*$ and $\varphi$ by $\pi+6\gamma_*$,
+hence $\theta$ by $2\pi+4\gamma_*$, and ends at $(\pi-\gamma_*,2\pi+2\gamma_*)$. In the split case $B_2$ continues
+along a line of slope $-2$ to $(\pi,2\pi)$, so $\varphi$ decreases from $\pi+3\gamma_*$ to $\pi$. In the joined case
+$B_1^{-1}$ runs along the line $\theta=-2\gamma+4\pi$ back to $(\gamma_*,4\pi-2\gamma_*)$, where $\varphi=4\pi-3\gamma_*$;
+then $H'$ ends at $(\pi-\gamma_*,6\pi+2\gamma_*)$ and $B_2$ at $(\pi,6\pi)$. The case $n\equiv5$ is the same with
+$\varphi=-\gamma$ on $B$ and the increment $3\pi+2\gamma_*$ on each half; for example in the joined case the
+junctions lie at $(\gamma_*,0)$, $(\pi-\gamma_*,4\pi)$, $(\gamma_*,4\pi)$, $(\pi-\gamma_*,8\pi)$ and the end at $(\pi,8\pi)$.
+
+Since $0<\gamma_*\le\pi/6$, no value of $\varphi$ at a junction lies in $2\pi\Z$. On each piece $\varphi$ is strictly
+monotone (by (F1) on the pieces of $B$, which are straight with slope $\neq1$, and by (F2)), so it crosses each
+line $\Delta_k$ with $2\pi k$ in the open range of the piece exactly once, transversally; reading off the ranges
+gives the last column. The ends: $\varphi(\pi,2\pi j)=(2j-1)\pi\notin2\pi\Z$, and $\Delta_0$ passes through $(0,0)$.
+
+Embeddedness of $\tilde A_0$ away from the junctions follows from the ranges of $\gamma$ and $\varphi$ on the
+pieces. On $B_0$, $\gamma\le\gamma_*$; on $B_2$, $\gamma\ge\pi-\gamma_*$; on the halves, $\gamma_*<\gamma<\pi-\gamma_*$ in the interior
+by~(F2); on $B_1$, $\gamma_*\le\gamma\le\pi-\gamma_*$. Two pieces in the same $\gamma$-range have disjoint $\varphi$-ranges except
+at a common junction, as the values in Table~\ref{tab:arcpieces} show; for instance in the joined case for $n\equiv4$ the
+ranges on $H$, $B_1^{-1}$ and $H'$ are $[-3\gamma_*,\pi+3\gamma_*]$, $[\pi+3\gamma_*,4\pi-3\gamma_*]$ and
+$[4\pi-3\gamma_*,5\pi+3\gamma_*]$, and $\varphi$ is strictly monotone on each. Hence $\tilde A_0$ is injective. By (F4), $\tilde A$ is
+$C^1$-close to $\tilde A_0$ away from the junctions and the ends, embedded near each junction, and embedded with
+$|d\varphi|$ bounded below near the ends. By compactness $\tilde A$ is embedded for small $(\epsilon_A,\epsilon_B)$, and the
+statements about crossings and monotonicity carry over. At a junction where the two pieces move $\varphi$ in
+the same sense away from the junction point, which is where the arrows change direction, (F4) gives exactly
+one critical point; at the other junctions, and in the interiors of the pieces, there is none.
+\end{proof}
+
+For the split resolution, the remnant circle has the same properties as a non-central circle.
+
+\begin{lemma}\label{lem:remnant}
+The remnant circle misses the left and right edges, $\varphi$ is strictly monotone along it with $d\varphi\neq0$, and
+$\varphi$ changes by $\mp4\pi$ over one period ($-$ for $n\equiv4$, $+$ for $n\equiv5$). Its vertical degree is $2$.
+\end{lemma}
+
+\begin{proof}
+For $n\equiv4$ the circle is $B_1\cdot H'^{-1}$. Along $B_1$, $\varphi=-3\gamma+\mathrm{const}$ decreases by $3(\pi-2\gamma_*)$, and
+along $H'^{-1}$ it decreases by $\pi+6\gamma_*$, by (F2); the total is $-4\pi$. At both junctions the two pieces move
+$\varphi$ in opposite senses away from the junction point, so (F4) gives no critical point there. The values of
+$\gamma$ lie in $[\gamma_*,\pi-\gamma_*]$ up to $O(|\epsilon_A|+|\epsilon_B|)$, and $\gamma$ returns to its initial value, so $\theta$ changes by
+$-4\pi$. For $n\equiv5$ the circle is $B_1^{-1}\cdot H'$, and $\varphi$ increases by $(\pi-2\gamma_*)+(3\pi+2\gamma_*)=4\pi$.
+\end{proof}
+
+\subsection{Generators}\label{ss:generators}
+
+\begin{proposition}\label{prop:generators}
+The curves $L_0$ and $L_1$ meet transversally. The arc carries $1+2c_A$ generators, where $c_A$ is the
+number of lines $\Delta_k$ in the last column of Table~\ref{tab:arcpieces}: the generator $r_+$ and a pair
+$x_i^\pm$ over each crossing. Every non-central circle and the remnant circle carries four generators. In total
+there are $1+|\sigma(K)|$ generators.
+\end{proposition}
+
+\begin{proof}
+The strands $S^k_\pm$ lie within $\sqrt2\,\epsilon$ of $\Delta_k$ and are $C^1$-close to it (their slopes are
+$(1\mp\epsilon\cos t)/(1\pm\epsilon\cos t)$). By Lemma~\ref{lem:arcdesc}, outside small neighbourhoods of its crossings
+with the lines $\Delta_k$ and of $(0,0)$, the curve $\tilde A$ stays a positive distance from $\bigcup_k\Delta_k$, so for
+small $\epsilon$ it meets no strand there. Near a transverse crossing with $\Delta_k$, $\tilde A$ is a graph over
+$\varphi$ with slope bounded away from $1$, so it meets each of $S^k_+$ and $S^k_-$ exactly once and
+transversally; these are $x^+$ and $x^-$. Near $(0,0)$, $L_0$ and the arc meet exactly once, at $r_+$, by
+\cite[Lemma~5.1]{HHK2} and the corner chart lemma, which bounds the limiting slope away from $1$ and $|d\varphi|$
+from below. The endpoint $(\pi,2\pi j)$ lies on $\{\varphi=(2j-1)\pi\}$, at distance about $\pi/\sqrt2$ from every
+$\Delta_k$. The same argument applies to a circle: by (F3) and Lemma~\ref{lem:remnant}, $\varphi$ advances
+monotonically by $4\pi$ over one period, so the circle crosses $\bigcup_k\Delta_k$ in exactly two points of $P$,
+transversally, giving four generators.
+
+For the total, write $n=6k+r$. There are $2\lfloor\nu/2\rfloor=2k$ non-central circles
+(Proposition~\ref{prop:classify}). By Table~\ref{tab:arcpieces} the arc carries $1$, $3$, $3$ or $7$, $5$ or $9$
+generators for $r=1,2,4,5$ (split or joined), and the remnant circle adds $4$ in the split cases. In every case
+the total is $8k+1$, $8k+3$, $8k+7$, $8k+9$. On the other hand $|\sigma(T(3,n))|=2(n-1)-4\lfloor n/6\rfloor$ by
+Litherland's formula~\cite{Litherland} (in the form~\cite[Lemma~2.3]{W26}), which is $8k$, $8k+2$, $8k+6$, $8k+8$.
+\end{proof}
+
+\subsection{Bigons}\label{ss:bigons}
+
+\begin{lemma}\label{lem:bigonlift}
+Let $u$ be a bigon from $p$ to $q$. Its boundary lifts to a closed curve in $\R^2\setminus(\pi\Z)^2$ consisting of
+a sub-path $\tilde\beta$ of one lift of a component of $L_1$, from a lift $\tilde q$ of $q$ to a lift $\tilde p$ of $p$, and
+a sub-arc of one strand $S^k_\sigma$ from $\tilde p$ to $\tilde q$. If $\varphi$ is strictly monotone along $\tilde\beta$, then no
+such bigon exists. In particular a component of $L_1$ along which $\varphi$ is strictly monotone carries no
+bigon.
+\end{lemma}
+
+\begin{proof}
+The first statement holds because $u$ is a map of a disc into $\Pst$ and $\R^2\setminus(\pi\Z)^2\to\Pst$ is a covering;
+the $L_0$-side of the boundary is a path in the circle $L_0$, whose lift lies in one component of the preimage of
+$L_0$, a strand. Both $\tilde p$ and $\tilde q$ lie on $S^k_\sigma$, so $|\varphi(\tilde p)-2\pi k|$ and $|\varphi(\tilde q)-2\pi k|$ are at most
+$2\epsilon$. If $\varphi$ is strictly monotone along $\tilde\beta$, then $\tilde\beta$ lies in the band $\{|\varphi-2\pi k|\le2\epsilon\}$. For
+small $\epsilon$ the intersection of a lift of a component of $L_1$ with this band consists of short arcs, one
+around each transverse crossing with $\Delta_k$ (and, for the arc and $k=0$, one at the corner $(0,0)$), on each
+of which $|d\varphi|$ is bounded below in arclength: at the crossings because $d\varphi\neq0$ there by
+Lemmas~\ref{lem:arcdesc} and~\ref{lem:remnant} and (F3), and at the corner by the corner chart lemma. Such a
+short arc meets $S^k_\sigma$ only once, as in the proof of Proposition~\ref{prop:generators}. Hence $\tilde p=\tilde q$,
+and the closed boundary curve would be the strand arc from $\tilde p$ to itself, which is constant: a
+contradiction.
+\end{proof}
+
+For $n\equiv4,5\pmod 6$ let $x_1^\pm$ be the two generators over the crossing of $\tilde A$ with $\Delta_0$.
+
+\begin{proposition}\label{prop:bigons}
+For $n\equiv1,2\pmod6$ the complex has no bigons. For $n\equiv4,5\pmod6$ it has exactly one bigon, from $x_1^-$
+to $r_+$. In particular $\partial x_1^-=r_+$ and the differential vanishes on all other generators.
+\end{proposition}
+
+\begin{proof}
+There are no bigons between generators on different components~\cite[p.~37]{HHK2}, and none on a circle,
+by Lemma~\ref{lem:bigonlift}, (F3) and Lemma~\ref{lem:remnant}. For $n\equiv1,2$, $\varphi$ is strictly monotone along
+$\tilde A$, so the arc carries none either.
+
+Let $n\equiv4,5$. Since the arc is an interval, the $L_1$-side of a bigon between two of its generators is the
+sub-path of $\tilde A$ between their lifts. By Lemma~\ref{lem:bigonlift} it contains a critical point of $\varphi$,
+and by Lemma~\ref{lem:arcdesc} there are exactly two: one near the end of $B_0$, where $\varphi$ attains the
+minimum value $\varphi_-=-3\gamma_*$ or $-\gamma_*$, and one near the start of $B_2$, where it attains the maximum
+value $\varphi_+\in\{\pi+3\gamma_*,5\pi+3\gamma_*,3\pi+\gamma_*,7\pi+\gamma_*\}$. After the second critical point $\varphi$ decreases
+from $\varphi_+$ to $\varphi_+-3\gamma_*$ or $\varphi_+-\gamma_*$, an interval at distance at least $\pi/2$ from $2\pi\Z$, so no generator
+lies there; hence the sub-path contains only the first critical point, and one of its ends lies on the
+initial segment before it. On that segment $\varphi_-\le\varphi\le0$ up to $O(|\epsilon_A|+|\epsilon_B|)$, so both ends lie on strands near
+$\Delta_0$, and the only generator on the initial segment is $r_+$, which lies near the corner. The other end is a generator near $\Delta_0$ after the
+minimum, that is $x_1^+$ or $x_1^-$. By the corner chart lemma the arc leaves $(0,0)$ below $\Delta_0$, as $B$ does;
+the strand $S^0_-$ passes $(0,0)$ through $(\epsilon,-\epsilon)$ and $S^0_+$ through $(-\epsilon,\epsilon)$, so the first
+intersection $r_+$ of $\tilde A$ with a strand lies on $S^0_-$. Since $x_1^-\in S^0_-$ and $x_1^+\in S^0_+$, the only
+possible bigons join $r_+$ and $x_1^-$.
+
+\emph{Existence.} The strand $S^0_-$ is the graph of a function $\theta=g(\gamma)$, since $\gamma(t)=t+\frac\pi2-\epsilon\sin t$ is
+strictly increasing. Its intersections with $\tilde A$ are lifts of generators on $L_0$ near $\Delta_0$, so
+$\tilde A\cap S^0_-=\{\tilde r_+,\tilde x_1^-\}$. The lattice point $(0,0)$ lies above $S^0_-$, and $\tilde A$ crosses $S^0_-$ at
+$\tilde r_+$; hence the sub-path $\tilde\beta$ of $\tilde A$ from $\tilde r_+$ to $\tilde x_1^-$ lies below $S^0_-$ except at its ends. Let
+$\Lambda$ be the simple closed curve formed by $\tilde\beta$ and the arc $\lambda$ of $S^0_-$ from $\tilde x_1^-$ back to $\tilde r_+$.
+Both lie in the open strip $0<\gamma<\pi$: $\tilde\beta$ by Lemma~\ref{lem:arcdesc}, and $\lambda$ because $\gamma$ is monotone
+along it between $\gamma(\tilde r_+)>0$ and $\gamma(\tilde x_1^-)<\pi$. The two closed half-planes complementary to the
+strip are connected, unbounded and disjoint from $\Lambda$, so the bounded component $D$ of $\R^2\setminus\Lambda$ lies in
+the strip and contains no lattice point. Its corners are convex. At $\tilde x_1^-$ the continuation of $\tilde A$
+beyond $\tilde x_1^-$ does not enter $D$, since it would have to leave $D$ again across $\Lambda$, whereas $\tilde A$ is
+embedded, meets $\lambda$ only at its ends, and ends at the lattice point $(\pi,2\pi j)\notin\overline D$. At $\tilde r_+$ the
+initial piece of $\tilde A$ runs to the lattice point $(0,0)\notin\overline D$, and the continuation of $S^0_-$ reaches
+$\{\gamma<0\}$, both without meeting $\Lambda$ again, so neither enters $D$. At each corner the two branches of $\Lambda$
+are adjacent among the four rays cut out by two transverse curves, and $D$ does not contain the other two;
+so $D$ occupies a single quarter, and the corner is convex. Near $\lambda$ the domain $D$ lies below $S^0_-$, so its
+counterclockwise boundary traverses $\lambda$ in the direction of decreasing $\gamma$, from $\tilde x_1^-$ to $\tilde r_+$, and then
+$\tilde\beta$ from $\tilde r_+$ to $\tilde x_1^-$. The projection of $D$ to $\Pst$ is therefore a bigon from $x_1^-$ to $r_+$.
+
+\emph{Uniqueness.} The $L_1$-side of a bigon between $r_+$ and $x_1^-$ lifts to $\tilde\beta$, and its $L_0$-side to an
+arc of $S^0_-$ that closes up with $\tilde\beta$; since $S^0_-$ is an embedded line, this arc is $\lambda$. A bigon from
+$r_+$ to $x_1^-$ would have counterclockwise boundary running along $\lambda$ from $\tilde r_+$ to $\tilde x_1^-$, so its
+boundary would wind $-1$ times around the points of $D$, which is impossible for an orientation-preserving
+immersion. By~\cite[Cor.~3.13]{HHK2} there is at most one bigon from $x_1^-$ to $r_+$.
+\end{proof}
+
+\subsection{Restrictedness and admissibility}\label{ss:unobstructed}
+
+\begin{lemma}\label{lem:unobstructed}
+$L_1$ is a restricted immersed $1$-manifold, and $(L_0,L_1)$ is an admissible pair.
+\end{lemma}
+
+\begin{proof}
+By Section~\ref{sec:perturb} the arc is a proper immersion of an interval with limiting slopes $\neq1$ at both
+ends. A fishtail on the arc would be a sub-path whose two ends map to the same point of $P$ and which is
+nullhomotopic in $\Pst$; its lift would be a sub-path of $\tilde A$ with equal endpoints, contradicting
+Lemma~\ref{lem:arcdesc}. So the arc is a restricted immersed arc. For a circle component (non-central or
+remnant), a nullhomotopic loop lifts to a closed sub-path of a lift, along which $\varphi$ would return to its
+initial value; by (F3) and Lemma~\ref{lem:remnant} this is impossible, so there is no fishtail. The circle is
+essential, since its vertical degree is $2$. The tangent line never equals $\ell_1$, because $d\varphi\neq0$, so
+$\mu(L_1,\ell_1)=0$; and a curve winding twice around the open strip has $z=\pm4\equiv0$. Hence each circle is a
+restricted immersed circle (Definition~\ref{def:restricted}).
+
+For admissibility (Definition~\ref{def:admissible}), $L_0$ is a circle and the intersections are transverse
+by Proposition~\ref{prop:generators}. Loops in the domain of the arc are nullhomotopic. In $H_1(\Pst;\Z)$, let
+$e_c$ be the class of a small counterclockwise loop around the corner $c$; these classes generate, subject only
+to $\sum_ce_c=0$. Since $L_0$ lies in a small neighbourhood of $\Delta$, a disc containing only the corners $(0,0)$
+and $(\pi,\pi)$, every loop on $L_0$ has class in the span of $e_{(0,0)}$ and $e_{(\pi,\pi)}$. A circle of $L_1$ with vertical
+degree $2$ missing the edges is homotopic in the open strip to twice the core of that annulus, whose class is
+$\pm(e_{(0,0)}+e_{(0,\pi)})$; a loop traversing it $j$ times has class $\pm2j(e_{(0,0)}+e_{(0,\pi)})$. If this lay in the span of
+$e_{(0,0)}$ and $e_{(\pi,\pi)}$ modulo $\sum_ce_c$, comparing the coefficients of $e_{(\pi,0)}$ and $e_{(0,\pi)}$ would give
+$j=0$. Hence a loop on $L_0$ is freely homotopic to a loop on $L_1$ only if the latter is nullhomotopic, and then
+so is the former, since $L_0$ is essential and $\pi_1(\Pst)$ is free.
+\end{proof}
+
+\subsection{Gradings}\label{ss:gradings}
+The grading is determined by two observations.
+
+\begin{lemma}\label{lem:muzero}
+Let $\alpha$ be a path in $L_1$ along which $\varphi$ is strictly monotone with $d\varphi\neq0$. Then
+$\mu(\alpha,\ell_1)=0$.
+\end{lemma}
+
+\begin{proof}
+A tangent vector $(\dot\gamma,\dot\theta)$ with $\dot\theta-\dot\gamma=d\varphi(\dot\gamma,\dot\theta)\neq0$ is not parallel to $(1,1)$, so the
+tangent line never meets $\ell_1$, and $\mu$ counts no passages.
+\end{proof}
+
+By Lemmas~\ref{lem:arcdesc} and~\ref{lem:remnant} and (F3), the hypothesis holds on every sub-path of $L_1$
+that contains no critical point of $\varphi$. In particular it holds across the junctions of
+Table~\ref{tab:arcpieces} at which $\varphi$ is monotone, where by (F4) the velocity is a positive combination of
+two directions along which $\varphi$ changes in the same sense.
+
+\begin{lemma}\label{lem:zstep}
+Let $p,q$ be generators lying on strands of the same sign $\sigma\in\{+,-\}$, with lifts $\tilde p\in S^k_\sigma$ and
+$\tilde q\in S^{k\pm1}_\sigma$ joined by a sub-path of a lift of a component of $L_1$ that lies in the open strip
+$0<\gamma<\pi$ and contains no critical point of $\varphi$. Then $\gr(p,q)=2$.
+\end{lemma}
+
+\begin{proof}
+We use~\eqref{eq:grading15}, with $\alpha_1$ the given sub-path from $q$ to $p$ and $\alpha_0$ the branch of $L_0$ of slope
+$<1$ (for $\sigma=+$) or $>1$ (for $\sigma=-$) on the front face, from $p$ to the point over $q$. Its lift from $\tilde p$ runs
+along $S^k_\sigma$ to the point $\tilde q\mp(0,2\pi)$, inside the open strip; this holds also when $p=r_+$, which lies at
+$\gamma\approx\frac23\epsilon>0$ on the side of $(0,0)$ away from which $S^0_+$ leaves the strip. Along $\alpha_0$ the slope of the
+strand stays on one side of $1$, so $\mu(\alpha_0,\ell_1)=0$; $\mu(\alpha_1,\ell_1)=0$ by Lemma~\ref{lem:muzero}; and the
+triple indices at $p$ and $q$ agree, since in both cases $T L_0$ is a line of slope just below (or just above) $1$
+and $T L_1$ a line of slope bounded away from $1$. Finally, the lift of $\alpha_0*\alpha_1$ runs in the open strip from
+$\tilde q$ to $\tilde q\mp(0,2\pi)$. The open strip modulo the translation by $(0,2\pi)$ is the annulus obtained from $P$ by
+removing the two edges, so $\alpha_0*\alpha_1$ is homotopic in $\Pst$ to $\pm$ the core of this annulus, which encircles
+two corners; thus $z(\alpha_0*\alpha_1)=\pm2\equiv2$. This is~\eqref{eq:grading16} with the right-hand side equal to $2$.
+\end{proof}
+
+\begin{proposition}\label{prop:arcgradings}
+Put $\deg=\gr-\sigma\pmod 4$. The generators on the arc have the following degrees:
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+case & degrees of $r_+$; $(x_i^-,x_i^+)$ & $HF$ of the arc, degrees $0,\dots,3$\\
+\midrule
+$1$ & $0$ & $(1,0,0,0)$\\
+$2$ & $0$; $(1,2)$ & $(1,1,1,0)$\\
+$4$, split & $0$; $(1,2)$ & $(0,0,1,0)$\\
+$4$, joined & $0$; $(1,2)$, $(3,0)$, $(1,2)$ & $(1,1,2,1)$\\
+$5$, split & $0$; $(1,2)$, $(3,0)$ & $(1,0,1,1)$\\
+$5$, joined & $0$; $(1,2)$, $(3,0)$, $(1,2)$, $(3,0)$ & $(2,1,2,2)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $x_i^\pm$ are the generators over the $i$-th crossing along $\tilde A$. Each circle component contributes
+rank $1$ in each degree, and the two generators $x^-$ on a circle have degrees differing by $2$.
+\end{proposition}
+
+\begin{proof}
+$\deg r_+=0$ by~\eqref{eq:grading19}, and $\gr x_i^+=\gr x_i^-+1$ by~\cite[\S5.1]{HHK2}. For $n\equiv2$, $\tilde A$ leaves
+$(0,0)$ above $\Delta_0$, so $r_+\in S^0_+$, and Lemma~\ref{lem:zstep} applied to $r_+$ and $x_1^+\in S^1_+$ gives
+$\deg x_1^+=-2\equiv2$. For $n\equiv4,5$ the bigon of Proposition~\ref{prop:bigons} gives $\deg x_1^-=1$ by
+\cite[Prop.~3.8]{HHK2}. The later crossings follow from Lemma~\ref{lem:zstep}, since by
+Lemma~\ref{lem:arcdesc} there is no critical point of $\varphi$ between consecutive crossings: each step changes
+the degree of $x^+$ by $2$. The homology of the arc is obtained from these degrees by removing $x_1^-$ and $r_+$
+in the cases $n\equiv4,5$. For a circle, Theorem~\ref{thm:hhk54} applies by Lemma~\ref{lem:unobstructed}, (F3) and
+Lemma~\ref{lem:remnant}: the vertical degree is $2$, so the homology, which equals the complex by
+Lemma~\ref{lem:bigonlift}, has rank $1$ in each degree. Lemma~\ref{lem:zstep}, applied to the two crossings of
+one period, shows that the two generators $x^-$ differ by $2$.
+\end{proof}
+
+\begin{theorem}\label{thm:arc}
+For $n\ge4$ coprime to $3$ and sufficiently small $(\epsilon_A,\epsilon_B)\in\mathcal C_a$, the arc $A$ of $L_1$ is a restricted immersed arc from $(0,0)$
+to $(\pi,0)$ whose lift $\tilde A$ ends at $(\pi,2\pi j)$, with $j$, the generators and their degrees as in
+Table~\ref{tab:arcpieces} and Proposition~\ref{prop:arcgradings}. The arc carries a bigon if and only if
+$n\equiv4,5\pmod6$, and then exactly one, from $x_1^-$ to $r_+$. The two resolutions of the double points
+$c_+,c_-$ give the same generators, the same bigon and the same total graded homology: the joined arc for
+$n\equiv4$ has homology $(1,1,2,1)=(0,0,1,0)+(1,1,1,1)$, the split arc plus the remnant circle, and the joined arc
+for $n\equiv5$ has homology $(2,1,2,2)=(1,0,1,1)+(1,1,1,1)$.
+\end{theorem}
+
+\begin{proof}
+This combines Lemmas~\ref{lem:arcdesc} and~\ref{lem:unobstructed} with Propositions~\ref{prop:generators},
+\ref{prop:bigons} and~\ref{prop:arcgradings}.
+\end{proof}
+
+\begin{remark}\label{rem:homotopycheck}
+By~\cite[Thm.~4.1]{HHK2} (Remark~\ref{rem:invariance}), the homology of the arc depends only on its homotopy class
+rel endpoints. Since $\tilde A$ lies in the open strip and joins $(0,0)$ to $(\pi,2\pi j)$, it is homotopic rel
+endpoints in $\R^2\setminus(\pi\Z)^2$ to the straight segment between these points, whose interior misses the
+lattice. Along that segment $\varphi=(2j-1)\gamma$ is monotone and crosses $\Delta_1,\dots,\Delta_{j-1}$, so by
+Proposition~\ref{prop:generators} and Lemma~\ref{lem:bigonlift} its complex has $2j-1$ generators and no
+differential, in agreement with~\cite[Thm.~7.1]{HHK2}. The values $2j-1=1,3,1,5,3,7$ for the six rows of
+Table~\ref{tab:arcpieces} agree with Proposition~\ref{prop:arcgradings}. We do not use this in the proofs.
+\end{remark}
+
+\begin{remark}\label{rem:numerics}
+We have computed the perturbed curves numerically for the twelve values $n=4$, $5$, $7$, $8$, $10$, $11$, $13$,
+$14$, $16$, $17$, $22$, $23$, with
+$(n\epsilon_A,\epsilon_B,\epsilon)=(0.3,0.05,0.01)$ and $(-0.3,0.03,0.02)$, and evaluated~\eqref{eq:grading15} directly for
+every pair of generators on a component. In all $24$ cases the generators, the bigon and the degrees agree
+with Theorem~\ref{thm:arc}, and
+for $n=4,5,7$ the complexes agree with those of~\cite[\S\S11.2,~11.6,~11.7]{HHK2}. For the first perturbation we
+also checked that the tangent of $L_1$ is parallel to $\ell_1$ only at the critical points of $\varphi$. An earlier
+computation of the generator counts, bigons and homology ranks for all $4\le n\le50$ coprime to $3$, at four
+perturbations each ($128$ cases), also agrees. In all these computations the resolution was split for $n\equiv4$ and
+joined for $n\equiv5$; the proofs do not need to know which resolution occurs.
+\end{remark}
+
+\subsection{Proofs of the main results}\label{ss:proofs}
+Write $n=6k+r$ with $r\in\{1,2,4,5\}$. By Proposition~\ref{prop:arcgradings}, the homology in degrees
+$0,1,2,3$ is the homology of the arc plus $(1,1,1,1)$ for each circle; the number of circles is $2k$, plus one
+remnant circle in the split cases. Table~\ref{tab:totals} compares the result with~\eqref{eq:gradedInat}, using
+$|\sigma|=8k,8k+2,8k+6,8k+8$ (Proposition~\ref{prop:generators}), $N_1=\lceil|\sigma|/4\rceil$, $N_3=\lfloor|\sigma|/4\rfloor$ and
+$R=\frac12(1+|\sigma|-\|\Delta_K\|_1)$. Here $\|\Delta_{T(3,n)}\|_1=(4n-\eta)/3$, which equals $8k+1$, $8k+3$, $8k+5$, $8k+7$, by
+Moree's formula $\|\Delta_{T(p,q)}\|_1=2ab-1$ for $ap+bq=pq+1$~\cite[Lemma~1, Cor.~1]{Moree}; thus $R=0,0,1,1$.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{lllll}
+\toprule
+$r$ & $\Hnat$ in degrees $0,1,2,3$ & $(N_1,N_3)$ & $R$ & \eqref{eq:gradedInat}\\
+\midrule
+$1$ & $(2k+1,\,2k,\,2k,\,2k)$ & $(2k,2k)$ & $0$ & $(2k+1,\,2k,\,2k,\,2k)$\\
+$2$ & $(2k+1,\,2k+1,\,2k+1,\,2k)$ & $(2k+1,2k)$ & $0$ & $(2k+1,\,2k+1,\,2k+1,\,2k)$\\
+$4$ & $(2k+1,\,2k+1,\,2k+2,\,2k+1)$ & $(2k+2,2k+1)$ & $1$ & $(2k+1,\,2k+1,\,2k+2,\,2k+1)$\\
+$5$ & $(2k+2,\,2k+1,\,2k+2,\,2k+2)$ & $(2k+2,2k+2)$ & $1$ & $(2k+2,\,2k+1,\,2k+2,\,2k+2)$\\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The graded pillowcase homology of $T(3,6k+r)$, in degrees $\gr-\sigma$, and the graded rank of
+$\Inat(T(3,6k+r);\Q)$ from~\eqref{eq:gradedInat}. For $r=4,5$ both resolutions give the same vector.}
+\label{tab:totals}
+\end{table}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Part (1) is Lemma~\ref{lem:unobstructed} and Proposition~\ref{prop:generators}, and part (2) is
+Proposition~\ref{prop:bigons}. For part (3), Table~\ref{tab:totals} shows that $\Hnat(Y,T,\pi)$ has rank
+$\|\Delta_K\|_1$ and that, with $\gr r_+=\sigma$, its rank in grading $g$ equals the rank of $\Inat(K;\Q)$ in degree
+$g-\sigma$ of~\eqref{eq:gradedInat}, that is, in Kronheimer and Mrowka's grading $g$. Each circle contributes rank
+$1$ in each grading, so this does not depend on how the absolute grading of the circle components is fixed.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:conj65}]
+By Lemma~\ref{lem:unobstructed}, $L_1$ is a restricted immersed $1$-manifold for every sufficiently small perturbation
+in the open cone $\mathcal C_a$ (Definition~\ref{def:cone}), and by Theorem~\ref{thm:main}(3) the $\F_2$-dimension of $\Hnat(Y,T,\pi)$ in each grading equals the
+$\Q$-dimension of $\Inat(K;\Q)$ in the same grading; this is the form in which~\cite[\S11]{HHK2} test
+Conjecture~\ref{conj:hhk65}. For $n\equiv1,2\pmod6$ the S-complex $\tC(K;\Z)$ has zero differential (see the proof of
+Theorem~\ref{thm:scomplex}), so its homology, which is $\Inat(K;\Z)$ up to a shift of
+grading~\cite[Thm.~8.9]{DSEquiv}, is free; by the universal coefficient theorem $\Inat(K;\F_2)$ then has the
+same graded ranks, and $\Hnat(Y,T,\pi)\cong\Inat(K;\F_2)$ as graded vector spaces.
+\end{proof}
+
+For the S-structure we fix the absolute grading of the circle components.
+
+\begin{definition}\label{def:circlenorm}
+We grade each circle component of $L_1$ so that its two generators $x^-$ have odd degree.
+\end{definition}
+
+By Proposition~\ref{prop:arcgradings} this is possible and determines the grading of the component. It agrees
+with the convention of~\cite[\S6.1]{HHK2}, which gives one generator on each circle the grading of the
+corresponding generator of Kronheimer and Mrowka's complex, provided:
+(i) the identification of the relative grading of~\eqref{eq:grading15} with Kronheimer and Mrowka's grading,
+outlined in~\cite[\S6.1]{HHK2}, under which $x^-$ and $x^+$ correspond to the lower and upper of the two
+generators over one irreducible traceless character;
+(ii) the irreducible generators of $\tC(K)$ lie in odd degrees, $C_*(K)=C_1\oplus C_3$~\cite[\S1, Cor.~3]{DScaduto};
+(iii) Kronheimer and Mrowka's grading is the degree of $\tC(K)$ plus $\sigma$~\cite{W26},~\cite[Thm.~8.9]{DSEquiv}.
+Input (i) is only outlined in~\cite{HHK2}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:scomplex}]
+By Proposition~\ref{prop:bigons} every bigon runs from $x_1^-$ to $r_+$, so Conjecture~\ref{conj:pillow}(a) holds and
+$\pill(K)$ is an S-complex with $\chi(x_i^-)=x_i^+$. With the grading of Definition~\ref{def:circlenorm}, the
+generators $x^-$ have odd degree: on the arc by Proposition~\ref{prop:arcgradings}, on circles by definition.
+Counting them by degree, using Proposition~\ref{prop:arcgradings} and $2k$ (plus one in the split case)
+circles, gives $2k$ and $2k$ generators $x^-$ in degrees $1$ and $3$ for $r=1$; $2k+1$ and $2k$ for $r=2$; $2k+2$ and
+$2k+1$ for $r=4$; and $2k+2$ and $2k+2$ for $r=5$, in both resolutions. These are $(N_1,N_3)$. Hence the map sending
+the generators $x^-$ of degree $1$ and $3$ to bases of $C_1$ and $C_3$, each $x^+=\chi(x^-)$ to the corresponding
+copy, and $r_+$ to the reducible generator, is a degree-preserving isomorphism of graded vector spaces that
+commutes with $\chi$. Under it the differential of $\pill(K)$ is zero for $n\equiv1,2$, and for $n\equiv4,5$ it is the
+map $x_1^-\mapsto r_+$, a component from $C_1$ to the reducible summand of rank one: a map of the type of $\delta_1$.
+
+Let $n\equiv1,2\pmod6$. Then $R=0$, so the differential of $\tC(K;\Q)$ vanishes. The S-complex $\tC(K;\Z)$ built
+on the character variety is a complex of free abelian groups whose differential is an integer matrix; it
+vanishes over $\Q$, hence is zero, and so is the differential of $\tC(K;\F_2)=\tC(K;\Z)\otimes\F_2$. Both $\pill(K)$
+(shifted by $\sigma$) and $\tC(K;\F_2)$ are then S-complexes with zero differential on the same graded generators,
+and the isomorphism above is an S-isomorphism. This proves Conjecture~\ref{conj:pillow}(b) for these $n$.
+
+Let $n\equiv4,5\pmod6$. By the above, $\pill(K)$ shifted by $\sigma$ is S-isomorphic to the S-complex on the graded
+generators of $\tC(K)$ whose only nonzero component is a rank-one map $\delta_1$ from $C_1$ to the reducible
+summand. Hence Conjecture~\ref{conj:pillow}(b) for $K$ is equivalent to the statement that $\tC(K;\F_2)$ is
+S-chain homotopy equivalent to this complex. Over $\Q$ the corresponding statement holds: $\tC(K;\Q)$ is
+S-isomorphic to the complex whose only nonzero component is $\delta_1$, of rank one~\cite[Rem.~7.4]{W26}. So
+$\pill(K)$ is the reduction modulo $2$ of the rational model, and the remaining question, which requires in
+particular that $\delta_1$ take an odd value on $C_1(K;\Z)$, concerns instanton moduli spaces and is not addressed
+by the pillowcase computation.
+\end{proof}

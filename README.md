@@ -1,7 +1,87 @@
 # Atiyah–Floer pillowcase papers and exact computations
 
-This repository contains two papers and the supporting computer code for results on both sides of
-the **knot Atiyah–Floer program** for the pretzel family P(−2,3,q), q odd.
+This repository contains four papers on the knot version of the **Atiyah–Floer correspondence**,
+which relates Kronheimer–Mrowka's reduced singular instanton homology I♮(K) to Lagrangian Floer
+homology of immersed curves in the pillowcase, the traceless SU(2) character variety of the
+four-punctured sphere. It also contains the computer code behind the computations. Two families
+are treated: the **torus knots** (papers 1, 4 and 5) and the **pretzel knots P(−2,3,q)** (paper 2).
+
+| directory | paper | pages |
+|---|---|---|
+| [`paper1/`](paper1) | *Traceless characters and instanton gradings for 2-bridge and (3,n) knots* (arXiv:2607.26095) | 14 |
+| [`paper4/`](paper4) | *The S-complex differential of torus knots* | 12 |
+| [`paper5/`](paper5) | *Pillowcase Floer homology of the torus knots T(3,n)* | 38 |
+| [`paper2/`](paper2) | *The instanton homology of the (−2,3,q) pretzel knots and Maurer–Cartan deformations in the two-arc algebra of the pillowcase* (arXiv:2607.26096) | 24 |
+
+For the torus knots, read papers 1, 4 and 5 in that order. Paper 1 assembles the instanton-side
+facts, paper 4 proves new results about the S-complex differential for every torus knot, and paper 5
+computes the pillowcase side for the whole T(3,n) family. Paper 2 treats a different family and can be read on its own.
+
+## The papers
+
+### Paper 1: traceless characters and instanton gradings (`paper1/`)
+
+An account of the generators, the ℤ/4 gradings and the differential of Daemi–Scaduto's S-complex
+of singular instanton homology for the torus knots T(3,n), with the matching facts for two-bridge
+knots. Each result is attributed to its source in the theorem headers: Lewallen,
+Hedden–Herald–Kirk and Nagasato–Yamaguchi for the two-bridge characters (all binary dihedral),
+Klassen for the dihedral count, and Daemi–Scaduto and Li–Ye for the gradings and ranks.
+
+The paper records the consequence that, for every torus knot, the S-complex differential has rank
+(1 + |σ| − ‖Δ‖₁)/2. For T(3,n) this is 0 when n ≡ 1, 2 and 1 when n ≡ 4, 5 (mod 6), for all n.
+It also gives a Khovanov-homology proof that rank I♮(T(3,n)) = ‖Δ‖₁, using Schütz's
+decomposition of three-braid complexes, and it compares the rank-one differential of 8₁₉ = T(3,4)
+with the pillowcase bigon of Hedden–Herald–Kirk. The numerical checks are `riley_check.py`,
+`torus_characters.py` and `fs_gradings.py` (see below).
+
+### Paper 4: the S-complex differential of torus knots (`paper4/`)
+
+For a torus knot K = T(p,q), the S-complex built on the traceless character variety has rank
+1 + |σ(K)|, and its homology I♮(K) has rank ‖Δ_K‖₁. So the differential has rank
+R(p,q) = (1 + |σ| − ‖Δ‖₁)/2. The paper proves:
+
+- **A floor-sum formula** for R(p,q).
+- **A sharp lower bound,** R(p,q) ≥ ⌊(p − 2b)²/4⌋ for coprime 2 ≤ p < q, where b is the inverse
+  of q mod p.
+- **A perfectness classification.** The differential vanishes exactly when p = 2, or when p is odd
+  and q ≡ 2 or q ≡ p + 2(−1)^((p−1)/2) (mod 2p). The "if" direction is due to Daemi and Scaduto.
+- **The graded components.** The components from degree 3 to 2 and from degree 1 to 0 have ranks
+  ⌊R/2⌋ and ⌈R/2⌉, independently of the choices in the construction. So the ℤ/4-graded group
+  I♮(T(p,q); ℚ) depends only on σ and ‖Δ‖₁, and the paper writes it down explicitly.
+- **A comparison with the pillowcase.** In each of Hedden–Herald–Kirk's computations, a bigon ends
+  at the reducible generator exactly when Daemi–Scaduto's invariant h is positive.
+- **A conjecture** identifying the two complexes at chain level over 𝔽₂.
+
+### Paper 5: pillowcase Floer homology of T(3,n) (`paper5/`)
+
+Hedden, Herald and Kirk defined a Lagrangian Floer homology in the pillowcase from a tangle
+decomposition of a knot, and conjectured that for a suitable decomposition it recovers I♮. Paper 5
+computes this homology for **every** torus knot T(3,n), using their decomposition:
+
+- **The complex.** For all small holonomy perturbations in an explicit open cone, the immersed curves
+  are restricted and the complex has 1 + |σ| generators.
+- **The differential.** There is none when n ≡ 1, 2 (mod 6), and exactly one, to the abelian
+  generator, when n ≡ 4, 5 (mod 6).
+- **The homology** has the ℤ/4-graded dimensions of I♮.
+
+This verifies the Hedden–Herald–Kirk conjecture for an infinite family with nonzero differentials.
+It also proves part of paper 4's chain-level conjecture: the pillowcase complex has the generators
+and the differential that the S-complex predicts.
+
+The proof rests on an explicit description of the traceless character variety and on the strict
+monotonicity of an angle function along its components. Three inequalities are verified by
+interval arithmetic. Section 7 reports a numerical computation, which is not a proof: for a
+different decomposition of T(3,4) in the same family, the homology with zero bounding cochain has
+rank 7 rather than 5. The source is `paper5/main.tex` with `paper5/sections/*.tex`.
+
+### Paper 2: the (−2,3,q) pretzel knots (`paper2/`)
+
+The integral instanton theorem for the family; a finiteness lemma for morphism complexes over the
+two-arc algebra of Kotelskiy–Watson–Zibrowius; the q = 7 Maurer–Cartan and second-closure
+calculations; Smith's identification of the underlying main immersion; the triple-point
+obstruction; the finite candidate-support tables for comparison; and the precise remaining
+local-support hypothesis. Figure 1 is generated from the computed curves
+(`pillowcase/make_figure.py`).
 
 **Theorem (rigorous, unconditional, integral).** For every odd q ≥ 3, the reduced singular
 instanton knot homology I♮(P(−2,3,q)) is free abelian of rank q + 2. The proof combines Hironaka's
@@ -15,7 +95,7 @@ polynomial exactly at q = 7).
 **The q = 7 Maurer–Cartan calculation.** In the wrapped Fukaya subcategory that CHKK identify
 with twisted complexes over the two-arc algebra of Kotelskiy–Watson–Zibrowius, the higher products
 vanish, so the Maurer–Cartan equation for a deformation is the finite identity (δ+b)² = 0. The
-morphism complex over that algebra is infinite dimensional; a filtration lemma (Paper 2, Lemma 4.1)
+morphism complex over that algebra is infinite dimensional; a filtration lemma (Lemma 4.1)
 reduces its homology to three integers for any pair of finite twisted complexes, without truncating
 word length. The resolved `Q_{1/3}+Q_{1/7}` curve encodes to a 31-generator twisted complex; the
 pairing with the earring has dimension 7, and smoothing the curve at any one of four
@@ -52,48 +132,16 @@ explicitly presented objects in `Tw(B)`. They do not prove that the CHKK instant
 tangle assignment exists or selects one of the stated classes. Paper 2 isolates that remaining
 local-support statement as a numbered Hypothesis.
 
-**Revision of August 2026 (arXiv v3).** Earlier versions of the papers (arXiv v1–v2) and of this README
-described these outputs as computed bounding cochains with unique minimal supports and as deformed
-Floer homology values. Those claims are withdrawn. The earlier q = 11 screen did not test
-square-zero — three of its fifty-five matrices fail it — and the finite searches were never proved
-exhaustive. The v3 Paper 2 adds the q = 7 Maurer–Cartan calculation with its finiteness lemma, Smith's
-regular-homotopy identification of the underlying main immersion, the exhaustive enumeration of
-single smoothings, the triple-point obstruction to Gao's representability theorem, and a numbered
-statement of the remaining local-support hypothesis. It does not reinstate the withdrawn
-finite-polygon claims. Both papers carry an Appendix A itemizing every change from v2.
+## Building
 
-## The two papers
-
-- **`paper2/main.tex`** (**arXiv:2607.26096**) — *The instanton homology of the (−2,3,q) pretzel
-  knots and Maurer–Cartan deformations in the two-arc algebra of the pillowcase*. The main paper:
-  the integral instanton theorem, the finiteness lemma for morphism complexes over the two-arc
-  algebra, the q = 7 Maurer–Cartan and second-closure calculations, Smith's identification of the
-  underlying main immersion, the triple-point obstruction, the finite candidate-support tables for
-  comparison, and the precise remaining local-support hypothesis. Figure 1 is generated from the computed curves
-  (`pillowcase/make_figure.py`).
-- **`paper1/main.tex`** (**arXiv:2607.26095**) — *Traceless SU(2) characters and ℤ/4 instanton
-  gradings for two-bridge and (3,n)-torus knots* (companion). Determines the ℤ/4 gradings of the
-  (3,n)-torus knots through the double branched cover rather than an index computation — the two
-  traceless lifts of a flat connection carry the same grading, so Daemi–Scaduto's torus-knot theorem
-  transports to a grading split — recovering the chain-rank distribution conjectured by
-  Poudel–Saveliev and established for all torus knots by Daemi–Scaduto; and comparing that rank
-  vector with the Alexander norm gives the total rank of the framed differential in every residue
-  class of n mod 6 (zero for n ≡ 1, 2, one for n ≡ 4, 5). Also the two-bridge traceless characters
-  via the Riley polynomial, the (3,n) dihedral dichotomy, and the 8₁₉ differential. Paper 2 takes up the
-  correction problem stated at the end of Paper 1.
-
-Build any paper with `pdflatex main.tex` (run twice for cross-references); each compiles
-independently with a standard TeX distribution. Compiled PDFs are included under their
-distinctive names (`traceless-gradings.pdf`, `pretzel-cochains.pdf`).
-
-An earlier version of this repository also contained a third paper, *Exact action separation on
-the main component of a pretzel-tangle composition in the pillowcase*, with its certificate
-`q7_exact_actions.py`. It has been withdrawn for correction and is not part of the current
-release; neither paper above depends on it.
+Build any paper with `pdflatex main.tex` from its directory (run it twice for cross-references).
+Each paper compiles on its own with a standard TeX distribution. Compiled PDFs are included under
+distinctive names: `paper1/traceless-gradings.pdf`, `paper2/pretzel-cochains.pdf`,
+`paper4/s-complex-torus-knots.pdf` and `paper5/pillowcase-torus-knots.pdf`.
 
 ## The code
 
-Everything is **pure Python 3** (standard library only — no NumPy, no dependencies). The
+The code supports papers 1 and 2. Everything is **pure Python 3** (standard library only — no NumPy, no dependencies). The
 curves are built from first principles (quaternion representation theory), then validated
 against Smith's published figures and numbers before the new computations are run. Each module
 is also a self-checking test: run it directly and it prints a `PASS`/`FAIL` battery. Every matrix
@@ -113,7 +161,7 @@ python3 polygons.py    # generalized immersed-polygon counter              (2/2)
 # --- the theorem's Alexander input (independent regression; the proof cites Hironaka) ---
 python3 skein_alexander.py   # sum|Delta(P(-2,3,q))| = q+2, Lehmer-validated   (13/13)
 
-# --- paper 1's verifications ---
+# --- paper 1's numerical checks ---
 python3 riley_check.py       # Thm 1.1: the traceless Riley polynomial, exactly over Z[i][u]  (91 checks)
 python3 torus_characters.py  # Prop 4.1 / Thm 1.2: the (3,n) traceless character count        (65 checks)
 python3 fs_gradings.py       # Z/4 spectral-flow gradings of IC♮(T(3,n)), Anvari-verified
@@ -171,7 +219,7 @@ python3 surgery_check.py     # smoothing blue at the q=5,7 supports and recounti
 | `surgery_check.py` | machine check of the combinatorial surgery statement at q = 5, 7: smoothing blue ι-equivariantly at the support crossings and recounting bigons reproduces the finite deformed matrix entrywise; the other sector choice reproduces the undeformed matrix |
 | `diag_geometry.py`, `diag_cancel.py` | diagnostics used while developing the computation |
 
-## Method and scope of claims
+## Method and scope of claims (paper 2)
 
 The pillowcase computations are carried out in the piecewise-linear immersed-curve model of
 Herald–Kirk and Smith, with polygon counts implemented as winding-number computations inside
@@ -217,5 +265,5 @@ code cannot yet handle its overlapping seam arcs.)
 
 ## License
 
-Code is released under the MIT License (`LICENSE`). The papers (`paper1/`, `paper2/`) are
+Code is released under the MIT License (`LICENSE`). The papers (`paper1/`, `paper2/`, `paper4/`, `paper5/`) are
 © Bernd J. Wuebben; you may read and redistribute them for scholarly purposes with attribution.

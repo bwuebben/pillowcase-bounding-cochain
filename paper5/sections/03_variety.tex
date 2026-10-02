@@ -1,0 +1,432 @@
+\section{The traceless character variety of the tangle}\label{sec:variety}
+
+This section describes the unperturbed variety $W=W_0$ for $K=T(3,n)$ completely: its components, the
+image of the binary dihedral arc in the pillowcase, and the two double points that occur when
+$n\equiv4,5\pmod 6$. For $n=4,5,7$ and $10$ the description is in \cite[\S11]{HHK1}, \cite[\S11]{HHK2} and
+\cite[\S4]{FKP}. Recall that $n=3m+\eta$ with $\eta\in\{\pm1\}$, and that $m'=2m+\eta$, $k=m+\eta$, $N=n+k=2m'$ and
+$\nu=\lfloor n/3\rfloor$; thus $\nu=m$ if $\eta=1$, $\nu=m-1$ if $\eta=-1$, and $N=4\nu+2$ in both cases.
+
+\subsection{The tangle and its equations}\label{sec:tangle}
+
+Let $p,q$ be coprime and fix integers $r,s$ with $pr+qs=1$. Hedden, Herald and Kirk decompose
+$(S^3,T(p,q))$ along a Conway sphere into a trivial tangle $(D,U)$ and a tangle $(Y,T)$ in a $3$-ball
+\cite[\S10]{HHK2}. The group $\pi_1(Y\setminus T)$ is free on two elements $A_1,B_1$ \cite[\S11]{HHK1}, and the
+holonomy perturbations are supported near two curves $P_A,P_B$ in $Y$, with perturbation functions
+$\epsilon_A\sin$ and $\epsilon_B\sin$. A perturbed traceless representation is determined, up to conjugation, by
+\[
+A_1\mapsto e^{uQ_A},\qquad B_1\mapsto e^{vQ_B},\qquad Q_A=\mathbf i,\qquad Q_B=\tau\,\mathbf i+\sqrt{1-\tau^2}\,\mathbf j,
+\]
+with $(u,v,\tau)\in[0,\pi]^2\times[-1,1]$. The condition that the meridians $a,b$ of $T$ be sent to traceless
+elements is $\Psi=(\Psi_1,\Psi_2)=0$, where \cite[(33)--(34)]{HHK2}
+\begin{equation}\label{eq:Psi}
+\Psi_i=\cos\Theta_i\cos\Phi_i-\tau\sin\Theta_i\sin\Phi_i\qquad(i=1,2),
+\end{equation}
+\begin{alignat*}{2}
+\Phi_1&=(s+p)u+(q-r)\epsilon_A\sin u,&\qquad \Theta_1&=(q-r)v-(s+p)\epsilon_B\sin v,\\
+\Phi_2&=su-r\epsilon_A\sin u,&\qquad \Theta_2&=-rv-s\epsilon_B\sin v .
+\end{alignat*}
+Write $W_\epsilon=\Psi^{-1}(0)\subset[0,\pi]^2\times[-1,1]$ for $\epsilon=(\epsilon_A,\epsilon_B)$, and $W=W_{(0,0)}$. By
+\cite[Thm.~10.2]{HHK2} there is a surjection $W_\epsilon\to R_\pi(Y,T)$. Its fibre over the image of $(u,v,\tau)$ is that single
+point unless $\sin u=0$ or $\sin v=0$, in which case it is the segment $\{(u,v)\}\times[-1,1]$. Interior points of
+the box map to non-abelian representations and boundary points to abelian ones.
+
+The restriction to the boundary sphere sends a representation to a point of the pillowcase, as follows.
+Conjugate so that $a\mapsto\mathbf i$ and $b\mapsto e^{\gamma\mathbf k}\mathbf i$ with $\gamma\in[0,\pi]$; then
+$c\mapsto e^{\theta\mathbf k}\mathbf i$, and $(\gamma,\theta)$ is the image \cite[Prop.~6.1]{HHK2}, \cite[Thm.~11.1]{HHK1}.
+We write $\Pi\colon W_\epsilon\to P$ for this map. At $\epsilon=0$, writing $\rho_A=e^{uQ_A}$ and $\rho_B=e^{vQ_B}$ for the
+images of $A_1$ and $B_1$, the relevant words are \cite[(42)]{HHK1}
+\begin{equation}\label{eq:words}
+a=\rho_A^{\,s+p}\rho_B^{\,q-r},\qquad b=\rho_B^{-r}\rho_A^{\,s},\qquad c=\rho_B^{-r}a\,\rho_B^{\,r}.
+\end{equation}
+
+From now on $p=3$, $q=n$, and $(r,s)=(m',-2)$ if $\eta=1$, $(r,s)=(m,-1)$ if $\eta=-1$. Then
+\[
+(s+p,\ q-r,\ r,\ s)=\begin{cases}(1,\ m,\ m',\ -2),&\eta=1,\\(2,\ m',\ m,\ -1),&\eta=-1.\end{cases}
+\]
+
+\begin{lemma}[Normal form]\label{lem:normalform}
+At $\epsilon=0$, a point $(u,v,\tau)$ of the box lies in $W$ if and only if
+\begin{align}
+\cos(mv)\cos u&=\tau\sin(mv)\sin u,\tag{E1}\label{eq:E1}\\
+\cos(m'v)\cos2u&=\tau\sin(m'v)\sin2u.\tag{E2}\label{eq:E2}
+\end{align}
+More precisely, $\Psi=(\mathrm{E1},\mathrm{E2})$ if $\eta=1$ and $\Psi=(\mathrm{E2},\mathrm{E1})$ if $\eta=-1$, where (E1) and (E2) also
+denote the differences of the two sides.
+\end{lemma}
+
+\begin{proof}
+Substitute the values of $(s+p,q-r,r,s)$ into \eqref{eq:Psi} and use that $\cos$ is even and $\sin$ is odd. \qed
+\end{proof}
+
+For later use we record the perturbed phases in this notation. For $\eta=1$ they are
+$\Phi_1=u+m\epsilon_A\sin u$, $\Theta_1=mv-\epsilon_B\sin v$, $\Phi_2=-2u-m'\epsilon_A\sin u$ and
+$\Theta_2=-m'v+2\epsilon_B\sin v$. For $\eta=-1$ they are $\Phi_1=2u+m'\epsilon_A\sin u$, $\Theta_1=m'v-2\epsilon_B\sin v$,
+$\Phi_2=-u-m\epsilon_A\sin u$ and $\Theta_2=-mv+\epsilon_B\sin v$.
+
+\subsection{Elimination and the domain}\label{sec:domain}
+
+Put
+\[
+Q(v)=\frac{\sin(nv)}{\sin(kv)},\qquad S(v)=\frac{\sin(mv)}{\sin(kv)},\qquad x=\cos u .
+\]
+
+\begin{lemma}\label{lem:identities}
+$1-Q=-2\cos(m'v)\,S$ and $Q-\bigl(1-4\sin^2(mv)\bigr)=2\cos v\,S$.
+\end{lemma}
+
+\begin{proof}
+Since $n+k=2m'$ and $n-k=2m$, the sum-to-product formula gives $\sin(nv)-\sin(kv)=2\cos(m'v)\sin(mv)$,
+which is the first identity. For the second, $4\sin^2(mv)=4S\sin(mv)\sin(kv)=2S\bigl(\cos v-\cos(m'v)\bigr)$,
+because $m-k=-\eta$ and $m+k=m'$; add this to the first identity. \qed
+\end{proof}
+
+\begin{lemma}[Elimination]\label{lem:elim}
+On the set where $\sin(mv)\sin(kv)\sin u\neq0$, a point lies in $W$ if and only if
+\[
+4x^2=1-Q(v)\qquad\text{and}\qquad\tau=\cot(mv)\cot u .
+\]
+For such a point, $\tau^2=\cot^2(mv)\,\frac{1-Q}{3+Q}$, and $\tau^2\le1$ holds if and only if $\cos v\,S(v)\ge0$.
+\end{lemma}
+
+\begin{proof}
+Equation \eqref{eq:E1} is $\tau=\cot(mv)\cot u$. Substituting into \eqref{eq:E2} and multiplying by $\sin(mv)$ gives
+$2x^2\sin\bigl((m-m')v\bigr)-\cos(m'v)\sin(mv)=0$, that is $2x^2\sin(kv)=-\cos(m'v)\sin(mv)$, and by
+Lemma~\ref{lem:identities} this is $4x^2=1-Q$. Then $\cot^2u=x^2/(1-x^2)=(1-Q)/(3+Q)$, and
+$\tau^2\le1$ becomes $Q\ge1-4\sin^2(mv)$, which by Lemma~\ref{lem:identities} is $\cos v\,S\ge0$. \qed
+\end{proof}
+
+Accordingly let
+\[
+D_n=\bigl\{v\in(0,\pi):\ \cos(m'v)\,S(v)\le0\ \text{ and }\ \cos v\,S(v)\ge0\bigr\}.
+\]
+The first condition is $x^2\ge0$ and the second is $\tau^2\le1$; together they force $Q\ge-3$, i.e.\ $x^2\le1$.
+
+\begin{proposition}\label{prop:domain}
+The set $D_n$ is invariant under $v\mapsto\pi-v$, and
+\[
+D_n\cap\bigl(0,\tfrac\pi2\bigr)=\bigcup_{1\le l\le\lceil\nu/2\rceil}\Bigl[\tfrac{(4l-3)\pi}N,\ \tfrac{(4l-1)\pi}N\Bigr]\cap\bigl(0,\tfrac\pi2\bigr).
+\]
+Hence $D_n$ consists of exactly $\nu$ intervals of positive length, together with the point $\pi/2$ when $\nu$ is
+even. If $\nu$ is even, these are $J_l=[(4l-3)\pi/N,(4l-1)\pi/N]$ and $\pi-J_l$ for $1\le l\le\nu/2$. If $\nu$ is odd, they
+are $J_l$ and $\pi-J_l$ for $1\le l\le(\nu-1)/2$, and the central interval $J_0=[(2\nu-1)\pi/N,(2\nu+3)\pi/N]$,
+which contains $\pi/2=(2\nu+1)\pi/N$ in its interior.
+\end{proposition}
+
+\begin{proof}
+Since $m-k=-\eta$ is odd and $m'$ is odd, $S(\pi-v)=-S(v)$, $\cos(m'(\pi-v))=-\cos(m'v)$ and $\cos(\pi-v)=-\cos v$, so
+both products in the definition of $D_n$ are invariant and $D_n$ is symmetric. On $(0,\pi/2)$ we have $\cos v>0$,
+so $D_n\cap(0,\pi/2)=\{S\ge0\}\cap\{\cos(m'v)\le0\}\cap(0,\pi/2)$, and it suffices to show that $\cos(m'v)>0$ wherever
+$S<0$ or $S$ is undefined. The zeros $j\pi/m$ of $\sin(mv)$ and $j\pi/k$ of $\sin(kv)$ interlace, since $|m-k|=1$.
+In $(0,\pi/2)$, $S<0$ exactly on the open intervals between $j\pi/\max(m,k)$ and $j\pi/\min(m,k)$ with
+$1\le j\le\min(m,k)/2$, and $S$ is undefined at the points $j\pi/k$. Since $m'=2m+\eta=2k-\eta$,
+\[
+m'\cdot\frac{j\pi}m=2j\pi+\eta\frac{j\pi}m,\qquad m'\cdot\frac{j\pi}k=2j\pi-\eta\frac{j\pi}k,
+\]
+so on the closure of such an interval $|m'v-2j\pi|\le j\pi/\min(m,k)\le\pi/2$, with equality only at $v=\pi/2$.
+Thus $\cos(m'v)>0$ there, except at $v=\pi/2$, and
+$D_n\cap(0,\pi/2)=\{\cos(m'v)\le0\}\cap(0,\pi/2)$, which is the stated union because $N=2m'$. The interval with
+$4l-1=2\nu+1$ exists exactly when $\nu$ is odd, and then it ends at $\pi/2$ and merges with its mirror image
+into $J_0$. When $\nu$ is even, $\pi/2=(2\nu+1)\pi/N$ is a left endpoint $(4l-3)\pi/N$, so it is an isolated point
+of $D_n\cap(0,\pi/2]$. \qed
+\end{proof}
+
+At an endpoint $v_f\neq\pi/2$ of one of these intervals, $\cos(m'v_f)=0$, so $Q(v_f)=1$, $x=0$, $u=\pi/2$ and
+$\tau=0$. Differentiating the first identity of Lemma~\ref{lem:identities},
+\begin{equation}\label{eq:fold}
+Q'(v_f)=-2m'\sin(m'v_f)\,S(v_f)\neq0,
+\end{equation}
+since $S(v_f)$ is finite and nonzero there. We call these points the \emph{folds}.
+
+\subsection{The components of \texorpdfstring{$W$}{W}}\label{sec:classification}
+
+\begin{definition}\label{def:components}
+The \emph{binary dihedral arc} is
+\[
+B=\begin{cases}\{(\tfrac\pi2,\tfrac\pi2)\}\times[-1,1]&m\ \text{even }(n\equiv1,5\ (6)),\\
+\{(u,\tfrac\pi2,0):u\in[0,\pi]\}&m\ \text{odd }(n\equiv2,4\ (6)).\end{cases}
+\]
+For an interval $J$ of positive length in $D_n$, the subset of $W$ lying over $J$ is
+\[
+C_J=\Bigl\{(u,v,\tau):\ v\in J,\ \cos u=\pm\tfrac12\sqrt{1-Q(v)},\ \tau=\cot(mv)\cot u\Bigr\},
+\]
+the two signs being the two \emph{branches}. We write $C_l=C_{J_l}$ and $C_l'=C_{\pi-J_l}$ for the
+\emph{non-central circles}, and $C_0=C_{J_0}$ for the \emph{central circle} (when $\nu$ is odd). Its two
+\emph{halves} are $C_0^{\mathrm L}=C_0\cap\{v\le\pi/2\}$ and $C_0^{\mathrm R}=C_0\cap\{v\ge\pi/2\}$.
+\end{definition}
+
+The representations in $B$ are binary dihedral \cite[\S\S3--4]{FKP}. For $T(3,4)$ and $T(3,5)$, $B$ is the arc $I_0$ of
+\cite[\S\S11.6--11.7]{HHK2}.
+
+\begin{proposition}\label{prop:classify}
+As a set, $W$ is the union of $B$, the $2\lfloor\nu/2\rfloor$ non-central circles, the central circle $C_0$ when
+$\nu$ is odd, and, when $m$ is odd, the two segments $\{(u,\pi/2)\}\times[-1,1]$ with $u\in\{0,\pi\}$. The last two
+segments each map to a single abelian representation, an endpoint of $B$. On every $C_J$ one has $|\tau|<1$
+(at the points with $v=\pi/2$ the limits are computed in Proposition~\ref{prop:central}).
+\end{proposition}
+
+\begin{proof}
+First let $\sin(mv)\sin(kv)\sin u\neq0$. By Lemma~\ref{lem:elim} the points of $W$ are those with
+$v\in D_n$, $\cos u=\pm\frac12\sqrt{1-Q}$ and $\tau=\cot(mv)\cot u$. At an interior point $v\neq\pi/2$ of an interval
+of $D_n$, $S$ is finite and nonzero and $\cos v\,S>0$, so $\tau^2<1$ strictly by Lemma~\ref{lem:elim}; at the folds
+$\tau=0$. By \eqref{eq:fold}, near a fold $Q$ is a local coordinate, so the two branches over $J$ join smoothly
+there, with $u$ as local parameter, and $C_J$ is a circle. It remains to treat the degenerate loci.
+
+\emph{$\sin u=0$.} Then \eqref{eq:E1} and \eqref{eq:E2} read $\cos(mv)=0$ and $\cos(m'v)=0$. Writing
+$v=(2j+1)\pi/(2m)=(2l+1)\pi/(2m')$ and using $\gcd(m,m')=\gcd(m,\eta)=1$, we get $m\mid2j+1$, so $m$ is odd and
+$v=\pi/2$; then $\tau$ is arbitrary. These are the two segments in the statement. There $A_1\mapsto\pm1$, so
+the representation is abelian and does not depend on $\tau$ up to conjugation \cite[Thm.~10.2]{HHK2}.
+
+\emph{$\sin(mv)=0$, $\sin u\neq0$.} Then \eqref{eq:E1} gives $u=\pi/2$, and \eqref{eq:E2} gives
+$\cos(m'v)=0$ with $v=j\pi/m$. As before $m\mid2j$, and $v\in\{0,\pi\}$ is excluded by $\cos(m'v)=0$, so $m$ is even
+and $v=\pi/2$. This is the fibre $B$, and conversely the fibre lies in $W$ because
+$\sin(m\pi/2)=\cos(m'\pi/2)=0$. In particular there are no solutions with $v\in\{0,\pi\}$.
+
+\emph{$\sin(kv)=0$, $\sin(mv)\sin u\neq0$.} By the computation in the proof of Lemma~\ref{lem:elim}, the
+product $\cos(m'v)\sin(mv)$ vanishes, so $\cos(m'v)=0$ with $v=j\pi/k$. Since $m'=2k-\eta$, this forces $k\mid2j$, hence $k$
+even (equivalently $m$ odd) and $v=\pi/2$. Every $u$ then solves, with $\tau=\cot(m\pi/2)\cot u=0$. This is the
+line $B$. Conversely, the line lies in $W$, because both $\cos(m\pi/2)$ and $\cos(m'\pi/2)$ vanish.
+
+Finally, the point $v=\pi/2$ of $D_n$ for $\nu$ even is a zero of $\sin(mv)$ ($n\equiv1$) or of $\sin(kv)$
+($n\equiv2$), so it contributes only points of $B$. The statement about $|\tau|$ near $v=\pi/2$ on $C_0$ is
+part of Proposition~\ref{prop:central}. \qed
+\end{proof}
+
+The endpoints of $B$ are the two abelian traceless representations $r_\pm$ of \cite[\S8.1]{HHK2}: the ends
+$\tau=\pm1$ of the fibre, and the collapsed segments at $u\in\{0,\pi\}$ in the line case.
+
+\begin{lemma}[Symmetry]\label{lem:symmetry}
+The involution $\varsigma(u,v,\tau)=(u,\pi-v,-\tau)$ preserves $W$: it multiplies \eqref{eq:E1} by $(-1)^m$ and
+\eqref{eq:E2} by $(-1)^{m'}$. It exchanges $C_l$ and $C_l'$ and the halves $C_0^{\mathrm L}$ and $C_0^{\mathrm R}$, and on
+images $\Pi\circ\varsigma=\Pi$ for $n$ even and $\Pi\circ\varsigma=\iota\circ\Pi$ for $n$ odd, where
+$\iota(\gamma,\theta)=(\pi-\gamma,-\theta)$.
+\end{lemma}
+
+\begin{proof}
+For the first claim use $\cos(j(\pi-v))=(-1)^j\cos jv$ and $\sin(j(\pi-v))=-(-1)^j\sin jv$. For the
+second, write $Q_B'=-\tau\mathbf i+\sqrt{1-\tau^2}\,\mathbf j$ for the axis at $\varsigma(u,v,\tau)$. Then
+\[
+e^{(\pi-v)Q_B'}=-e^{-vQ_B'}=-\mathbf i\,e^{vQ_B}\mathbf i^{-1},
+\]
+while $e^{uQ_A}$ commutes with $\mathbf i$. So the
+representation at $\varsigma(u,v,\tau)$ is conjugate to the one at $(u,v,\tau)$ multiplied by the central character
+$\chi$ with $\chi(A_1)=1$, $\chi(B_1)=-1$. By \eqref{eq:words}, $\chi$ multiplies $a$, $b$, $c$ by $(-1)^{q-r}$,
+$(-1)^r$, $(-1)^{q-r}$. If all three signs agree, the new triple is conjugate to the old one (by a rotation through
+$\pi$ about the normal of their common plane), and the image is unchanged. If only $b$ changes sign, $\gamma$ becomes
+$\gamma+\pi$, which in the pillowcase is $(\pi-\gamma,-\theta)$; the case where only $b$ keeps its sign is the same after
+the rotation. For $\eta=1$ the signs are $((-1)^m,-1,(-1)^m)$, and for $\eta=-1$ they are $(-1,(-1)^m,-1)$. In both
+cases they agree exactly when $m$ is odd, that is when $n$ is even. \qed
+\end{proof}
+
+\begin{lemma}[Regular points]\label{lem:rank}
+The differential $d_{(u,v,\tau)}\Psi$ at $\epsilon=0$ has rank $2$ at every point of $W$ except the two double
+points $c_\pm$ of Proposition~\ref{prop:central} (when $n\equiv4,5\pmod6$) and the collapsed segments at the ends of
+$B$ in the line case. More precisely:
+\begin{enumerate}
+\item On a circle $C_J$, \eqref{eq:E1} has $\partial_\tau(\mathrm{E1})=-\sin(mv)\sin u\neq0$ away from $v=\pi/2$, and the
+remaining equation $G=-2\cos^2u/S-\cos(m'v)$ has $\partial_uG=4\sin u\cos u/S\neq0$ off the folds and
+$\partial_vG=m'\sin(m'v_f)\neq0$ at a fold.
+\item On the line $B$ ($m$ odd), $\partial_u\Psi=0$, and the $(v,\tau)$-minor of $d\Psi$ is
+$\omega_1\omega_2\sin u\,\bigl(m'-2k\cos^2u\bigr)$ with $\omega_1=\sin(m\pi/2)$, $\omega_2=\sin(m'\pi/2)$.
+\item On the fibre $B$ ($m$ even), $\partial_\tau\Psi=0$, and the $(u,v)$-minor is $\omega_1\omega_2(2m\tau^2-m')$ with
+$\omega_1=\cos(m\pi/2)$, $\omega_2=\sin(m'\pi/2)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For (1), on $C_J$ we have $\sin u\neq0$ (as $x^2<1$) and $\sin(mv)\neq0$ except at $v=\pi/2$ for $n\equiv5$, so
+\eqref{eq:E1} defines $\tau$ as a smooth function of $(u,v)$ and the rank is $2$ exactly when $dG\neq0$. The
+formula for $\partial_uG$ vanishes only where $\cos u=0$ (the folds) or $\sin(kv)=0$. On a non-central circle
+$\sin(kv)\neq0$ by the proof of Proposition~\ref{prop:domain}. On $C_0$ the zeros of $\sin(mv)$ and $\sin(kv)$ nearest
+to $\pi/2$ other than $\pi/2$ itself are $\pi/2\pm\pi/(2m)$ or $\pi/2\pm\pi/m$, resp.\ $\pi/2\pm\pi/k$ or
+$\pi/2\pm\pi/(2k)$, all farther from $\pi/2$ than the half-width $\pi/m'$ of $J_0$; at $v=\pi/2$ itself $C_0$ meets
+$B$ (Proposition~\ref{prop:central}).
+
+For (2), at $(u,\pi/2,0)$ with $m$ and $m'$ odd, $\cos(m\pi/2)=\cos(m'\pi/2)=0$, so
+\[
+d(\mathrm{E1})=\bigl(0,\ -m\omega_1\cos u,\ -\omega_1\sin u\bigr),\qquad
+d(\mathrm{E2})=\bigl(0,\ -m'\omega_2\cos2u,\ -\omega_2\sin2u\bigr),
+\]
+whose $(v,\tau)$-minor is $\omega_1\omega_2\bigl(m\cos u\sin2u-m'\sin u\cos2u\bigr)=\omega_1\omega_2\sin u\,(m'-2k\cos^2u)$,
+using $m'-m=k$. For (3), at $(\pi/2,\pi/2,\tau)$ with $m$ even and $m'$ odd,
+\[
+d(\mathrm{E1})=\bigl(-\omega_1,\ -m\tau\omega_1,\ 0\bigr),\qquad d(\mathrm{E2})=\bigl(2\tau\omega_2,\ m'\omega_2,\ 0\bigr),
+\]
+with $(u,v)$-minor $\omega_1\omega_2(2m\tau^2-m')$. \qed
+\end{proof}
+
+For $n\equiv2\pmod6$ ($\eta=-1$, $k=m-1$) the minor in (2) is $\omega_1\omega_2\sin u\,(2m-1-2(m-1)\cos^2u)$, which
+vanishes only at $\sin u=0$. For $n\equiv1$ ($\eta=1$, $m'=2m+1$) the minor in (3) never vanishes on $[-1,1]$.
+For $n\equiv4$ and $n\equiv5$ the minors vanish exactly at the double points.
+
+\subsection{The binary dihedral arc in the pillowcase}\label{sec:binarydihedral}
+
+\begin{proposition}\label{prop:Bimage}
+The image $\Pi(B)$ is the straight segment from the corner $(0,0)$ to the corner $(\pi,0)$ given, in a lift
+starting at the origin, by
+\[
+\begin{array}{c|c|c|c}
+n\bmod6 & \text{lift of }\Pi(B) & \gamma\ \text{on }B & \varphi=\theta-\gamma\ \text{on the lift}\\ \hline
+1 & t\mapsto(t,2t) & \arccos\tau\ \ (m\equiv0),\quad\pi-\arccos\tau\ \ (m\equiv2) & t\\
+2 & t\mapsto(t,4t) & \pi-u\ \ (m\equiv1),\quad u\ \ (m\equiv3) & 3t\\
+4 & t\mapsto(t,-2t) & u\ \ (m\equiv1),\quad\pi-u\ \ (m\equiv3) & -3t\\
+5 & t\mapsto(t,0) & \pi-\arccos\tau\ \ (m\equiv0),\quad\arccos\tau\ \ (m\equiv2) & -t
+\end{array}
+\]
+with $t\in[0,\pi]$ and $m$ taken modulo $4$. The endpoint of $B$ mapping to $(0,0)$ is $r_+$, and the one mapping
+to $(\pi,0)$ is $r_-$. The slopes agree with \cite[Thm.~4.1]{FKP}.
+\end{proposition}
+
+\begin{proof}
+At $v=\pi/2$ we have $\rho_B=e^{(\pi/2)Q_B}=Q_B$, so $\rho_B^{\,j}$ is $\pm1$ or $\pm Q_B$ according to $j\bmod4$, and
+\eqref{eq:words} can be evaluated directly. We identify traceless unit quaternions with unit vectors.
+
+\emph{$n\equiv4$} ($\eta=1$, $m$ odd, $m'\equiv3\bmod4$). Here $Q_B=\mathbf j$, $\rho_A=e^{u\mathbf i}$ and
+$a=\rho_A\rho_B^{\,m}=\alpha\,e^{u\mathbf i}\mathbf j$ with $\alpha=(-1)^{(m-1)/2}$, $b=\rho_B^{-m'}\rho_A^{-2}=\mathbf j\,e^{-2u\mathbf i}$ and
+$c=\rho_B^{-m'}a\rho_B^{\,m'}=-\mathbf j a\mathbf j$. In the $\mathbf j\mathbf k$-plane, with angles measured from $\mathbf j$ towards $\mathbf k$, the
+vectors $a,b,c$ have angles $u$, $2u$, $-u$ if $\alpha=1$, and $u+\pi$, $2u$, $\pi-u$ if $\alpha=-1$. In the first case
+the oriented angle from $a$ to $b$ is $u\in(0,\pi)$, so $\gamma=u$ and $\theta=-2u$. In the second it is $u-\pi$, so
+$\gamma=\pi-u$, the orientation of the frame is reversed, and $\theta=2u\equiv-2\gamma$.
+
+\emph{$n\equiv2$} ($\eta=-1$, $m$ odd, $m'\equiv1\bmod4$). Now $a=e^{2u\mathbf i}\mathbf j$ (angle $2u$),
+$c=-\mathbf j a\mathbf j$ (angle $-2u$), and $b=\mathbf j^{-m}e^{-u\mathbf i}$ has angle $u+\pi$ if $m\equiv1$ and $u$ if
+$m\equiv3\pmod4$. This gives $(\gamma,\theta)=(\pi-u,-4u)\equiv(\gamma,4\gamma)$, resp.\ $(u,4u)$.
+
+\emph{$n\equiv1$} ($\eta=1$, $m$ even, $m'\equiv1\bmod4$). Here $u=\pi/2$, $\rho_A=\mathbf i$ and $\rho_B=Q_B$, which makes the
+angle $\beta=\arccos\tau$ with $\mathbf i$ in the $\mathbf i\mathbf j$-plane. Then $a=(-1)^{m/2}\mathbf i$, $b=Q_B$ and
+$c=-Q_BaQ_B$, which is $a$ reflected in the line of $Q_B$. So $a,b,c$ have angles $0,\beta,2\beta$ if $m\equiv0$, and
+$\pi,\beta,2\beta+\pi$ if $m\equiv2\pmod4$, giving $(\gamma,\theta)=(\beta,2\beta)$, resp.\ $(\pi-\beta,-2\beta)\equiv(\gamma,2\gamma)$.
+
+\emph{$n\equiv5$} ($\eta=-1$, $m$ even, $m'\equiv3\bmod4$). Here $a=-\rho_B^{\,m'}=Q_B$, $b=\rho_B^{-m}\rho_A^{-1}=-(-1)^{m/2}\mathbf i$ and
+$c=\rho_B^{-m}a\rho_B^{\,m}=a$. Thus $\theta=0$ and $\cos\gamma=a\cdot b=-(-1)^{m/2}\tau$.
+
+In every case the endpoints of $B$ go to $\gamma\in\{0,\pi\}$ and $\theta\in2\pi\mathbb Z$, that is, to the corners $(0,0)$ and
+$(\pi,0)$. Following \cite[\S\S5.3, 6.1]{HHK2}, the abelian representation mapping to $(0,0)$ is denoted $r_+$. \qed
+\end{proof}
+
+\subsection{The central circle and its double points}\label{sec:crossings}
+
+\begin{proposition}\label{prop:central}
+\begin{enumerate}
+\item If $n\equiv1,2\pmod6$, then $\nu$ is even, $W$ is the disjoint union of $B$ and the $\nu$ non-central circles,
+and $d\Psi$ has rank $2$ on $W$ away from the two ends of $B$.
+\item If $n\equiv4,5\pmod6$, then $\nu$ is odd, $C_0$ is a smooth circle, the non-central circles are disjoint from
+$B\cup C_0$, and $C_0\cap B$ consists of two points $c_\pm$:
+\[
+\begin{array}{c|c|c}
+n\bmod6 & \{c_+,c_-\} & \{\Pi(c_+),\Pi(c_-)\}\\ \hline
+4 & (u_1,\tfrac\pi2,0),\ (\pi-u_1,\tfrac\pi2,0),\ \ \cos^2u_1=\tfrac{2m+1}{2m+2},\ u_1\in(0,\tfrac\pi2) & (\gamma_*,-2\gamma_*),\ (\pi-\gamma_*,2\gamma_*)\\
+5 & (\tfrac\pi2,\tfrac\pi2,\pm\tau_1),\ \ \tau_1=\sqrt{1-\tfrac1{2m}} & (\gamma_*,0),\ (\pi-\gamma_*,0)
+\end{array}
+\]
+Here $\gamma_*=u_1$ for $n\equiv4$ and $\cos\gamma_*=\tau_1$ for $n\equiv5$, so $\cos^2\gamma_*=\frac{2m+1}{2m+2}$, resp.\
+$1-\frac1{2m}$, and $0<\gamma_*\le\pi/6$, with equality exactly for $n=4,5$. Each half $C_0^{\mathrm L}$,
+$C_0^{\mathrm R}$ is an arc from $c_+$ to $c_-$ through a fold, and $\varsigma$ exchanges them.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+If $n=3m+\eta$, then $\nu=m$ for $\eta=1$ and $\nu=m-1$ for $\eta=-1$, so $\nu$ is even for $n\equiv1,2$ and odd for
+$n\equiv4,5\pmod6$. By Proposition~\ref{prop:domain}, the non-central intervals stay at distance at least $2\pi/N$
+from $\pi/2$, so the non-central circles are disjoint from $B\subset\{v=\pi/2\}$.
+
+For (1), $W$ has no central circle, so by Proposition~\ref{prop:classify} it is $B$ together with the non-central circles,
+and these are disjoint. The rank statement is Lemma~\ref{lem:rank} together with the remark after it. In the main
+branch near $v=\pi/2$ the solutions would have $\tau^2\to(2m+1)/(2m)>1$ ($n\equiv1$) or $x^2>1$ ($n\equiv2$), in
+agreement with $\pi/2$ being an isolated point of $D_n$.
+
+For (2), consider $C_0$ near $v=\pi/2$ and write $v=\pi/2+w$.
+
+If $n\equiv4$, then $m$ is odd and $n,k$ are even with $(n-k)/2=m$ odd, so $Q$ extends smoothly across
+$v=\pi/2$ with $Q(\pi/2)=-n/k$. Hence $4x^2\to1+n/k=N/k$, that is $\cos^2u\to m'/(2k)=(2m+1)/(2m+2)$, and
+$\tau=\cot(mv)\cot u\to0$ because $\cot(m\pi/2)=0$. Each branch of $C_0$ passes smoothly through $v=\pi/2$, at
+$(u_1,\pi/2,0)$ on the branch $x>0$ and at $(\pi-u_1,\pi/2,0)$ on the branch $x<0$.
+
+If $n\equiv5$, then $m$ is even and $n,k$ are odd with $(n-k)/2=m$ even, and
+$Q(\pi/2+w)=\cos(nw)/\cos(kw)=1-\frac{n^2-k^2}2w^2+O(w^4)$. The solutions of $4x^2=1-Q$ near $w=0$ are the two smooth
+curves $x=\pm\bigl(\frac{n^2-k^2}{8}\bigr)^{1/2}w+O(w^3)$, along which $u\to\pi/2$ and
+\[
+\tau=\cot(mv)\cot u\ \longrightarrow\ \pm\frac1m\Bigl(\frac{n^2-k^2}8\Bigr)^{1/2}=\pm\tau_1,\qquad
+\tau_1^2=\frac{2m(4m-2)}{8m^2}=1-\frac1{2m},
+\]
+on the curve with leading coefficient $\pm$, using $\cot u=x/\sqrt{1-x^2}$, $n-k=2m$, $n+k=4m-2$ and
+$\cot(m(\pi/2+w))=\cot(mw)$. So $C_0$ passes through $(\pi/2,\pi/2,\pm\tau_1)$, which lie on the fibre $B$.
+
+In both cases these are the only points of $C_0$ with $v=\pi/2$, and they are the only points of $C_0\cap B$. The
+points $c_\pm$ lie on the two branches. Following $C_0$ from $c_+$ through $v<\pi/2$, one reaches the fold at
+$(2\nu-1)\pi/N$ and returns along the other branch to $c_-$; this is $C_0^{\mathrm L}$, and $C_0^{\mathrm R}=\varsigma(C_0^{\mathrm L})$ by
+Lemma~\ref{lem:symmetry}. Smoothness of $C_0$ as a curve follows from the explicit parametrizations above, from
+\eqref{eq:fold} at the folds, and from Lemma~\ref{lem:rank}(1) elsewhere. The images follow from
+Proposition~\ref{prop:Bimage}: for $n\equiv4$ the points $u_1$ and $\pi-u_1$ of the line go to $\gamma\in\{u_1,\pi-u_1\}$ on
+the segment $\theta\equiv-2\gamma$, and for $n\equiv5$ the points $\tau=\pm\tau_1$ of the fibre go to $\gamma\in\{\gamma_*,\pi-\gamma_*\}$
+on $\theta=0$. Finally $\cos^2\gamma_*\ge3/4$, with equality for $m=1$ ($n=4$) and $m=2$ ($n=5$), and it increases with $m$. \qed
+\end{proof}
+
+\begin{proposition}[Nondegenerate double points]\label{prop:doublepoints}
+Let $n\equiv4,5\pmod6$ and let $c$ be one of $c_\pm$. Then $d_{(u,v,\tau)}\Psi(c)$ has rank $1$, its kernel is
+spanned by the tangent vectors $T_B$ of $B$ and $T_C$ of $C_0$ at $c$, and the reduced Hessian
+$\ell\cdot D^2\Psi(c)$ restricted to the kernel, with $\ell$ spanning the left kernel of $d\Psi(c)$, has the form
+$\bigl(\begin{smallmatrix}0&\Lambda\\\Lambda&0\end{smallmatrix}\bigr)$ in the basis $(T_B,T_C)$, with $\Lambda\neq0$. Explicitly, with
+respect to the equations $(\mathrm{E1},\mathrm{E2})$:
+\begin{enumerate}
+\item for $n\equiv4$ and $c=(u_1,\pi/2,0)$: $T_B=\partial_u$ and $T_C=\sin u_1\,\partial_v-m\cos u_1\,\partial_\tau$;
+moreover $\ell=(\omega_2\sin2u_1,\ -\omega_1\sin u_1)$, and
+\[
+\Lambda=\ell\cdot D^2\Psi(T_B,T_C)=-2(m+1)\,\omega_1\omega_2\sin2u_1\sin^2u_1;
+\]
+\item for $n\equiv5$ and $c=(\pi/2,\pi/2,\tau)$, $\tau=\pm\tau_1$: $T_B=\partial_\tau$, the kernel is spanned by $T_B$ and
+$X=-\tau m\,\partial_u+\partial_v$, $\ell=(2\tau\omega_2,\ \omega_1)$, and
+\[
+\ell\cdot D^2\Psi(T_B,X)=-4\tau m\,\omega_1\omega_2 ,
+\]
+\end{enumerate}
+with $\omega_1,\omega_2$ as in Lemma~\ref{lem:rank}. In particular $c$ is a nondegenerate (Morse) double point of $W$: near $c$,
+$W$ is the union of two smooth curves meeting transversally.
+\end{proposition}
+
+\begin{proof}
+For (1), the differentials of (E1) and (E2) at $c$ are given in the proof of Lemma~\ref{lem:rank}; their
+$u$-components vanish, and they are proportional exactly when $m\cos u\sin2u=m'\sin u\cos2u$, that is
+$\cos^2u=m'/(2k)=(2m+1)/(2m+2)$. This identifies $c_\pm$ as the points of $B$ where the rank drops, and gives
+$\ker d\Psi(c)=\langle\partial_u,\ \sin u_1\partial_v-m\cos u_1\partial_\tau\rangle$ and the stated $\ell$. The mixed second
+derivatives at $c$ are
+\[
+\begin{aligned}
+\partial_u\partial_v(\mathrm{E1})&=m\omega_1\sin u_1,&\qquad\partial_u\partial_\tau(\mathrm{E1})&=-\omega_1\cos u_1,\\
+\partial_u\partial_v(\mathrm{E2})&=2m'\omega_2\sin2u_1,&\qquad\partial_u\partial_\tau(\mathrm{E2})&=-2\omega_2\cos2u_1,
+\end{aligned}
+\]
+so $D^2(\mathrm{E1})(T_B,T_C)=m\omega_1$ and
+\[
+D^2(\mathrm{E2})(T_B,T_C)=2\omega_2\bigl(m'\sin u_1\sin2u_1+m\cos u_1\cos2u_1\bigr).
+\]
+Hence
+\[
+\Lambda=\omega_1\omega_2\sin2u_1\bigl(m-2m'\sin^2u_1-m\cos2u_1\bigr)=2\omega_1\omega_2\sin2u_1\sin^2u_1\,(m-m'),
+\]
+and $m-m'=-(m+1)$. The tangent of $C_0$ at $c$ has zero $u$-component, because $Q(\pi-v)=Q(v)$ makes $x$ an even
+function of $v-\pi/2$ along $C_0$; as it lies in the kernel, it is a multiple of $T_C$. Since $B\subset W$ and $C_0\subset W$
+pass through $c$ with tangents $T_B$ and $T_C$, the reduced
+Hessian vanishes on each of them, so it is $\bigl(\begin{smallmatrix}0&\Lambda\\\Lambda&0\end{smallmatrix}\bigr)$.
+
+For (2), the differentials are given in the proof of Lemma~\ref{lem:rank}(3). They are proportional exactly when
+$2m\tau^2=m'$, i.e.\ $\tau^2=1-\frac1{2m}$, and then $d(\mathrm{E2})=-2\tau\omega_1\omega_2\,d(\mathrm{E1})$, which gives $\ell$ and
+the kernel. The only nonzero mixed derivatives involving $\partial_\tau$ are $\partial_\tau\partial_v(\mathrm{E1})=-m\omega_1$ and
+$\partial_\tau\partial_u(\mathrm{E2})=2\omega_2$, so
+$\ell\cdot D^2\Psi(T_B,X)=2\tau\omega_2(-m\omega_1)+\omega_1(-2\tau m\omega_2)=-4\tau m\,\omega_1\omega_2$. Also
+$\ell\cdot D^2\Psi(T_B,T_B)=0$ since $\Psi$ is affine in $\tau$. So in the basis $(T_B,X)$ the reduced Hessian is
+$\bigl(\begin{smallmatrix}0&\Lambda\\\Lambda&*\end{smallmatrix}\bigr)$ with $\Lambda=-4\tau m\,\omega_1\omega_2\neq0$, which is nondegenerate and indefinite; its
+second null direction is the tangent of $C_0$. \qed
+\end{proof}
+
+\begin{remark}\label{rem:epsB}
+For $n\equiv4\pmod6$ the line $B=\{v=\pi/2,\ \tau=0\}$ lies in $W_{(\epsilon_A,0)}$ for every $\epsilon_A$. Indeed, with
+$\epsilon_B=0$ the phases $\Theta_1=mv$ and $\Theta_2=-m'v$ give $\cos\Theta_1=\cos\Theta_2=0$ at $v=\pi/2$, and $\tau=0$ kills the
+second terms of \eqref{eq:Psi}; the same formulas give $\partial_u\Psi=0$ along $B$. Hence at points of $B$ the rank of
+$d\Psi$ is the rank of its $(v,\tau)$-minor. At $\epsilon=0$ this minor is $\omega_1\omega_2\sin u\,(m'-2k\cos^2u)$ (Lemma~\ref{lem:rank}),
+which changes sign transversally at the parameters $u_1$, $\pi-u_1$ of $c_\pm$. By continuity it still vanishes at
+some point of $B$ near each of them for every small $\epsilon_A$, and there $d\Psi$ has rank at most one. So perturbations
+with $\epsilon_B=0$ never resolve $c_\pm$ for these knots. They are excluded by the hypothesis $\epsilon\in\mathcal C_a$
+of Theorem~\ref{thm:main} (Definition~\ref{def:cone}). In \cite[\S11.6]{HHK2} the perturbation for $T(3,4)$ is taken with $\epsilon_B=0$; with
+any small $\epsilon_B\neq0$ one obtains the arc and circle drawn in \cite[Figs.~20--21]{HHK2}, and the complex computed
+there.
+\end{remark}

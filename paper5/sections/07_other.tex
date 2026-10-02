@@ -1,0 +1,104 @@
+\section{A second decomposition of \texorpdfstring{$T(3,4)$}{T(3,4)}}\label{sec:other}
+
+For a torus knot $T(p,q)$, every pair $(r,s)$ with $pr+qs=1$ defines a decomposition of the form used in
+Section~\ref{sec:variety}, and different choices give different character varieties $R(Y,T)$ and different
+curves $L_1$~\cite[\S11]{HHK2}. For $T(3,4)$ the choices are $(r,s)=(3+4j,-2-3j)$, $j\in\Z$. Theorem~\ref{thm:main}
+concerns $j=0$, the choice of~\cite[\S11.6]{HHK2}. In this section we describe the complex for $j=1$, that is
+$(r,s)=(7,-5)$. With zero bounding cochain the conclusion of Theorem~\ref{thm:main}(3) fails there. A nonzero
+bounding cochain on the arc restores it.
+
+The results of this section were obtained by numerical computation in floating-point arithmetic, and they are
+not proofs. We traced the perturbed variety from HHK's equations~\eqref{eq:Psi} by numerical continuation, for
+$36$ small perturbations $(\epsilon_A,\epsilon_B)$ in twelve directions with $\epsilon_B\neq0$, of sizes down to $0.003$, and
+for earring parameters $\epsilon$ between $10^{-4}$ and $0.05$. All statements below held in every case. As a
+control, the same computations for $j=0$ reproduce the complex of Theorem~\ref{thm:main}. For $j=-1$, that is
+$(r,s)=(-1,1)$, the curve is different, but the homology again has the graded dimensions of $\Inat(T(3,4))$.
+
+\begin{proposition}[numerical]\label{prop:other}
+For $T(3,4)$ with $(r,s)=(7,-5)$ and the perturbations above:
+\begin{enumerate}
+\item $R_\pi(Y,T)$ consists of an arc and five circles. The lift of the arc starting at $(0,0)$ ends at
+$(7\pi,8\pi)$. In particular the arc is not homotopic relative to its ends to the arc of Theorem~\ref{thm:main},
+whose lift ends at $(\pi,2\pi)$.
+\item $L_1$ is a restricted immersed $1$-manifold and $(L_0,L_1)$ is an admissible pair.
+\item The complex has $7=1+|\sigma|$ generators. The arc carries $r_+$, $x^-$ and $x^+$, in gradings $2$, $3$ and $0$.
+One circle carries four generators, one in each grading, and the other four circles are disjoint from $L_0$.
+\item With zero bounding cochain there is no bigon. Hence $\Hnat(Y,T,\pi)$ has dimensions $(2,1,2,2)$ in gradings
+$0,1,2,3$, and rank $7$, whereas $\Inat(T(3,4))$ has dimensions $(2,1,1,1)$ and rank $5$.
+\item The arc has a self-intersection $s$ near the corner $(0,0)$ such that $x^-$, $r_+$ and $s$ are the corners of
+an embedded triangle with convex corners. The point $s$ is a bounding cochain of degree $1$ for the arc, and
+in the complex deformed by it the differential is $x^-\mapsto r_+$. The deformed homology has dimensions
+$(2,1,1,1)$.
+\end{enumerate}
+\end{proposition}
+
+We describe how each part was established.
+
+\emph{The arc and its homotopy class.} The lines $\varphi\in\pi\Z$ cut the plane into strips containing no lattice
+point. The lifted arc starts at $(0,0)$ in the strip $-\pi<\varphi<0$. It crosses $\Delta_0$ once, at $\gamma\approx4.31$, and
+then the line $\varphi=\pi$ once, at $\gamma\approx2.66$, before ending at $(7\pi,8\pi)$. Since each strip is convex, the arc is
+homotopic relative to its ends in $\R^2\setminus(\pi\Z)^2$ to the polygon with vertices
+\[
+(0,0),\ (0.5,0),\ (4.8,4.3),\ (4.8,5.3),\ (2.5,3),\ (2.5,4),\ (6.5,8),\ (7,8),
+\]
+in units of $\pi$. This polygon meets $L_0$ in exactly three points for every $\epsilon\in[5\cdot10^{-4},0.2]$, and it
+bounds no bigon with $L_0$. By~\cite[Thm.~4.1]{HHK2} (Remark~\ref{rem:invariance}), the arc therefore contributes rank $3$
+independently of the traced geometry.
+
+\emph{Gradings.} The gradings in~(3) were computed from formula~\eqref{eq:grading15}. The Maslov index was
+evaluated by the floor formula, the triple indices from the tangent lines, and the class $z$ from the
+homotopy class of the loop. Each value was computed for both directions of the path in $L_0$, with the same
+result. With the same code, for $j=0$ the arc generators have gradings $2$, $3$, $0$ and the bigon of
+Theorem~\ref{thm:main} is present.
+
+\emph{No bigon with zero bounding cochain.} As in Lemma~\ref{lem:bigonlift}, a bigon lifts to an immersed disk in
+$\R^2\setminus(\pi\Z)^2$, whose boundary on $L_0$ runs along a single lift of $L_0$. Lifts of the two families
+$S_+^k$ and $S_-^k$ meet only over the double point of $L_0$.
+\begin{itemize}
+\item On the arc, $r_+$ and $x^-$ lie on the same lift $S_-^0$, and $x^+$ lies on $S_+^0$. Gradings alone allow a
+bigon from $x^-$ to $r_+$. Its boundary would be the sub-arc of the lifted arc from $\tilde r_+$ to $\tilde x^-$
+together with the segment of $S_-^0$ between them. This closed curve has winding number $1$ about the lattice
+points $(\pi,\pi)$ and $(3\pi,3\pi)$. The boundary of an immersed disk has winding number zero about every
+point outside its image, so there is no such bigon. For $j=0$ the corresponding curve has winding number
+zero about every lattice point, and the bigon exists.
+\item On the circle with four generators, they lie on four distinct lifts of $L_0$, also after translation by the
+period of the circle. So no bigon has both corners on that circle.
+\end{itemize}
+
+\emph{Restrictedness and admissibility.} Every lift of every component of $L_1$ to the plane is embedded, so
+no component has an immersed monogon, and all components are unobstructed. The circles satisfy
+$\mu(\cdot,\ell_1)+z\equiv0\pmod4$. Four of the circles lift to curves with displacement $(4\pi,4\pi)$ per period,
+contained in the band $-2.4<\varphi<-0.78$. Such a curve passes every lattice point of the line $\varphi=0$ on the
+same side, and every lattice point of the line $\varphi=-\pi$ on the other. It is therefore freely homotopic in
+$\Pst$ to the square of the simple closed curve of slope one that separates the corners $(0,0)$, $(\pi,\pi)$ from
+the other two. The earring $L_0$ passes the lattice points of the line $\varphi=0$ alternately on the two sides,
+so it represents the figure-eight class. No nonzero power of this class is conjugate to that square in the
+free group $\pi_1(\Pst)$; the two are already different in $H_1(\Pst)$. Hence condition~(ii) of
+Definition~\ref{def:admissible} holds. These four circles are disjoint from $L_0$ and contribute nothing.
+
+\emph{The bounding cochain.} The arc crosses itself in $P$ twelve times, while the arc of Theorem~\ref{thm:main}
+for $T(3,4)$ is embedded.
+\begin{itemize}
+\item One self-intersection $s$ lies at $(\gamma,\theta)\approx(0.170\pi,0.097\pi)$, inside the region near the corner $(0,0)$
+that carries the bigon of Theorem~\ref{thm:main} for $j=0$.
+\item Through $s$, a translate of the branch of the arc that crosses $\Delta$ meets the initial branch of the arc.
+Together with the lift of $L_0$ through $\tilde r_+$ and $\tilde x^-$, these two branches bound an embedded triangle with
+corners $x^-$, $r_+$ and $s$. Its corners are convex and it contains no lattice point.
+\item In the framework of bounding cochains for immersed curves used in~\cite{CHKK}, the element $b=s$
+satisfies the Maurer--Cartan equation, and its degree is forced to be $1$. The relevant polygons are those
+with all their corners on $L_1$ at $s$, and every candidate encloses a lattice point.
+\item The triangle then contributes $x^-\mapsto r_+$ to the deformed differential, which gives the dimensions
+$(2,1,1,1)$.
+\end{itemize}
+
+\begin{remark}
+The two tangles are different. The quotients of $\pi_1(Y\setminus T)$ by the meridians of the two strands identify
+them with the groups of the trefoil and of $T(5,7)$ for $(r,s)=(7,-5)$, and with those of the unknot and of the
+trefoil for $(r,s)=(3,-2)$. So Proposition~\ref{prop:other} contradicts no invariance property. Since
+Conjecture~6.5 of~\cite{HHK2} asserts only the existence of a suitable decomposition, it does not contradict that
+conjecture either. The mechanism in part~(5) matches the one found in~\cite[\S10.3]{CHKK} for $T(4,5)$ with the
+earring on the other tangle, where a bounding cochain restores the rank of $\Inat$. Here it occurs with the
+earring on the trivial tangle, within the family of~\cite[\S10]{HHK2}. Conjecture~\ref{conj:pillow} concerns zero
+bounding cochains and the normalization $0<r<q$, which $(r,s)=(7,-5)$ violates. This example shows that both
+restrictions are needed.
+\end{remark}

@@ -1,0 +1,391 @@
+\section{Monotonicity of the angle \texorpdfstring{$\varphi$}{phi}}\label{sec:monotone}
+
+Throughout this section $\epsilon_A=\epsilon_B=0$, and $\Pi\colon W\to P$ is the restriction map of the unperturbed
+tangle. On a lift of $\Pi$ to $\R^2$ we use the function $\varphi=\theta-\gamma$; the preimage of the diagonal arc $\Delta$
+is $\bigcup_k\Delta_k$ with $\Delta_k=\{\varphi=2\pi k\}$. The main results are Theorem~\ref{thm:noncentral}, which says that
+$\varphi$ is strictly monotone along every non-central circle, and Theorem~\ref{thm:central}, which says the same for
+each half of the central circle. Together with Propositions~\ref{prop:gammaconf} and~\ref{prop:deltaphi} and
+Lemma~\ref{lem:crossinglocal}, they contain all the information about the unperturbed curves that
+Sections~\ref{sec:perturb} and~\ref{sec:complex} use. Three inequalities between explicit trigonometric functions of
+two variables enter the proofs; they are verified by rigorous interval-arithmetic computations in
+Appendix~\ref{app:interval}.
+
+\subsection{Closed forms}\label{subsec:closedforms}
+
+Recall from Section~\ref{sec:variety} that on the part of $W$ where $\sin u\,\sin(mv)\,\sin(kv)\neq0$ the equations
+(E1), (E2) are equivalent to
+\[
+4x^2=1-Q(v),\qquad \tau=\cot(mv)\cot u,\qquad x=\cos u,
+\]
+so that this part of $W$ is a double cover of its projection to the $v$-axis, by the two branches $x>0$ and $x<0$.
+We write
+\[
+\psi=mv,\qquad \delta=\eta v,\qquad a=\psi,\qquad b=\psi+\delta=kv,
+\]
+so that $a+b=m'v$ and $2a+b=nv$, and we put
+\[
+A=-\cos(a+b),\quad B=\cos\delta,\quad C=\sin^2a+\sin^2b,\quad s_3=\sin(2a+b),
+\]
+\[
+P_*=2\cos a-\cos3a-\cos(a+2b).
+\]
+Let $M=\rho(A_1)=e^{uQ_A}$ and $N=\rho(B_1)=e^{vQ_B}$ be the images of the two generators of $\pi_1(Y\setminus T)$
+used in Section~\ref{sec:variety}, so that $Q_A\cdot Q_B=\tau$.
+
+\begin{lemma}\label{lem:closedforms}
+On the part of $W$ where $\sin u\,\sin(mv)\,\sin(kv)\neq0$,
+\begin{align}
+\cos\gamma&=\eta\,x\,\frac{\sin v}{\sin(mv)}, \label{eq:cosgamma}\\
+\cos\varphi&=\cos3u\cos nv-\tau\sin3u\sin nv=x\,\frac{P_*}{2\sin a\sin b}, \label{eq:cosphi}\\
+x^2&=\frac{A\sin a}{2\sin b},\qquad
+\cos^2\varphi=\frac{A\,P_*^2}{8\sin a\sin^3b},\qquad
+\sin^2\varphi=\frac{s_3^2\,B\,C}{2\sin a\sin^3b}. \label{eq:sin2phi}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+With $\epsilon_A=\epsilon_B=0$ the elements $A_2,B_2$ of HHK2~(31) are trivial, so
+$a=A_1^{s+p}B_1^{q-r}$, $b=B_1^{-r}A_1^{s}$ and $c=B_1^{-r}aB_1^{r}$. In the normalization $a\mapsto\mathbf i$,
+$b\mapsto e^{\gamma\mathbf k}\mathbf i$, $c\mapsto e^{\theta\mathbf k}\mathbf i$ that defines the pillowcase coordinates (Section~\ref{sec:hhk}) one has
+$\rho(c)\rho(b)^{-1}=e^{(\theta-\gamma)\mathbf k}$, so $\cos\varphi=\operatorname{Re}\rho(cb^{-1})$. Now
+\[
+cb^{-1}=B_1^{-r}A_1^{s+p}B_1^{q}A_1^{-s}B_1^{r},
+\]
+which is conjugate to $A_1^{p}B_1^{q}$. Since $\operatorname{Re}(e^{\alpha Q_A}e^{\beta Q_B})=\cos\alpha\cos\beta-\tau\sin\alpha\sin\beta$,
+this gives the first expression in~\eqref{eq:cosphi}. Similarly $\cos\gamma=-\operatorname{Re}\rho(ab)$, and $ab$ is conjugate to
+$A_1^{2s+p}B_1^{q-2r}=A_1^{-\eta}B_1^{-\eta k}$, so $\cos\gamma=-\cos u\cos kv+\tau\sin u\sin kv$; substituting
+$\tau\sin u=\cot(mv)\cos u$ and $\sin(kv-mv)=\sin(\eta v)$ gives~\eqref{eq:cosgamma}.
+
+For the second expression in~\eqref{eq:cosphi}, write $\sin3u=\sin u\,(4x^2-1)=-Q\sin u$ and
+$\cos3u=x(4x^2-3)=-(Q+2)x$, and substitute $\tau\sin u=\cot(mv)\,x$. This gives $\cos\varphi=x\,Y(v)$ with
+$Y=-(Q+2)\cos(2a+b)+Q\cot a\,\sin(2a+b)$. The identities
+\[
+\tfrac14(1-Q)=\frac{A\sin a}{2\sin b},\qquad Y=\frac{P_*}{2\sin a\sin b},\qquad 8\sin a\sin^3b-A\,P_*^2=4s_3^2BC
+\]
+are identities between trigonometric polynomials in $a$ and $b$ (after clearing denominators); each is checked by
+expanding both sides as Laurent polynomials in $e^{ia}$ and $e^{ib}$. The first is $x^2$, the product of the first two
+gives $\cos^2\varphi$, and the third gives $\sin^2\varphi=1-\cos^2\varphi$.
+\end{proof}
+
+Along either branch, $v$ is a local parameter away from the folds, and $\delta=s\psi$ with $s=\eta/m$. Define
+\begin{gather*}
+E=\cos\delta\,F_0+s\,F_1,\qquad F_0=10\sin^2\psi+6\sin^2(\psi+\delta)-4\sin^2(2\psi+\delta),\\
+F_1=4\cos\delta\sin^2\psi-2\sin\delta\sin\psi\cos(3\psi+2\delta).
+\end{gather*}
+
+\begin{lemma}\label{lem:deriv}
+Along either branch, at every point where $A\,B\,C\,\sin a\,\sin b\neq0$,
+\begin{equation}\label{eq:deriv}
+\frac{d}{d\psi}\cos^2\varphi=\frac{E\,P_*\,s_3}{8\sin^2a\,\sin^4b},\qquad\text{hence}\qquad
+\Bigl(\frac{d\varphi}{d\psi}\Bigr)^2=\frac{E^2}{16\,A\,B\,C\,\sin^2a\,\sin^2b}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Differentiate the expression for $\cos^2\varphi$ in~\eqref{eq:sin2phi} along $\delta'=s$. The resulting identity is
+again an identity of trigonometric polynomials in $\psi,\delta$, separately in the parts of degree $0$ and $1$ in $s$,
+and is checked by expansion in $e^{i\psi},e^{i\delta}$. Where $P_*s_3\neq0$, combine it with
+$(d\cos^2\varphi/d\psi)^2=4\cos^2\varphi\sin^2\varphi\,(d\varphi/d\psi)^2$ and~\eqref{eq:sin2phi}:
+\[
+\Bigl(\frac{d\varphi}{d\psi}\Bigr)^2=\frac{E^2P_*^2s_3^2}{64\sin^4a\sin^8b}\cdot\frac{16\sin^2a\sin^6b}{4ABCP_*^2s_3^2}
+=\frac{E^2}{16ABC\sin^2a\sin^2b}.
+\]
+Both sides are continuous on the branch, and the zeros of $P_*s_3$ are isolated, so the identity holds wherever
+$ABC\sin a\sin b\neq0$.
+\end{proof}
+
+So on a branch, $\varphi$ has a critical point exactly where $E=0$, apart from the points where $ABC\sin a\sin b=0$.
+At a fold the branch is not parametrized by $v$, and we use the following direct computation.
+
+\begin{lemma}\label{lem:fold}
+At a fold of $W$, that is a point with $x=0$ and $\cos(m'v)=0$, the parameter $u$ is a local coordinate on $W$ and
+\[
+\Bigl|\frac{d\varphi}{du}\Bigr|=\frac{1}{|\sin a|}+2|\sin a|\ \ge\ 2\sqrt2 .
+\]
+\end{lemma}
+
+\begin{proof}
+That $u$ is a local coordinate follows from~\eqref{eq:fold}. Differentiating $4\cos^2u=1-Q(v)$ shows $dv/du=0$
+at $u=\pi/2$. Differentiating~\eqref{eq:cosphi} then gives $\sin\varphi\cdot d\varphi/du=\sin u\cdot P_*/(2\sin a\sin b)$ there,
+with $\sin\varphi=\pm1$ and $\sin u=1$. At a fold $a+b\equiv\pi/2\pmod\pi$, so $\sin b=\pm\cos a$ and
+$\cos(a+2b)=-\cos a$, hence $P_*=3\cos a-\cos3a=2\cos a\,(1+2\sin^2a)$ and
+$|P_*/(2\sin a\sin b)|=1/|\sin a|+2|\sin a|$. The bound is the arithmetic--geometric mean inequality.
+\end{proof}
+
+\subsection{The non-central circles}\label{subsec:noncentral}
+
+Let $C$ be a non-central circle, over an interval $J_l=[(4l-3)\pi/N,(4l-1)\pi/N]\subset(0,\pi/2)$ or over its mirror
+$\pi-J_l$; here $1\le l\le\lfloor\nu/2\rfloor$ (Proposition~\ref{prop:domain}). The two branches $x>0$ and $x<0$ over the
+interior of the interval are joined at two folds over its endpoints. Put
+\[
+\Omega_+=\{(\psi,\delta):0\le\delta\le\tfrac\pi2,\ \tfrac\pi4-\tfrac\delta2\le\psi\le\tfrac{3\pi}4-\tfrac\delta2\}.
+\]
+
+\begin{theorem}\label{thm:noncentral}
+Along every non-central circle, $\varphi$ is strictly monotone: in a regular parametrization of the circle, the
+derivative of any continuous lift of $\varphi$ never vanishes.
+\end{theorem}
+
+\begin{proof}
+\emph{Circles over $J_l\subset(0,\pi/2)$.} On the interior of $J_l$ we have $A=-\cos(m'v)>0$ (Proposition~\ref{prop:domain}),
+$B=\cos v>0$, $C>0$, and $\sin a\sin b=\sin(mv)\sin(kv)\neq0$. By Lemma~\ref{lem:deriv} it suffices to show $E\neq0$ there;
+the folds are covered by Lemma~\ref{lem:fold}.
+
+The functions $F_0$ and $F_1$, hence $E$, are $\pi$-periodic in $\psi$. On $J_l$ we have
+$2\psi+\delta=m'v\in[\pi/2,3\pi/2]+2\pi(l-1)$, because $N=2m'$; hence $\psi-(l-1)\pi$ lies in
+$[\pi/4-\delta/2,\,3\pi/4-\delta/2]$, and $|\delta|=v<\pi/2$. So the reduced point lies in $\Omega_+$ if $\eta=1$ and in
+$\Omega_-=\{-\frac\pi2\le\delta\le0,\ \frac\pi4-\frac\delta2\le\psi\le\frac{3\pi}4-\frac\delta2\}$ if $\eta=-1$. The map $(\psi,\delta)\mapsto(\pi-\psi,-\delta)$
+carries $\Omega_-$ onto $\Omega_+$, and it leaves $F_0$ and $F_1$ unchanged, since both are even under
+$(\psi,\delta)\mapsto(-\psi,-\delta)$ and $\pi$-periodic in $\psi$. Write $E/\cos\delta=F_0+\lambda F_1$ with $\lambda=s/\cos\delta$. The right endpoint of $J_l$ is at most
+$\pi/2-2\pi/N$, because $4l-1\le2\nu-1$, so $\cos\delta=\cos v\ge\sin(\pi/m')\ge\sin(\pi/(2m+1))$ and
+\[
+|\lambda|\le\frac{1}{m\sin\bigl(\pi/(2m+1)\bigr)}\le\frac{1}{2\sin(\pi/5)}=0.85065\ldots .
+\]
+The middle inequality holds because $m\sin(\pi/(2m+1))=\frac{\pi m}{2m+1}\operatorname{sinc}\frac{\pi}{2m+1}$, where $\operatorname{sinc}y=\sin y/y$,
+is a product of two increasing functions of $m$, and non-central circles exist only for $\nu\ge2$, that is $m\ge2$. (The extreme value
+is attained for $n=7$.) Hence
+\[
+E/\cos\delta\ \ge\ F_0-0.851\,|F_1|\ \ge\ 1.648\qquad\text{on }J_l,
+\]
+by Lemma~\ref{lem:ineqA}. So $E>0$ on the interior of $J_l$.
+
+\emph{Mirror circles.} The involution $\iota(u,v,\tau)=(u,\pi-v,-\tau)$ multiplies (E1) by $(-1)^m$ and (E2) by
+$(-1)^{m'}$, so it preserves $W$ and carries the circle over $J_l$ onto the circle over $\pi-J_l$. By~\eqref{eq:cosphi},
+$\cos\varphi\circ\iota=(-1)^n\cos\varphi$. Along a circle, a continuous lift of $\varphi\circ\iota$ therefore agrees with
+$\pm\varphi$ up to an additive constant, and strict monotonicity carries over.
+\end{proof}
+
+The following facts about $\gamma$ and the diagonal are consequences.
+
+\begin{proposition}\label{prop:edges}
+Every non-central circle, and the open halves of the central circle, satisfy $|\cos\gamma|<1$. In particular they
+miss the side edges $\gamma\in\{0,\pi\}$ of the pillowcase, and the corners.
+\end{proposition}
+
+\begin{proof}
+For $v\in(0,\pi/2)$, square~\eqref{eq:cosgamma}. By Lemma~\ref{lem:identities}, $x^2=-\cos(m'v)S(v)/2$ with
+$S=\sin(mv)/\sin(kv)$, and $2\sin(mv)\sin(kv)=\cos v-\cos(m'v)$. Hence $x^2\sin^2v<\sin^2(mv)$ is equivalent to
+$\cos(m'v)\cos^2v<\cos v$. On $D_n\cap(0,\pi/2)$ we have $\cos(m'v)\le0<\cos v$, so the inequality holds. For $v\in(\pi/2,\pi)$
+apply $\iota$, which acts on the pillowcase as the identity if $n$ is even and as $(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$ if
+$n$ is odd (Lemma~\ref{lem:iota} below); both preserve $|\cos\gamma|$.
+\end{proof}
+
+\begin{proposition}\label{prop:noncentralcrossings}
+Let $C$ be a non-central circle. Exactly four points of $C$ satisfy $\varphi\in\pi\Z$, two with $\varphi\equiv0$ and two with
+$\varphi\equiv\pi\pmod{2\pi}$, and they alternate around $C$. Consequently a lift of $\varphi$ changes by $\pm4\pi$ once around
+$C$, the image of $C$ meets $\Delta$ in exactly two points, transversally, and $C$ has vertical degree $2$: its lift to
+$\R^2$ runs from a point $z$ to $z\pm(0,4\pi)$ inside the strip $0<\gamma<\pi$.
+\end{proposition}
+
+\begin{proof}
+By~\eqref{eq:cosphi}, $\varphi\in\pi\Z$ if and only if $\rho(A_1)^3\rho(B_1)^n=\pm1$. Since $|\tau|<1$ on $C$, the axes $Q_A$ and
+$Q_B$ are not parallel, so this forces $\sin3u=0$ and $\sin nv=0$; then $Q(v)=0$ and $x=\pm\frac12$. Conversely every
+zero of $\sin nv$ in the interior of the interval gives two such points, one on each branch.
+
+For $J_l\subset(0,\pi/2)$ the zeros are $v_j=j\pi/n$ with $(4l-3)n/N\le j\le(4l-1)n/N$. Since $n/N=\frac34-\frac{\eta}{4m'}$ and
+$4l-1\le2\nu-1<m'$, we have $(4l-3)n/N\in(3l-\frac52,3l-2)$ and $(4l-1)n/N\in(3l-1,3l-\frac12)$, so the zeros are exactly
+$j=3l-2$ and $j=3l-1$. At $v_j$ we have $\cos\varphi=\cos3u\cos(j\pi)$, and
+$\cos3u=-1$ for $x=\frac12$, $\cos3u=1$ for $x=-\frac12$. Thus on the branch $x>0$, $\varphi\equiv0$ if and only if $j$ is odd, and on
+the branch $x<0$ if and only if $j$ is even. Going once around $C$ (branch $x>0$ from $v_{3l-2}$ to $v_{3l-1}$, through a
+fold, then back along $x<0$) the labels of the four points therefore alternate between $0$ and $\pi$.
+
+By Theorem~\ref{thm:noncentral}, a lift of $\varphi$ is strictly monotone. Between two consecutive points of the list it
+cannot meet a multiple of $\pi$, so it changes by exactly $\pm\pi$; the total change is $\pm4\pi$, and the two points with
+$\varphi\equiv0$ are transverse intersections with $\Delta$. By Proposition~\ref{prop:edges} the lift of $\gamma$ stays in
+$(0,\pi)$, so $\theta=\varphi+\gamma$ changes by $\pm4\pi$ as well. The mirror circles follow by Lemma~\ref{lem:iota}.
+\end{proof}
+
+\begin{lemma}\label{lem:iota}
+The involution $\iota$ is induced by multiplying a representation by the central character $\chi$ of
+$\pi_1(Y\setminus T)$ with $\chi(A_1)=1$ and $\chi(B_1)=-1$. On the pillowcase it acts as the identity if $n$ is even and
+as $(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$ if $n$ is odd. In particular it maps $\varphi$ to $\varphi$, resp.\ to $-\varphi-\pi$, modulo
+$2\pi$.
+\end{lemma}
+
+\begin{proof}
+$-e^{vQ_B}=e^{(\pi-v)(-Q_B)}$, and replacing $Q_B$ by $-Q_B$ replaces $\tau$ by $-\tau$. By HHK2~(31),
+$\chi(a)=(-1)^{q-r}$ and $\chi(b)=(-1)^{r}$, and $c$ is conjugate to $a$. For $\eta=1$, $(q-r,r)=(m,m')$, and for $\eta=-1$,
+$(q-r,r)=(m',m)$; here $m'$ is odd and $m\equiv n+1\pmod2$. If $n$ is even, $a$, $b$ and $c$ are therefore all multiplied by $-1$,
+which does not change their pillowcase coordinates. If $n$ is odd, either $b$ alone or $a$ and $c$ together change
+sign. After rotating $-a$ back to $\mathbf i$ in the second case, both cases replace the angles $(\gamma,\theta)$ of $b$ and $c$ by
+$(\gamma+\pi,\theta)$, and restoring the normalization ($\gamma\in[0,\pi]$, by reversing the orientation of the plane) gives
+$(\pi-\gamma,-\theta)$.
+\end{proof}
+
+\begin{corollary}\label{cor:noncentralrestricted}
+Every non-central circle $C$ is a restricted immersed circle in the sense of HHK2~Def.~3.6 that misses the left
+and right edges of the pillowcase. Its class in $\pi_1(\Pst)$ is the square of the class of the core of the annulus
+$\{0<\gamma<\pi\}\subset\Pst$. For small $\epsilon>0$ it meets $L_0$ in exactly four points, and it contributes
+$\Z/4$-graded rank $(1,1,1,1)$ to $\Hnat$, with no differential. All of this persists under $C^1$-small
+perturbations of $C$ that keep the derivative of $\varphi$ nonzero.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:noncentral} the velocity of the image is never parallel to $(1,1)$, so $L_1|_C$ is an immersion and
+$\mu(L_1|_C,\ell_1)=0$. By Proposition~\ref{prop:noncentralcrossings} the image lies in the annulus
+$\{0<\gamma<\pi\}$ and winds twice around it, so its class is $c^{\pm2}$ for the core $c$, which is nontrivial in the free
+group $\pi_1(\Pst)$. The core encircles two corners, so $z(c)=\pm2$ and $z(C)=\pm4\equiv0$; hence $\mu+z\equiv0\pmod 4$. An immersed monogon would be bounded by a sub-arc
+of $C$ whose two ends have the same image and whose closed-up image is null-homotopic in $\Pst$. Such a loop lifts to a
+closed loop in $\R^2\setminus(\pi\Z)^2$, along which a lift of $\varphi$ returns to its initial value; this contradicts strict
+monotonicity. So $C$ is unobstructed (HHK2~Def.~2.1), hence restricted. HHK2~Thm.~5.4 then gives the graded rank
+$(d/2)^{\times4}$ with vertical degree $d=2$. For small $\epsilon$, $L_0$ lies within $O(\epsilon)$ of $\Delta$ away from the corners,
+and $C$ misses the corners, so the intersection points of $L_0$ with $C$ are the two points $x^\pm$ near each of the two
+transverse intersections with $\Delta$. Four generators of total rank four leave no room for a differential. The last
+sentence holds because every property used is open in the $C^1$ topology, or is homotopy invariant.
+\end{proof}
+
+\subsection{The central circle}\label{subsec:central}
+
+Now let $n\equiv4,5\pmod6$, so that $\nu$ is odd and $W$ contains the central circle $C_0$ over
+$J_0=[v_L,\pi-v_L]$, $v_L=(2\nu-1)\pi/N$. It meets $B$ at the two points of Proposition~\ref{prop:central}. We write
+$c_+$ for the crossing whose image has $\gamma=\gamma_*$, and $c_-$ for the crossing whose image has $\gamma=\pi-\gamma_*$. The
+left half $C_0^{\mathrm L}$ (where $v\le\pi/2$) is an arc from one crossing to the other: it starts at $v=\pi/2$ on the
+branch $x>0$, runs down to the fold over $v_L$, and returns to $v=\pi/2$ along $x<0$. The right half is
+$C_0^{\mathrm R}=\iota(C_0^{\mathrm L})$. On the left half put
+\[
+v=\frac\pi2-w,\qquad 0<w\le\frac{2\pi}{N},\qquad \xi=mw,\qquad h=\frac1m .
+\]
+Then $\xi\in(0,\pi/(2+h)]$ with $h\in(0,1]$ for $n\equiv4$ (where $m$ is odd), and $\xi\in(0,\pi/(2-h)]$ with $h\in(0,\frac12]$
+for $n\equiv5$ (where $m$ is even). Here and below $n\equiv4$ and $n\equiv5$ mean residues modulo $6$.
+
+\begin{lemma}\label{lem:centralE}
+On the left half, $E=h\,\mathcal E_n(\xi,h)$, where for $n\equiv4$
+\begin{multline*}
+\mathcal E_4=\frac{\sin(\xi h)}{h}\bigl[10\cos^2\xi+6\sin^2(\xi+\xi h)-4\cos^2(2\xi+\xi h)\bigr]\\
++4\sin(\xi h)\cos^2\xi-2\cos(\xi h)\cos\xi\sin(3\xi+2\xi h),
+\end{multline*}
+and for $n\equiv5$
+\begin{multline*}
+\mathcal E_5=\frac{\sin(\xi h)}{h}\bigl[10\sin^2\xi+6\cos^2(\xi-\xi h)-4\cos^2(2\xi-\xi h)\bigr]\\
+-4\sin(\xi h)\sin^2\xi-2\cos(\xi h)\sin\xi\cos(3\xi-2\xi h).
+\end{multline*}
+Both functions are real analytic on $\R\times\R$ (with $\sin(\xi h)/h=\xi\operatorname{sinc}(\xi h)$) and odd in $\xi$.
+\end{lemma}
+
+\begin{proof}
+For $n\equiv4$ we have $\eta=1$ and $m$ odd, so $\psi\equiv\frac\pi2-\xi\pmod\pi$ and $\delta=\frac\pi2-\xi h$; for $n\equiv5$ we have
+$\eta=-1$ and $m$ even, so $\psi\equiv-\xi\pmod\pi$ and $\delta=-\frac\pi2+\xi h$. Substitute into $F_0$, $F_1$ (which are
+$\pi$-periodic in $\psi$) and use $s=\eta h$.
+\end{proof}
+
+\begin{theorem}\label{thm:central}
+Let $n\equiv4,5\pmod6$. On each open half of the central circle $E\neq0$; more precisely $E>0$ on the left half and $E<0$
+on the right half. Consequently $\varphi$ is strictly monotone along each closed half, from one crossing to the other.
+\end{theorem}
+
+\begin{proof}
+On the open left half $A=\sin(m'w)>0$, $B=\sin w>0$, $C>0$, and $\sin a\,\sin b\neq0$. Indeed, for $n\equiv4$ the zeros of
+$\sin(mv)$ nearest to $\pi/2$ are at distance $\pi/(2m)$, while $\sin(kv)$ vanishes at $\pi/2$ and next at distance $\pi/(m+1)$;
+for $n\equiv5$, $\sin(mv)$ vanishes at $\pi/2$ and next at distance $\pi/m$, while the zeros of $\sin(kv)$ are at distance at
+least $\pi/(2m-2)$. All these distances exceed the half-width $2\pi/N=\pi/m'$ of $J_0$. By Lemma~\ref{lem:ineqB}, $\mathcal E_n(\xi,h)/\xi^3>0$ on the whole parameter domain, so $E>0$ on the open
+left half, and Lemma~\ref{lem:deriv} gives $d\varphi/d\psi\neq0$ away from the fold. At the fold Lemma~\ref{lem:fold} applies.
+On the right half $v=\frac\pi2+w$ corresponds to $-\xi$, and $E<0$ because $\mathcal E_n$ is odd in $\xi$; alternatively, use
+Lemma~\ref{lem:iota}. A function on a closed arc whose derivative does not vanish in the interior is strictly
+monotone on the closed arc.
+\end{proof}
+
+\begin{proposition}\label{prop:gammaconf}
+On each open half of the central circle, $\gamma_*<\gamma<\pi-\gamma_*$.
+\end{proposition}
+
+\begin{proof}
+On the left half, $\cos^2\gamma=x^2\sin^2v/\sin^2(mv)$ by~\eqref{eq:cosgamma}. For $n\equiv4$ we have $\sin^2v=\cos^2(\xi h)$,
+$\sin^2(mv)=\cos^2\xi$ and $Q=-\sin(3\xi+\xi h)/\sin(\xi+\xi h)$; for $n\equiv5$, $\sin^2(mv)=\sin^2\xi$ and
+$Q=\cos(3\xi-\xi h)/\cos(\xi-\xi h)$. Since $\cos^2\gamma_*=(2+h)/(2+2h)$, resp.\ $1-h/2$, clearing the (positive) denominators gives
+\[
+\cos^2\gamma_*-\cos^2\gamma=\frac{\mathcal N_4(\xi,h)}{8(1+h)\sin(\xi+\xi h)\cos^2\xi},\qquad\text{resp.}\qquad
+\cos^2\gamma_*-\cos^2\gamma=\frac{\mathcal N_5(\xi,h)}{4\cos(\xi-\xi h)\sin^2\xi},
+\]
+with
+\begin{align*}
+\mathcal N_4&=4(2+h)\sin(\xi+\xi h)\cos^2\xi-(2+2h)\bigl(\sin(\xi+\xi h)+\sin(3\xi+\xi h)\bigr)\cos^2(\xi h),\\
+\mathcal N_5&=2(2-h)\cos(\xi-\xi h)\sin^2\xi-\bigl(\cos(\xi-\xi h)-\cos(3\xi-\xi h)\bigr)\cos^2(\xi h).
+\end{align*}
+The denominators are positive on the parameter domain, and Lemma~\ref{lem:ineqC} shows $\mathcal N_n>0$ for $\xi>0$. Hence
+$\cos^2\gamma<\cos^2\gamma_*$ on the open left half, and the right half follows by Lemma~\ref{lem:iota}.
+\end{proof}
+
+The next proposition records how far $\varphi$ moves along a half. Its proof needs the image of $B$
+(Proposition~\ref{prop:Bimage}): $\varphi\equiv-3\gamma\pmod{2\pi}$ on the image of $B$ for $n\equiv4$, and $\varphi\equiv-\gamma$ for $n\equiv5$. It also needs which
+crossing is the end of $C_0^{\mathrm L}$ on the branch $x>0$: by Propositions~\ref{prop:central} and~\ref{prop:Bimage} this is $c_+$
+if $m\equiv1\pmod4$ $(n\equiv4)$ or $m\equiv0\pmod4$ $(n\equiv5)$, and $c_-$ if $m\equiv3$, resp.\ $m\equiv2\pmod4$.
+
+\begin{proposition}\label{prop:deltaphi}
+Let $n\equiv4,5\pmod6$. Along each half of the central circle, traversed from $c_+$ to $c_-$, a continuous lift of $\varphi$
+increases by
+\[
+\pi+6\gamma_*\quad(n\equiv4),\qquad\text{resp.}\qquad 3\pi+2\gamma_*\quad(n\equiv5).
+\]
+The points of a half with $\varphi\in\pi\Z$ are two, resp.\ four, in number; exactly one, resp.\ two, of them lie on $\Delta$,
+and these intersections are transverse.
+\end{proposition}
+
+\begin{proof}
+As in the proof of Proposition~\ref{prop:noncentralcrossings}, the points of the open left half with $\varphi\in\pi\Z$ are the points
+over the zeros $v_j=j\pi/n$ of $\sin nv$ in $(v_L,\pi/2)$, one on each branch, labelled $0$ or $\pi$ by the same parity rule.
+
+\emph{The zeros.} For $n\equiv4$, $N=4m+2$ and $(2m-1)n/N=\frac{3m}2-1+\frac{1}{4m+2}$; since $m$ is odd, the only integer $j$
+with $(2m-1)n/N<j<n/2$ is $j=\frac{3m-1}2$. For $n\equiv5$, $N=4m-2$ and $(2m-3)n/N=\frac{3m}2-2-\frac1{4m-2}$; since $m$ is even,
+the integers in $\bigl((2m-3)n/N,\,n/2\bigr)$ are $j=\frac{3m}2-2$ and $j=\frac{3m}2-1$.
+
+\emph{The walk.} Start at the end of $C_0^{\mathrm L}$ on the branch $x>0$ and follow the half. By
+Theorem~\ref{thm:central} the lift of $\varphi$ is strictly monotone, so the points with $\varphi\in\pi\Z$ are met at consecutive
+multiples of $\pi$, and the label of the first one determines the direction of travel. The table lists the four
+cases; $\varphi_0$ is the starting value, and the zeros are met in the order of decreasing $v$ on the branch $x>0$ and
+increasing $v$ on the branch $x<0$.
+\[
+\begin{array}{lllll}
+\toprule
+\text{case} & \text{start} & \varphi_0 & \text{labels met} & \text{end value}\\ \midrule
+n\equiv4,\ m\equiv1\ (4) & c_+ & -3\gamma_* & 0,\ \pi & \pi+3\gamma_*\\
+n\equiv4,\ m\equiv3\ (4) & c_- & \pi+3\gamma_* & \pi,\ 0 & -3\gamma_*\\
+n\equiv5,\ m\equiv0\ (4) & c_+ & -\gamma_* & 0,\ \pi,\ 0,\ \pi & 3\pi+\gamma_*\\
+n\equiv5,\ m\equiv2\ (4) & c_- & \pi+\gamma_* & \pi,\ 0,\ \pi,\ 0 & -2\pi-\gamma_*\\ \bottomrule
+\end{array}
+\]
+For instance, in the first row $j=\frac{3m-1}2$ is odd, so the zero on the branch $x>0$ has $\varphi\equiv0$; from
+$\varphi_0=-3\gamma_*\in(-\pi/2,0)$ the first multiple of $\pi$ reached is $0$ only if $\varphi$ increases. The zero on the branch $x<0$
+then has $\varphi=\pi$, and the end $c_-$ has $\varphi\equiv-3(\pi-\gamma_*)\equiv\pi+3\gamma_*$, which is first reached at $\pi+3\gamma_*<2\pi$.
+The other rows are identical in structure; in each, the last step is at most $3\gamma_*\le\pi/2$, so no further multiple
+of $\pi$ is crossed. In every row the change from the $c_+$ end to the $c_-$ end is $\pi+6\gamma_*$, resp.\ $3\pi+2\gamma_*$.
+
+The right half is $\iota(C_0^{\mathrm L})$. If $n$ is even, $\iota$ acts trivially on the pillowcase and the statement is the
+same. If $n$ is odd, $\iota$ maps $\varphi$ to $-\varphi-\pi$ and exchanges the ends with $\gamma=\gamma_*$ and $\gamma=\pi-\gamma_*$
+(Lemma~\ref{lem:iota}), so the change from the $c_+$ end is again $3\pi+2\gamma_*$. The count of points on $\Delta$ is read off from
+the labels, and transversality follows from Theorem~\ref{thm:central}.
+\end{proof}
+
+Finally we need the shape of the image of a half near a crossing. Since $\iota$ fixes the crossings and reverses the
+direction of $C_0$ at them, the image of $C_0$ has zero velocity at $c_\pm$ when $n$ is even; the next lemma shows that
+this happens for all $n\equiv4,5$, and gives the leading term.
+
+\begin{lemma}\label{lem:crossinglocal}
+Let $n\equiv4,5\pmod6$, and let $w=|v-\pi/2|$ along a half near a crossing $c\in\{c_+,c_-\}$. Then $v$ is a regular
+parameter of $C_0$ at $c$, and on a lift
+\[
+\bigl(\gamma,\varphi\bigr)=\bigl(\gamma(c),\varphi(c)\bigr)\pm\bigl(V_\gamma,V_\varphi\bigr)\,w^2+O(w^3),
+\]
+with the sign $+$ at $c_+$ and $-$ at $c_-$, where
+\[
+V_\gamma=\frac{\kappa\,h\,m^2}{\sin2\gamma_*},\qquad
+V_\varphi=\frac{c_3\,m^3}{8\sqrt{m'}\,k}\ (n\equiv4),\qquad V_\varphi=\frac{c_3\,m^2}{8\sqrt{m'}}\ (n\equiv5),
+\]
+$\kappa=\frac{(h+2)(3h+1)}{6(h+1)}$, $c_3=4(h+1)(h+2)(h+3)$ for $n\equiv4$, and $\kappa=\frac{(2-h)(2h+1)}6$, $c_3=\frac43(2-h)(11-2h)$ for
+$n\equiv5$. In particular $V=(V_\gamma,V_\gamma+V_\varphi)$, the leading coefficient of $(\gamma,\theta)$, is nonzero and has slope
+$1+V_\varphi/V_\gamma>1$; it is not parallel to the image of $B$, whose slope is $-2$, resp.\ $0$.
+\end{lemma}
+
+\begin{proof}
+The parameter $v$ is regular at $c$ because the tangent of $C_0$ at $c$ has a nonzero $v$-component
+(Proposition~\ref{prop:central}). The expansion of $\cos^2\gamma_*-\cos^2\gamma$ in the proof of Proposition~\ref{prop:gammaconf}
+begins with $\kappa h\xi^2$ (Lemma~\ref{lem:ineqC}), and $d\cos^2\gamma/d\gamma=-\sin2\gamma$; this gives $V_\gamma$, with $\gamma$ moving into
+$(\gamma_*,\pi-\gamma_*)$ at both ends. For $V_\varphi$, insert the leading terms into~\eqref{eq:deriv}: for $n\equiv4$, $A\sim m'w$,
+$B\sim w$, $C\to1$, $\sin^2a\to1$, $\sin^2b\sim k^2w^2$ and $E\sim c_3m^2w^3$ (Lemma~\ref{lem:ineqB}), so
+$|d\varphi/dw|=m|d\varphi/d\psi|\sim c_3m^3w/(4\sqrt{m'}\,k)$. For $n\equiv5$, $\sin a\sim mw$ and $\sin^2b\to1$ instead, giving
+$|d\varphi/dw|\sim c_3m^2w/(4\sqrt{m'})$. The signs follow from Proposition~\ref{prop:deltaphi}: $\varphi$ increases away from $c_+$ and
+decreases towards $c_-$. Since $V_\gamma>0$ and $V_\varphi>0$, the slope of $V$ exceeds $1$.
+\end{proof}
+
+For example, for $n=4$ one has $V_\gamma=2/\sqrt3$ and $V_\varphi=2\sqrt3$, so $V$ has slope $4$; the values of the
+leading coefficient of $\varphi$ obtained from the formula agree with direct evaluation of the restriction map for
+$n=4,5,10,11,16,17,41$ to at least four significant digits.

@@ -1,0 +1,281 @@
+\section{Small perturbations}\label{sec:perturb}
+
+In this section we describe the perturbed variety $W_\epsilon$, $\epsilon=(\epsilon_A,\epsilon_B)$, for small $\epsilon$,
+together with the restriction of $\Pi$ to it. Hedden, Herald and Kirk show that for Sard-generic small
+$\epsilon$ the space $R_\pi(Y,T)$ is a compact $1$-manifold with two boundary points, and that the restriction
+map is a restricted immersed $1$-manifold except possibly for fishtails~\cite[Thm.~10.1]{HHK2}. Near the two
+abelian representations their argument uses~\cite[Thm.~8.4]{HHK2}, which is proved by combining the
+description of the unperturbed variety near $r_\pm$~\cite[Prop.~8.1]{HHK2} with the persistence of the abelian
+points under perturbation~\cite[Prop.~8.3]{HHK2}. The analysis of Section~\ref{sec:complex} needs more
+precise information: a description of $W_\epsilon$ near the abelian points that is uniform in $\epsilon$, the
+local structure of $W_\epsilon$ near the two double points of $W$ when $n\equiv4,5\pmod 6$, and $C^1$ control
+elsewhere. We treat the three regions in turn and then assemble them (Proposition~\ref{prop:global}).
+
+Throughout, $\Psi=\Psi(\epsilon;u,v,\tau)=(\Psi_1,\Psi_2)$ denotes the pair of functions of~\cite[(33)--(34)]{HHK2},
+\begin{align*}
+\Psi_1&=\cos\Theta_1\cos\Phi_1-\tau\sin\Theta_1\sin\Phi_1,& \Psi_2&=\cos\Theta_2\cos\Phi_2-\tau\sin\Theta_2\sin\Phi_2,\\
+\Phi_1&=(s+p)u+(q-r)\epsilon_A\sin u,& \Phi_2&=su-r\epsilon_A\sin u,\\
+\Theta_1&=(q-r)v-(s+p)\epsilon_B\sin v,& \Theta_2&=-rv-s\epsilon_B\sin v,
+\end{align*}
+so that $W_\epsilon=\Psi(\epsilon;\cdot)^{-1}(0)\subset[0,\pi]^2\times[-1,1]$. At $\epsilon=0$, $\Psi$ is $(E1,E2)$ for $\eta=1$ and
+$(E2,E1)$ for $\eta=-1$ (Lemma~\ref{lem:normalform}). The map $\Pi=\Pi_\epsilon$ sends a point of $W_\epsilon$ to the
+restriction of the corresponding representation to the boundary sphere; it is computed from the
+elements $a,b,c$ of~\cite[(31)]{HHK2} and depends smoothly on $(\epsilon,u,v,\tau)$ where it is defined. We write
+$\widetilde\Pi$ for a lift to $\R^2$.
+
+\subsection{The arc near its ends}\label{subsec:corners}
+
+By Proposition~\ref{prop:classify}, the ends of the arc $B$ are the two abelian points of $R(Y,T)$. For $n$ odd
+($m$ even) they are the ends $(\frac\pi2,\frac\pi2,\pm1)$ of the fiber $B$. For $n$ even ($m$ odd) they are the
+segments $\{u=0,\,v=\frac\pi2\}\times[-1,1]$ and $\{u=\pi,\,v=\frac\pi2\}\times[-1,1]$, each of which is a single point of
+$R(Y,T)$~\cite[Thm.~10.2]{HHK2}. We introduce coordinates in which these points are regular.
+
+Write $\rho(A_1)=e^{uQ_A}$ and $\rho(B_1)=e^{vQ_B}$ with $Q_A,Q_B$ traceless unit quaternions and $\tau=Q_A\cdot Q_B$, as
+in~\cite[Thm.~10.2]{HHK2}. The representation is abelian exactly when the two one-parameter subgroups commute.
+\begin{itemize}
+\item \emph{$n$ odd.} Conjugate so that $Q_A=\mathbf i$, and write $Q_B=\tau\mathbf i+y\,\mathbf j$ with $y\in\R$ and $\tau=\pm\sqrt{1-y^2}$.
+Conjugation by $\mathbf i$ changes the sign of $y$ and fixes $u,v$. The coordinates of the chart are
+$(u,v,w)$ with $w=y^2=1-\tau^2$.
+\item \emph{$n$ even.} Conjugate so that $Q_B=\mathbf j$, and put $\xi=uQ_A\in\R^3$. The exponents
+$\Phi_1,\Phi_2$ and $pu+q\epsilon_A\sin u$ are odd functions of $u$, so every factor
+$e^{\Phi Q_A}=\cos\Phi(|\xi|)+\frac{\sin\Phi(|\xi|)}{|\xi|}\,\xi$ entering~\cite[(31)]{HHK2} is a real-analytic function of $\xi$.
+Rotating about $\mathbf j$ we may take $\xi=(y,x,0)$ with $y\in\R$; then $x=u\tau$, $y^2=u^2(1-\tau^2)$, and rotation by $\pi$
+about $\mathbf j$ changes the sign of $y$. The coordinates of the chart are $(x,w,v)$ with $w=y^2$. Near $u=\pi$ the
+same construction applies to $\xi=(u-\pi)Q_A$; the exponents become $k\pi$ plus an odd function, which
+contributes a sign $(-1)^k$.
+\end{itemize}
+In both cases the abelian locus is $\{w=0\}$, the functions $\Psi$ are real-analytic and even in $y$, hence
+real-analytic functions of $w$ (and of $\epsilon$), and the boundary representation $(a,b,c)$ is a real-analytic
+function of the signed coordinate $y$. For $n$ even, $(x,w)\mapsto(u,\tau)$ is a diffeomorphism from
+$\{w>0\}$ onto $\{u>0,\ |\tau|<1\}$ with inverse $u=\sqrt{x^2+w}$; it collapses the segment $\{u=0\}$ to the point
+$(x,w)=(0,0)$, as in~\cite[Thm.~10.2]{HHK2}.
+
+\begin{lemma}[Corner charts]\label{lem:cornerchart}
+Let $r_\pm(0)$ be one of the two abelian points of $R(Y,T)$. There are a neighbourhood $U$ of $r_\pm(0)$, a number
+$y_0>0$ and a neighbourhood $\mathcal O$ of $0\in\R^2$ such that for every $\epsilon\in\mathcal O$:
+\begin{enumerate}
+\item $R_\pi(Y,T)\cap U$ is a single embedded half-open arc $\{\Gamma_\epsilon(y):0\le y<y_0\}$, with
+$\Gamma_\epsilon(0)=r_\pm(\epsilon)$ the perturbed abelian point, and $\Gamma$ is real-analytic in $(y,\epsilon)$;
+\item $\Pi$ maps $r_\pm(\epsilon)$ to the corner $\Pi(r_\pm(0))$, and with a suitable lift,
+$$\widetilde\Pi(\Gamma_\epsilon(y))=y\,c(\epsilon)+y^3R(y,\epsilon),$$
+where $c(\epsilon)\in\R^2$ and $R$ are real-analytic and $c(0)$ is a nonzero vector along the image of $B$, of
+slope $2,4,-2,0$ for $n\equiv1,2,4,5\pmod 6$ (Proposition~\ref{prop:Bimage}).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+On $\{w=0\}$ the equations $\Psi=0$ reduce to the traceless conditions for abelian representations. For $n$ odd
+these read $\cos(\Phi_1\pm\Theta_1)=\cos(\Theta_2\pm\Phi_2)=0$, with the sign of $\tau$; their Jacobian with respect to
+$(u,v)$ is
+$$\pm\bigl(\Phi_1'\Theta_2'-\Theta_1'\Phi_2'\bigr)+O(\epsilon)=\pm\bigl((s+p)(-r)-(q-r)s\bigr)+O(\epsilon)=\mp(pr+qs)+O(\epsilon)=\mp1+O(\epsilon),$$
+since $\sin(\Phi_1\pm\Theta_1)$ and $\sin(\Theta_2\pm\Phi_2)$ are $\pm1$ at the abelian point. For $n$ even, at $(x,w)=(0,0)$
+the derivatives of $\Psi_k$ with respect to $x$ and $v$ are $-\Phi_k'(0)\sin\Theta_k$ and $-\Theta_k'\sin\Theta_k$, with
+$\sin\Theta_k=\pm1$ at $v=\frac\pi2$, so the Jacobian with respect to $(x,v)$ is again
+$\pm(\Phi_1'\Theta_2'-\Theta_1'\Phi_2')+O(\epsilon)=\mp1+O(\epsilon)$. (At the chart centred at $u=\pi$ the core term
+$\Phi_1'\Theta_2'-\Theta_1'\Phi_2'$ changes sign; only its absolute value matters.)
+
+By the implicit function theorem, the two coordinates other than $w$ are real-analytic functions of
+$(w,\epsilon)$ near $(0,0)$. Hence $W_\epsilon$ near the abelian point is the graph of a real-analytic map on
+$\{w\ge0\}$, and its intersection with $\{w=0\}$ is the single perturbed abelian point $r_\pm(\epsilon)$. Passing to
+$y=\sqrt w$ and to $R_\pi(Y,T)$ gives~(1). (In box coordinates there is one exception: for $n$ even, if the
+perturbed abelian point has $x=0$, for instance when $\epsilon_B=0$, then $W_\epsilon\cap U$ also contains the
+collapsed segment $\{u=0\}\times[-1,1]$, which is the single point $r_\pm(\epsilon)$ of $R_\pi(Y,T)$.)
+
+For~(2), the boundary representation is real-analytic in $(y,\epsilon)$ and is a corner representation at
+$y=0$: the traceless elements $a,b,c$ are all equal to $\pm$ one unit vector. Write $b-a=y\,b_1+O(y^2)$ and
+$c-a=y\,c_1+O(y^2)$. Since $a,b,c$ lie on a common great circle, $b_1$ and $c_1$ are parallel to a unit vector $e$
+orthogonal to $a$; in the normalized frame $a=\mathbf i$, $b=e^{\gamma\mathbf k}\mathbf i$, $c=e^{\theta\mathbf k}\mathbf i$ this gives the lift
+$(\tilde\gamma,\tilde\theta)=y\,(b_1\cdot e,\ c_1\cdot e)+O(y^2)$. Changing the sign of $y$ is a conjugation, so it fixes the
+point of $P$; on the branched double cover $\R^2\to P$ near the lattice point it acts as the deck involution
+$-1$. With the lift chosen accordingly, $\widetilde\Pi(\Gamma_\epsilon(y))$ is an odd real-analytic function of $y$,
+which gives the form $y\,c(\epsilon)+y^3R$. At $\epsilon=0$ the half-arc is the end of $B$, whose image is the
+straight segment of Proposition~\ref{prop:Bimage}, traversed with $\gamma=|y|+O(y^3)$ (for $n$ odd, $\gamma=\arccos\tau$;
+for $n$ even, $\gamma=u$ along $\tau=0$). So $c(0)\ne0$ points along the image of $B$, and $b_1(\epsilon)\ne0$ for
+small $\epsilon$, which makes $e$ well defined.
+\end{proof}
+
+\begin{remark}\label{rem:abelianpoints}
+The perturbed abelian points have a simple implicit description. For an abelian representation put
+$\rho(A_1)=e^{\mu_1\mathbf i}$ and $\rho(B_1)=e^{\mu_2\mathbf i}$ in a common maximal torus. By~\cite[(32)]{HHK2},
+$\rho(A_2)=e^{\epsilon_A\sin\mu_1\,\mathbf i}$ and $\rho(B_2)=e^{\epsilon_B\sin\mu_2\,\mathbf i}$, and~\cite[(31)]{HHK2} converts the traceless
+conditions into $J\mu+E\sin\mu\equiv\text{const}$, with $J=\begin{pmatrix}s+p&q-r\\ s&-r\end{pmatrix}$ of determinant $-(pr+qs)=-1$ and
+$J^{-1}E=\begin{pmatrix}0&-\epsilon_B\\ \epsilon_A&0\end{pmatrix}$. Hence
+$$\mu_1=\mu_1^0+\epsilon_B\sin\mu_2,\qquad \mu_2=\mu_2^0-\epsilon_A\sin\mu_1,$$
+where $\mu^0$ is the unperturbed abelian point. For $n$ even and the end over $u=0$ this gives
+$u=|\epsilon_B|+O(|\epsilon|^3)$ and $\tau=\operatorname{sign}\epsilon_B$: the perturbed arc ends on a face $\tau=\pm1$ of the box
+rather than on the collapsed segment, unless $\epsilon_B=0$.
+\end{remark}
+
+\begin{corollary}\label{cor:corners}
+For $\epsilon\in\mathcal O$ the following hold near the corner $(0,0)$, with constants independent of $\epsilon$.
+\begin{enumerate}
+\item The limiting slope of $L_1$ at $r_+$ is the slope of the image of $B$ plus $O(|\epsilon|)$; in particular it is
+bounded away from $1$.
+\item On the lift through the lattice point, $\varphi=y\,(c_2(\epsilon)-c_1(\epsilon))+O(y^3)$ with $c_2-c_1$ bounded away
+from $0$. Hence $\varphi$ is strictly monotone on $0<y<y_0$, negative for $n\equiv4,5$ and positive for $n\equiv1,2$
+$\pmod 6$: the arc leaves the corner below $\Delta$ in the first case and above $\Delta$ in the second.
+\item The full preimage of $L_1(R_\pi(Y,T)\cap U)$ near the lattice point is a single embedded real-analytic
+curve through it. In particular the arc has no self-intersections in $\Pi(U)$.
+\item For every sufficiently small earring parameter $\epsilon>0$, $L_0$ meets $L_1(R_\pi(Y,T)\cap U)$ in exactly one
+point, the generator $r_+$ of~\cite[Lemma~5.1]{HHK2}. It lies on the strand $S_-$ for $n\equiv4,5$ and on $S_+$
+for $n\equiv1,2$.
+\end{enumerate}
+The same statements, without~(4), hold at the other end of the arc, whose image is the corner $(\pi,0)$.
+\end{corollary}
+
+\begin{proof}
+Items (1)--(3) follow from Lemma~\ref{lem:cornerchart}(2): the derivative of the lift is $c(\epsilon)+O(y^2)$, and
+$c_2(0)-c_1(0)$ is the slope of $B$'s image minus one, which is $1,3,-3,-1$ in the four classes. For~(4), the
+strands of $L_0$ pass within $O(\epsilon)$ of the corner on either side of $\Delta$ (Section~\ref{sec:hhk}), so a
+curve leaving the corner with slope bounded away from $1$ and with $\varphi$ monotone meets exactly one of
+them, once, near the corner: the strand $S_-$ below $\Delta$ or the strand $S_+$ above it. The corner $(\pi,0)$ is
+not an endpoint of $\Delta$.
+\end{proof}
+
+\subsection{The double points}\label{subsec:doublepoints}
+
+Let $n\equiv4,5\pmod6$ and let $c$ be one of the two points where the central circle $C_0$ meets $B$. By
+Proposition~\ref{prop:doublepoints}, $d_{(u,v,\tau)}\Psi(c)$ has rank one, its kernel is spanned by the tangent lines
+$T_B$ and $T_C$ of $B$ and $C_0$ at $c$, and the restriction to this kernel of $\ell_c\cdot D^2\Psi(c)$, where $\ell_c$ is
+a nonzero covector vanishing on the image of $d\Psi(c)$, is a nondegenerate indefinite quadratic form. Choose
+coordinates $(s,t,\varrho)$ centred at $c$ with $\partial_s=T_B$ and $\partial_t=T_C$ at $c$. The component of $\Psi$ transverse to
+$\ker\ell_c$ has nonzero $\varrho$-derivative at $c$, so by the implicit function theorem it can be solved for
+$\varrho=\varrho(s,t,\epsilon)$. Near $c$, $W_\epsilon$ is then the zero set of the reduced function
+$$g(s,t;\epsilon)=\ell_c\cdot\Psi\bigl(\epsilon;s,t,\varrho(s,t,\epsilon)\bigr),$$
+whose Hessian at $(0,0;0)$ is the quadratic form above. By the implicit function theorem applied to $dg$, $g(\cdot;\epsilon)$ has a
+unique critical point near $0$ for small $\epsilon$, depending analytically on $\epsilon$, with critical value
+$\kappa_c(\epsilon)$. The Morse lemma, whose proof via Hadamard's lemma (see~\cite[Lemma~2.2]{Milnor}) goes through with
+analytic dependence on the parameter $\epsilon$, gives coordinates $(s',t')$, depending analytically on $\epsilon$, with
+$$g=\kappa_c(\epsilon)+s't'.$$
+At $\epsilon=0$ we choose them so that $\{t'=0\}$ is $B$ and $\{s'=0\}$ is $C_0$ near $c$. We have $\kappa_c(0)=0$ and
+$d\kappa_c(0)=\ell_c\cdot\partial_\epsilon\Psi(0;c)$.
+
+\begin{lemma}\label{lem:kappa}
+For each double point $c$, $\kappa_c(\epsilon)=\lambda_c\epsilon_A+\mu_c\epsilon_B+O(|\epsilon|^2)$ with $\mu_c\ne0$. For $n\equiv4\pmod 6$,
+$\lambda_c=0$, and $\kappa_c(\epsilon_A,0)=0$ for all $\epsilon_A$.
+\end{lemma}
+
+\begin{proof}
+The function $\Psi_k$ depends on $v$ and on $\epsilon_B$ only through $\Theta_k$. At $v=\frac\pi2$ and $\epsilon=0$, write
+$X_k=\partial\Psi_k/\partial\Theta_k(c)$. Then
+$$\partial_v\Psi(c)=\bigl((q-r)X_1,\,-rX_2\bigr),\qquad \partial_{\epsilon_B}\Psi(c)=\bigl(-(s+p)X_1,\,-sX_2\bigr),$$
+and the determinant of these two vectors is $-X_1X_2\bigl((q-r)s+r(s+p)\bigr)=-X_1X_2(pr+qs)=-X_1X_2$. Both components
+of $\partial_v\Psi(c)$ are nonzero. For $n\equiv4$, $\partial_v(E1,E2)(c)=\bigl(-m\omega_1\cos u_1,\,-m'\omega_2\cos2u_1\bigr)$ with
+$\cos2u_1=\frac m{m+1}$. For $n\equiv5$, $\partial_v(E1,E2)(c)=\bigl(-\tau m\omega_1,\,m'\omega_2\bigr)$ with $\tau=\pm\sqrt{1-1/(2m)}$. Here
+$\omega_1,\omega_2=\pm1$ are as in Proposition~\ref{prop:doublepoints}. Hence $X_1X_2\ne0$. Since the image of
+$d\Psi(c)$ is spanned by $\partial_v\Psi(c)$ and $\partial_{\epsilon_B}\Psi(c)$ is not proportional to it, $\mu_c=\ell_c\cdot\partial_{\epsilon_B}\Psi(c)\ne0$.
+
+For $n\equiv4$ the double points are $(u_1,\frac\pi2,0)$ and $(\pi-u_1,\frac\pi2,0)$, where $\partial_u\Psi=0$. Since $\Psi_k$ depends
+on $u$ and $\epsilon_A$ only through $\Phi_k$, and $\partial_u\Phi_k=s+p$ resp.\ $s$ is nonzero at $\epsilon=0$, this gives
+$\partial\Psi_k/\partial\Phi_k(c)=0$ and hence $\partial_{\epsilon_A}\Psi(c)=0$, so $\lambda_c=0$. Finally, for $n\equiv4$ and $\epsilon_B=0$ the line
+$\{v=\frac\pi2,\tau=0\}$ lies in $W_\epsilon$ for every $\epsilon_A$, because $\cos\Theta_1=\cos((q-r)\frac\pi2)=0$ and
+$\cos\Theta_2=\cos(r\frac\pi2)=0$ with $q-r=m$ and $r=m'$ odd. So $W_{(\epsilon_A,0)}$ is singular at $c$ and
+$\kappa_c(\epsilon_A,0)=0$.
+\end{proof}
+
+Numerically, $\mu_c=\pm\frac14$ for $n=4,5$ and $|\mu_c|=0.1179,\,0.0772,\,0.0574$ for $n=10,16,22$ and for $n=11,17,23$,
+with $\ell_c$ normalized to unit length; for $n\equiv5$ also $|\lambda_c|\approx0.44$. For $T(3,4)$ this recovers the observation
+that the perturbation along $\epsilon_A$ alone does not resolve the double points~\cite[\S11.6]{HHK2}.
+
+\begin{definition}\label{def:cone}
+For $a>0$ let $\mathcal C_a$ be the set of $\epsilon\in\R^2$ with $|\lambda_c\epsilon_A+\mu_c\epsilon_B|\ge a|\epsilon|$ at both double points.
+For $n\equiv1,2\pmod 6$ put $\mathcal C_a=\R^2$. By Lemma~\ref{lem:kappa}, for $a$ small $\mathcal C_a$ is a closed cone
+containing the $\epsilon_B$-axis; for $n\equiv4$ it is $\{|\epsilon_B|\ge a'|\epsilon|\}$ for some $a'>0$.
+\end{definition}
+
+For $\epsilon\in\mathcal C_a$ small we have $|\kappa_c(\epsilon)|\ge\frac a2|\epsilon|$, so the zero set $\{s't'=-\kappa_c(\epsilon)\}$ is smooth.
+It consists of two arcs, each joining a half-branch of $B$ at $c$ to a half-branch of $C_0$ at $c$. Which pair is
+joined depends on the sign of $\kappa_c(\epsilon)$.
+
+\begin{lemma}\label{lem:resolved}
+Let $a>0$. There are a neighbourhood $U_c$ of $c$ and $\epsilon_0>0$ such that for every $\epsilon\in\mathcal C_a$ with
+$0<|\epsilon|<\epsilon_0$, each of the two arcs of $W_\epsilon\cap U_c$ is mapped by $\Pi$ to an embedded arc with nowhere vanishing velocity. Along
+such an arc $\varphi$ has at most one critical point. It has exactly one if and only if the two half-branches it
+joins move $\varphi$ in the same sense away from $c$, and in that case the critical value differs from $\varphi(c)$ by
+$o(1)$ as $\epsilon\to0$.
+\end{lemma}
+
+\begin{proof}
+By Proposition~\ref{prop:Bimage}, $\Pi(s',0)=\Pi(c)+s'P_B+O(s'^2)$ at $\epsilon=0$ with $P_B\ne0$ along the image of $B$. By
+Proposition~\ref{lem:crossinglocal}, $\Pi(0,t')=\Pi(c)+t'^2V+O(t'^3)$ with $V\ne0$, $V\not\parallel P_B$, and
+$d\varphi(V)\ne0$; also $d\varphi(P_B)\ne0$, since the slope of $B$'s image is not $1$. Extend $\Pi_\epsilon$ smoothly to a
+neighbourhood of $c$. Then, in the coordinates $(s',t')$,
+$$\Pi_\epsilon(s',t')=\Pi(c)+s'P_B+t'^2V+O\bigl(s'^2+|s't'|+|t'|^3+|\epsilon|(|s'|+|t'|+1)\bigr),$$
+with the corresponding bounds on first derivatives. Parametrize an arc of $W_\epsilon\cap U_c$ by $t'$, with $s'=-\kappa/t'$,
+$\kappa=\kappa_c(\epsilon)$, and $|\kappa|/r_0\le|t'|\le r_0$. Its velocity is
+$$\frac{d}{dt'}\Pi_\epsilon=\frac{\kappa}{t'^2}P_B+2t'V+e(t'),\qquad |e(t')|\le C\Bigl(\frac{|\kappa|}{t'^2}\bigl(r_0+|\epsilon|\bigr)+\frac{|\kappa|}{|t'|}+t'^2+|\epsilon|\Bigr).$$
+Put $A(t')=|\kappa|/t'^2+|t'|$. Since $P_B$ and $V$ are linearly independent, the main term has length at least
+$c_0A(t')$. Each error term is at most a small multiple of $A$: $|\kappa|/|t'|\le r_0A$, $t'^2\le r_0A$, and
+$|\epsilon|\le|\epsilon|\,A/(c'|\kappa|^{1/3})\le C'|\epsilon|^{2/3}a^{-1/3}A$, because $A\ge c'|\kappa|^{1/3}$ and
+$|\kappa|\ge\frac a2|\epsilon|$. For $r_0$ and $|\epsilon|$ small, $|e|\le\frac{c_0}2A$. So the velocity never vanishes, and it lies in a
+fixed open sector of angle less than $\pi$ around the cone spanned by $\pm P_B$ and $\pm V$ with the signs fixed
+along the arc. A curve whose velocity stays in such a sector is a graph over a line, hence embedded.
+
+For the critical points, apply $d\varphi$: with $p=d\varphi(P_B)$ and $q=d\varphi(V)$ the derivative of $\varphi$ along the arc
+is $\kappa p/t'^2+2qt'$ plus an error bounded as above. On the arc $\operatorname{sign}(s')\operatorname{sign}(t')=-\operatorname{sign}\kappa$, and the
+main term vanishes exactly once, transversally, at $t'^3=-\kappa p/(2q)$, if $\operatorname{sign}(p s')=\operatorname{sign}(q)$; that is, if
+$\varphi$ increases away from $c$ along both joined half-branches or decreases along both. Otherwise the main term
+has constant sign and is at least a fixed multiple of $A$. The error does not change the number of zeros: in the
+variable $\log|t'|$ the main term divided by $A$ has a single nondegenerate zero and bounded $C^1$ norm, while the
+error divided by $A$ is $C^1$-small. The critical
+point lies at $|t'|=O(|\kappa|^{1/3})$, so $\varphi$ there is $\varphi(c)+o(1)$.
+\end{proof}
+
+\subsection{Global structure}
+
+\begin{proposition}\label{prop:global}
+Let $a>0$. For every $\epsilon\in\mathcal C_a$ with $0<|\epsilon|$ sufficiently small:
+\begin{enumerate}
+\item $R_\pi(Y,T)$ is a compact $1$-manifold with two boundary points $r_\pm(\epsilon)$, and $L_1$ is an immersion
+into $\Pst$ away from $r_\pm(\epsilon)$.
+\item Away from $U_{c_\pm}$ and from the corner charts of Lemma~\ref{lem:cornerchart}, $W_\epsilon$ is $C^1$-close to $W$:
+it is the image of a $C^1$-small normal graph over $W$, with $\Pi_\epsilon$ correspondingly $C^1$-close to $\Pi$.
+\item For $n\equiv1,2\pmod 6$ the components of $R_\pi(Y,T)$ are an arc $B_\epsilon$ close to $B$, from $r_+(\epsilon)$ to
+$r_-(\epsilon)$, and circles $C_{l,\epsilon}$ close to the non-central circles, one for each.
+\item For $n\equiv4,5\pmod6$ the same holds for the non-central circles, while $B\cup C_0$ is replaced by its resolution
+at the two double points. Label the pieces of $B$ cut out by $c_+,c_-$ as $B_0$ (from $r_+$), $B_1$ (between
+the double points) and $B_2$ (to $r_-$), and the halves of $C_0$ as $C_0^{\mathrm L},C_0^{\mathrm R}$. Then either
+\begin{itemize}
+\item the arc is $B_0\cdot C_0^{\mathrm X}\cdot B_2$ and there is one further circle $B_1\cdot(C_0^{\mathrm Y})^{-1}$, or
+\item the arc is $B_0\cdot C_0^{\mathrm X}\cdot B_1^{-1}\cdot C_0^{\mathrm Y}\cdot B_2$ and there is no further circle,
+\end{itemize}
+where $\{\mathrm X,\mathrm Y\}=\{\mathrm L,\mathrm R\}$ and each product denotes the resolved curve, which is $C^1$-close to the listed
+pieces away from $c_\pm$ and is described by Lemma~\ref{lem:resolved} near them.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Since $\Psi$ depends continuously on $\epsilon$ and the box is compact, $W_\epsilon$ lies in any prescribed
+neighbourhood of $W$ once $|\epsilon|$ is small. Cover $W$ by three kinds of open sets:
+\begin{itemize}
+\item the corner charts $U$ of Lemma~\ref{lem:cornerchart};
+\item the neighbourhoods $U_{c_\pm}$ of Lemma~\ref{lem:resolved} (only for $n\equiv4,5$);
+\item a neighbourhood of the remaining compact part $K$ of $W$, on which $d_{(u,v,\tau)}\Psi$ has rank two
+(Lemma~\ref{lem:rank}).
+\end{itemize}
+On a neighbourhood of $K$ the implicit function theorem shows that $W_\epsilon$ is a smooth curve $C^1$-close to $W$,
+uniformly in $\epsilon$. On $U$ and $U_{c_\pm}$ the structure is given by Lemmas~\ref{lem:cornerchart}
+and~\ref{lem:resolved}. On overlaps the descriptions agree by the uniqueness part of the implicit function
+theorem. At $\epsilon=0$ only the abelian points are mapped to corners: the interior of $B$ is mapped to the
+interior of a straight segment between two corners (Proposition~\ref{prop:Bimage}), and the circles and the
+two halves of $C_0$ avoid the edges $\gamma\in\pi\Z$ (Proposition~\ref{prop:edges}). Hence for small $\epsilon$ every point of
+$W_\epsilon$ whose image is near a corner lies in a corner chart. This proves~(2) and the first part of~(1). The
+restriction map is an immersion wherever $R_\pi(Y,T)$ is a smooth $1$-manifold~\cite[p.~46, after
+Thm.~8.4]{HHK2}; in the three regions this is also visible directly from Lemmas~\ref{lem:cornerchart}
+and~\ref{lem:resolved} and from $C^1$-closeness to $\Pi|_W$, which is an immersion on $K$.
+
+The list of components in~(3) and~(4) is read off from the cover. Each non-central circle is a smooth component of
+$W$ contained in $K$, so it persists. For $n\equiv1,2$, $W$ has no double points (Proposition~\ref{prop:doublepoints}),
+and $B$ persists as an arc ending at the perturbed abelian points. For $n\equiv4,5$, at each double point the
+resolution joins each half-branch of $B$ to a half-branch of $C_0$. If the half-branches $B_0$ and $B_2$ are joined
+to the same half of $C_0$, the result is the first alternative; otherwise it is the second.
+\end{proof}
+
+\begin{remark}\label{rem:pattern}
+Both alternatives in Proposition~\ref{prop:global}(4) are compatible with the local analysis, and Section~\ref{sec:complex}
+shows that the conclusions of Theorem~\ref{thm:main} do not depend on which occurs. In numerical computations with
+$|\epsilon_A|n\le0.5$ and $0.03\le|\epsilon_B|\le0.05$ we observed the first alternative for $n\equiv4\pmod6$ and the second
+for $n\equiv5$. The cone condition $\epsilon\in\mathcal C_a$ is used only in Lemma~\ref{lem:resolved}, to keep $|\kappa_c(\epsilon)|$
+large compared with $|\epsilon|^3$; it excludes, in particular, perturbations with $\epsilon_B=0$ for $n\equiv4\pmod 6$, for
+which the double points are not resolved at all (Lemma~\ref{lem:kappa}).
+\end{remark}

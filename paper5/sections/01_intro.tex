@@ -1,0 +1,145 @@
+\section{Introduction}\label{sec:intro}
+
+Hedden, Herald and Kirk proposed a Lagrangian Floer theory in the pillowcase as a model for the reduced
+singular instanton homology $\Inat(K)$ of a knot $K\subset S^3$~\cite{HHK1,HHK2}. A Conway sphere splits
+$(S^3,K)$ into a trivial tangle $(D,U)$ and a $2$-tangle $(Y,T)$. Restriction to the four-punctured sphere sends
+the traceless $\SU$ character varieties of the two sides to immersed curves $L_0$ and $L_1$ in the
+pillowcase $P=R(S^2,\{a,b,c,d\})$. After a small holonomy perturbation $\pi$ of $(Y,T)$, and with an
+additional meridional ``earring'' on the trivial side, these are restricted immersed curves in the sense
+of~\cite{HHK2}, and their Floer homology $\Hnat(Y,T,\pi)$ is a $\Z/4$-graded vector space over $\F_2$. Its
+generators correspond to the critical points of a perturbed Chern--Simons functional, and Hedden, Herald and
+Kirk conjecture that a suitable decomposition recovers $\Inat(K)$ (\cite[Conj.~6.5]{HHK2}, restated as
+Conjecture~\ref{conj:hhk65} below).
+
+For $2$-bridge knots the curve $L_1$ is a linear arc, all differentials vanish, and the conjecture
+holds~\cite[\S7]{HHK2}. For torus knots Hedden, Herald and Kirk computed the complex for eight knots, among
+them $T(3,4)$, $T(3,5)$ and $T(3,7)$, using a tangle decomposition adapted to the torus knot~\cite[\S\S10--11]{HHK2}.
+In these examples the homology has the rank of $\Inat(K)$, and nonzero differentials occur. The choice of
+decomposition matters: with the earring placed on the other tangle the homology of $T(4,5)$ has the wrong
+rank~\cite[\S10.3]{CHKK}.
+
+In this paper we compute the pillowcase complex of every torus knot $T(3,n)$ in the decomposition
+of~\cite[\S10]{HHK2}. Fix $n\ge4$ coprime to $3$, write $n\equiv\eta\pmod3$ with $\eta=\pm1$, and let
+$(r,s)=((2n+1)/3,-2)$ if $\eta=1$ and $(r,s)=((n+1)/3,-1)$ if $\eta=-1$. These are the parameters used
+in~\cite{HHK2} for $n=4,5,7$ and in~\cite{FKP} for $n=10$. The perturbation has two real parameters
+$\epsilon=(\epsilon_A,\epsilon_B)$, and the earring curve $L_0$ depends on a parameter $\epsilon>0$
+(Section~\ref{sec:hhk}). For $n\equiv4,5\pmod6$ the unperturbed variety has two double points, and we require
+the perturbation to resolve both of them at a definite rate: $\epsilon$ lies in a closed cone
+$\mathcal C_a\subset\R^2$, the complement of thin wedges around at most two lines through the origin
+(Definition~\ref{def:cone}). For
+$n\equiv4\pmod6$ the cone excludes the axis $\epsilon_B=0$, and for $n\equiv1,2\pmod6$ it is all of $\R^2$.
+
+\begin{theorem}\label{thm:main}
+Let $K=T(3,n)$ with $n\ge4$ coprime to $3$, and let $(Y,T)$ be the tangle above. Fix $a>0$ small. For every
+sufficiently small $\epsilon\in\mathcal C_a\setminus\{0\}$, and every sufficiently small earring parameter $\epsilon>0$
+(chosen after the perturbation):
+\begin{enumerate}
+\item $L_1$ is a restricted immersed $1$-manifold, $(L_0,L_1)$ is an admissible pair, and the complex
+$C(L_0,L_1)$ has $1+|\sigma(K)|$ generators;
+\item if $n\equiv1,2\pmod6$ the differential vanishes; if $n\equiv4,5\pmod6$ there is exactly one bigon, and it
+runs from a generator $x^-$ to the generator $r_+$ of~\cite[Lemma~5.1]{HHK2};
+\item $\Hnat(Y,T,\pi)$ has rank $\|\Delta_K\|_1$, the sum of the absolute values of the coefficients of the
+Alexander polynomial. With the absolute grading normalized by $\gr(r_+)=\sigma(K)$, its $\Z/4$-graded
+dimensions are those of $\Inat(K;\Q)$ in Kronheimer and Mrowka's grading, whatever absolute gradings are
+chosen on the closed components of $L_1$.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}\label{cor:conj65}
+For every torus knot $T(3,n)$, the decomposition above satisfies the conclusion of Conjecture~6.5
+of~\cite{HHK2}: $\Hnat(Y,T,\pi)$ and $\Inat(K;\Q)$ have the same $\Z/4$-graded dimensions.
+\end{corollary}
+
+For $n=4,5,7$ this recovers the computations of~\cite[\S11]{HHK2}. We also describe the curves explicitly.
+The arc component of $L_1$ lifts to a curve in the strip $0<\gamma<\pi$ of the plane from $(0,0)$ to
+$(\pi,2\pi j)$ with $j=1,2,1,4$ for $n\equiv1,2,4,5\pmod6$. It carries $1$, $3$, $3$ and $9$ generators
+respectively. Every closed component carries four generators, one in each degree, and no differential
+(Theorem~\ref{thm:arc}).
+
+The second result concerns the differential. Daemi and Scaduto associate to a knot an S-complex
+$\tC(K)$, a chain complex with an involution-like map $\chi$, whose homology is $\Inat(K)$ and whose
+differential has a component $\delta_1$ to the reducible generator~\cite{DSEquiv}. In~\cite{W26} we proposed
+that the pillowcase complex, with $\chi(x_i^-)=x_i^+$, is a model for $\tC(K;\F_2)$ (Conjecture~\ref{conj:pillow}).
+For torus knots the differential of $\tC(K;\Q)$ has rank $R=\frac12(1+|\sigma|-\|\Delta_K\|_1)$, and for
+$T(3,n)$ one has $R=1$ if $n\equiv4,5\pmod6$ and $R=0$ otherwise~\cite{W26}.
+
+\begin{theorem}\label{thm:scomplex}
+Let $K=T(3,n)$ with $n\ge4$ coprime to $3$. Part~(a) of Conjecture~\ref{conj:pillow} holds for $K$. Normalize
+the absolute grading on each closed component of $L_1$ so that its generators $x^-$ have odd degree after
+subtracting $\sigma(K)$ (Definition~\ref{def:circlenorm}). Then the S-complex $\pill(K)$, shifted by $\sigma(K)$, has
+the graded generators of $\tC(K)$, and its differential is a single component of type $\delta_1$, of rank $R$.
+Consequently:
+\begin{enumerate}
+\item for $n\equiv1,2\pmod6$, $\pill(K)$ is S-chain homotopy equivalent to $\tC(K;\F_2)$;
+\item for $n\equiv4,5\pmod6$, $\pill(K)$ is S-chain homotopy equivalent to $\tC(K;\F_2)$ if and only if
+$\tC(K;\F_2)$ is S-chain homotopy equivalent to the S-complex on the same graded generators whose only
+nonzero component is a $\delta_1$ of rank one.
+\end{enumerate}
+\end{theorem}
+
+The normalization in Theorem~\ref{thm:scomplex} agrees with the convention of~\cite[\S6.1]{HHK2} for closed
+components, given the identification of the relative grading of~\cite{HHK2} with Kronheimer and Mrowka's,
+which is outlined in~\cite[\S6.1]{HHK2}. In part~(1), $\tC(K;\Z)$ has zero differential because $R=0$. In
+part~(2), Daemi and Scaduto show that $\delta_1\neq0$ for $T(3,4)$ and $T(3,5)$~\cite[\S\S9.3--9.4]{DSEquiv}; the
+general condition in~(2) is a question about the instanton side.
+
+The decomposition appears to matter even within the family of~\cite[\S10]{HHK2}. Any $(r,s)$ with $3r+ns=1$ defines a
+tangle decomposition of $T(3,n)$, and different choices give different curves $L_1$~\cite[\S11]{HHK2}.
+In Section~\ref{sec:other} we report a numerical computation for $T(3,4)$ with $(r,s)=(7,-5)$. There the pair
+$(L_0,L_1)$ again appears to be admissible with $L_1$ restricted. The arc, however, is not homotopic relative to
+its ends to the arc of the decomposition above. With zero bounding cochain the complex has no bigon, and $\Hnat$
+has rank $7$, whereas $\Inat(T(3,4))$ has rank $5$. The arc has a self-intersection near the corner $(0,0)$
+that defines a bounding cochain, and the deformed complex has homology of rank $5$, by the mechanism
+found in~\cite[\S10.3]{CHKK} for $T(4,5)$. Both results are consistent with Conjecture~6.5 of~\cite{HHK2},
+which asserts the existence of a suitable decomposition.
+
+\subsection*{Outline of the proof}
+The proof of Theorem~\ref{thm:main} has four steps.
+
+\emph{The unperturbed variety} (Section~\ref{sec:variety}). In HHK's coordinates $(u,v,\tau)$ the equations
+of~\cite[\S10]{HHK2} for $T(3,n)$ reduce to the pair (E1), (E2) of trigonometric equations. Eliminating $\tau$
+gives $4\cos^2u=1-\sin(nv)/\sin(kv)$ with $k=(n+2\eta)/3$. The variety consists of the arc $B$ of binary dihedral
+representations and $\lfloor n/3\rfloor$ circles over explicit intervals of the $v$-axis. For
+$n\equiv1,2\pmod6$ these are disjoint. For $n\equiv4,5\pmod6$ the circle over the interval containing
+$v=\pi/2$ meets $B$ in two nondegenerate double points.
+
+\emph{Monotonicity} (Section~\ref{sec:monotone}). Let $\varphi=\theta-\gamma$ in the pillowcase coordinates
+$(\gamma,\theta)$, so that the diagonal arc $\Delta$, near which $L_0$ lies, is $\{\varphi\in2\pi\Z\}$ in the
+plane. We show that $\varphi$ is strictly monotone along every circle that avoids $v=\pi/2$, and along each
+half of the central circle. In the variables $\psi=mv$, $\delta=\eta v$, an exact trigonometric identity
+expresses $(d\varphi/d\psi)^2$ through a function $E$ that is linear in $1/m$. Its nonvanishing then reduces to
+the positivity of an explicit function of two variables on a compact domain independent of $n$. We
+verify that positivity by a rigorous interval-arithmetic computation (Appendix~\ref{app:interval}). The same
+analysis gives the total change of $\varphi$ along each piece and shows that the central circle stays away
+from the edges of the pillowcase.
+
+\emph{Small perturbations} (Section~\ref{sec:perturb}). The perturbation is controlled in three regions. Near
+the two abelian representations a chart in which the abelian locus is $\{w=0\}$ shows that the perturbed arc
+ends at the corners along a half-curve, uniformly in $\epsilon$, with limiting slope close to that of $B$. Near
+the double points a Morse model shows that they are resolved, and that the image of each resolution is
+immersed. Elsewhere the perturbed variety is $C^1$-close to the unperturbed one.
+
+\emph{The complex} (Section~\ref{sec:complex}). Generators are the transverse crossings of the lifted curves
+with the lines $\Delta_k=\{\varphi=2\pi k\}$, together with $r_+$. A bigon lifts to the plane, and its boundary on
+$L_1$ must contain a critical point of $\varphi$; otherwise its two corners would lie over a single crossing on
+different lifts of $L_0$. Along the arc, $\varphi$ has two critical points, at the resolved double points, and
+the values of $\varphi$ there show that only one pair of generators can bound a bigon. For $n\equiv4,5\pmod6$
+that pair does bound an embedded bigon near the corner $(0,0)$. On stretches where $\varphi$ is monotone the
+Maslov term of the grading formula vanishes, which gives the gradings. Comparing with the graded ranks of
+$\Inat(K)$ computed in~\cite{W26} proves part~(3).
+
+Everything except the three inequalities of Appendix~\ref{app:interval} is proved by hand. For many values
+of $n$ we have also computed the perturbed complexes numerically, and they agree with the theorems
+(Remark~\ref{rem:numerics}).
+
+\subsection*{Organization}
+Section~\ref{sec:hhk} reviews the pillowcase Floer theory of~\cite{HHK2} and the S-complexes of Daemi and
+Scaduto. Section~\ref{sec:variety} describes the unperturbed variety, Section~\ref{sec:monotone} proves the
+monotonicity statements, and Section~\ref{sec:perturb} treats small perturbations. Section~\ref{sec:complex}
+computes the complex and proves Theorems~\ref{thm:main} and~\ref{thm:scomplex}, and Section~\ref{sec:other}
+treats the second decomposition of $T(3,4)$. Appendix~\ref{app:interval} contains the interval-arithmetic
+verifications.
+
+\subsection*{Conventions}
+Positive torus knots have negative signature, as in~\cite{HHK2}; thus $\sigma(T(3,4))=-6$. We cite results
+of~\cite{HHK2} by the numbering of arXiv:1501.00028v1.
