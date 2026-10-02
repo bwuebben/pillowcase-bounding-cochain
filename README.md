@@ -1,6 +1,6 @@
 # Atiyah–Floer pillowcase papers and exact computations
 
-This repository contains three papers and the supporting computer code for results on both sides of
+This repository contains two papers and the supporting computer code for results on both sides of
 the **knot Atiyah–Floer program** for the pretzel family P(−2,3,q), q odd.
 
 **Theorem (rigorous, unconditional, integral).** For every odd q ≥ 3, the reduced singular
@@ -32,17 +32,6 @@ selection genuinely depends on a local-support hypothesis. Separately, the Lagra
 correspondence induced by the `Q_{1/3}` line is immersed with a triple point, hence not embedded,
 so Gao's wrapped representability theorem does not apply to it.
 
-**Paper III exact-action theorem.** For the compactly truncated main component of the pillowcase
-composition associated to `Q_{1/3}+Q_{1/7}`, the small-perturbation correspondence is exact, and a
-half-period symmetry fixes the relative primitive between the two output arcs. The singular
-first-arc data have 58 seam-overlap candidates, exactly 50 of which persist on the main component
-for small positive perturbation: 28 diagonal–circle and 22 circle–circle roots. Their limiting
-actions are computed exactly as rational multiples of π². Forty-two are negative, eight are
-positive, none vanishes, and the minimum absolute limiting action is π²/42. The complete count and
-all signs persist for sufficiently small positive perturbation. Smith's possible auxiliary circle
-components and the noncompact puncture ends are outside the theorem, as are holomorphic-quilt
-counts, compactification, bounding cochains, and the instanton–pillowcase comparison.
-
 **Finite pillowcase computations.** The pillowcase code reports finite polygon computations for
 explicitly specified piecewise-linear immersed curves: finite bigon matrices, triangle and
 quadrilateral tables inside configured edge windows, and screens for candidate correction supports.
@@ -73,14 +62,8 @@ single smoothings, the triple-point obstruction to Gao's representability theore
 statement of the remaining local-support hypothesis. It does not reinstate the withdrawn
 finite-polygon claims. Both papers carry an Appendix A itemizing every change from v2.
 
-## The three papers
+## The two papers
 
-- **`paper3/main.tex`** (**arXiv v1 candidate, August 15, 2026**) — *Exact action separation on the
-  main component of a pretzel-tangle composition in the pillowcase*. Proves exactness and
-  half-period normalization for the compact main component of the `Q_{1/3}+Q_{1/7}` composition,
-  the six-fold and 21-sheet description, the exact 50-root count, the 42-negative/eight-positive
-  action split, and small-perturbation persistence. It excludes auxiliary components, puncture
-  ends, quilt counts, and bounding-cochain conclusions.
 - **`paper2/main.tex`** (**arXiv:2607.26096**) — *The instanton homology of the (−2,3,q) pretzel
   knots and Maurer–Cartan deformations in the two-arc algebra of the pillowcase*. The main paper:
   the integral instanton theorem, the finiteness lemma for morphism complexes over the two-arc
@@ -101,23 +84,12 @@ finite-polygon claims. Both papers carry an Appendix A itemizing every change fr
 
 Build any paper with `pdflatex main.tex` (run twice for cross-references); each compiles
 independently with a standard TeX distribution. Compiled PDFs are included under their
-distinctive names (`traceless-gradings.pdf`, `pretzel-cochains.pdf`,
-`exact-action-separation.pdf`).
+distinctive names (`traceless-gradings.pdf`, `pretzel-cochains.pdf`).
 
-## The methods note
-
-- **`note/main.tex`** (compiled: `note/cochain-search-note.pdf`) — *Finding the pillowcase
-  bounding cochains: the search behind the P(−2,3,q) computations, in complete detail* (12 pp).
-  A correspondence note, written for Zuyi Zhang, expanding §§4–5 of paper 2 as of July 2026 to
-  full operational detail: the lift bookkeeping, the pruning discipline, the traps that produced
-  wrong answers along the way, and the acceptance criteria, together with what can be said about
-  the analytic question.
-
-  **Status (August 12, 2026).** The note predates the August 12 revision of paper 2 and presents
-  the search as it was then understood. In particular its statements that the q = 11 screen
-  produced fifty-five cochains and that the searches establish minimality by exhaustion are
-  superseded — see the revision note above and the current paper 2. It is kept unchanged as part
-  of the correspondence record.
+An earlier version of this repository also contained a third paper, *Exact action separation on
+the main component of a pretzel-tangle composition in the pillowcase*, with its certificate
+`q7_exact_actions.py`. It has been withdrawn for correction and is not part of the current
+release; neither paper above depends on it.
 
 ## The code
 
@@ -151,9 +123,6 @@ python3 q7_kwz.py --encode
 python3 q7_closure_probe.py --slope=-3/4 --selection-certificate
 python3 q7_quilt_census.py --pairing-census
 python3 q7_quilt_census.py --two-switch-census --strict-pair-census
-
-# --- Paper III: exact singular-limit root and action certificate ---
-python3 q7_exact_actions.py
 
 # --- actual corrected-C3 numerical stability diagnostic (not an analytic proof) ---
 python3 c3_perturbed.py
@@ -191,7 +160,6 @@ python3 surgery_check.py     # smoothing blue at the q=5,7 supports and recounti
 | `q7_kwz.py` | the 31-generator q = 7 twisted complex over the two-arc algebra, the four Maurer–Cartan elements from local smoothings, the finite reduction of the wrapped morphism complex, the strict `S18`–`S25` isomorphism, and the three component classes |
 | `q7_closure_probe.py` | slope `-3/4` rational-earring pairing, auxiliary Alexander/Khovanov certificate, and the complete sixteen-element named-switch span |
 | `q7_quilt_census.py` | exhaustive enumeration of the 82 self-intersection orbits (73 generator-preserving smoothings, 45 distinct elements) and its 52-orbit connector–main subfamily (46 occurrences, 38 elements), all 703 two-element sums, closure-rank distribution, and strict relabeling test |
-| `q7_exact_actions.py` | Paper III's standard-library rational certificate: singular path word, seven algebraic normal-root boxes, 58 overlap candidates, 50 persistent roots, the 25-row area–residue table, and the exact 42/8 sign split |
 | `c3_perturbed.py` | corrected equation-level trace of Smith's `C3` correspondence; numerical diagnostic with explicit source caveats |
 | `c3_q7_compare.py` | two-perturbation comparison of the actual `C3` trace with the PL twisted complex and its 43-singleton enumeration |
 | `skein_alexander.py`| closed-form Alexander polynomials of the family via the validated Conway-skein Chebyshev recursion (Lehmer match at q=7); Σ\|Δ\| = q+2 — an independent regression; the theorem cites Hironaka |
@@ -214,11 +182,6 @@ The scope is separated throughout. The **instanton theorem** (I♮ free abelian 
 proved unconditionally from cited results — no pillowcase model enters. The q = 7 Maurer–Cartan and
 second-closure propositions are algebraic statements in the specified two-arc category, verified
 without truncation of word length.
-Paper III is likewise unconditional but narrower: it proves the finite exact geometry and action
-filtration of the compact main component of one composed curve. It does not classify Smith's
-possible auxiliary circle components or the puncture ends. Its final energy statement is only an
-obstruction for any exact configuration already satisfying Stokes' identity; it does not assert
-that a quilted moduli space exists or that any positive-action root is counted.
 The remaining identification of that selected deformation with the instanton tangle object is
 conditional on the CHKK correspondence and the q = 7 figure-eight local-support hypothesis. The
 other bigon statistics and candidate supports are finite computations within the model,
@@ -254,6 +217,5 @@ code cannot yet handle its overlapping seam arcs.)
 
 ## License
 
-Code is released under the MIT License (`LICENSE`). The papers and the note (`paper1/`,
-`paper2/`, `paper3/`, `note/`) are
+Code is released under the MIT License (`LICENSE`). The papers (`paper1/`, `paper2/`) are
 © Bernd J. Wuebben; you may read and redistribute them for scholarly purposes with attribution.
