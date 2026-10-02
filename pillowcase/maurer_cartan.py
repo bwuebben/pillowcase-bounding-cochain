@@ -94,7 +94,7 @@ def orbit_group(blue):
     for s in scross:
         pp = list(P_point(s['pt']))
         for pr, lst in orbs:
-            if _tdist(pp, pr) < 3e-3:
+            if _tdist(pp, pr) < 1e-7:
                 lst.append(s)
                 break
         else:

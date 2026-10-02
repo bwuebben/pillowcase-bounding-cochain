@@ -92,7 +92,9 @@ local-support hypothesis. Figure 1 is generated from the computed curves
 (`pillowcase/make_figure.py`).
 
 **Theorem (rigorous, unconditional, integral).** For every odd q ≥ 3, the reduced singular
-instanton knot homology I♮(P(−2,3,q)) is free abelian of rank q + 2. The proof combines Hironaka's
+instanton knot homology I♮(P(−2,3,q)) is free abelian of rank q + 2. Over ℚ the rank q + 2 is due
+to Lobb and Zentner (Algebr. Geom. Topol. 20 (2020)), by the same comparison, and it also follows
+from work of Li and Ye; the new point is the integral statement. The proof combines Hironaka's
 exact formula for the family's Alexander polynomials (Lehmer-like: all coefficients in {0,±1},
 exactly q+2 nonzero), Manion's closed-form reduced integral Khovanov homology of 3-strand pretzels
 (NYJM 24 (2018)), and the integral Kronheimer–Mrowka spectral sequence. The Alexander input is
@@ -103,9 +105,9 @@ polynomial exactly at q = 7).
 **The q = 7 Maurer–Cartan calculation.** In the wrapped Fukaya subcategory that CHKK identify
 with twisted complexes over the two-arc algebra of Kotelskiy–Watson–Zibrowius, the higher products
 vanish, so the Maurer–Cartan equation for a deformation is the finite identity (δ+b)² = 0. The
-morphism complex over that algebra is infinite dimensional; a filtration lemma (Lemma 4.1)
-reduces its homology to three integers for any pair of finite twisted complexes, without truncating
-word length. The resolved `Q_{1/3}+Q_{1/7}` curve encodes to a 31-generator twisted complex; the
+morphism complex over that algebra is infinite dimensional; for the pairs of twisted complexes used
+here, which satisfy two explicit finiteness conditions checked by computation, a reduction lemma
+(Lemma 4.1) expresses its homology through three integers, without truncating word length. The resolved `Q_{1/3}+Q_{1/7}` curve encodes to a 31-generator twisted complex; the
 pairing with the earring has dimension 7, and smoothing the curve at any one of four
 self-intersection orbits (`S18`, `S25`, `S69`, `S74`) gives a four-arrow Maurer–Cartan element
 raising it to 9. The four objects represent exactly three homotopy classes, with `S18` and `S25`
@@ -129,8 +131,8 @@ against the instanton rank q + 2 = 5, 7, 9, 13, 15 — a difference of at most t
 at det K = |q − 6| = 3. The low-order tables single out candidate supports whose finite matrices
 square to zero over GF(2) and have the target statistic at the reported perturbation: a
 two-crossing support at q = 5 (h = 7), a one-crossing support at q = 7 (h = 9), and, at q = 11,
-fifty-five singleton supports passing the finite screen, of which fifty-two square to zero
-(56 and 42 at an independent perturbation).
+sixty-two singleton supports passing the finite screen, of which fifty-six square to zero
+(66 and 50 at an independent perturbation).
 
 **What is not claimed.** The q = 5, 11, 13 candidate tables remain statistics of explicitly
 constructed finite matrices; their supports are not proved to satisfy the full immersed-Fukaya
@@ -189,7 +191,7 @@ python3 b2_result.py         # q=5: support {s_A,s_B}; D^2=0, h: 5 -> 7   (~15 s
 python3 pretzel_solve.py 3 --triangles-only --max-support 1
                              # q=7: default singleton; D^2=0, h: 7 -> 9
 python3 pretzel_solve.py 5 --triangles-only --max-support 1
-                             # q=11: 55 pass the finite screen; 52 square to zero (3 failures printed)
+                             # q=11: 62 pass the finite screen; 56 square to zero (6 failures printed)
 python3 maurer_cartan.py     # finite monogon/self-bigon/self-triangle tables (diagnostics only)
 python3 pert_check.py        # two finite q=5 perturbation runs
 python3 surgery_check.py     # smoothing blue at the q=5,7 supports and recounting bigons

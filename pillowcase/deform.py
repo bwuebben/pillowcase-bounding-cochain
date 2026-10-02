@@ -101,7 +101,7 @@ def triangle_contributions(red, blue, gens, maxspan_blue=140, maxspan_red=60,
     reps = []
     for s in scross_all:
         pp = P_point(s['pt'])
-        if only_s is not None and not any(_tdist(pp, q) < 3e-3 for q in only_s):
+        if only_s is not None and not any(_tdist(pp, q) < 1e-7 for q in only_s):
             continue
         reps.append(s)
     n = len(gens)
@@ -236,7 +236,7 @@ def triangle_contributions_P(red, blue, gens, maxspan_blue=180, maxspan_red=60):
             if used[b]:
                 continue
             sb, Mb = mats[b]
-            if _tdist(P_point(sb['pt']), pa) < 3e-3:
+            if _tdist(P_point(sb["pt"]), pa) < 1e-7:
                 group.append(Mb)
                 preims.append(sb)
                 used[b] = True
