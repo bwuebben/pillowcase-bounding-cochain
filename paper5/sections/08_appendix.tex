@@ -6,7 +6,8 @@ evaluations in interval arithmetic~\cite{MooreInterval}: every elementary functi
 that returns an interval containing all its values, with outward rounding, so that a strictly positive lower
 endpoint proves positivity on the box. We use the interval context of \texttt{mpmath}~\cite{mpmath} at a working precision
 of $30$ decimal digits, with $\pi$ enclosed in an interval.\footnote{The three computations are carried out by
-short Python scripts built on \texttt{mpmath}, which are available from the author on request. Each runs in under a
+short Python scripts built on \texttt{mpmath}, which are available, with the computations of
+Sections~\ref{sec:complex} and~\ref{sec:other}, at \url{https://github.com/bwuebben/pillowcase-bounding-cochain}. Each runs in under a
 minute on a laptop.} Where a function has a removable singularity we use the
 following enclosure of $\operatorname{sinc}y=\sin y/y$ on an interval $[y_0,y_1]\subset[0,\pi]$: $\operatorname{sinc}$ is decreasing there, so its range is
 $[\operatorname{sinc}y_1,\operatorname{sinc}y_0]$, and each endpoint is evaluated either directly or, for $y<10^{-6}$, by
@@ -82,7 +83,7 @@ M_9\le\xi|g^{(9)}|+\sum_{j\ge1}\tbinom9j h^{j-1}|g^{(9-j)}|+|q^{(9)}|,
 \]
 and each derivative of a trigonometric polynomial
 $\sum a_i\cos\omega_i\xi$ is bounded by $\sum|a_i|\,|\omega_i|^k$. Bounding $h^{j-1}$ by $h_{\max}^{j-1}$ and each $|\omega_i|$ by its larger
-value at $h=0$ or $h=h_{\max}$ gives $M_9\le9.32\cdot10^7$ for $n\equiv4$ and $M_9\le2.43\cdot10^6$ for $n\equiv5$, hence
+value at $h=0$ or $h=h_{\max}$ gives $M_9\le9.32\cdot10^7$ for $n\equiv4$ and $M_9\le2.44\cdot10^6$ for $n\equiv5$, hence
 $|R|/\xi^3\le0.063$, resp.\ $0.0017$, on $\xi\le\frac14$. Evaluating $c_3+c_5\xi^2+c_7\xi^4$ in interval arithmetic on
 $\xi\in[0,\frac14]$ and $64$ subintervals of $h$ gives the stated lower bounds.
 

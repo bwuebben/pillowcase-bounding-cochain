@@ -15,7 +15,9 @@ are treated: the **torus knots** (papers 1, 4 and 5) and the **pretzel knots P(�
 
 For the torus knots, read papers 1, 4 and 5 in that order. Paper 1 assembles the instanton-side
 facts, paper 4 proves new results about the S-complex differential for every torus knot, and paper 5
-computes the pillowcase side for the whole T(3,n) family. Paper 2 treats a different family and can be read on its own.
+computes the pillowcase side for the whole T(3,n) family. Paper 2 treats the pretzel family by different
+methods and does not depend on papers 4 and 5; its first two members, P(−2,3,3) = T(3,4) and
+P(−2,3,5) = T(3,5), are also torus knots covered by paper 5.
 
 ## The papers
 
@@ -73,6 +75,12 @@ monotonicity of an angle function along its components. Three inequalities are v
 interval arithmetic. Section 7 reports a numerical computation, which is not a proof: for a
 different decomposition of T(3,4) in the same family, the homology with zero bounding cochain has
 rank 7 rather than 5. The source is `paper5/main.tex` with `paper5/sections/*.tex`.
+
+The computations are in [`paper5/code/`](paper5/code). The three inequalities of Appendix A are
+proved there by interval arithmetic (`mpmath`), and the numerical computations of Sections 5–7 are
+reproduced. Each script prints every number the paper states, next to the computed value, and the
+whole set runs in about twelve minutes (`cd paper5/code && ./run_all.sh`; it needs `numpy` and
+`mpmath`, see `requirements.txt`).
 
 ### Paper 2: the (−2,3,q) pretzel knots (`paper2/`)
 
@@ -141,7 +149,7 @@ distinctive names: `paper1/traceless-gradings.pdf`, `paper2/pretzel-cochains.pdf
 
 ## The code
 
-The code supports papers 1 and 2. Everything is **pure Python 3** (standard library only — no NumPy, no dependencies). The
+The code in `pillowcase/` supports papers 1 and 2 (paper 5 has its own, in `paper5/code/`). Everything there is **pure Python 3** (standard library only — no NumPy, no dependencies). The
 curves are built from first principles (quaternion representation theory), then validated
 against Smith's published figures and numbers before the new computations are run. Each module
 is also a self-checking test: run it directly and it prints a `PASS`/`FAIL` battery. Every matrix
