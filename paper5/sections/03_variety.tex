@@ -95,39 +95,47 @@ Lemma~\ref{lem:identities} this is $4x^2=1-Q$. Then $\cot^2u=x^2/(1-x^2)=(1-Q)/(
 $\tau^2\le1$ becomes $Q\ge1-4\sin^2(mv)$, which by Lemma~\ref{lem:identities} is $\cos v\,S\ge0$. \qed
 \end{proof}
 
-Accordingly let
+Accordingly let $D_n$ be the closure in $(0,\pi)$ of the set
 \[
-D_n=\bigl\{v\in(0,\pi):\ \cos(m'v)\,S(v)\le0\ \text{ and }\ \cos v\,S(v)\ge0\bigr\}.
+\bigl\{v\in(0,\pi):\ \sin(mv)\sin(kv)\neq0,\ \ \cos(m'v)\,S(v)<0\ \text{ and }\ \cos v\,S(v)>0\bigr\}.
 \]
-The first condition is $x^2\ge0$ and the second is $\tau^2\le1$; together they force $Q\ge-3$, i.e.\ $x^2\le1$.
+Where $\sin(mv)\sin(kv)\neq0$, the conditions $\cos(m'v)\,S\le0$ and $\cos v\,S\ge0$ are $x^2\ge0$ and $\tau^2\le1$; together
+they force $Q\ge-3$, i.e.\ $x^2\le1$.
 
 \begin{proposition}\label{prop:domain}
 The set $D_n$ is invariant under $v\mapsto\pi-v$, and
 \[
 D_n\cap\bigl(0,\tfrac\pi2\bigr)=\bigcup_{1\le l\le\lceil\nu/2\rceil}\Bigl[\tfrac{(4l-3)\pi}N,\ \tfrac{(4l-1)\pi}N\Bigr]\cap\bigl(0,\tfrac\pi2\bigr).
 \]
-Hence $D_n$ consists of exactly $\nu$ intervals of positive length, together with the point $\pi/2$ when $\nu$ is
-even. If $\nu$ is even, these are $J_l=[(4l-3)\pi/N,(4l-1)\pi/N]$ and $\pi-J_l$ for $1\le l\le\nu/2$. If $\nu$ is odd, they
+Hence $D_n$ consists of exactly $\nu$ intervals of positive length. If $\nu$ is even, these are
+$J_l=[(4l-3)\pi/N,(4l-1)\pi/N]$ and $\pi-J_l$ for $1\le l\le\nu/2$, and $\pi/2\notin D_n$. If $\nu$ is odd, they
 are $J_l$ and $\pi-J_l$ for $1\le l\le(\nu-1)/2$, and the central interval $J_0=[(2\nu-1)\pi/N,(2\nu+3)\pi/N]$,
-which contains $\pi/2=(2\nu+1)\pi/N$ in its interior.
+which contains $\pi/2=(2\nu+1)\pi/N$ in its interior. A point $v$ with $\sin(mv)\sin(kv)\neq0$ lies in $D_n$ if and only if
+$\cos(m'v)\,S(v)\le0$ and $\cos v\,S(v)\ge0$.
 \end{proposition}
 
 \begin{proof}
 Since $m-k=-\eta$ is odd and $m'$ is odd, $S(\pi-v)=-S(v)$, $\cos(m'(\pi-v))=-\cos(m'v)$ and $\cos(\pi-v)=-\cos v$, so
-both products in the definition of $D_n$ are invariant and $D_n$ is symmetric. On $(0,\pi/2)$ we have $\cos v>0$,
-so $D_n\cap(0,\pi/2)=\{S\ge0\}\cap\{\cos(m'v)\le0\}\cap(0,\pi/2)$, and it suffices to show that $\cos(m'v)>0$ wherever
-$S<0$ or $S$ is undefined. The zeros $j\pi/m$ of $\sin(mv)$ and $j\pi/k$ of $\sin(kv)$ interlace, since $|m-k|=1$.
+both products in the definition of $D_n$, and the condition $\sin(mv)\sin(kv)\neq0$, are invariant, and $D_n$ is
+symmetric. On $(0,\pi/2)$ we have $\cos v>0$, so $D_n\cap(0,\pi/2)$ is the closure in $(0,\pi/2)$ of
+$\{S>0\}\cap\{\cos(m'v)<0\}\cap(0,\pi/2)$, and it suffices to show that $\cos(m'v)>0$ wherever $S\le0$ or $S$ is undefined,
+except at $v=\pi/2$. The zeros $j\pi/m$ of $\sin(mv)$ and $j\pi/k$ of $\sin(kv)$ interlace, since $|m-k|=1$.
 In $(0,\pi/2)$, $S<0$ exactly on the open intervals between $j\pi/\max(m,k)$ and $j\pi/\min(m,k)$ with
-$1\le j\le\min(m,k)/2$, and $S$ is undefined at the points $j\pi/k$. Since $m'=2m+\eta=2k-\eta$,
+$1\le j\le\min(m,k)/2$, and the points where $S$ vanishes ($j\pi/m$) or is undefined ($j\pi/k$) are the endpoints
+of these intervals. Since $m'=2m+\eta=2k-\eta$,
 \[
 m'\cdot\frac{j\pi}m=2j\pi+\eta\frac{j\pi}m,\qquad m'\cdot\frac{j\pi}k=2j\pi-\eta\frac{j\pi}k,
 \]
 so on the closure of such an interval $|m'v-2j\pi|\le j\pi/\min(m,k)\le\pi/2$, with equality only at $v=\pi/2$.
 Thus $\cos(m'v)>0$ there, except at $v=\pi/2$, and
-$D_n\cap(0,\pi/2)=\{\cos(m'v)\le0\}\cap(0,\pi/2)$, which is the stated union because $N=2m'$. The interval with
-$4l-1=2\nu+1$ exists exactly when $\nu$ is odd, and then it ends at $\pi/2$ and merges with its mirror image
-into $J_0$. When $\nu$ is even, $\pi/2=(2\nu+1)\pi/N$ is a left endpoint $(4l-3)\pi/N$, so it is an isolated point
-of $D_n\cap(0,\pi/2]$. \qed
+$D_n\cap(0,\pi/2)$ is the closure in $(0,\pi/2)$ of $\{\cos(m'v)<0\}\cap(0,\pi/2)$, which is the stated union because $N=2m'$.
+The interval with $4l-1=2\nu+1$ exists exactly when $\nu$ is odd, and then it ends at $\pi/2$ and merges with its mirror
+image into $J_0$. When $\nu$ is even, the last interval in $(0,\pi/2)$ ends at $(2\nu-1)\pi/N$, and its mirror image begins
+at $(2\nu+3)\pi/N$, so $\pi/2=(2\nu+1)\pi/N$ is not in $D_n$. For the last statement, let $\sin(mv)\sin(kv)\neq0$. Then
+$v\neq\pi/2$, since one of $m,k$ is even, so $\cos v\neq0$ and $S(v)$ is finite and nonzero; the two non-strict conditions are
+closed on this set, which gives one implication. Conversely, if they hold, then $\cos v\,S>0$, and either $\cos(m'v)\,S<0$
+or $v$ is a zero of $\cos(m'v)$, that is, an odd multiple of $\pi/N$; every such multiple in $(0,\pi)$ other than $\pi/2$ is an
+endpoint of one of the intervals above. \qed
 \end{proof}
 
 At an endpoint $v_f\neq\pi/2$ of one of these intervals, $\cos(m'v_f)=0$, so $Q(v_f)=1$, $x=0$, $u=\pi/2$ and
@@ -165,8 +173,8 @@ segments each map to a single abelian representation, an endpoint of $B$. On eve
 \end{proposition}
 
 \begin{proof}
-First let $\sin(mv)\sin(kv)\sin u\neq0$. By Lemma~\ref{lem:elim} the points of $W$ are those with
-$v\in D_n$, $\cos u=\pm\frac12\sqrt{1-Q}$ and $\tau=\cot(mv)\cot u$. At an interior point $v\neq\pi/2$ of an interval
+First let $\sin(mv)\sin(kv)\sin u\neq0$. By Lemma~\ref{lem:elim} and the last statement of
+Proposition~\ref{prop:domain}, the points of $W$ are those with $v\in D_n$, $\cos u=\pm\frac12\sqrt{1-Q}$ and $\tau=\cot(mv)\cot u$. At an interior point $v\neq\pi/2$ of an interval
 of $D_n$, $S$ is finite and nonzero and $\cos v\,S>0$, so $\tau^2<1$ strictly by Lemma~\ref{lem:elim}; at the folds
 $\tau=0$. By \eqref{eq:fold}, near a fold $Q$ is a local coordinate, so the two branches over $J$ join smoothly
 there, with $u$ as local parameter, and $C_J$ is a circle. It remains to treat the degenerate loci.
@@ -186,13 +194,14 @@ product $\cos(m'v)\sin(mv)$ vanishes, so $\cos(m'v)=0$ with $v=j\pi/k$. Since $m
 even (equivalently $m$ odd) and $v=\pi/2$. Every $u$ then solves, with $\tau=\cot(m\pi/2)\cot u=0$. This is the
 line $B$. Conversely, the line lies in $W$, because both $\cos(m\pi/2)$ and $\cos(m'\pi/2)$ vanish.
 
-Finally, the point $v=\pi/2$ of $D_n$ for $\nu$ even is a zero of $\sin(mv)$ ($n\equiv1$) or of $\sin(kv)$
+Finally, for $\nu$ even the value $v=\pi/2$ is a zero of $\sin(mv)$ ($n\equiv1$) or of $\sin(kv)$
 ($n\equiv2$), so it contributes only points of $B$. The statement about $|\tau|$ near $v=\pi/2$ on $C_0$ is
 part of Proposition~\ref{prop:central}. \qed
 \end{proof}
 
-The endpoints of $B$ are the two abelian traceless representations $r_\pm$ of \cite[\S8.1]{HHK2}: the ends
-$\tau=\pm1$ of the fibre, and the collapsed segments at $u\in\{0,\pi\}$ in the line case.
+The endpoints of $B$ are the two abelian traceless representations $r_\pm$ of \cite[\S8.1]{HHK2}: the two ends
+of the fibre ($\tau=\pm1$) in the fibre case, and the collapsed segments at $u\in\{0,\pi\}$ in the line case. Which
+of them is $r_+$ depends on $m\bmod4$ and is determined in Proposition~\ref{prop:Bimage}.
 
 \begin{lemma}[Symmetry]\label{lem:symmetry}
 The involution $\varsigma(u,v,\tau)=(u,\pi-v,-\tau)$ preserves $W$: it multiplies \eqref{eq:E1} by $(-1)^m$ and
@@ -332,7 +341,7 @@ from $\pi/2$, so the non-central circles are disjoint from $B\subset\{v=\pi/2\}$
 For (1), $W$ has no central circle, so by Proposition~\ref{prop:classify} it is $B$ together with the non-central circles,
 and these are disjoint. The rank statement is Lemma~\ref{lem:rank} together with the remark after it. In the main
 branch near $v=\pi/2$ the solutions would have $\tau^2\to(2m+1)/(2m)>1$ ($n\equiv1$) or $x^2>1$ ($n\equiv2$), in
-agreement with $\pi/2$ being an isolated point of $D_n$.
+agreement with $\pi/2\notin D_n$.
 
 For (2), consider $C_0$ near $v=\pi/2$ and write $v=\pi/2+w$.
 
@@ -426,7 +435,9 @@ $d\Psi$ is the rank of its $(v,\tau)$-minor. At $\epsilon=0$ this minor is $\ome
 which changes sign transversally at the parameters $u_1$, $\pi-u_1$ of $c_\pm$. By continuity it still vanishes at
 some point of $B$ near each of them for every small $\epsilon_A$, and there $d\Psi$ has rank at most one. So perturbations
 with $\epsilon_B=0$ never resolve $c_\pm$ for these knots. They are excluded by the hypothesis $\epsilon\in\mathcal C_a$
-of Theorem~\ref{thm:main} (Definition~\ref{def:cone}). In \cite[\S11.6]{HHK2} the perturbation for $T(3,4)$ is taken with $\epsilon_B=0$; with
-any small $\epsilon_B\neq0$ one obtains the arc and circle drawn in \cite[Figs.~20--21]{HHK2}, and the complex computed
+of Theorem~\ref{thm:main} (Definition~\ref{def:cone}). In \cite[\S11.6]{HHK2} the perturbation for $T(3,4)$ is taken with $\epsilon_B=0$, and
+$R_{\epsilon_A,0}(Y,T)$ is stated there to be the union of an arc and a circle for every small nonzero $\epsilon_A$. For small
+$\epsilon\in\mathcal C_a$, which forces $\epsilon_B\neq0$, our computations give the split resolution of Section~\ref{sec:complex},
+that is, the arc and circle drawn in \cite[Figs.~20--21]{HHK2}, and Theorem~\ref{thm:arc} then gives the complex computed
 there.
 \end{remark}

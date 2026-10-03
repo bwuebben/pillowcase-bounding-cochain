@@ -240,7 +240,7 @@ def main():
         # 6. independent check
         M1 = M9_bound(j, Fr(1, 5))
         low_s = small_region(j, (c3, c5, c7), Fr(1, 5), M1, 80, nx=4)
-        low_b, nb, unres = big_region_adaptive(j, 0.2)
+        low_b, nb, unres = big_region_adaptive(j, 0.1999)   # starts below 1/5, so the two regions overlap
         check("independent check, xi <= 0.2 (80 x 4 subintervals in (h, xi)): E_j/xi^3 >=", low_s >= P['small_indep'],
               mp.nstr(lo(low_s), 6), f">= {P['small_indep']}")
         check("independent check, xi >= 0.2: adaptive boxes all positive", unres == 0 and low_b > 0,

@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-r"""Remark 6.12 (last part) and Remark 5.8: generator counts, bigons and homology ranks of C(L0, L1) for every
+r"""Remark 6.12 (last part): generator counts, bigons and homology ranks of C(L0, L1) for every
 T(3, n), 4 <= n <= 50, n coprime to 3, in the decomposition of Theorem 1.1, at the four perturbations
 
     (n eps_A, eps_B) = (0.5, 0.03), (0.3, 0.05), (-0.5, 0.03), (0.5, -0.03),   earring eps = 0.005
 
 (128 cases).  Checked in every case: 1 + |sigma| generators; no bigon for n = 1, 2 (mod 6) and exactly one,
-from an x^- to r_+, for n = 4, 5 (mod 6); homology of rank ||Delta_K||_1; the resolution of the double points is
-split for n = 4 and joined for n = 5 (mod 6).
+from an x^- to r_+, for n = 4, 5 (mod 6); homology of rank ||Delta_K||_1; and the resolution of the double points
+observed at these perturbations: split for n = 4 and joined for n = 5 (mod 6), as stated in Remark 6.12.  For
+n = 5 (mod 6) all four perturbations lie in the sector containing the eps_A-axis (|lambda_c eps_A| > 2 |mu_c eps_B|); near the eps_B-axis
+the resolution is split (Remark 5.8, perturbed_complexes.py).  Theorem 6.10 covers both resolutions.
 
 Floating-point numerics; these computations are not part of the proofs.
 Usage: survey_n_le_50.py [NMAX]
@@ -47,7 +49,7 @@ def main():
                         and A['gens'][A['bigons'][0][0]]['label'] == 'x-')
                 na = len(A['gens'])
                 res = {(4, 3): 'split', (4, 7): 'joined', (5, 5): 'split', (5, 9): 'joined'}.get((cls, na), '?')
-            ok_r = res == {1: '-', 2: '-', 4: 'split', 5: 'joined'}[cls]
+            ok_r = res == {1: '-', 2: '-', 4: 'split', 5: 'joined'}[cls]     # observed at SETTINGS (Remark 6.12)
             ok = R['ngen'] == 1 + abs(sig) and H == an and ok_b and ok_r and not R['odd']
             rows.append(ok)
             print(f"  [{'PASS' if ok else 'FAIL'}] T(3,{n:2d}) (n eA, eB)=({cA:+.1f},{eB:+.2f}): generators {R['ngen']} "

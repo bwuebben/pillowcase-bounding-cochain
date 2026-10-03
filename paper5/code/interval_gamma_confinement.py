@@ -13,7 +13,8 @@ on D_4 = {0 <= h <= 1, 0 < xi <= pi/(2+h)} and D_5 = {0 <= h <= 1/2, 0 < xi <= p
  3. xi <= 0.3: the Taylor polynomial of degrees p_j, ..., p_j + 5, plus the remainder bounded through the
     enclosure of d_xi^K d_h N_j on [0, 0.3] x [0, h], K = p_j + 6, on 64 subintervals of h.
  4. xi >= 0.3: Br_j/xi^{p_j} on boxes, starting from a 64 x 64 grid and bisecting boxes whose lower endpoint
-    is not positive.
+    is not positive.  Both the number of box evaluations (parents included) and the number of boxes in the final
+    cover are reported.
 Interval arithmetic: mpmath.iv at 30 digits, pi enclosed.
 """
 import math
@@ -30,7 +31,7 @@ mp.dps = 30
 
 P_EXP = {4: 3, 5: 4}
 HMAX = {4: 1.0, 5: 0.5}
-PAPER = {4: dict(small=2.48, boxes=4100), 5: dict(small=1.28, boxes=4124)}
+PAPER = {4: dict(small=2.48, evals=4100, split=1, boxes=4099), 5: dict(small=1.28, evals=4124, split=7, boxes=4117)}
 results = []
 
 
@@ -149,22 +150,25 @@ def big_region(j, X0=0.3, nh=64, nx=64, maxdepth=12):
         xtop = max(xmax(j, h1), xmax(j, h2)) * (1 + 1e-12)       # rounded up so that the boxes cover D_j
         for k in range(nx):
             stack.append((X0 + (xtop - X0) * k / nx, X0 + (xtop - X0) * (k + 1) / nx, h1, h2, 0))
-    worst, nbox, bad = None, 0, 0
+    worst, nbox, bad, nleaf, nsplit, skipped = None, 0, 0, 0, 0, 0
     while stack:
         x1, x2, h1, h2, d = stack.pop()
         if x1 > max(xmax(j, h1), xmax(j, h2)) * (1 + 1e-12):
+            skipped += 1
             continue
         xI = iv.mpf([x1, x2])
         val = Br_iv(j, xI, iv.mpf([h1, h2])) / xI ** p
-        nbox += 1
+        nbox += 1                                                   # box evaluations, parents included
         if val.a > 0:
+            nleaf += 1                                              # boxes of the final cover
             worst = val.a if worst is None else min(worst, val.a)
         elif d < maxdepth:
+            nsplit += 1
             xm, hmid = (x1 + x2) / 2, (h1 + h2) / 2
             stack += [(x1, xm, h1, hmid, d + 1), (xm, x2, h1, hmid, d + 1), (x1, xm, hmid, h2, d + 1), (xm, x2, hmid, h2, d + 1)]
         else:
             bad += 1
-    return worst, nbox, bad
+    return worst, nbox, bad, nleaf, nsplit, skipped
 
 
 def main():
@@ -186,11 +190,15 @@ def main():
         low = small_region(j, coeffs)
         check(f"xi <= 0.3, 64 subintervals of h: N_j/(h xi^{p}) >=", low >= PAPER[j]['small'], mp.nstr(lo(low), 6),
               f">= {PAPER[j]['small']}")
-        low, nbox, bad = big_region(j)
+        low, nbox, bad, nleaf, nsplit, skipped = big_region(j)
         check("xi >= 0.3: adaptive bisection from a 64 x 64 grid terminates, all lower endpoints positive",
-              bad == 0 and low > 0, f"{nbox} boxes, {bad} unresolved, min Br/xi^p {mp.nstr(lo(low), 4)}",
+              bad == 0 and low > 0,
+              f"{nleaf} boxes in the final cover, {bad} unresolved, {skipped} skipped, min Br/xi^p {mp.nstr(lo(low), 4)}",
               f"{PAPER[j]['boxes']} boxes, all positive")
-        check("number of boxes", nbox == PAPER[j]['boxes'], nbox, PAPER[j]['boxes'])
+        check("number of box evaluations and of bisected boxes", (nbox, nsplit) == (PAPER[j]['evals'], PAPER[j]['split']),
+              f"{nbox} evaluations, {nsplit} bisected", f"{PAPER[j]['evals']} evaluations, {PAPER[j]['split']} bisected")
+        check("number of boxes in the final cover", nleaf == PAPER[j]['boxes'] and nbox == nleaf + nsplit, nleaf,
+              PAPER[j]['boxes'])
         print("  [%.0fs]" % (time.time() - t0))
     print("\nLemma A.3: %d checks, %d passed  [%.0fs]" % (len(results), sum(results), time.time() - t0))
     return all(results)

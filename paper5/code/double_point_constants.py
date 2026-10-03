@@ -136,6 +136,21 @@ def main():
             lam_txt, lam_paper = f"|lambda_c| = {lams[0]:.4f}, {lams[1]:.4f}", "|lambda_c| ~ 0.44"
         check(f"n = {n:2d}: d Psi has rank 1 at c_+-; |mu_c|, lambda_c", ok,
               f"|mu_c| = {mus[0]:.6f}, {mus[1]:.6f}; {lam_txt}", f"|mu_c| = {paper_mu[n]}; {lam_paper}")
+    # Remark 5.8: the sampled perturbations satisfy |lambda_c eps_A| > 2 |mu_c eps_B| at both double points for n = 5 (mod 6)
+    samples = ((0.5, 0.03), (0.3, 0.05), (-0.5, 0.03), (0.5, -0.03), (-0.3, 0.03))   # (n eps_A, eps_B)
+    ratios = []
+    for n in range(5, 48, 6):
+        eta, m, mp, k = params(n)
+        r, s = decomposition(n)
+        T = Tangle(3, n, r, s)
+        t1 = math.sqrt(1 - 1 / (2 * m))
+        for c in (np.array([PI / 2, PI / 2, t1]), np.array([PI / 2, PI / 2, -t1])):
+            U, sv, _ = np.linalg.svd(T.jac(c))
+            lam, mu = U[:, -1] @ T.dpsi_deps(c)
+            ratios += [(abs(lam * nA / n) / abs(mu * eB), n) for nA, eB in samples]
+    worst = min(ratios)
+    check("n = 5, 11, ..., 47 at the sampled perturbations: |lambda_c eps_A| > 2 |mu_c eps_B|", worst[0] > 2,
+          f"minimum ratio {worst[0]:.4f} (n = {worst[1]})", "> 2")
     print("\nConstants at the double points: %d checks, %d passed" % (len(results), sum(results)))
     return all(results)
 

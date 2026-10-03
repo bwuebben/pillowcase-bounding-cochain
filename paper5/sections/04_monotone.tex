@@ -149,10 +149,12 @@ E/\cos\delta\ \ge\ F_0-0.851\,|F_1|\ \ge\ 1.648\qquad\text{on }J_l,
 \]
 by Lemma~\ref{lem:ineqA}. So $E>0$ on the interior of $J_l$.
 
-\emph{Mirror circles.} The involution $\iota(u,v,\tau)=(u,\pi-v,-\tau)$ multiplies (E1) by $(-1)^m$ and (E2) by
-$(-1)^{m'}$, so it preserves $W$ and carries the circle over $J_l$ onto the circle over $\pi-J_l$. By~\eqref{eq:cosphi},
-$\cos\varphi\circ\iota=(-1)^n\cos\varphi$. Along a circle, a continuous lift of $\varphi\circ\iota$ therefore agrees with
-$\pm\varphi$ up to an additive constant, and strict monotonicity carries over.
+\emph{Mirror circles.} The involution $\varsigma(u,v,\tau)=(u,\pi-v,-\tau)$ of Lemma~\ref{lem:symmetry} multiplies (E1) by
+$(-1)^m$ and (E2) by $(-1)^{m'}$, so it preserves $W$ and carries the circle over $J_l$ onto the circle over $\pi-J_l$. By
+Lemma~\ref{lem:iota} below, $\varphi\circ\varsigma\equiv\varphi$ if $n$ is even and $\varphi\circ\varsigma\equiv-\varphi-\pi$ if $n$ is odd,
+modulo $2\pi$. Along a circle, the difference between a continuous lift of $\varphi\circ\varsigma$ and the corresponding
+continuous lift of $\varphi$, resp.\ $-\varphi-\pi$, is continuous with values in $2\pi\Z$, hence constant, and strict
+monotonicity carries over.
 \end{proof}
 
 The following facts about $\gamma$ and the diagonal are consequences.
@@ -166,8 +168,8 @@ miss the side edges $\gamma\in\{0,\pi\}$ of the pillowcase, and the corners.
 For $v\in(0,\pi/2)$, square~\eqref{eq:cosgamma}. By Lemma~\ref{lem:identities}, $x^2=-\cos(m'v)S(v)/2$ with
 $S=\sin(mv)/\sin(kv)$, and $2\sin(mv)\sin(kv)=\cos v-\cos(m'v)$. Hence $x^2\sin^2v<\sin^2(mv)$ is equivalent to
 $\cos(m'v)\cos^2v<\cos v$. On $D_n\cap(0,\pi/2)$ we have $\cos(m'v)\le0<\cos v$, so the inequality holds. For $v\in(\pi/2,\pi)$
-apply $\iota$, which acts on the pillowcase as the identity if $n$ is even and as $(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$ if
-$n$ is odd (Lemma~\ref{lem:iota} below); both preserve $|\cos\gamma|$.
+apply $\varsigma$, which acts on the pillowcase as the identity if $n$ is even and as $\iota\colon(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$
+if $n$ is odd (Lemma~\ref{lem:iota} below); both preserve $|\cos\gamma|$.
 \end{proof}
 
 \begin{proposition}\label{prop:noncentralcrossings}
@@ -196,9 +198,9 @@ $(0,\pi)$, so $\theta=\varphi+\gamma$ changes by $\pm4\pi$ as well. The mirror c
 \end{proof}
 
 \begin{lemma}\label{lem:iota}
-The involution $\iota$ is induced by multiplying a representation by the central character $\chi$ of
+The involution $\varsigma$ is induced by multiplying a representation by the central character $\chi$ of
 $\pi_1(Y\setminus T)$ with $\chi(A_1)=1$ and $\chi(B_1)=-1$. On the pillowcase it acts as the identity if $n$ is even and
-as $(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$ if $n$ is odd. In particular it maps $\varphi$ to $\varphi$, resp.\ to $-\varphi-\pi$, modulo
+as $\iota\colon(\gamma,\theta)\mapsto(\pi-\gamma,-\theta)$ if $n$ is odd. In particular it maps $\varphi$ to $\varphi$, resp.\ to $-\varphi-\pi$, modulo
 $2\pi$.
 \end{lemma}
 
@@ -241,7 +243,7 @@ $J_0=[v_L,\pi-v_L]$, $v_L=(2\nu-1)\pi/N$. It meets $B$ at the two points of Prop
 $c_+$ for the crossing whose image has $\gamma=\gamma_*$, and $c_-$ for the crossing whose image has $\gamma=\pi-\gamma_*$. The
 left half $C_0^{\mathrm L}$ (where $v\le\pi/2$) is an arc from one crossing to the other: it starts at $v=\pi/2$ on the
 branch $x>0$, runs down to the fold over $v_L$, and returns to $v=\pi/2$ along $x<0$. The right half is
-$C_0^{\mathrm R}=\iota(C_0^{\mathrm L})$. On the left half put
+$C_0^{\mathrm R}=\varsigma(C_0^{\mathrm L})$. On the left half put
 \[
 v=\frac\pi2-w,\qquad 0<w\le\frac{2\pi}{N},\qquad \xi=mw,\qquad h=\frac1m .
 \]
@@ -344,20 +346,20 @@ n\equiv5,\ m\equiv2\ (4) & c_- & \pi+\gamma_* & \pi,\ 0,\ \pi,\ 0 & -2\pi-\gamma
 \end{array}
 \]
 For instance, in the first row $j=\frac{3m-1}2$ is odd, so the zero on the branch $x>0$ has $\varphi\equiv0$; from
-$\varphi_0=-3\gamma_*\in(-\pi/2,0)$ the first multiple of $\pi$ reached is $0$ only if $\varphi$ increases. The zero on the branch $x<0$
+$\varphi_0=-3\gamma_*\in[-\pi/2,0)$ the first multiple of $\pi$ reached is $0$ only if $\varphi$ increases. The zero on the branch $x<0$
 then has $\varphi=\pi$, and the end $c_-$ has $\varphi\equiv-3(\pi-\gamma_*)\equiv\pi+3\gamma_*$, which is first reached at $\pi+3\gamma_*<2\pi$.
 The other rows are identical in structure; in each, the last step is at most $3\gamma_*\le\pi/2$, so no further multiple
 of $\pi$ is crossed. In every row the change from the $c_+$ end to the $c_-$ end is $\pi+6\gamma_*$, resp.\ $3\pi+2\gamma_*$.
 
-The right half is $\iota(C_0^{\mathrm L})$. If $n$ is even, $\iota$ acts trivially on the pillowcase and the statement is the
-same. If $n$ is odd, $\iota$ maps $\varphi$ to $-\varphi-\pi$ and exchanges the ends with $\gamma=\gamma_*$ and $\gamma=\pi-\gamma_*$
+The right half is $\varsigma(C_0^{\mathrm L})$. If $n$ is even, $\varsigma$ acts trivially on the pillowcase and the statement is the
+same. If $n$ is odd, $\varsigma$ maps $\varphi$ to $-\varphi-\pi$ and exchanges the ends with $\gamma=\gamma_*$ and $\gamma=\pi-\gamma_*$
 (Lemma~\ref{lem:iota}), so the change from the $c_+$ end is again $3\pi+2\gamma_*$. The count of points on $\Delta$ is read off from
 the labels, and transversality follows from Theorem~\ref{thm:central}.
 \end{proof}
 
-Finally we need the shape of the image of a half near a crossing. Since $\iota$ fixes the crossings and reverses the
-direction of $C_0$ at them, the image of $C_0$ has zero velocity at $c_\pm$ when $n$ is even; the next lemma shows that
-this happens for all $n\equiv4,5$, and gives the leading term.
+Finally we need the shape of the image of a half near a crossing. When $n$ is even, $\varsigma$ fixes the crossings,
+reverses the direction of $C_0$ at them and acts trivially on the pillowcase, so the image of $C_0$ has zero velocity at
+$c_\pm$; the next lemma shows that this happens for all $n\equiv4,5$, and gives the leading term.
 
 \begin{lemma}\label{lem:crossinglocal}
 Let $n\equiv4,5\pmod6$, and let $w=|v-\pi/2|$ along a half near a crossing $c\in\{c_+,c_-\}$. Then $v$ is a regular

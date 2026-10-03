@@ -24,15 +24,16 @@ the lift starting at the lift of $c_+$, it changes by $\pi+6\gamma_*$ ($n\equiv4
 $\gamma_*<\gamma<\pi-\gamma_*$ at interior points (Theorem~\ref{thm:central} and
 Propositions~\ref{prop:deltaphi},~\ref{prop:gammaconf}). Here $0<\gamma_*\le\pi/6$.
 \item[(F3)] Along each non-central circle $\varphi$ is strictly monotone with $d\varphi\neq0$ and changes by $\pm4\pi$
-over one period, and the circle misses the left and right edges (Theorem~\ref{thm:noncentral}).
+over one period, and the circle misses the left and right edges (Theorem~\ref{thm:noncentral} and
+Propositions~\ref{prop:edges},~\ref{prop:noncentralcrossings}).
 \item[(F4)] For sufficiently small $(\epsilon_A,\epsilon_B)\in\mathcal C_a$ (Section~\ref{sec:perturb}): $R_\pi(Y,T)$ consists of circles $C_l'$,
 $C^1$-close to the non-central circles, and of the curves obtained from $B\cup C_0$ by resolving the two
 double points $c_+,c_-$; away from $c_+,c_-$ and the abelian endpoints, the perturbed curves are $C^1$-close to
 $W$ (Proposition~\ref{prop:global}). Near $c_+$ and $c_-$ the image of the resolved curve is an immersed
 rounded corner on which $\varphi$ has at most one critical point; it has one exactly when the two joined
-half-branches move $\varphi$ in the same sense away from $c_+$ or $c_-$ (Proposition~\ref{lem:resolved}).
+half-branches move $\varphi$ in the same sense away from $c_+$ or $c_-$ (Lemma~\ref{lem:resolved}).
 Near the corners $(0,0)$ and $(\pi,0)$, the arc is described by the corner chart lemma
-(Lemma~\ref{cor:corners}): its limiting slope differs from that of $B$ by $O(|\epsilon_A|+|\epsilon_B|)$, it leaves $(0,0)$ on the same
+(Lemma~\ref{lem:cornerchart} and Corollary~\ref{cor:corners}): its limiting slope differs from that of $B$ by $O(|\epsilon_A|+|\epsilon_B|)$, it leaves $(0,0)$ on the same
 side of $\Delta_0$ as $B$, and $|d\varphi|$ is bounded below in arclength near the corner.
 \end{enumerate}
 
@@ -292,8 +293,10 @@ $0<\gamma<\pi$ and contains no critical point of $\varphi$. Then $\gr(p,q)=2$.
 \begin{proof}
 We use~\eqref{eq:grading15}, with $\alpha_1$ the given sub-path from $q$ to $p$ and $\alpha_0$ the branch of $L_0$ of slope
 $<1$ (for $\sigma=+$) or $>1$ (for $\sigma=-$) on the front face, from $p$ to the point over $q$. Its lift from $\tilde p$ runs
-along $S^k_\sigma$ to the point $\tilde q\mp(0,2\pi)$, inside the open strip; this holds also when $p=r_+$, which lies at
-$\gamma\approx\frac23\epsilon>0$ on the side of $(0,0)$ away from which $S^0_+$ leaves the strip. Along $\alpha_0$ the slope of the
+along $S^k_\sigma$ to the point $\tilde q\mp(0,2\pi)$, inside the open strip. By Lemma~\ref{lem:arcdesc}, $p=r_+$ satisfies the
+hypotheses only for $n\equiv2\pmod6$, the case used in Proposition~\ref{prop:arcgradings}; then $r_+\in S^0_+$ lies at
+$\gamma\approx\frac23\epsilon>0$ on the side of $(0,0)$ away from which $S^0_+$ leaves the strip, so this lift also stays in
+the open strip. Along $\alpha_0$ the slope of the
 strand stays on one side of $1$, so $\mu(\alpha_0,\ell_1)=0$; $\mu(\alpha_1,\ell_1)=0$ by Lemma~\ref{lem:muzero}; and the
 triple indices at $p$ and $q$ agree, since in both cases $T L_0$ is a line of slope just below (or just above) $1$
 and $T L_1$ a line of slope bounded away from $1$. Finally, the lift of $\alpha_0*\alpha_1$ runs in the open strip from
@@ -329,10 +332,11 @@ $\deg x_1^+=-2\equiv2$. For $n\equiv4,5$ the bigon of Proposition~\ref{prop:bigo
 \cite[Prop.~3.8]{HHK2}. The later crossings follow from Lemma~\ref{lem:zstep}, since by
 Lemma~\ref{lem:arcdesc} there is no critical point of $\varphi$ between consecutive crossings: each step changes
 the degree of $x^+$ by $2$. The homology of the arc is obtained from these degrees by removing $x_1^-$ and $r_+$
-in the cases $n\equiv4,5$. For a circle, Theorem~\ref{thm:hhk54} applies by Lemma~\ref{lem:unobstructed}, (F3) and
-Lemma~\ref{lem:remnant}: the vertical degree is $2$, so the homology, which equals the complex by
-Lemma~\ref{lem:bigonlift}, has rank $1$ in each degree. Lemma~\ref{lem:zstep}, applied to the two crossings of
-one period, shows that the two generators $x^-$ differ by $2$.
+in the cases $n\equiv4,5$. A circle carries four generators, $x^\pm$ over each of its two crossings with $\Delta$
+(Proposition~\ref{prop:generators}), and no bigon (Lemma~\ref{lem:bigonlift}, (F3) and Lemma~\ref{lem:remnant}), so its
+homology equals its complex. Lemma~\ref{lem:zstep}, applied to the two crossings of one period, shows that the two
+generators $x^-$ differ by $2$. Since $\gr x^+=\gr x^-+1$ at each crossing, the four generators lie in four different
+degrees, and the homology has rank $1$ in each degree.
 \end{proof}
 
 \begin{theorem}\label{thm:arc}
@@ -369,7 +373,10 @@ with Theorem~\ref{thm:arc}, and
 for $n=4,5,7$ the complexes agree with those of~\cite[\S\S11.2,~11.6,~11.7]{HHK2}. For the first perturbation we
 also checked that the tangent of $L_1$ is parallel to $\ell_1$ only at the critical points of $\varphi$. A computation of the generator counts, bigons and homology ranks for all $4\le n\le50$ coprime to $3$, at four
 perturbations each ($128$ cases), also agrees. In all these computations the resolution was split for $n\equiv4$ and
-joined for $n\equiv5$; the proofs do not need to know which resolution occurs.
+joined for $n\equiv5$. For $n\equiv5$ these perturbations lie in the sector containing the $\epsilon_A$-axis. Near the $\epsilon_B$-axis the split
+resolution occurs (Remark~\ref{rem:pattern}), and at the perturbations listed there the generators, the bigon and the
+degrees agree with the split rows of Table~\ref{tab:arcpieces} and Proposition~\ref{prop:arcgradings}. The proofs do not
+need to know which resolution occurs.
 \end{remark}
 
 \subsection{Proofs of the main results}\label{ss:proofs}
@@ -408,7 +415,7 @@ $1$ in each grading, so this does not depend on how the absolute grading of the 
 
 \begin{proof}[Proof of Corollary~\ref{cor:conj65}]
 By Lemma~\ref{lem:unobstructed}, $L_1$ is a restricted immersed $1$-manifold for every sufficiently small perturbation
-in the open cone $\mathcal C_a$ (Definition~\ref{def:cone}), and by Theorem~\ref{thm:main}(3) the $\F_2$-dimension of $\Hnat(Y,T,\pi)$ in each grading equals the
+in the closed cone $\mathcal C_a$ (Definition~\ref{def:cone}), and by Theorem~\ref{thm:main}(3) the $\F_2$-dimension of $\Hnat(Y,T,\pi)$ in each grading equals the
 $\Q$-dimension of $\Inat(K;\Q)$ in the same grading; this is the form in which~\cite[\S11]{HHK2} test
 Conjecture~\ref{conj:hhk65}. For $n\equiv1,2\pmod6$ the S-complex $\tC(K;\Z)$ has zero differential (see the proof of
 Theorem~\ref{thm:scomplex}), so its homology, which is $\Inat(K;\Z)$ up to a shift of
@@ -422,7 +429,9 @@ For the S-structure we fix the absolute grading of the circle components.
 We grade each circle component of $L_1$ so that its two generators $x^-$ have odd degree.
 \end{definition}
 
-By Proposition~\ref{prop:arcgradings} this is possible and determines the grading of the component. It agrees
+By Proposition~\ref{prop:arcgradings} this is possible, and it determines the grading of the component up to a shift
+by $2$, which exchanges the degrees of the two generators $x^-$ (and of the two $x^+$); since each circle has one
+generator $x^-$ in each odd degree either way, this ambiguity does not affect the statements below. The normalization agrees
 with the convention of~\cite[\S6.1]{HHK2}, which gives one generator on each circle the grading of the
 corresponding generator of Kronheimer and Mrowka's complex, provided:
 (i) the identification of the relative grading of~\eqref{eq:grading15} with Kronheimer and Mrowka's grading,

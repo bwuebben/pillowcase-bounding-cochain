@@ -4,12 +4,18 @@ for T(3, n), n = 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 22, 23, in the decompositio
 
     (n eps_A, eps_B, eps) = (0.3, 0.05, 0.01)  and  (-0.3, 0.03, 0.02),
 
+and, for Remark 5.8, at three perturbations on the eps_B-axis, where the resolution is split for n = 5 (mod 6):
+
+    (n, eps_A, eps_B, eps) = (5, 0, 0.04, 0.01), (11, 0, 0.03, 0.01), (17, 0, 0.03, 0.01),
+
 with the grading formula (2.2) evaluated directly for every pair of generators on a component.  For each of
-the 24 cases the following are compared with the statements of Section 6:
+the 24 + 3 cases the following are compared with the statements of Section 6:
 
   * the arc: its lift ends at (pi, 2 pi j) and crosses the lines Delta_k listed in Table 1 (Lemma 6.1); it is
     embedded and its interior lies in the open strip 0 < gamma < pi;
-  * which resolution occurs (Remark 5.8: split for n = 4, joined for n = 5 (mod 6));
+  * which resolution occurs: at the two perturbations of Remark 6.12, split for n = 4 and joined for n = 5 (mod 6)
+    (for n = 5 (mod 6) both lie in the sector containing the eps_A-axis, with |lambda_c eps_A| > 2 |mu_c eps_B|); at the three
+    perturbations on the eps_B-axis, split (Remark 5.8).  Theorem 6.10 covers both resolutions;
   * the generators: 1 + 2 c_A on the arc, four on every circle, 1 + |sigma| in total (Proposition 6.3);
   * the bigons: none for n = 1, 2 (mod 6), exactly one, from x_1^- to r_+, for n = 4, 5 (Proposition 6.5);
   * the degrees deg = gr - sigma of the arc generators (Proposition 6.9), with gr(x^+, x^-) = 1 at every crossing;
@@ -42,13 +48,15 @@ TABLE = {
     (5, 'split'): (2, [0, 1], [(1, 2), (3, 0)]),
     (5, 'joined'): (4, [0, 1, 2, 3], [(1, 2), (3, 0), (1, 2), (3, 0)]),
 }
-EXPECTED_RESOLUTION = {4: 'split', 5: 'joined'}                    # observed pattern stated in Remark 5.8
+EXPECTED_RESOLUTION = {4: 'split', 5: 'joined'}                    # observed at PERTURBATIONS (Remark 6.12)
+SPLIT_SECTOR = ((5, 0.0, 0.04, 0.01), (11, 0.0, 0.03, 0.01), (17, 0.0, 0.03, 0.01))   # (n, n eps_A, eps_B, eps), Remark 5.8
 HHK_SEC11 = {4: (7, 1, 5), 5: (9, 1, 7), 7: (9, 0, 9)}            # generators, bigons, rank of homology
 
 results = []
+extra = []
 
 
-def run(n, cA, eB, eps, tangency):
+def run(n, cA, eB, eps, tangency, expect=None):
     t0 = time.time()
     r, s = decomposition(n)
     sig = signature(3, n)
@@ -76,8 +84,9 @@ def run(n, cA, eB, eps, tangency):
             fails.append(f"arc ends at {A['end']} (pi units), Table 1: (1, {2 * j})")
         if levels != lines:
             fails.append(f"lines crossed {levels}, Table 1: {lines}")
-    if cls in EXPECTED_RESOLUTION and resolution != EXPECTED_RESOLUTION[cls]:
-        fails.append(f"resolution {resolution}, Remark 5.8: {EXPECTED_RESOLUTION[cls]}")
+    want_res = expect if expect is not None else EXPECTED_RESOLUTION.get(cls)
+    if want_res is not None and resolution != want_res:
+        fails.append(f"resolution {resolution}, {'Remark 5.8' if expect else 'Remark 6.12'}: {want_res}")
     L = A['L']
     inner = L[len(L) // 100: -len(L) // 100, 0]
     if not (np.all(inner > 0) and np.all(inner < PI)):
@@ -153,7 +162,7 @@ def run(n, cA, eB, eps, tangency):
             f"{ncirc} circles; bigons {'x1- -> r+' if R['nbigon'] == 1 else R['nbigon']}; "
             f"deg r+ {deg[rp]}, (x-,x+) {got_pairs}; H {tuple(H)}{tang}  [{time.time() - t0:.0f}s]")
     ok = not fails
-    results.append(ok)
+    (extra if expect else results).append(ok)
     print(f"  [{'PASS' if ok else 'FAIL'}] {desc}", flush=True)
     for f in fails:
         print(f"        mismatch: {f}")
@@ -166,9 +175,17 @@ def main():
     for n in ns:
         for k, (cA, eB, eps) in enumerate(PERTURBATIONS):
             run(n, cA, eB, eps, tangency=(k == 0))
-    print("\nRemark 6.12: %d cases, %d agree with Theorem 6.10, Table 2 and Remark 5.8  [%.0fs]"
+    split_cases = [c for c in SPLIT_SECTOR if c[0] in ns]
+    if split_cases:
+        print("Remark 5.8: perturbations on the eps_B-axis, split resolution for n = 5 (mod 6)")
+    for n, cA, eB, eps in split_cases:
+        run(n, cA, eB, eps, tangency=False, expect='split')
+    print("\nRemark 6.12: %d cases, %d agree with Theorem 6.10, Table 2 and the resolution observed there  [%.0fs]"
           % (len(results), sum(results), time.time() - t0))
-    return all(results)
+    if split_cases:
+        print("Remark 5.8: %d cases on the eps_B-axis, %d split and agree with the split rows of Theorem 6.10 and Table 2"
+              % (len(extra), sum(extra)))
+    return all(results) and all(extra)
 
 
 if __name__ == "__main__":

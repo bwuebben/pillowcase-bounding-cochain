@@ -64,7 +64,8 @@ which we call the \emph{strands} of $L_0$; each is a properly embedded line lyin
 $\Delta_k$, and a translation by $(2\pi a,2\pi b)$ carries $S^k_\pm$ to $S^{k+b-a}_\pm$. Reparametrizing,
 $S^0_-=\{(t+\frac\pi2-\epsilon\sin t,\ t+\frac\pi2+\epsilon\sin t)\}$. The slope of $S_+$ at the point with
 parameter $t$ is $(1-\epsilon\cos t)/(1+\epsilon\cos t)$, and that of $S_-$ is its reciprocal. Hence on the
-front strip $0<\gamma<\pi$ the strand $S^k_+$ has slope less than $1$ and $S^k_-$ has slope greater than $1$;
+front strip $0<\gamma<\pi$ the strand $S^k_+$ has slope less than $1$, and $S^k_-$ has slope greater than $1$ for
+$\epsilon<\gamma<\pi-\epsilon$ (it has slope $1$ at $\gamma=\epsilon$ and $\gamma=\pi-\epsilon$);
 in $P$ these are the two branches of $L_0$ along the interior of $\Delta$~\cite[\S5.1]{HHK2}. The two
 strands near $\Delta_k$ cross each other exactly at the points $(\frac\pi2+j\pi,\frac\pi2+j\pi+2\pi k)$, and they
 pass each lattice point of $\Delta_k$ on opposite sides at distance $\sqrt2\,\epsilon$: for instance $S^0_+$ passes
@@ -165,8 +166,10 @@ the four gradings.
 \begin{remark}\label{rem:invariance}
 By~\cite[Thm.~4.1, Cor.~4.6]{HHK2}, $HF(L_0,L_1)$ is independent of $\epsilon$ and, as a relatively graded group,
 depends only on the free homotopy classes of the circle components of $L_1$ and the homotopy class rel
-endpoints of its arc. We do not use this: the computations below are direct, and the invariance serves only
-as a consistency check in Section~\ref{sec:complex}.
+endpoints of its arc; Theorem~\ref{thm:hhk54} is deduced from~\cite[Cor.~4.6]{HHK2} in~\cite[p.~33]{HHK2}. The proofs of
+our main results use neither: the computations in Section~\ref{sec:complex} are direct. The invariance serves as a
+consistency check in Section~\ref{sec:complex} and in the numerical Section~\ref{sec:other}, and
+Theorem~\ref{thm:hhk54} is quoted only in Corollary~\ref{cor:noncentralrestricted}, which is not used later.
 \end{remark}
 
 \subsection{Tangle decompositions}\label{ss:decomp}
@@ -265,8 +268,8 @@ equivalent to $\tC(K;\F_2)$.
 
 The decompositions of~\cite[\S\S10--11]{HHK2} depend on integers $(r,s)$ with $pr+qs=1$. The normalization
 $0<r<q$ determines them, since $pr\equiv1\pmod q$, and it is satisfied by all the choices printed
-in~\cite[\S11]{HHK2} and by those of Theorem~\ref{thm:main}. Section~\ref{sec:other} shows that it is needed: for
-$T(3,4)$ with $(r,s)=(7,-5)$ and zero bounding cochains, the homology has rank $7$ rather than $5$.
+in~\cite[\S11]{HHK2} and by those of Theorem~\ref{thm:main}. Section~\ref{sec:other} gives numerical evidence that it is
+needed: for $T(3,4)$ with $(r,s)=(7,-5)$ and zero bounding cochains, the homology has rank $7$ rather than $5$.
 
 Since $h$ is an invariant of the S-chain homotopy type, part~(b) predicts that the component of the pillowcase
 differential with values in the span of $r_+$ is nonzero if and only if $\delta_1\otimes\F_2\neq0$~\cite{W26}.

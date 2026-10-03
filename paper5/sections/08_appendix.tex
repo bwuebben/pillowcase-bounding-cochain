@@ -103,8 +103,9 @@ bounds on all boxes.
 Let $\mathcal N_4$ and $\mathcal N_5$ be the functions in the proof of Proposition~\ref{prop:gammaconf}, and put $p_4=3$, $p_5=4$.
 
 \begin{lemma}\label{lem:ineqC}
-For $j=4,5$, $\mathcal N_j(\xi,0)=0$ identically, and $\mathcal N_j/(h\,\xi^{p_j})$ extends to a positive real-analytic function on
-$D_j$, including $h=0$. Its value at $\xi=0$ is
+For $j=4,5$, $\mathcal N_j(\xi,0)=0$ identically, and $\mathcal N_j/(h\,\xi^{p_j})$ extends to a real-analytic function on
+$D_j$, including $h=0$, which is positive at every point of $D_j$ except the point $(\xi,h)=(\pi/2,0)$ of $D_4$, where it
+vanishes; in particular it is positive wherever $h>0$. Its value at $\xi=0$ is
 \[
 \tfrac43(h+1)(h+2)(3h+1)\quad(j=4),\qquad \tfrac23(2-h)(2h+1)\quad(j=5).
 \]
@@ -118,8 +119,8 @@ $D_j$, including $h=0$. Its value at $\xi=0$ is
 \end{align*}
 For instance, for $j=4$: $\sin(\xi+\alpha)+\sin(3\xi+\alpha)=2\sin(2\xi+\alpha)\cos\xi$ and
 $2\sin(\xi+\alpha)\cos\xi=\sin(2\xi+\alpha)+\sin\alpha$, so $\mathcal N_4/(4\cos\xi)=\sin(2\xi+\alpha)\bigl[-\frac h2+(1+h)\sin^2\alpha\bigr]+\frac{2+h}2\sin\alpha$,
-and $\sin\alpha=h\,\xi\operatorname{sinc}\alpha$. On $D_4$ we have $\xi<\pi/2$, so $\cos\xi>0$, and on $D_5$ we have $\xi<\pi$, so $\sin\xi>0$.
-Hence $\mathcal N_j/(h\xi^{p_j})>0$ on $D_j$ if and only if $\mathrm{Br}_j/\xi^{p_j}>0$ there.
+and $\sin\alpha=h\,\xi\operatorname{sinc}\alpha$. On $D_4$ we have $\xi<\pi/2$, so $\cos\xi>0$, except at the point $(\pi/2,0)$, where $\cos\xi=0$; on $D_5$ we have $\xi<\pi$,
+so $\sin\xi>0$. Hence, away from that point, $\mathcal N_j/(h\xi^{p_j})>0$ if and only if $\mathrm{Br}_j/\xi^{p_j}>0$.
 
 \emph{The region $\xi\le0.3$.} The Taylor coefficients of $\mathcal N_j/h$ in $\xi$ are polynomials in $h$ with rational
 coefficients, computed symbolically; those below $\xi^{p_j}$ vanish, and the leading one is the stated value. Keep
@@ -130,5 +131,6 @@ $\mathcal N_5/(h\xi^4)\ge1.28$ for $\xi\le0.3$.
 
 \emph{The region $\xi\ge0.3$.} Evaluate $\mathrm{Br}_j/\xi^{p_j}$ in interval arithmetic on boxes covering the part of $D_j$
 with $\xi\ge0.3$, starting from a $64\times64$ grid and bisecting any box whose lower endpoint is not positive. The
-procedure terminates with $4100$, resp.\ $4124$, boxes, all with positive lower endpoints.
+procedure terminates after $4100$, resp.\ $4124$, box evaluations, with $1$, resp.\ $7$, boxes of the initial grid bisected once; the final cover
+consists of $4099$, resp.\ $4117$, boxes, all with positive lower endpoints.
 \end{proof}

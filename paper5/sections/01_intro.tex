@@ -12,7 +12,7 @@ Kirk conjecture that a suitable decomposition recovers $\Inat(K)$ (\cite[Conj.~6
 Conjecture~\ref{conj:hhk65} below).
 
 For $2$-bridge knots the curve $L_1$ is a linear arc, all differentials vanish, and the conjecture
-holds~\cite[\S7]{HHK2}. For torus knots Hedden, Herald and Kirk computed the complex for eight knots, among
+holds~\cite[\S7]{HHK2}. For torus knots Hedden, Herald and Kirk computed the complex for nine knots, among
 them $T(3,4)$, $T(3,5)$ and $T(3,7)$, using a tangle decomposition adapted to the torus knot~\cite[\S\S10--11]{HHK2}.
 In these examples the homology has the rank of $\Inat(K)$, and nonzero differentials occur. The choice of
 decomposition matters: with the earring placed on the other tangle the homology of $T(4,5)$ has the wrong
@@ -22,16 +22,16 @@ In this paper we compute the pillowcase complex of every torus knot $T(3,n)$ in 
 of~\cite[\S10]{HHK2}. Fix $n\ge4$ coprime to $3$, write $n\equiv\eta\pmod3$ with $\eta=\pm1$, and let
 $(r,s)=((2n+1)/3,-2)$ if $\eta=1$ and $(r,s)=((n+1)/3,-1)$ if $\eta=-1$. These are the parameters used
 in~\cite{HHK2} for $n=4,5,7$ and in~\cite{FKP} for $n=10$. The perturbation has two real parameters
-$\epsilon=(\epsilon_A,\epsilon_B)$, and the earring curve $L_0$ depends on a parameter $\epsilon>0$
-(Section~\ref{sec:hhk}). For $n\equiv4,5\pmod6$ the unperturbed variety has two double points, and we require
-the perturbation to resolve both of them at a definite rate: $\epsilon$ lies in a closed cone
+$(\epsilon_A,\epsilon_B)$, and the earring curve $L_0$ depends on a parameter $\epsilon>0$
+(Section~\ref{sec:hhk}); from Section~\ref{sec:variety} on we abbreviate $(\epsilon_A,\epsilon_B)$ to $\epsilon$. For $n\equiv4,5\pmod6$ the unperturbed variety has two double points, and we require
+the perturbation to resolve both of them at a definite rate: $(\epsilon_A,\epsilon_B)$ lies in a closed cone
 $\mathcal C_a\subset\R^2$, the complement of thin wedges around at most two lines through the origin
 (Definition~\ref{def:cone}). For
 $n\equiv4\pmod6$ the cone excludes the axis $\epsilon_B=0$, and for $n\equiv1,2\pmod6$ it is all of $\R^2$.
 
 \begin{theorem}\label{thm:main}
 Let $K=T(3,n)$ with $n\ge4$ coprime to $3$, and let $(Y,T)$ be the tangle above. Fix $a>0$ small. For every
-sufficiently small $\epsilon\in\mathcal C_a\setminus\{0\}$, and every sufficiently small earring parameter $\epsilon>0$
+sufficiently small $(\epsilon_A,\epsilon_B)\in\mathcal C_a\setminus\{0\}$, and every sufficiently small earring parameter $\epsilon>0$
 (chosen after the perturbation):
 \begin{enumerate}
 \item $L_1$ is a restricted immersed $1$-manifold, $(L_0,L_1)$ is an admissible pair, and the complex
@@ -46,15 +46,21 @@ chosen on the closed components of $L_1$.
 \end{theorem}
 
 \begin{corollary}\label{cor:conj65}
-For every torus knot $T(3,n)$, the decomposition above satisfies the conclusion of Conjecture~6.5
+For every torus knot $T(3,n)$ with $n\ge4$ coprime to $3$, the decomposition above satisfies the conclusion of Conjecture~6.5
 of~\cite{HHK2}: $\Hnat(Y,T,\pi)$ and $\Inat(K;\Q)$ have the same $\Z/4$-graded dimensions.
 \end{corollary}
 
 For $n=4,5,7$ this recovers the computations of~\cite[\S11]{HHK2}. We also describe the curves explicitly.
 The arc component of $L_1$ lifts to a curve in the strip $0<\gamma<\pi$ of the plane from $(0,0)$ to
-$(\pi,2\pi j)$ with $j=1,2,1,4$ for $n\equiv1,2,4,5\pmod6$. It carries $1$, $3$, $3$ and $9$ generators
-respectively. Every closed component carries four generators, one in each degree, and no differential
-(Theorem~\ref{thm:arc}).
+$(\pi,2\pi j)$. For $n\equiv1,2\pmod6$ one has $j=1,2$, and the arc carries $1$, resp.\ $3$, generators. For
+$n\equiv4,5\pmod6$ the perturbation resolves the two double points in one of two ways. In the \emph{split}
+resolution $j=1$, resp.\ $j=2$, the arc carries $3$, resp.\ $5$, generators, and $L_1$ has one further closed
+component; in the \emph{joined} resolution $j=3$, resp.\ $j=4$, and the arc carries $7$, resp.\ $9$, generators.
+Every closed component carries four generators, one in each degree, and no differential, and the two
+resolutions give the same homology (Theorem~\ref{thm:arc}). For $n\equiv5\pmod6$ our computations show both
+resolutions for perturbations in $\mathcal C_a$, the split one in the sector containing the $\epsilon_B$-axis and the joined
+one in the sector containing the $\epsilon_A$-axis. For $n\equiv4\pmod6$ the resolution is the same for all small perturbations in $\mathcal C_a$, and it
+was split in all our computations (Remark~\ref{rem:pattern}).
 
 The second result concerns the differential. Daemi and Scaduto associate to a knot an S-complex
 $\tC(K)$, a chain complex with an involution-like map $\chi$, whose homology is $\Inat(K)$ and whose
@@ -64,7 +70,9 @@ For torus knots the differential of $\tC(K;\Q)$ has rank $R=\frac12(1+|\sigma|-\
 $T(3,n)$ one has $R=1$ if $n\equiv4,5\pmod6$ and $R=0$ otherwise~\cite{W26}.
 
 \begin{theorem}\label{thm:scomplex}
-Let $K=T(3,n)$ with $n\ge4$ coprime to $3$. Part~(a) of Conjecture~\ref{conj:pillow} holds for $K$. Normalize
+Let $K=T(3,n)$ with $n\ge4$ coprime to $3$, and let $a$, the perturbation and the earring parameter be as in
+Theorem~\ref{thm:main}. Then the conclusion of part~(a) of Conjecture~\ref{conj:pillow} holds for $K$ and these
+perturbations. Normalize
 the absolute grading on each closed component of $L_1$ so that its generators $x^-$ have odd degree after
 subtracting $\sigma(K)$ (Definition~\ref{def:circlenorm}). Then the S-complex $\pill(K)$, shifted by $\sigma(K)$, has
 the graded generators of $\tC(K)$, and its differential is a single component of type $\delta_1$, of rank $R$.

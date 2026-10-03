@@ -82,7 +82,7 @@ perturbed abelian point has $x=0$, for instance when $\epsilon_B=0$, then $W_\ep
 collapsed segment $\{u=0\}\times[-1,1]$, which is the single point $r_\pm(\epsilon)$ of $R_\pi(Y,T)$.)
 
 For~(2), the boundary representation is real-analytic in $(y,\epsilon)$ and is a corner representation at
-$y=0$: the traceless elements $a,b,c$ are all equal to $\pm$ one unit vector. Write $b-a=y\,b_1+O(y^2)$ and
+$y=0$: the traceless elements $a,b,c$ are all equal to $\pm$ one unit vector. Write $\pm b-a=y\,b_1+O(y^2)$, with the sign $+$ at the corner $(0,0)$ and $-$ at $(\pi,0)$, where $b=-a$, and
 $c-a=y\,c_1+O(y^2)$. Since $a,b,c$ lie on a common great circle, $b_1$ and $c_1$ are parallel to a unit vector $e$
 orthogonal to $a$; in the normalized frame $a=\mathbf i$, $b=e^{\gamma\mathbf k}\mathbf i$, $c=e^{\theta\mathbf k}\mathbf i$ this gives the lift
 $(\tilde\gamma,\tilde\theta)=y\,(b_1\cdot e,\ c_1\cdot e)+O(y^2)$. Changing the sign of $y$ is a conjugation, so it fixes the
@@ -116,8 +116,8 @@ from $0$. Hence $\varphi$ is strictly monotone on $0<y<y_0$, negative for $n\equ
 $\pmod 6$: the arc leaves the corner below $\Delta$ in the first case and above $\Delta$ in the second.
 \item The full preimage of $L_1(R_\pi(Y,T)\cap U)$ near the lattice point is a single embedded real-analytic
 curve through it. In particular the arc has no self-intersections in $\Pi(U)$.
-\item For every sufficiently small earring parameter $\epsilon>0$, $L_0$ meets $L_1(R_\pi(Y,T)\cap U)$ in exactly one
-point, the generator $r_+$ of~\cite[Lemma~5.1]{HHK2}. It lies on the strand $S_-$ for $n\equiv4,5$ and on $S_+$
+\item For every sufficiently small earring parameter (the parameter of~\eqref{eq:L0}, not the pair
+$(\epsilon_A,\epsilon_B)$), $L_0$ meets $L_1(R_\pi(Y,T)\cap U)$ in exactly one point, the generator $r_+$ of~\cite[Lemma~5.1]{HHK2}. It lies on the strand $S_-$ for $n\equiv4,5$ and on $S_+$
 for $n\equiv1,2$.
 \end{enumerate}
 The same statements, without~(4), hold at the other end of the arc, whose image is the corner $(\pi,0)$.
@@ -126,7 +126,8 @@ The same statements, without~(4), hold at the other end of the arc, whose image 
 \begin{proof}
 Items (1)--(3) follow from Lemma~\ref{lem:cornerchart}(2): the derivative of the lift is $c(\epsilon)+O(y^2)$, and
 $c_2(0)-c_1(0)$ is the slope of $B$'s image minus one, which is $1,3,-3,-1$ in the four classes. For~(4), the
-strands of $L_0$ pass within $O(\epsilon)$ of the corner on either side of $\Delta$ (Section~\ref{sec:hhk}), so a
+strands of $L_0$ pass the corner on either side of $\Delta$, at distance $\sqrt2$ times the earring parameter
+(Section~\ref{sec:hhk}), so a
 curve leaving the corner with slope bounded away from $1$ and with $\varphi$ monotone meets exactly one of
 them, once, near the corner: the strand $S_-$ below $\Delta$ or the strand $S_+$ above it. The corner $(\pi,0)$ is
 not an endpoint of $\Delta$.
@@ -169,13 +170,18 @@ For $n\equiv4$ the double points are $(u_1,\frac\pi2,0)$ and $(\pi-u_1,\frac\pi2
 on $u$ and $\epsilon_A$ only through $\Phi_k$, and $\partial_u\Phi_k=s+p$ resp.\ $s$ is nonzero at $\epsilon=0$, this gives
 $\partial\Psi_k/\partial\Phi_k(c)=0$ and hence $\partial_{\epsilon_A}\Psi(c)=0$, so $\lambda_c=0$. Finally, for $n\equiv4$ and $\epsilon_B=0$ the line
 $\{v=\frac\pi2,\tau=0\}$ lies in $W_\epsilon$ for every $\epsilon_A$, because $\cos\Theta_1=\cos((q-r)\frac\pi2)=0$ and
-$\cos\Theta_2=\cos(r\frac\pi2)=0$ with $q-r=m$ and $r=m'$ odd. So $W_{(\epsilon_A,0)}$ is singular at $c$ and
-$\kappa_c(\epsilon_A,0)=0$.
+$\cos\Theta_2=\cos(r\frac\pi2)=0$ with $q-r=m$ and $r=m'$ odd. By Remark~\ref{rem:epsB}, $d\Psi$ has rank at most one at some point $x\in B$ near $c$
+(in general $x\neq c$). On the zero set of the component of $\Psi$ solved for $\varrho$, the rank of $d\Psi$ is one plus the
+rank of $dg$, so $dg(x)=0$, and $g(x)=0$ because $x\in W_{(\epsilon_A,0)}$. Hence $x$ is the unique critical point of
+$g(\cdot;(\epsilon_A,0))$ near $c$, and $\kappa_c(\epsilon_A,0)=g(x)=0$.
 \end{proof}
 
 Numerically, $\mu_c=\pm\frac14$ for $n=4,5$ and $|\mu_c|=0.1179,\,0.0772,\,0.0574$ for $n=10,16,22$ and for $n=11,17,23$,
-with $\ell_c$ normalized to unit length; for $n\equiv5$ also $|\lambda_c|\approx0.44$. For $T(3,4)$ this recovers the observation
-that the perturbation along $\epsilon_A$ alone does not resolve the double points~\cite[\S11.6]{HHK2}.
+with $\ell_c$ normalized to unit length; for $n\equiv5$ also $|\lambda_c|=\sqrt3/4\approx0.433$ for $n=5$ and
+$|\lambda_c|\approx0.441,\,0.443,\,0.444$ for $n=11,17,23$. For $T(3,4)$, Lemma~\ref{lem:kappa} and Remark~\ref{rem:epsB} show
+that the perturbation along $\epsilon_A$ alone does not resolve the double points. This differs from~\cite[\S11.6]{HHK2},
+where $R_{\epsilon_A,0}(Y,T)$ is treated as a restricted immersed $1$-manifold, the union of an arc and a circle, for every
+small nonzero $\epsilon_A$; by Lemma~\ref{lem:kappa} it is singular at the double points.
 
 \begin{definition}\label{def:cone}
 For $a>0$ let $\mathcal C_a$ be the set of $\epsilon\in\R^2$ with $|\lambda_c\epsilon_A+\mu_c\epsilon_B|\ge a|\epsilon|$ at both double points.
@@ -188,8 +194,10 @@ It consists of two arcs, each joining a half-branch of $B$ at $c$ to a half-bran
 joined depends on the sign of $\kappa_c(\epsilon)$.
 
 \begin{lemma}\label{lem:resolved}
-Let $a>0$. There are a neighbourhood $U_c$ of $c$ and $\epsilon_0>0$ such that for every $\epsilon\in\mathcal C_a$ with
-$0<|\epsilon|<\epsilon_0$, each of the two arcs of $W_\epsilon\cap U_c$ is mapped by $\Pi$ to an embedded arc with nowhere vanishing velocity. Along
+Let $a>0$. There are $r_0>0$ and $\epsilon_0>0$ with the following property. For $\epsilon\in\mathcal C_a$ with $0<|\epsilon|<\epsilon_0$, let
+$U_c$ be the set of points of a fixed neighbourhood of $c$ whose coordinates $(s,t)$ have Morse coordinates $(s',t')$ with
+$|s'|\le r_0$ and $|t'|\le r_0$; it depends on $\epsilon$, but it contains and is contained in fixed neighbourhoods of $c$.
+Then each of the two arcs of $W_\epsilon\cap U_c$ is mapped by $\Pi$ to an embedded arc with nowhere vanishing velocity. Along
 such an arc $\varphi$ has at most one critical point. It has exactly one if and only if the two half-branches it
 joins move $\varphi$ in the same sense away from $c$, and in that case the critical value differs from $\varphi(c)$ by
 $o(1)$ as $\epsilon\to0$.
@@ -197,7 +205,7 @@ $o(1)$ as $\epsilon\to0$.
 
 \begin{proof}
 By Proposition~\ref{prop:Bimage}, $\Pi(s',0)=\Pi(c)+s'P_B+O(s'^2)$ at $\epsilon=0$ with $P_B\ne0$ along the image of $B$. By
-Proposition~\ref{lem:crossinglocal}, $\Pi(0,t')=\Pi(c)+t'^2V+O(t'^3)$ with $V\ne0$, $V\not\parallel P_B$, and
+Lemma~\ref{lem:crossinglocal}, $\Pi(0,t')=\Pi(c)+t'^2V+O(t'^3)$ with $V\ne0$, $V\not\parallel P_B$, and
 $d\varphi(V)\ne0$; also $d\varphi(P_B)\ne0$, since the slope of $B$'s image is not $1$. Extend $\Pi_\epsilon$ smoothly to a
 neighbourhood of $c$. Then, in the coordinates $(s',t')$,
 $$\Pi_\epsilon(s',t')=\Pi(c)+s'P_B+t'^2V+O\bigl(s'^2+|s't'|+|t'|^3+|\epsilon|(|s'|+|t'|+1)\bigr),$$
@@ -207,17 +215,31 @@ $$\frac{d}{dt'}\Pi_\epsilon=\frac{\kappa}{t'^2}P_B+2t'V+e(t'),\qquad |e(t')|\le 
 Put $A(t')=|\kappa|/t'^2+|t'|$. Since $P_B$ and $V$ are linearly independent, the main term has length at least
 $c_0A(t')$. Each error term is at most a small multiple of $A$: $|\kappa|/|t'|\le r_0A$, $t'^2\le r_0A$, and
 $|\epsilon|\le|\epsilon|\,A/(c'|\kappa|^{1/3})\le C'|\epsilon|^{2/3}a^{-1/3}A$, because $A\ge c'|\kappa|^{1/3}$ and
-$|\kappa|\ge\frac a2|\epsilon|$. For $r_0$ and $|\epsilon|$ small, $|e|\le\frac{c_0}2A$. So the velocity never vanishes, and it lies in a
-fixed open sector of angle less than $\pi$ around the cone spanned by $\pm P_B$ and $\pm V$ with the signs fixed
-along the arc. A curve whose velocity stays in such a sector is a graph over a line, hence embedded.
+$|\kappa|\ge\frac a2|\epsilon|$. Hence, using also $|\epsilon|\le|\epsilon|^{2/3}a^{-1/3}$ for $|\epsilon|\le1/a$,
+\[
+|e(t')|\le C''\bigl(r_0+|\epsilon|^{2/3}a^{-1/3}\bigr)A(t'),
+\]
+with $C''$ independent of $\epsilon$, $a$ and $r_0$. Along the arc the signs of $\kappa$ and $t'$ are fixed, so the main term lies
+in the closed convex cone $K$ spanned by $\operatorname{sign}(\kappa)P_B$ and $\operatorname{sign}(t')V$; its opening $\theta_K$ is $\angle(P_B,V)$ or
+$\pi-\angle(P_B,V)$, in either case less than $\pi$. Fix $\delta\in(0,1)$ with $2\arcsin\delta<\pi-\theta_K$ for all four choices
+of the signs. For $r_0$ and $|\epsilon|$ small, $|e|\le\delta c_0A$, so the velocity never vanishes and makes an angle at most
+$\arcsin\delta$ with $K$: it lies in a fixed open sector of angle $\theta_K+2\arcsin\delta<\pi$. A curve whose velocity stays in
+such a sector is a graph over a line, hence embedded.
 
 For the critical points, apply $d\varphi$: with $p=d\varphi(P_B)$ and $q=d\varphi(V)$ the derivative of $\varphi$ along the arc
 is $\kappa p/t'^2+2qt'$ plus an error bounded as above. On the arc $\operatorname{sign}(s')\operatorname{sign}(t')=-\operatorname{sign}\kappa$, and the
 main term vanishes exactly once, transversally, at $t'^3=-\kappa p/(2q)$, if $\operatorname{sign}(p s')=\operatorname{sign}(q)$; that is, if
 $\varphi$ increases away from $c$ along both joined half-branches or decreases along both. Otherwise the main term
-has constant sign and is at least a fixed multiple of $A$. The error does not change the number of zeros: in the
-variable $\log|t'|$ the main term divided by $A$ has a single nondegenerate zero and bounded $C^1$ norm, while the
-error divided by $A$ is $C^1$-small. The critical
+has constant sign and is at least a fixed multiple of $A$. The error does not change the number of zeros. To see
+this, put $y=3\log|t'|-\log|\kappa|$, so that $A=(|\kappa|/t'^2)(1+e^y)$. The main term divided by $A$ is
+$(\sigma_1p+2\sigma_2qe^y)/(1+e^y)$ with $\sigma_1=\operatorname{sign}\kappa$ and $\sigma_2=\operatorname{sign}t'$. It does not depend on $\kappa$, it has at
+most one zero, at which its $y$-derivative is bounded away from $0$ in terms of $p$ and $q$ only, and it is bounded away
+from $0$ outside a fixed interval of $y$. The error $e_\varphi$ in the derivative of $\varphi$ satisfies
+$|e_\varphi|\le C''(r_0+|\epsilon|^{2/3}a^{-1/3})A$ as above, and the same termwise estimates, applied to the second
+derivatives of $\Pi_\epsilon$ in the coordinates $(s',t')$, which are bounded uniformly in $\epsilon$, give
+$|t'e_\varphi'(t')|\le C''(r_0+|\epsilon|^{2/3}a^{-1/3})A$ after enlarging $C''$. Since $dt'/dy=t'/3$ and $|dA/dy|\le A$, the error
+divided by $A$ and its $y$-derivative are at most a fixed multiple of $r_0+|\epsilon|^{2/3}a^{-1/3}$, which is small for $r_0$
+and $|\epsilon|$ small. So the number of zeros is that of the main term. The critical
 point lies at $|t'|=O(|\kappa|^{1/3})$, so $\varphi$ there is $\varphi(c)+o(1)$.
 \end{proof}
 
@@ -246,7 +268,7 @@ pieces away from $c_\pm$ and is described by Lemma~\ref{lem:resolved} near them.
 
 \begin{proof}
 Since $\Psi$ depends continuously on $\epsilon$ and the box is compact, $W_\epsilon$ lies in any prescribed
-neighbourhood of $W$ once $|\epsilon|$ is small. Cover $W$ by three kinds of open sets:
+neighbourhood of $W$ once $|\epsilon|$ is small. Cover $W$ by three kinds of neighbourhoods:
 \begin{itemize}
 \item the corner charts $U$ of Lemma~\ref{lem:cornerchart};
 \item the neighbourhoods $U_{c_\pm}$ of Lemma~\ref{lem:resolved} (only for $n\equiv4,5$);
@@ -265,7 +287,7 @@ Thm.~8.4]{HHK2}; in the three regions this is also visible directly from Lemmas~
 and~\ref{lem:resolved} and from $C^1$-closeness to $\Pi|_W$, which is an immersion on $K$.
 
 The list of components in~(3) and~(4) is read off from the cover. Each non-central circle is a smooth component of
-$W$ contained in $K$, so it persists. For $n\equiv1,2$, $W$ has no double points (Proposition~\ref{prop:doublepoints}),
+$W$ contained in $K$, so it persists. For $n\equiv1,2$, $W$ has no double points (Proposition~\ref{prop:central}(1)),
 and $B$ persists as an arc ending at the perturbed abelian points. For $n\equiv4,5$, at each double point the
 resolution joins each half-branch of $B$ to a half-branch of $C_0$. If the half-branches $B_0$ and $B_2$ are joined
 to the same half of $C_0$, the result is the first alternative; otherwise it is the second.
@@ -273,9 +295,17 @@ to the same half of $C_0$, the result is the first alternative; otherwise it is 
 
 \begin{remark}\label{rem:pattern}
 Both alternatives in Proposition~\ref{prop:global}(4) are compatible with the local analysis, and Section~\ref{sec:complex}
-shows that the conclusions of Theorem~\ref{thm:main} do not depend on which occurs. In numerical computations with
-$|\epsilon_A|n\le0.5$ and $0.03\le|\epsilon_B|\le0.05$ we observed the first alternative for $n\equiv4\pmod6$ and the second
-for $n\equiv5$. The cone condition $\epsilon\in\mathcal C_a$ is used only in Lemma~\ref{lem:resolved}, to keep $|\kappa_c(\epsilon)|$
+shows that the conclusions of Theorem~\ref{thm:main} do not depend on which occurs. Which one occurs is decided by the
+signs of $\kappa_{c_+}(\epsilon)$ and $\kappa_{c_-}(\epsilon)$. The zero set $\{s't'=-\kappa_c\}$ lies in the two quadrants with
+$\operatorname{sign}(s't')=-\operatorname{sign}\kappa_c$, so changing the sign of $\kappa_c$ changes which half-branch of $B$ is joined to which
+half-branch of $C_0$ at $c$; changing one of the two signs therefore changes the alternative, and changing both does not.
+For $n\equiv4\pmod6$ and small $\epsilon\in\mathcal C_a$ the signs are those of $\mu_{c_\pm}\epsilon_B$ (Lemma~\ref{lem:kappa} and
+Definition~\ref{def:cone}), and replacing $\epsilon_B$ by $-\epsilon_B$ changes both of them. Hence for $n\equiv4$ the alternative is
+the same for all small $\epsilon\in\mathcal C_a$. We have not determined it by hand; it was the first alternative in all our
+computations. For $n\equiv5\pmod6$ our computations show both alternatives in $\mathcal C_a$. The first occurs near the
+$\epsilon_B$-axis, for instance for $n=5$ at $(\epsilon_A,\epsilon_B)=(0,0.04)$ and for $n=11,17$ at $(0,0.03)$, where the arc ends
+at $(\pi,4\pi)$ and carries $5$ generators. The second occurs in the sector containing the $\epsilon_A$-axis, for instance at all the perturbations
+of Remark~\ref{rem:numerics}, which satisfy $|\lambda_c\epsilon_A|>2|\mu_c\epsilon_B|$ at both double points. The cone condition $\epsilon\in\mathcal C_a$ is used only in Lemma~\ref{lem:resolved}, to keep $|\kappa_c(\epsilon)|$
 large compared with $|\epsilon|^3$; it excludes, in particular, perturbations with $\epsilon_B=0$ for $n\equiv4\pmod 6$, for
 which the double points are not resolved at all (Lemma~\ref{lem:kappa}).
 \end{remark}
