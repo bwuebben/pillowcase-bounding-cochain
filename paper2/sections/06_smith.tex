@@ -26,7 +26,10 @@ diagonal cut-and-paste \cite[Thm.~4.22]{Smith}, which replaces it by two arcs cr
 these arcs \emph{connectors}, and the remaining arcs of the resolved curve, which come from the fiber
 product, \emph{inherited strands}.  The earring curve $E_r$ of $\Qh{r}$ is a Herald--Kirk
 figure-eight, the doubled arc closing through the corner folds with one pinch \cite[Def.~6.7]{HK}; this
-specifies a finite curve, not a bounding cochain.  The closing tangle enters the pairing through its
+specifies a finite curve, not a bounding cochain.  In Smith's notation $\Qh{r}$ is the hat of $Q_r$ (the tangle
+glued into the cobordism of \cite[Fig.~11a]{Smith}, with curve the reflection of the line of $Q_r$ by
+$(\gamma,\theta)\mapsto(\gamma,-\theta)$ \cite[Lem.~2.31]{Smith}), and the earring is his $\natural$, so that
+$E_r=\Rnat(\Qh{r})$.  The closing tangle enters the pairing through its
 mirror image, so $E_r$ surrounds the line of $Q_{-r}$ (\S\ref{ss:kh-smith}); for instance the red
 curve $E_{-1/2}=\Rnat(\Qh{-1/2})$ lies along the line of slope $1/2$.
 
@@ -457,7 +460,7 @@ $S_{74}$ & $(3.079988,3.561056)$ & $20\xrightarrow L21,\ 32\xrightarrow L33$
 \end{center}
 Each smoothing is disjoint from the arc system, so it keeps the generators, and $b_s$ is the sum of
 the two old and the two new arrows.  Every displayed arrow has relative delta degree $-1$; by the
-$\gr_q$ column none of the four deformations is bigraded, which is immaterial here.
+$\gr_q$ column, computed in the chart of \S\ref{ss:explicit}, none of the four deformations is bigraded, which is immaterial here.
 
 \begin{proof}[Proof of Proposition~\ref{prop:q7-typeD}]
 For each row, every composite of an arrow of $b_s$ with an arrow of $\delta_N$, in either order, is zero
@@ -712,9 +715,10 @@ statistics of Table~\ref{tab:family} are the same for both signs.
 A representability theorem would reach the assigned object without identifying the virtual chain of
 every figure-eight bubble: Fukaya, in the compact setting \cite[Thms.~6.3 and~7.3]{FukayaCorr}, and
 Gao, under the hypotheses recalled in \S\ref{ss:correspondence}, obtain the composed object with its
-bounding cochain by a cyclic element and the Yoneda lemma.  Let $\mathcal C\subset\mathcal W(\Pst)$ be
-the CHKK full subcategory of unobstructed objects missing the corner $(\pi,\pi)$, and let
-$G=a^\circ\oplus a^\bullet$, so that $\mathcal B=\operatorname{End}_{\mathcal C}(G)$.  Then $G$
+bounding cochain by a cyclic element and the Yoneda lemma.  Since $N$ and the $b_s$ are
+encoded in the chart of \S\ref{ss:explicit}, which sends $(0,\pi)$ to infinity, let $\mathcal C\subset\mathcal W(\Pst)$
+be the CHKK full subcategory of unobstructed objects missing the corner $(0,\pi)$ (CHKK's description applies to
+any corner, \S\ref{ss:explicit}), and let $G=a^\circ\oplus a^\bullet$ be the arcs ending at the other corners, so that $\mathcal B=\operatorname{End}_{\mathcal C}(G)$.  Then $G$
 generates $\mathcal C$ and $\operatorname{Tw}\mathcal C\simeq\operatorname{Tw}(\mathcal B)$
 \cite[\S11.5]{CHKK}, by \cite[Thm.~7.6]{Bocklandt} and \cite[\S3]{HKK}.
 
@@ -740,7 +744,8 @@ $X_{1/3,1/7}\simeq(N,b_{S_{18}})$; the second equivalence is Corollary~\ref{cor:
 last assertion, the two-switch sum $(N,b_{S_{18}}+b_{S_{35}})$ is one of the $41$ collisions of
 Proposition~\ref{prop:aux-span}; but against the figure-eight curve $Z$ built, as the earrings above,
 from the line of slope $-1/3$ through $(0,0)$, its wrapped dimension is $11$, against $9$ for
-$(N,b_{S_{18}})$.  That line passes through $(\pi,\pi)$, so $Z$ is not the earring of $Q_{-1/3}$; the
+$(N,b_{S_{18}})$.  That line passes through $(\pi,\pi)$, whereas the line of $Q_{-1/3}$ joins $(\pi,0)$ to $(0,\pi)$; so $Z$ is not
+the earring $E_{1/3}$; the
 argument uses only that $\dim H\operatorname{Mor}(Z,-)$ is a homotopy invariant.
 \end{proof}
 

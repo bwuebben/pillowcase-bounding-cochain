@@ -148,7 +148,14 @@ To fix the chirality, recall $\sigma(K_q)=-(q+1)$ for $q\ge7$ and $\sigma(K_5)=\
 $K^{(-m)}$ are related by one crossing change, so their signatures differ by at most $2$~\cite[proof of Thm.~10.1, (10.2)]{Murasugi}.
 Suppose $\sigma(K^{(-m)})=-s_m$ with $s_0=8$ and $s_m=2m+6$ for $m\ge1$; for $m=0$ this is Remark~\ref{rem:chirality}.
 The two candidates for $K^{(-m-1)}$ have signature $\pm(2m+8)$, and only $-(2m+8)$ lies within $2$ of $-s_m$. Hence
-$K^{(-m-1)}=K_{2m+7}$, and induction on $m$ completes the proof.
+$K^{(-m-1)}=K_{2m+7}$, and induction on $m$ shows $K^{(-m)}=K_{5+2m}$ for every $m\ge1$.
+
+It remains to see that $K_{5+2m}$, rather than its mirror image, is the closure of $(\sigma_1\sigma_2)^5\sigma_1^{2m}$. By
+Clay and Watson, used up to mirror image, this closure is $K_{5+2m}$ or its mirror image. Changing one crossing of
+$\sigma_1^{2m}$ from positive to negative gives $(\sigma_1\sigma_2)^5\sigma_1^{2m-2}$, and for knots $K_\pm$
+related by such a change $\sigma(K_+)-\sigma(K_-)\in\{0,-2\}$ in our convention (see the proof of
+Proposition~\ref{prop:twisted-sig}). By induction from $\sigma(T(3,5))=-8$, the closure has negative signature. Since
+$\sigma(K_{5+2m})=-(2m+6)<0$ and its mirror image has positive signature, the closure is $K_{5+2m}$.
 \end{proof}
 
 The same argument applies to every $n\equiv2\pmod3$ once the signature of $T(3,n;2,m)$ is known; this is used in
@@ -164,8 +171,10 @@ tangles $-1/2$, $1/3$, $1/q$, all of denominator at least $2$. By Oertel's theor
 complement of such a Montesinos link carries a complete hyperbolic structure unless the link is a torus link or one
 of the links $K(\tfrac12,\tfrac12,-\tfrac12,-\tfrac12)$, $K(\tfrac23,-\tfrac13,-\tfrac13)$, $K(\tfrac12,-\tfrac14,-\tfrac14)$,
 $K(\tfrac12,-\tfrac13,-\tfrac16)$ or a mirror image of one of these. For each of the four listed links the sum of the
-fractions is $0$, whereas for a knot it is nonzero~\cite[Thm.~1]{Oertel}; so none of them, and none of their mirror
-images, is a knot. Conventions for the sign of a rational tangle differ between authors, which may replace $K_q$ by its
+fractions is $0$. The determinant of a Montesinos link with fractions $\beta_i/\alpha_i$ is
+$|\alpha_1\cdots\alpha_r\sum_i\beta_i/\alpha_i|$, the order of the first homology of its double branched cover (infinite,
+and the determinant $0$, when the sum vanishes), whereas the determinant of a knot is odd; so none of them, and none
+of their mirror images, is a knot. Conventions for the sign of a rational tangle differ between authors, which may replace $K_q$ by its
 mirror image; the list of exceptions is closed under mirror image. Hence $K_q$ is hyperbolic.
 \end{proof}
 
@@ -466,7 +475,8 @@ for the covector $\ell=(-2\tau,-1)$ of (V5). The resolution is
 \text{joined}\iff|\varepsilon_B|<\sqrt3\,|\varepsilon_A|,\qquad\text{split}\iff|\varepsilon_B|>\sqrt3\,|\varepsilon_A| .
 \]
 For small $a$ both types occur in $\mathcal C_a$: the joined sectors contain the $\varepsilon_A$-axis, and the split sectors the
-$\varepsilon_B$-axis. The two lines excluded from $\mathcal C_a$ are $\{\varepsilon_B=\mp\sqrt3\,\varepsilon_A\}$, the boundaries between the sectors.
+$\varepsilon_B$-axis. The set excluded from $\mathcal C_a$ is an open conical neighbourhood of the two lines $\{\varepsilon_B=\mp\sqrt3\,\varepsilon_A\}$,
+the boundaries between the sectors.
 \end{proposition}
 
 \begin{proof}
@@ -564,7 +574,7 @@ contains neither direction. A critical point of $\varphi$ on $\hat A$ is a point
 $(1,1)$, that is, where the tangent of $\tilde A$ is parallel to $(1,6-q)$; by the above this happens only in
 $U_{J_2}\cup U_{J_3}$.
 
-For the remnant circle, the properties of being restricted, avoiding the edges and having vertical degree $2$ follow from~\cite[Lemma~6.2]{WuebbenV} and
+For the remnant circle, the properties of being restricted, avoiding the edges and having vertical degree $2$ follow from~\cite[Lemmas~6.2 and~6.6]{WuebbenV} and
 Lemma~\ref{lem:shear}(b)--(d). Its pieces are those of Corollary~\ref{cor:polygon}, with junctions of type $J_2$ (from $H'$
 to $B_1^{-1}$, at $c_-$) and $J_3$ (from $B_1^{-1}$ to $H'$, at $c_+$), and the estimates above apply to it by compactness and
 periodicity.
@@ -574,9 +584,11 @@ periodicity.
 The smallness threshold for $\varepsilon$ in Proposition~\ref{prop:shearedcurves} depends on $q$ through the constant $C_\lambda$, which
 grows linearly in $q$. The margins that matter in the next subsection are the distances from $\varphi_3$ to the nearest
 value in $2\pi\Z$ above it and from $\varphi_2$ to the nearest value in $2\pi\Z$ below it. Both are at least $\pi/6$; the first
-equals $\pi/6$ exactly when $q\equiv5\pmod{12}$, and the second exactly when $q\equiv11\pmod{12}$. Above the threshold a
-cancelling pair of generators can be missing (a line $\Delta_k$ crossed once instead of three times); the homology is the
-same.
+equals $\pi/6$ exactly when $q\equiv5\pmod{12}$, and the second exactly when $q\equiv11\pmod{12}$. The order of the
+crossings in Proposition~\ref{prop:bigonsP} also requires the perturbation to move the crossings by less than half the gaps
+between their abscissae at $\varepsilon=0$, which are at least $\pi/(q(q-6))$ and so shrink quadratically in $q$. Above the
+threshold a cancelling pair of generators can be missing (a line $\Delta_k$ crossed once instead of three times); in our
+computations (Remark~\ref{rem:numericsP}) the homology is the same.
 \end{remark}
 
 \subsection{Generators}\label{ss:gens-P}
@@ -755,7 +767,7 @@ $\Delta_k$ at most once. By Proposition~\ref{prop:shearedcurves}, the range of $
 ranges on $\mathrm{inc}_{j-1}$ and $\mathrm{inc}_j$. Hence the crossings of $\Delta_k$ along the lift alternate between up and down,
 beginning and ending with an up-crossing (as $\varphi\to\pm\infty$ along the lift), and a down-crossing on $\mathrm{dec}_j$ has the
 up-crossings on $\mathrm{inc}_{j-1}$ and $\mathrm{inc}_j$ as neighbours. The triple $(\mathrm{inc}_{j-1},\mathrm{dec}_j,\mathrm{inc}_j)$ is the triple
-$(S_{-m}(H),S_{-m}(B_1^{-1}),S_{-m}(H'))$ of the arc translated by $(0,4\pi(j-1))$, so the abscissa computation above shows that $\gamma$
+$(S_{-m}(H),S_{-m}(B_1^{-1}),S_{-m}(H'))$ of the arc translated by $(0,4\pi j)$, so the abscissa computation above shows that $\gamma$
 decreases strictly along the sequence, and Lemma~\ref{lem:zigzag} applies to every strand. The complex of the circle in
 $\Pst$ is the quotient by $\langle T\rangle$: its generators are the $T$-orbits of crossing points, represented exactly once on the
 four strands $S^{k_0}_\sigma$ with $k_0\in\{0,1\}$, and its bigons are the $T$-orbits of the domains of Lemma~\ref{lem:zigzag}.
@@ -814,12 +826,14 @@ For $q=3$ and $q=5$ the knots are $T(3,4)$ and $T(3,5)$, and the corresponding s
 Cor.~1.2]{WuebbenV}. The knots $K_q$ with $q\ge7$ are hyperbolic and not two-bridge (Proposition~\ref{prop:hyperbolic}).
 
 \begin{remark}\label{rem:FKPcount}
-At $\varepsilon=0$ the intersection points of $S_{-m}(\Pi(W))$ with $\Delta$ are the restrictions of the traceless characters of $K_q$, and
-the generator count of Proposition~\ref{prop:gens} is one more than twice the number of irreducible traceless
-characters. It can be written
+At $\varepsilon=0$ the intersection points of $S_{-m}(\Pi(W))$ with $\Delta$ are the restrictions of the traceless characters of $K_q$.
+The two halves $H$ and $H'$ of $C_0$ have the same image, their lifts differing by $(0,4\pi)$, and the restriction map is
+$2$-to-$1$ over the points of $\Delta$ in that image. So the irreducible traceless characters correspond to the crossings of
+the lifted sheared polygon of Corollary~\ref{cor:polygon}, rather than of its image, with the lines $\Delta_k$, and the
+generator count of Proposition~\ref{prop:gens} is one more than twice their number. It can be written
 $q+2+4N_q=q-6+4\bigl(\lfloor\frac{5q+6}{12}\rfloor-\lfloor\frac{q+6}{12}\rfloor\bigr)$, which is the count of~\cite[\S5, p.~29]{FKP}
-read consistently: the general formulas printed there give $13$ generators at $q=7$, whereas the explicit count on
-p.~28 is $9$. For $q\ge9$ the traceless character variety therefore has more points than are needed to generate $\Inat(K_q)$, and
+read consistently: the rank formula printed there gives $13$ at $q=7$ (and the printed summands give $5$), whereas the
+explicit count on p.~28 is $9$. For $q\ge9$ the traceless character variety therefore has more points than are needed to generate $\Inat(K_q)$, and
 the complex is not minimal. This agrees with the remark of
 Daemi and Scaduto that a direct computation from the character variety shows that $P(-2,3,7)$ is $I$-basic, while
 such a computation does not work for $P(-2,3,q)$ with $q>7$~\cite[p.~161]{DS24}.

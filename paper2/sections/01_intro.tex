@@ -94,7 +94,7 @@ $T(3,n;2,m)$ is the closure of the braid $(\sigma_1\sigma_2)^n\sigma_1^{2m}$.
 Let $n\ge7$ with $n\equiv1$ or $2\pmod 6$, let $m\ge1$, and let $K=T(3,n;2,m)$. Then
 $\sigma(K)=\sigma(T(3,n))-2m$, and $\Inat(K;\Z)$ is free of rank $|\sigma(K)|+1$. The tangle of~\cite[\S10]{HHK2}
 for $T(3,n)$, reglued by $t_e^{-m}$, is a decomposition of $K$, and for small holonomy perturbations and
-small earring parameters it satisfies the conclusion of~\cite[Conj.~6.5]{HHK2}:
+generic small earring parameters it satisfies the conclusion of~\cite[Conj.~6.5]{HHK2}:
 $\Hnat\cong\Inat(K;\F_2)$ as $\Z/4$-graded vector spaces.
 \end{theorem}
 
@@ -105,7 +105,7 @@ and $M\ge2$, are not torus knots, not alternating and not pretzel knots
 $P(-2,3,q)$ (Lemma~\ref{lem:twisted-not-torus}). We make no claim about their hyperbolicity.
 
 \subsection{Smith's decomposition}
-In Smith's decomposition the earring tangle is $\Qh{-1/2}$ and the other tangle is
+In Smith's decomposition the earring is placed on the tangle $\Qh{-1/2}$, and the other tangle is
 $T_q=Q_{1/3}+Q_{1/q}$. We work in Smith's coordinates on the pillowcase, with his holonomy perturbation
 for small negative values of its parameter $t$ (Remark~\ref{rem:sign}). Following Cazassus, Herald, Kirk
 and Kotelskiy~\cite[\S11]{CHKK}, we encode curves as twisted complexes over the two-arc algebra
@@ -154,7 +154,8 @@ ends along $c$.
 \begin{theorem}\label{thm:pairing}
 Let $5\le q\le21$ be odd, and let $R$ be a linear curve parallel neither to $\alpha_q$ nor to $c$. Then
 the minimal intersection numbers satisfy $i(R,\mathrm{BN}_q)=i(R,\alpha_q)+2\,i(R,c)$, and if $R$ is
-bigraded, $\dim\HF(R,\mathrm{BN}_q)=\dim\HF\bigl(R,\alpha_q\oplus(c,J_2)\bigr)$.
+bigraded, with the corner $(\pi,\pi)$ as the special puncture of~\cite{KWZ},
+$\dim\HF(R,\mathrm{BN}_q)=\dim\HF\bigl(R,\alpha_q\oplus(c,J_2)\bigr)$.
 \end{theorem}
 
 \begin{corollary}\label{cor:closures}
@@ -216,10 +217,15 @@ for bigraded curves.
 \subsection{Scope of claims}
 Theorem~\ref{thm:inat} is unconditional. Theorems~\ref{thm:hhk} and~\ref{thm:twisted} rest on the analysis of
 the perturbed curves of the torus-knot tangles in~\cite{WuebbenV} and on the convention for the base case
-in Remark~\ref{rem:chirality}, which the knot group cannot detect. Numerical traces of the perturbed
+in Remark~\ref{rem:chirality}, which the knot group cannot detect. Theorem~\ref{thm:twisted} also uses the
+computation of Hedden, Herald and Kirk for circles that miss the edges~\cite[Thm.~5.4]{HHK2}, whose proof
+in~\cite{HHK2} rests on their invariance theorem~\cite[Thm.~4.1]{HHK2} (Remark~\ref{rem:invariance}). Numerical traces of the perturbed
 curves agree with them (Remark~\ref{rem:numericsP}) but are not used in the proofs.
-Proposition~\ref{prop:q7-typeD}, Theorems~\ref{thm:structure} and~\ref{thm:pairing} and
-Corollary~\ref{cor:closures} are statements about explicitly presented objects of $\operatorname{Tw}(\mathcal B)$;
+The second statement of Theorem~\ref{thm:pairing}, and Corollary~\ref{cor:closures} for all slopes, use the pairing
+theorem of Kotelskiy, Watson and Zibrowius for arcs that end at a puncture, which they state but write out only
+for compact curves (proof of Theorem~\ref{thm:pairing-full}); the dimensions of Corollary~\ref{cor:closures} are
+also computed directly at several hundred slopes. Proposition~\ref{prop:q7-typeD}, Theorems~\ref{thm:structure}
+and~\ref{thm:pairing} and Corollary~\ref{cor:closures} are statements about explicitly presented objects of $\operatorname{Tw}(\mathcal B)$;
 they neither assume nor prove the instanton--pillowcase correspondence, and they do not identify the
 object that the conjecture of Cazassus, Herald, Kirk and Kotelskiy assigns to $T_q$. The piecewise-linear
 model represents Smith's perturbed curve in the sense of Proposition~\ref{prop:smith-main}.

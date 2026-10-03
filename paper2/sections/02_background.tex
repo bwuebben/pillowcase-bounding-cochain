@@ -67,9 +67,11 @@ Since $\tilde L_0(t+2\pi)=\tilde L_0(t)+(2\pi,2\pi)$, the preimage of $L_0$ in $
 S^k_+=\tilde L_0+(0,2\pi k),\qquad S^k_-=-\tilde L_0+(0,2\pi k),\qquad k\in\Z,
 \]
 which we call the \emph{strands} of $L_0$. Each is a properly embedded line within $\sqrt2\,\epsilon$ of $\Delta_k$,
-and a translation by $(2\pi a,2\pi b)$ carries $S^k_\pm$ to $S^{k+b-a}_\pm$. The slope of $S_+$ at the point with
+and a translation by $(2\pi a,2\pi b)$ carries $S^k_\pm$ to $S^{k+b-a}_\pm$. Reparametrizing,
+$S^0_-=\{(t+\frac\pi2-\epsilon\sin t,\ t+\frac\pi2+\epsilon\sin t)\}$. The slope of $S_+$ at the point with
 parameter $t$ is $(1-\epsilon\cos t)/(1+\epsilon\cos t)$, and that of $S_-$ is its reciprocal. Hence on the front
-strip $0<\gamma<\pi$ the strand $S^k_+$ has slope less than $1$ and $S^k_-$ has slope greater than $1$; in $P$ these
+strip $0<\gamma<\pi$ the strand $S^k_+$ has slope less than $1$, and $S^k_-$ has slope greater than $1$ for
+$\epsilon<\gamma<\pi-\epsilon$ (it has slope $1$ at $\gamma=\epsilon$ and $\gamma=\pi-\epsilon$); in $P$ these
 are the two branches of $L_0$ along the interior of $\Delta$~\cite[\S5.1]{HHK2}. The two strands near $\Delta_k$
 cross exactly at the points $(\frac\pi2+j\pi,\frac\pi2+j\pi+2\pi k)$, and they pass each lattice point of $\Delta_k$
 on opposite sides at distance $\sqrt2\,\epsilon$: for instance $S^0_+$ passes $(0,0)$ through $(-\epsilon,\epsilon)$
@@ -162,8 +164,9 @@ the four gradings.
 \begin{remark}\label{rem:invariance}
 By~\cite[Thm.~4.1, Cor.~4.6]{HHK2}, $\HF(L_0,L_1)$ is independent of $\epsilon$ and, as a relatively graded group,
 depends only on the free homotopy classes of the circle components of $L_1$ and the homotopy class rel endpoints
-of its arc. The computations in Sections~\ref{sec:sheared} and~\ref{sec:twisted} are direct and do not use this
-invariance.
+of its arc. The computations in Section~\ref{sec:sheared} are direct and do not use this invariance.
+Section~\ref{sec:twisted} uses it only through Theorem~\ref{thm:hhk54}, for the circle components: in~\cite{HHK2}
+that theorem is deduced from~\cite[Cor.~4.6]{HHK2}, which follows from~\cite[Thm.~4.1]{HHK2}.
 \end{remark}
 
 \subsection{Tangle decompositions and the conjecture of Hedden, Herald and Kirk}\label{ss:decomp}
@@ -206,9 +209,10 @@ boundary meridians satisfy $ac^{-1}=bd^{-1}$ and are sent to
 a\mapsto\mathbf i,\qquad b\mapsto e^{\gamma\mathbf k}\mathbf i,\qquad c\mapsto e^{\theta\mathbf k}\mathbf i,\qquad
 d\mapsto e^{(\gamma+\theta)\mathbf k}\mathbf i .
 \end{equation}
-In these coordinates no holonomy-perturbed tangle character variety meets the corner $(\pi,\pi)$. This
-is~\cite[Prop.~11.1]{CHKK}, which is stated in coordinates in which the excluded corner is
-$[\gamma,\theta]=[0,\pi]$. Its proof applies verbatim: an abelian traceless representation is determined by how
+In these coordinates, for an appropriate holonomy perturbation, no perturbed tangle character variety meets the
+corner $(\pi,\pi)$. This is~\cite[Prop.~11.1]{CHKK}, which is stated in coordinates in which the excluded corner is
+$[\gamma,\theta]=[0,\pi]$; the explicit curves of Sections~\ref{sec:smith} and~\ref{sec:khovanov} miss $(\pi,\pi)$
+by inspection (\S\ref{ss:explicit}). Its proof applies verbatim: an abelian traceless representation is determined by how
 the tangle joins the four boundary points, and in Smith's coordinates the three possible joinings give the corner
 pairs $\{(0,0),(0,\pi)\}$, $\{(0,0),(\pi,0)\}$ and $\{(\pi,0),(0,\pi)\}$. We write $Q_r$ for the rational tangle
 whose traceless character variety is the straight interval of slope $r$~\cite[Prop.~2.27]{Smith}. For $r=m/n$ in

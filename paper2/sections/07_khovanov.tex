@@ -35,11 +35,11 @@ with local systems in the four-punctured sphere: the Bar-Natan invariant $\widet
 and the Khovanov invariant $\widetilde{\Kh}(T)$, which is the mapping cone of $H\cdot\mathrm{id}$ on
 $\widetilde{\mathrm{BN}}(T)$ \cite[Def.~6.5]{KWZ}.  Both are objects of $\operatorname{Tw}(\mathcal B)$,
 and their arc components end at the three non-special punctures.  Under the identification of
-\cite[\S8.2]{KWZ} the special puncture is the corner $(0,\pi)$, which is the corner that
-holonomy-perturbed tangle character varieties miss in the coordinates of CHKK
-\cite[Prop.~11.1 and \S11.6]{CHKK}.  In Smith's coordinates that corner is $(\pi,\pi)$
-(\S\ref{ss:models}).  We therefore draw an invariant $Y$ of \cite{KWZ} in Smith's coordinates as
-$\Phi(Y)$, and we set
+\cite[\S8.2]{KWZ}, the special puncture corresponds to the
+corner $(0,\pi)$ in the coordinates of CHKK, which is the corner that
+holonomy-perturbed tangle character varieties miss \cite[Prop.~11.1 and \S11.6]{CHKK}.  In Smith's coordinates
+that corner is $(\pi,\pi)$ (\S\ref{ss:models}).  We therefore draw an invariant $Y$ of \cite{KWZ} in Smith's
+coordinates as $\Phi(Y)$, and we set
 \[
  \mathrm{BN}_q:=\Phi\bigl(\widetilde{\mathrm{BN}}(T_q)\bigr).
 \]
@@ -62,6 +62,10 @@ pairing theorem therefore reads
 We have compared the two sides of \eqref{eq:kwz-pairing} at the 340 slopes used for $q=5$ and the 342
 slopes used for $q=7$ in Corollary~\ref{cor:closures-full}, computing the right side with Khoca
 \cite{Khoca}; they agree at every slope.
+
+Gradings of curves in the four-punctured sphere depend on which puncture is special.  Accordingly, we call a
+curve $R$ in Smith's coordinates \emph{bigraded} if $\Phi^{-1}(R)$ is bigraded in the sense of \cite{KWZ}; this is the
+normalization in which $(\pi,\pi)$ is the special puncture.
 
 \subsection{The structure theorem}\label{ss:kh-structure}
 Put $r_q=(1-q)/(3q-4)$.  Its numerator is even and its denominator is odd, so the arc of $E_{r_q}$
@@ -205,7 +209,7 @@ Let $5\le q\le21$ be odd, and let $R$ be a linear curve whose direction is paral
 $\alpha_q$ nor to $c$.
 \begin{enumerate}
 \item[(a)] $i(R,\mathrm{BN}_q)=i(R,\alpha_q)+2\,i(R,c)$.
-\item[(b)] If $R$ is bigraded, then
+\item[(b)] If $R$ is bigraded, that is, if $\Phi^{-1}(R)$ is bigraded in the sense of \cite{KWZ}, then
  \[
   \dim\HF(R,\mathrm{BN}_q)=\dim\HF(R,\alpha_q)+2\dim\HF(R,c)=\dim\HF\bigl(R,\alpha_q\oplus(c,J_2)\bigr).
  \]
@@ -218,23 +222,30 @@ local systems $X$ and $X'$, the dimension of $\HF$ is $(\dim X)(\dim X')$ times 
 intersection number \cite[Thm.~4.45]{Zibrowius}; this applies to $R$ and $(c,J_2)$ and gives
 $\dim\HF(R,(c,J_2))=2\,i(R,c)=2\dim\HF(R,c)$.  For bigraded curves one of which is an arc, the same
 formula is \cite[Thm.~5.25]{KWZ}, applied after moving all curves back by $\Phi$; Kotelskiy, Watson
-and Zibrowius write out the proof for compact curves, which is the proof of
-\cite[Thm.~4.45]{Zibrowius}, and state that the remaining cases are treated similarly.  It applies to
+and Zibrowius state it under the standing assumption that both curves are compact, adding that the other
+cases are treated similarly, and prove it by referring to the proof of \cite[Thm.~4.45]{Zibrowius}, which
+is set on a marked surface whose paths end on the boundary rather than at punctures; neither paper writes
+out the case of an arc ending at a puncture.  It applies to
 $R$ and the bigraded arcs $\alpha_q$ and $\mathrm{BN}_q$.  Hence (a) implies (b).
 
 \emph{Geodesic representatives.}  Fix a small $\varepsilon>0$ and remove from $\R^2$ the open
 $\varepsilon$-discs $B(p)$ about the lattice points $p$.  Their boundary circles are locally
 concave, so the flat surface that remains is locally CAT(0) by the theorem of Alexander, Berg and
 Bishop \cite[Thm.~7.28]{AKP}, and its universal cover is CAT(0) by the globalization theorem
-\cite[Thm.~5.6]{AKP}.  Two geodesics in a CAT(0) space meet in a connected set.  Hence geodesic
-representatives in the quotient by $G$, in which an arc ends on the boundary circle of its corner,
+\cite[Thm.~5.6]{AKP}.  Two geodesics in a CAT(0) space meet in a connected set, and two geodesic lifts without a common boundary arc meet
+if and only if their ends link.  Hence geodesic
+representatives in the quotient by $G$, in which an arc ends orthogonally on the boundary circle of its corner,
 realize the minimal intersection numbers, provided a common arc of tangency along a boundary circle
 is counted once if the four ends of the two curves near it interleave and not at all otherwise.  The
-representatives are: for $R$, the lines of direction $w$ tangent to the discs of their lattice points
-on the prescribed sides; for $\alpha_q$, the part of $[p_M,p_0]$ outside the two discs; for $c$, the
-line in $\ell^+$ parallel to $\ell$ at distance $\varepsilon$; and for $\mathrm{BN}_q$, the segment
-from $\partial B(p_M)$ to a tangent point of $\partial B(p_0)$, an arc of $\partial B(p_0)$, and then
-the same parallel line up to $\partial B(p_4)$, where it ends.  The segment $[p_M,p_0]$ meets no other
+representatives are taut curves made of straight segments and short arcs of the boundary circles: for
+$R$, a line of direction $w$ missing the discs if $R$ is the simple closed curve, and otherwise the curve that
+passes each disc of its lattice line on the prescribed side, which is a line of direction $w$ tangent to the
+discs when all sides agree and in general consists of common tangent segments of consecutive discs and short
+arcs of their boundary circles; for $\alpha_q$, the part of $[p_M,p_0]$ outside the two
+discs; for $c$, the line in $\ell^+$ parallel to $\ell$ at distance $\varepsilon$; and for $\mathrm{BN}_q$, the
+segment from $\partial B(p_M)$ to a tangent point of $\partial B(p_0)$, an arc of $\partial B(p_0)$, the same
+parallel line, and near $p_4$ a short arc of $\partial B(p_3)$ followed by a segment that ends orthogonally on
+$\partial B(p_4)$, arriving nearly along the direction of $p_4-p_3$.  The segment $[p_M,p_0]$ meets no other
 disc because its direction is primitive.
 
 \emph{Reduction to one lattice point.}  A lift of an arc has trivial stabilizer, so for an arc $X$
@@ -243,7 +254,8 @@ fundamental domain for the stabilizer of the lift of $c$ is one period, so $2\,i
 intersections with the half-open stretch of the parallel line from $p_0$ to $p_4$, the end near $p_0$
 included.  Compare the lift of $\mathrm{BN}_q$ with the union of the lift of $\alpha_q$ and this
 stretch.  Outside small neighborhoods of $p_M,p_0,\dots,p_4$ the two coincide.  Near $p_M$ both end
-along the same segment, and near $p_1,p_2,p_3$ both pass straight.  The translation by
+along the same segment, near $p_1,p_2$ both follow the parallel line, and near $p_3,p_4$ the lift of
+$\mathrm{BN}_q$ turns along $\partial B(p_3)$ to end on $\partial B(p_4)$.  The translation by
 $p_4-p_0\in2\pi\Z^2$ belongs to $G$, so it carries the lifts of $R$ through $p_4$ bijectively onto
 those through $p_0$, preserving the sides.  It therefore suffices to show, for every lift $\lambda$ of
 $R$ through $p_0$, that
@@ -257,10 +269,10 @@ $\mathrm{BN}_q$ near $p_0$; and the summand $1$ counts the straight passage of t
 
 \emph{Local counts.}  Let $D$ be the open half-plane bounded by the lattice line of $\lambda$ into
 which $\lambda$ is displaced near $p_0$, and $D'$ the other one.  The directions $a$ and $b'$ are not
-parallel to $w$, so each points into $D$ or into $D'$.  The line $\lambda$ is tangent to $\partial
-B(p_0)$ on the side of $D$.  An arc ending orthogonally on $\partial B(p_0)$ along $x$ meets it once
-if $x$ points into $D$ and not at all otherwise.  A straight passage meets it once, since two distinct
-tangent lines of a circle meet in one point.  The angle between $a$ and $b'$ is less than $\pi$, and
+parallel to $w$, so each points into $D$ or into $D'$.  Near $p_0$ the curve $\lambda$ is a graph over its lattice
+line with slope $O(\varepsilon)$, and it touches or wraps around $\partial B(p_0)$ on the side of $D$.  An arc ending orthogonally on $\partial B(p_0)$ along $x$ meets it once
+if $x$ points into $D$, at its endpoint when $x$ is orthogonal to $w$, and not at all otherwise.  A straight passage, which crosses the lattice line of
+$\lambda$ at an angle bounded below, meets it once.  The angle between $a$ and $b'$ is less than $\pi$, and
 the part of $\mathrm{BN}_q$ near $p_0$ runs in along $a$, around the far side of $B(p_0)$ from that
 angle, and out along $b'$; it meets $\lambda$ once if $a$ and $b'$ point into different half-planes,
 twice if both point into $D$, and not at all if both point into $D'$.  Since
@@ -323,9 +335,10 @@ every rational closure: at $r=-1/2$ the common value is $q+2=\dim\Inat(P(-2,3,q)
 (Proposition~\ref{prop:aux-closure}).
 
 \begin{remark}[The direction of $c$]\label{rem:exceptional}
-The hypothesis that the direction is not parallel to $c$ cannot be dropped.  Among figure-eights around
-straight arcs and simple closed curves, exactly two curves pair differently with $\mathrm{BN}_q$ and
-with $\alpha_q\oplus(c,J_2)$, and both are parallel to $c$: the curve $c$ itself, with $11$ against
+The hypothesis that the direction is not parallel to $c$ cannot be dropped.  Among the figure-eights around
+straight arcs and the simple closed curves in the census described below (directions $(m,n)$ with $|m|,|n|\le6$
+or parallel to $\alpha_q$, and $q=5,7,\dots,13$), exactly two curves pair differently
+with $\mathrm{BN}_q$ and with $\alpha_q\oplus(c,J_2)$, and both are parallel to $c$: the curve $c$ itself, with $11$ against
 $13$ at $q=7$ and $7$ against $9$ at $q=5$, and the figure-eight around the arc parallel to $c$ that
 joins $(0,0)$ to $(\pi,\pi)$, with $13$ against $11$ and $9$ against $7$.  The latter surrounds the corner
 $(\pi,\pi)$, which no tangle character variety meets, and is not the earring of a rational tangle;
@@ -400,7 +413,9 @@ dimension to $\mathrm{BN}_7$ as to the class of $(N,b_{S_{18}})$ that the hypoth
 \begin{remark}[The cases $q\ge11$]\label{rem:q11}
 For $q=11$ and $13$ the encoding of a numerical trace of Smith's curve is strictly isomorphic to
 $N_q$, with $47$ and $55$ generators, and its pairing with $E_{-1/2}$ is $q+4$, two more than
-$\rk\widetilde{\Kh}(P(-2,3,q))=q+2$; for $q=17$ and $19$ the pairing of the traced curve is $q+8$.  At
+$\rk\widetilde{\Kh}(P(-2,3,q))=q+2$; for $q=17$ and $19$ the pairing of the traced curve is $q+8$.  At $q=17,19$ we
+have not computed the encoding of $L_{q,\mathrm{PL}}$, and $N_q$ denotes the encoding of the traced curve; the
+comparison of traces with $N_q$ in Appendix~\ref{app:data} covers $q\le13$.  At
 $q=5,7$ the pairing is $q$, and one switch raises it to $q+2$.  The deformation of
 Theorem~\ref{thm:structure-full} does not persist in the following finite sense.  Call the minimal
 number of arrows that must be deleted from $\delta_{N_q}$, and the same number added, to reach a

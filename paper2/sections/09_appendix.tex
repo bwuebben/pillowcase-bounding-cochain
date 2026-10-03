@@ -61,7 +61,12 @@ each case; at $q=7$ both consist of arrows labelled $R$ and touch the end $36$.
 
 \subsection{Methods}\label{ss:methods}
 All statements of Sections~\ref{sec:smith} and~\ref{sec:khovanov} that rest on computation are finite
-computations in exact arithmetic over $\F_2$, with the exceptions named below.
+computations in exact arithmetic over $\F_2$, with the following exceptions, which are floating-point
+computations: the geometry of the piecewise-linear curves of Section~\ref{sec:smith} (their self-intersections and
+their crossings with the arc system, from which the encodings and the census of smoothings are read off), which
+uses numerical tolerances; the finite winding
+test of \S\ref{sec:compute}, which evaluates winding functions on sampled regions; and the traced curves described
+below.
 
 \emph{Morphism homology.}  Morphism complexes in $\operatorname{Tw}(\mathcal B)$ are computed in
 full, without truncating word length, by the mapping-cone reduction of

@@ -12,7 +12,7 @@ Each paper cites the others where their results meet.
 | [`paper1/`](paper1) | *Traceless SU(2) characters and ℤ/4 instanton gradings for two-bridge and (3,n)-torus knots* (an earlier version is arXiv:2607.26095) | 14 |
 | [`paper4/`](paper4) | *The S-complex differential of torus knots* | 12 |
 | [`paper5/`](paper5) | *Pillowcase Floer homology of the torus knots T(3,n)* | 40 |
-| [`paper2/`](paper2) | *Instanton and pillowcase homology of the (−2,3,q) pretzel knots* (an earlier version, under a different title, is arXiv:2607.26096) | 59 |
+| [`paper2/`](paper2) | *Instanton and pillowcase homology of the (−2,3,q) pretzel knots* (an earlier version, under a different title, is arXiv:2607.26096) | 60 |
 
 For the torus knots, read papers 1, 4 and 5 in that order. Paper 1 assembles the instanton-side
 facts, paper 4 proves new results about the S-complex differential for every torus knot, and paper 5

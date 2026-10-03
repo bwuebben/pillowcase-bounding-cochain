@@ -19,7 +19,7 @@ positive braid
 \]
 that is, $T(3,n)$ with $m$ positive full twists added on two adjacent strands; $T(3,n;2,0)=T(3,n)$. Clay
 and Watson write $T^m_{3,n}$ for this knot \cite[\S3.2]{ClayWatson}, and Daemi and Scaduto write
-$T(3,n;2,m)$ \cite[\S8.3]{DS24}. The knots of Section~\ref{sec:sheared} are the case $n=5$:
+$T(3,n;2,m)$ \cite[\S8.5]{DS24}. The knots of Section~\ref{sec:sheared} are the case $n=5$:
 $T(3,5;2,m)=P(-2,3,5+2m)$. Throughout we put
 \[
 \nu=\lfloor n/3\rfloor,\qquad M=\begin{cases}m,&n\equiv1\pmod3,\\ m+1,&n\equiv2\pmod3,\end{cases}
@@ -37,8 +37,8 @@ and \cite{WuebbenV}, that $K_0(3,n)$ is the positive torus knot $T(3,n)$.
 
 We write $\varepsilon=(\varepsilon_A,\varepsilon_B)$ for the parameters of the holonomy perturbation $\pi$
 of \cite{WuebbenV} and $L_1^{\mathrm V}$ for the resulting curve of $(Y_n,T_n)$. By Lemma~\ref{lem:shear}, the
-curve of $(Y_n,T_n)$ in the decomposition of $K_{-m}(3,n)$ is $L_1=S_{2m}\circ L_1^{\mathrm V}$, where
-$S_{2m}(\gamma,\theta)=(\gamma,\theta+2m\gamma)$. For the trivial side we use the earring curve
+curve of $(Y_n,T_n)$ in the decomposition of $K_{-m}(3,n)$ is $L_1=S_{-m}\circ L_1^{\mathrm V}$, where
+$S_{-m}(\gamma,\theta)=(\gamma,\theta+2m\gamma)$. For the trivial side we use the earring curve
 $L_0=L_0^{\epsilon,g}$ of \cite[Def.~3.4]{HHK2} with $\epsilon>0$ and $g=\delta\sin$; in \cite{WuebbenV},
 $\delta=0$. Recall that $\ell(K)$ denotes the sum of the absolute values of the coefficients of $\Delta_K$.
 
@@ -262,10 +262,10 @@ Let $s=2$ for $n\equiv1$ and $s=4$ for $n\equiv2\pmod6$, so that $s+2m-1=2M+1$.
 of the arc of $L_1^{\mathrm V}$ starting at $(0,0)$ is, away from its ends, $C^1$-close to the segment from $(0,0)$ to
 $(\pi,s\pi)$, along which $\theta=s\gamma$ \cite[Prop.~3.9]{WuebbenV}. Near $(0,0)$ it has the form
 $y\,c(\varepsilon)+y^3R(y,\varepsilon)$, where $c$ and $R$ are real-analytic and $c(0)$ is a positive multiple of $(1,s)$
-\cite[Lemma~5.1]{WuebbenV}, and the same holds at its other end. The shear $S_{2m}$ is linear. Hence the lift
-$\tilde A=S_{2m}\tilde A^{\mathrm V}$ is $C^1$-close, away from its ends, to the segment from $(0,0)$ to
+\cite[Lemma~5.1]{WuebbenV}, and the same holds at its other end. The shear $S_{-m}$ is linear. Hence the lift
+$\tilde A=S_{-m}\tilde A^{\mathrm V}$ is $C^1$-close, away from its ends, to the segment from $(0,0)$ to
 $(\pi,(s+2m)\pi)$, on which $\varphi=(2M+1)\gamma$; near $(0,0)$ it equals
-$y\,S_{2m}c(\varepsilon)+y^3S_{2m}R(y,\varepsilon)$, and the $\varphi$-component of $S_{2m}c(0)$ is $(2M+1)\,c_1(0)>0$. So, as
+$y\,S_{-m}c(\varepsilon)+y^3S_{-m}R(y,\varepsilon)$, and the $\varphi$-component of $S_{-m}c(0)$ is $(2M+1)\,c_1(0)>0$. So, as
 in \cite[Cor.~5.3]{WuebbenV}, $\varphi$ is strictly monotone along $\tilde A$ with $|d\varphi|$ bounded below in
 arclength, and the limiting slopes $s+2m+O(|\varepsilon|)$ differ from $1$. The interior of $\tilde A$ lies in the open
 strip $0<\gamma<\pi$, and $\tilde A$ ends on the line $\varphi=(2M+1)\pi$. It therefore crosses exactly the lines
@@ -275,16 +275,18 @@ embedded, the arc has no fishtail and is a restricted immersed arc.
 \emph{The circles.} By \cite[Prop.~5.7(3)]{WuebbenV}, the other components of $L_1^{\mathrm V}$ are circles
 $C^1$-close to the $2\lfloor\nu/2\rfloor=2j$ non-central circles \cite[Prop.~3.6]{WuebbenV}. They are restricted,
 miss the left and right edges, and have vertical degree $2$ \cite[Cor.~4.8 and Lemma~6.6]{WuebbenV}. By
-Lemma~\ref{lem:shear} their images under $S_{2m}$ have the same three properties. Along these images
-$\varphi$ need not be monotone: $S_{2m}$ adds $2m\gamma$ to $\varphi$, and $\gamma$ is not monotone along a closed curve.
+Lemma~\ref{lem:shear} their images under $S_{-m}$ have the same three properties. Along these images
+$\varphi$ need not be monotone: $S_{-m}$ adds $2m\gamma$ to $\varphi$, and $\gamma$ is not monotone along a closed curve.
 
 \emph{The earring curve.} The strands $S^k_\pm$ of $L_0=L_0^{\epsilon,g}$ are the translates of $\pm\tilde L_0^{\epsilon,g}$
 by $(0,2\pi k)$, where $\tilde L_0^{\epsilon,g}$ is given by \cite[(13)]{HHK2}. At the point with parameter $t$ the slope
-of either is $(1-\epsilon\cos t)/(1+\epsilon\cos t)+\delta\cos\gamma$, and over the front strip $0<\gamma<\pi$ one has
-$\cos t>\epsilon/2$ on $S^k_+$ and $\cos t<-\epsilon/2$ on $S^k_-$, for small $\epsilon$. Hence for $|\delta|<\epsilon^2/2$ the strands
-$S^k_+$ have slope less than $1$ and the strands $S^k_-$ slope greater than $1$ over the front strip, as for
+of either is $(1-\epsilon\cos t)/(1+\epsilon\cos t)+\delta\cos\gamma$, and, for small $\epsilon$, one has
+$\cos t>\epsilon/2$ on $S^k_+$ over the front strip $0<\gamma<\pi$, and $\cos t<-\epsilon/2$ on $S^k_-$ over
+$2\epsilon\le\gamma\le\pi-2\epsilon$. Hence for $|\delta|<\epsilon^2/2$ the strands $S^k_+$ have slope less than $1$ over
+the front strip and the strands $S^k_-$ slope greater than $1$ over $2\epsilon\le\gamma\le\pi-2\epsilon$, as for
 $\delta=0$ \cite[\S2.2]{WuebbenV}, and they lie within $\sqrt2\,\epsilon+|\delta|$ of $\Delta_k$. The proofs of
-\cite[Cor.~5.3(4), Prop.~6.3 and Lemma~6.8]{WuebbenV} use only these properties of the strands and the
+\cite[Cor.~5.3(4), Prop.~6.3 and Lemma~6.8]{WuebbenV} use only these properties of the strands, the slope
+of $S^k_-$ only at points at distance much larger than $\epsilon$ from the edges, and the
 properties of the arc established above. Therefore, for small $\epsilon$ and $|\delta|<\epsilon^2/2$, the arc meets
 $L_0$ transversely in exactly $1+2M$ points: the generator $r_+$ of \cite[Lemma~5.1]{HHK2}, which lies on $S^0_+$
 because $\tilde A$ leaves $(0,0)$ above $\Delta_0$, and a pair $x_k^\pm\in S^k_\pm$ near the crossing of $\tilde A$ with
@@ -315,7 +317,9 @@ changes the degree by $2$. Hence $\deg x_k^+=2k$ and $\deg x_k^-=2k-1$ modulo $4
 which equals its complex, has dimensions $(1+a,b,b,a)$, since $a$ and $b$ count the even and the odd
 $k\in\{1,\dots,M\}$.
 
-\emph{The total.} By \cite[Thm.~5.4]{HHK2}, each circle contributes $(1,1,1,1)$, whatever its absolute grading.
+\emph{The total.} By \cite[Thm.~5.4]{HHK2}, each circle contributes $(1,1,1,1)$, whatever its absolute grading; this
+applies to $L_0^{\epsilon,\delta\sin}=c_{\delta\sin}\circ L_0^{\epsilon,0}$ because the pair $(L_0^{\epsilon,\delta\sin},C)$ is carried by
+$c_{-\delta\sin}$ to $(L_0^{\epsilon,0},c_{-\delta\sin}(C))$, and $c_{-\delta\sin}(C)$ again misses the edges and has vertical degree~$2$.
 There is no differential between different components \cite[p.~37]{HHK2}, and $\Hnat(Y_n,T_n,\pi)$ is the direct
 sum of the contributions of the components \cite[p.~34]{HHK2}. Adding $2j$ copies of $(1,1,1,1)$ to
 $(1+a,b,b,a)$ gives the stated vector.
