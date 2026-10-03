@@ -144,6 +144,13 @@ computation.  The following computations corroborate them.
  Theorem~\ref{thm:twisted} in all $18$ runs.
 \end{enumerate}
 
+\emph{The base case of Section~\ref{sec:sheared}.}  For Remark~\ref{rem:chirality}, the complements of $K^{(0)}\cup e$ (from a
+planar diagram of~\cite[Fig.~18]{HHK2}) and of the closure of $(\sigma_1\sigma_2)^5$ with an unknotted circle around two
+strands are compared through their canonical cell decompositions, computed with interval arithmetic by SnapPy within
+Sage~\cite{SnapPy,HIKMOT}.  The comparison lists all isometries between the two complements: there are two, and both
+preserve the orientation and the meridians.  The surgery sign convention is checked by a Rolfsen twist: $-1$ surgery
+on the circle gives the closure of $(\sigma_1\sigma_2)^5\sigma_1^2$.
+
 \subsection{Reproducibility}\label{ss:repro}
 The programs that carry out the computations of this paper are included as ancillary files with its
 arXiv submission, and they are also available in the public repository

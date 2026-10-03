@@ -119,14 +119,16 @@ The group of a knot does not distinguish it from its mirror image, so the chiral
 premise.
 
 \begin{remark}[Base case]\label{rem:chirality}
-We take $K^{(0)}$ to be the positive torus knot $T(3,5)$, of signature $-8$. This is the standing convention of the
-torus-knot computations of~\cite[\S\S10--11]{HHK2} and~\cite{WuebbenV}, where the decomposition~\cite[(17)]{HHK2} of
-$T(3,5)$ is compared with Kronheimer and Mrowka's instanton homology using $\sigma=-8$. It is consistent with a computer
-check: from a planar diagram of~\cite[Fig.~18]{HHK2}, SnapPy~\cite{SnapPy} finds an orientation-preserving isometry,
-compatible with the meridians, between the complement of the link $K^{(0)}\cup e$ and the complement of the closure of
-the positive braid $(\sigma_1\sigma_2)^5$ together with an unknotted circle encircling two of its strands. That check is not
-used in the proofs. The group cannot detect this premise; the identification of the knots below and the graded
-comparison in Theorem~\ref{thm:hhk} both depend on it.
+The decomposition~\cite[(17)]{HHK2} gives the positive torus knot $T(3,5)$, of signature $-8$. Hedden, Herald and Kirk
+call $K^{(0)}$ the $(3,5)$ torus knot without fixing its handedness~\cite[\S10]{HHK2}, and their comparison
+in~\cite[\S11]{HHK2} uses $\sigma$ only modulo $4$, so it does not decide the question; the knot group cannot detect it
+either. We verify it by a computer-assisted argument. From a planar diagram of~\cite[Fig.~18]{HHK2}, SnapPy~\cite{SnapPy},
+with verified computation of canonical cell decompositions by interval arithmetic~\cite{HIKMOT}, shows that the
+complement of the link $K^{(0)}\cup e$ is isometric to the complement of the closure of the positive braid
+$(\sigma_1\sigma_2)^5$ together with an unknotted circle encircling two of its strands, and that every such isometry
+preserves the orientation and the meridians (Appendix~\ref{app:data}). Such an isometry extends to an
+orientation-preserving homeomorphism of $S^3$ carrying $K^{(0)}$ to the closure of $(\sigma_1\sigma_2)^5$, the positive torus
+knot. The identification of the knots below and the graded comparison in Theorem~\ref{thm:hhk} rest on this.
 \end{remark}
 
 \begin{theorem}\label{thm:topology}

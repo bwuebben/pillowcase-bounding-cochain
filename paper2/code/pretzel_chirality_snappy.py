@@ -15,6 +15,27 @@ by -s/p and H_B by q/r with (p, q, r, s) = (3, 5, 2, -1) gives the exterior X of
       P(-2, 3, 5 - 2h) from (3.2); for h = 1 this is T(3,4) = P(-2,3,3).
 
 Remark 4.3 records (1).  This check is not used in the proofs: the convention of Remark 4.3 is a premise of the paper.
+
+With --verified (requires SnapPy inside SageMath, for interval arithmetic) the script gives a computer-assisted
+proof that K^(0) is the positive torus knot T(3,5), relative to the diagram code PD_HHK below being a faithful
+transcription of [HHK2, Fig. 18].  The triangulations of X and Y are produced from the diagrams by exact
+combinatorial operations (Dehn filling included).  The checks are:
+
+  (V0) surgery convention: the (-1, 1) filling of the circle cusp of Y is homeomorphic, preserving orientation and
+       meridians, to the exterior of the closure of (sigma_1 sigma_2)^5 sigma_1^2.  By the Rolfsen twist, -1 surgery on
+       that circle adds a right-handed full twist, so SnapPy's filling (a, b) is a/b surgery in the orientation in
+       which the crossings of positive braids are right-handed (with the left-handed twist the closure would be T(3,4),
+       a Seifert fibred knot);
+  (V1) canonical_retriangulation(verified=True) verifies, by interval arithmetic, that the triangulations compared
+       subdivide the Epstein-Penner canonical cell decompositions of X and Y.  Their combinatorial isomorphisms,
+       computed exactly, are therefore all the isometries X -> Y.  The list is nonempty and every member has cusp maps
+       of determinant +1 that fix the meridians.
+
+An orientation-preserving homeomorphism of exteriors that takes meridians to meridians extends to an
+orientation-preserving homeomorphism of S^3.  It carries K^(0) u e to the closure of (sigma_1 sigma_2)^5 together with
+the circle, so K^(0) is the closure of a positive braid, the positive T(3,5), of signature -8.  Because the list in
+(V1) is complete and contains no orientation-reversing map, X is not homeomorphic to Y by an orientation-reversing map:
+the mirror of T(3,5) is excluded.
 """
 import sys
 import time
@@ -22,12 +43,15 @@ import warnings
 from fractions import Fraction
 
 warnings.filterwarnings('ignore')
+VERIFIED = '--verified' in sys.argv
 
 try:
+    if VERIFIED:
+        import sage.all  # noqa: F401  (SnapPy's verified routines need Sage)
     import snappy
     from spherogram.links.tangles import Tangle, Crossing, BraidTangle, IdentityBraid
 except ImportError:
-    print('SnapPy and spherogram are required (pip install snappy); skipped.')
+    print('SnapPy and spherogram are required (pip install snappy; with --verified, SnapPy inside Sage); skipped.')
     sys.exit(2)
 
 import sympy as sp
@@ -128,7 +152,53 @@ def pretzel_alexander(q):
     return [1, -1, 0] + [(-1) ** (j + 1) for j in range(3, q + 1)] + [0, -1, 1]
 
 
+def exact_isomorphisms(A, B):
+    """All combinatorial isomorphisms between the verified canonical retriangulations of A and B, with cusp data."""
+    TA, TB = A.canonical_retriangulation(verified=True), B.canonical_retriangulation(verified=True)
+    out = []
+    for iso in TA.isomorphisms_to(TB):
+        maps = [[list(map(int, row)) for row in m] for m in iso.cusp_maps()]
+        dets = [m[0][0] * m[1][1] - m[0][1] * m[1][0] for m in maps]
+        meridian = all(m[1][0] == 0 and abs(m[0][0]) == 1 for m in maps)
+        out.append((iso.cusp_images(), maps, dets, meridian, iso.extends_to_link()))
+    return out
+
+
+def verified_main():
+    t0 = time.time()
+    L = snappy.Link(PD_HHK)
+    check('component order of PD_HHK is K, H_B, H_A, e (12, 6, 4, 4 crossing visits)',
+          [len(c) for c in L.link_components] == [12, 6, 4, 4])
+    X, Y = hhk_two_cusp(), braid_ring_link().exterior()
+    print(f'X: verified volume {X.volume(verified=True, bits_prec=100)};  Y: {Y.volume(verified=True, bits_prec=100)}')
+    K = BraidTangle([1, 2] * 5, 3).braid_closure()
+    check('the closure of (sigma_1 sigma_2)^5 is a positive diagram (10 crossings of sign +1) of signature -8',
+          len(K.crossings) == 10 and all(c.sign == 1 for c in K.crossings) and K.signature() == -8)
+    print('(V0) surgery convention: (-1,1) filling of the circle of Y versus closure of (sigma_1 sigma_2)^5 sigma_1^2')
+    Z = Y.copy()
+    Z.dehn_fill([(0, 0), (-1, 1)])
+    W = BraidTangle([1, 2] * 5 + [1, 1], 3).braid_closure().exterior()
+    res = exact_isomorphisms(Z.filled_triangulation(), W)
+    for r in res:
+        print(f'    cusp maps {r[1]}, determinants {r[2]}, meridian to meridian {r[3]}')
+    check('-1 surgery adds a right-handed full twist (orientation- and meridian-preserving isomorphism exists)',
+          len(res) > 0 and all(all(d == 1 for d in r[2]) and r[3] for r in res))
+    print('(V1) all isometries X -> Y from verified canonical retriangulations')
+    res = exact_isomorphisms(X, Y)
+    for r in res:
+        print(f'    cusp images {r[0]}, cusp maps {r[1]}, determinants {r[2]}, meridians to meridians {r[3]}, '
+              f'extends to the links {r[4]}')
+    check(f'the complete list ({len(res)} isometries) is nonempty; each preserves orientation, takes meridians to '
+          'meridians and extends to the links', len(res) > 0 and all(all(d == 1 for d in r[2]) and r[3] and r[4]
+                                                                     for r in res))
+    ok = all(checks)
+    print(f"{'ALL CHECKS PASS' if ok else 'SOME CHECK FAILED'}: {sum(checks)}/{len(checks)} ({time.time() - t0:.1f} s)")
+    return ok
+
+
 def main():
+    if VERIFIED:
+        return verified_main()
     t0 = time.time()
     X = hhk_two_cusp()
     Y = braid_ring_link().exterior()
