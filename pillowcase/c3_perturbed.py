@@ -5,15 +5,14 @@ This is an equation-level model, not the regular-homotopy connector model in
 ``resolve.py``.  It implements the Wirtinger presentation and boundary labels
 in Smith, arXiv:2412.06066v1, Proposition 4.1 and Figure 20.
 
-There are source-level typographical inconsistencies in the preprint.
-Proposition 4.1 and Equation (4.1.1) use ``lambda = a c^{-1} x``, but the
-expansion immediately below has the opposite sign.  In Figure 20, the S2
-top-right meridian is printed ``x p^{-1} x c x p x^{-1}``; replacing the
-second ``x`` after ``c`` by ``x^{-1}`` makes it the conjugate
-``(x p^{-1} x)c(x p^{-1} x)^{-1}``, makes it reduce to ``c`` at ``t=0``, and
-makes the redundant Wirtinger relation hold exactly.  ``phi_smith_printed``
-retains Equation (4.1.5) as a diagnostic; the geometric model here is defined
-by the group presentation with this localized boundary-word correction.
+Smith writes an overline over a word for the word of conjugated letters, so
+that his (4.1.2) reads ``x \ol{pa} p b = x p^{-1} a^{-1} p b``.  In this
+convention the S2 top-right label of Figure 20, ``x \ol{px} c x p \ol{x}``, is
+``x p^{-1} x^{-1} c x p x^{-1}``, the conjugate of ``c`` by ``x p^{-1} x^{-1}``.
+Since a traceless unit satisfies ``x^{-1} = -x``, this equals the word
+``(x p^{-1} x) c (x p^{-1} x)^{-1}`` used below.  The model is defined by the
+group presentation; ``phi_smith_printed`` evaluates the closed form (4.1.5)
+for comparison only and is not used.
 
 For parameters ``(gamma, theta, alpha, beta)`` set
 
@@ -33,10 +32,8 @@ gives the ordered boundary quadruples (a_i,b_i,c_i,d_i):
     S2 = (xp^{-1}xpx^{-1}, y, xp^{-1}xcx^{-1}px^{-1}, d),
     S3 = (a, b, c, d).
 
-The corrected S2 word also equals the meridian reconstructed from the other
-three by the exact pillowcase relation.  The displayed word instead equals
-its negative in every traceless SU(2) representation and reduces to ``-c`` at
-``t=0``.
+The S2 word ``s2_c`` equals the meridian reconstructed from the other three by
+the pillowcase relation, and agrees with Smith's printed label.
 
 The pillowcase convention is Smith's: gamma_i is the smaller angle from a_i
 to b_i, and theta_i is the angle from a_i to c_i oriented toward b_i.  This
@@ -186,12 +183,11 @@ def phi_smith_printed(gamma, theta, alpha, beta, perturbation):
 
 
 def boundary_quadruples(rep):
-    """The repaired ordered (a_i,b_i,c_i,d_i) boundary tuples.
+    """The ordered (a_i,b_i,c_i,d_i) boundary tuples of Figure 20.
 
-    Figure 20 gives S2's first meridian ``x p^{-1} x p x^{-1}``.  Its third
-    word is missing an inverse on the ``x`` immediately following ``c``.
-    With that correction it is a conjugate of ``c`` and agrees identically
-    with the meridian reconstructed from the boundary relation.
+    S2's first meridian is ``x p^{-1} x p x^{-1}``.  Its third meridian is
+    written as the conjugate ``(x p^{-1} x) c (x p^{-1} x)^{-1}``, which equals
+    Smith's ``x p^{-1} x^{-1} c x p x^{-1}`` because ``x^{-1} = -x``.
     """
     a, b, c, d = (rep[name] for name in ("a", "b", "c", "d"))
     x, y, p = (rep[name] for name in ("x", "y", "p"))
@@ -206,9 +202,9 @@ def boundary_quadruples(rep):
 
 
 def printed_s2_third_meridian(rep):
-    """The inconsistent top-right S2 word displayed in Figure 20."""
+    """Smith's top-right S2 label in Figure 20, x p^{-1} x^{-1} c x p x^{-1}."""
     c, x, p = (rep[name] for name in ("c", "x", "p"))
-    return qprod(x, qconj(p), x, c, x, p, qconj(x))
+    return qprod(x, qconj(p), qconj(x), c, x, p, qconj(x))
 
 
 def pillowcase_relation(quadruple):
@@ -464,7 +460,7 @@ def rational_quaternion_residual(quadruple, denominator):
 
 def algebraic_composition_residuals(parameters, perturbation,
                                     denominators=(3, 7)):
-    """Chart-free corrected-C3 plus two rational-tangle equations."""
+    """Chart-free perturbed-C3 plus two rational-tangle equations."""
     rep = representation(*parameters, perturbation)
     boundaries = boundary_quadruples(rep)
     return (
@@ -647,9 +643,9 @@ def _arclength_correct(function, prediction, tangent, tolerance=2.0e-11):
     raise ValueError("pseudo-arclength corrector did not converge")
 
 
-def trace_corrected_main_arclength(perturbation, step=0.035,
+def trace_main_arclength(perturbation, step=0.035,
                                    denominators=(3, 7), max_steps=12000):
-    """Chart-free pseudo-arclength trace of the repaired main component."""
+    """Chart-free pseudo-arclength trace of the main component."""
     period = math.lcm(*denominators) * TAU
     start_gamma = 0.13
     start = solve_algebraic_at_gamma(start_gamma, perturbation,
@@ -755,7 +751,7 @@ def unperturbed_branch(gamma, sheets, denominators=(3, 7)):
 def solve_branch_at_gamma(gamma, perturbation, sheets, initial=None,
                           denominators=(3, 7), tolerance=2.0e-11,
                           max_iterations=20):
-    """Newton solve one corrected-C3 branch with output gamma held fixed."""
+    """Newton solve one perturbed-C3 branch with output gamma held fixed."""
     base = unperturbed_branch(gamma, sheets, denominators)
     parameters = list(initial[1:] if initial is not None else base[1:])
     targets = (
@@ -818,9 +814,9 @@ def solve_branch_at_gamma(gamma, perturbation, sheets, initial=None,
     raise ValueError(f"Newton did not converge after {max_iterations} iterations")
 
 
-def trace_corrected_main(perturbation, samples_per_sheet=120,
+def trace_main(perturbation, samples_per_sheet=120,
                          denominators=(3, 7)):
-    """Trace the corrected generic main component on the pillowcase T^2 cover.
+    """Trace the generic main component on the pillowcase T^2 cover.
 
     Holding the output gamma fixed cuts the component into q1*q2 sheets.  At
     gamma=2*pi the sheet (k1,k2) joins (k1+1,k2+1) at gamma=0.  For coprime
@@ -830,7 +826,7 @@ def trace_corrected_main(perturbation, samples_per_sheet=120,
     first_denominator, second_denominator = denominators
     expected_length = math.lcm(first_denominator, second_denominator)
     if expected_length != first_denominator * second_denominator:
-        raise ValueError("trace_corrected_main currently expects coprime denominators")
+        raise ValueError("trace_main currently expects coprime denominators")
     gammas = [TAU * (index + 0.5) / samples_per_sheet
               for index in range(samples_per_sheet)]
     points = []
@@ -882,7 +878,7 @@ def partial_correspondence_triple(perturbation, tolerance=1.0e-14):
     """Return the three exact-branch parameters in the partial triple fiber.
 
     Fixing ``gamma=0`` and ``theta=pi/2``, the choices ``beta=0`` and
-    ``beta=pi`` make the corrected C3 traceless equation automatic.  On the
+    ``beta=pi`` make the perturbed C3 traceless equation automatic.  On the
     torus cover the Q_{1/3} equation becomes, respectively,
 
         3*(pi/2-alpha) + 4*t*sin(alpha) = 0,
@@ -945,8 +941,8 @@ def run_checks():
         abs(phi_direct(*sample) - phi_smith_printed(*sample))
         for sample in samples
     )
-    print("[SOURCE DISCREPANCY] exact Wirtinger Re(y) versus printed "
-          f"Equation (4.1.5): max gap={printed_gap:.3e}")
+    print("[DIAGNOSTIC] Re(y) from the group presentation versus the closed "
+          f"form (4.1.5), in the conventions used here: max gap={printed_gap:.3e}")
 
     longitude_error = 0.0
     commutator_error = 0.0
@@ -970,8 +966,8 @@ def run_checks():
           commutator_error, 3.0e-15)
 
     relation_errors = {"S1": 0.0, "S2": 0.0, "S3": 0.0}
-    corrected_word_error = 0.0
-    displayed_word_sign_error = 0.0
+    s2_word_error = 0.0
+    displayed_word_error = 0.0
     for sample in samples:
         rep = representation(*sample)
         boundaries = boundary_quadruples(rep)
@@ -980,20 +976,18 @@ def run_checks():
                 relation_errors[name], pillowcase_relation(quadruple))
         s2_a, _, s2_c, _ = boundaries["S2"]
         reconstructed = qprod(rep["d"], qconj(rep["y"]), s2_a)
-        corrected_word_error = max(
-            corrected_word_error, qdistance(s2_c, reconstructed))
+        s2_word_error = max(
+            s2_word_error, qdistance(s2_c, reconstructed))
         displayed = printed_s2_third_meridian(rep)
-        displayed_word_sign_error = max(
-            displayed_word_sign_error,
-            qdistance(displayed, tuple(-value for value in s2_c)),
-        )
+        displayed_word_error = max(
+            displayed_word_error, qdistance(displayed, s2_c))
     for name in ("S1", "S2", "S3"):
         check(f"Figure-20 {name} tuple satisfies its boundary relation",
               relation_errors[name], 3.0e-15)
-    check("corrected S2 word equals the relation-derived meridian",
-          corrected_word_error, 3.0e-15)
-    check("displayed S2 word is the negative of the corrected meridian",
-          displayed_word_sign_error, 3.0e-15)
+    check("S2 third meridian equals the relation-derived meridian",
+          s2_word_error, 3.0e-15)
+    check("Smith's printed S2 label equals the same meridian",
+          displayed_word_error, 3.0e-15)
 
     coordinate_error = 0.0
     for gamma, theta, beta in (
@@ -1081,7 +1075,7 @@ def run_checks():
         qdistance(triple_x[first], triple_x[second])
         for first in range(3) for second in range(first + 1, 3)
     )
-    check("partial triple fiber lies on corrected C3", triple_c3_error,
+    check("partial triple fiber lies on perturbed C3", triple_c3_error,
           3.0e-14)
     check("partial triple fiber lies on Q_1/3", triple_rational_error,
           3.0e-13)

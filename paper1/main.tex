@@ -40,7 +40,7 @@
 \keywords{Instanton knot homology, traceless character varieties,
 pillowcase, Atiyah--Floer conjecture, two-bridge knots, torus knots,
 binary dihedral representations, S-complexes}
-\date{First version: July 27, 2026. This version: October 1, 2026}
+\date{First version: July 27, 2026. This version: October 3, 2026}
 
 \begin{abstract}
 We collect the generators, the $\Z/4$ gradings and the differential of the Daemi--Scaduto S-complex of
@@ -117,13 +117,21 @@ Sch\"utz's computation for three-braids, that $\operatorname{rank}\Inat(T(3,n))=
 of Theorem~\ref{thm:C}(ii) is deduced here from Corollary~\ref{cor:torus} and the recursion for $h$
 in~\cite[Prop.~6.11]{DScaduto}.
 
+Three companion papers continue this work. The rank of the S-complex differential of every torus knot, the
+classification of the torus knots for which it vanishes, and its split into components are determined
+in~\cite{WuebbenIV}. The pillowcase side of the family $T(3,n)$ is computed in~\cite{WuebbenV}: for the
+decompositions of Hedden, Herald and Kirk and small perturbations, the pillowcase complex has the graded
+generators of the S-complex described here and a differential of the same rank, and its homology agrees with
+$\Inat$ in every grading. The pretzel knots $P(-2,3,q)$, a family that begins with $T(3,4)$ and $T(3,5)$, are
+treated in~\cite{WuebbenII}.
+
 Several statements are also checked numerically, independently of the proofs: the traceless Riley
 polynomials of Theorem~\ref{thm:A} for all two-bridge knots with $p\le9$, by exact computation of the
 Riley word; the count of Proposition~\ref{prop:count} for $n\le25$, by enumerating arcs; and the
 identity~\eqref{eq:N2a} and the grading split of Proposition~\ref{prop:split} for odd $n\le43$, by
 evaluating~\eqref{eq:FS}--\eqref{eq:rho}. The programs are included as ancillary files with this preprint
 and at \url{https://github.com/bwuebben/pillowcase-bounding-cochain}, a repository shared with the
-companion paper~\cite{WuebbenII}. No proof depends on them.
+companion papers~\cite{WuebbenII,WuebbenIV,WuebbenV}. No proof depends on them.
 
 Traceless character varieties of two-bridge knots also enter the work of Dai--Mallick--Taniguchi, who use
 them to compute, in part, symmetry actions on singular instanton complexes~\cite{DMT}.
@@ -231,6 +239,9 @@ For every torus knot $K$, the total rank of the differential of $\widetilde C(K)
 $\tfrac12\bigl(1+|\sigma(K)|-\|\Delta_K\|_1\bigr)$, where $\|\Delta_K\|_1$ is the sum of the absolute
 values of the coefficients of the Alexander polynomial.
 \end{corollary}
+
+For general torus knots this rank is studied in~\cite{WuebbenIV}, which gives a floor-sum formula for it, a sharp
+lower bound, and the classification of the torus knots for which the differential vanishes.
 
 Section~\ref{sec:819} compares the rank-one differential of $8_{19}=T(3,4)$ with the pillowcase computation
 of Hedden--Herald--Kirk, and Section~\ref{sec:open} states open questions.
@@ -407,7 +418,10 @@ $(4,5)$-torus knot, Cazassus--Herald--Kirk--Kotelskiy show that with zero cochai
 depends on which tangle of the decomposition of~\cite[\S11.8]{HHK2} carries the earring, and argue
 informally that a nonzero cochain restores agreement~\cite[\S10.3]{CHKK}; Smith proves that if their
 Conjecture~D holds, then some tangle without earring must carry a nonzero cochain, exhibited in a
-decomposition of $P(-2,3,5)$~\cite[Thm.~5.9]{Smith}.
+decomposition of $P(-2,3,5)$~\cite[Thm.~5.9]{Smith}. A numerical computation for a second decomposition of $T(3,4)$
+in the family of~\cite[\S10]{HHK2} gives rank $7$ rather than $5$ with zero cochains~\cite[\S7]{WuebbenV}, and for
+Smith's decomposition of $P(-2,3,7)$ the corresponding pairing of explicit model curves has dimension $7$ rather
+than $9$~\cite[Prop.~6.7]{WuebbenII}.
 \end{remark}
 
 \section{The \texorpdfstring{$(3,n)$}{(3,n)}-torus knots}\label{sec:3n}
@@ -769,8 +783,10 @@ $x_1^-$, near the diagonal~\cite[Fig.~21]{HHK2}.
 \subsection{Comparison}
 The two computations exhibit a rank-one map of the same degree, from grading $3$ to grading $2$, ending at
 the generator of the abelian character. They concern different complexes: no chain-level identification
-of the pillowcase complex with $\widetilde C$ is known, and providing one is the content of the
-conjectures recalled in Section~1.1. The pillowcase differential also depends on the perturbation: for a
+of the pillowcase complex with $\widetilde C$ is known in general, and providing one is the content of the
+conjectures recalled in Section~1.1. A conjecture of this kind over $\mathbb F_2$ for torus knots is formulated
+in~\cite[Conj.~1.5]{WuebbenIV}, and for $T(3,n)$ the pillowcase complex has the generators and the single
+differential component that it predicts~\cite[Thm.~1.3]{WuebbenV}. The pillowcase differential also depends on the perturbation: for a
 larger perturbation parameter the two generators joined by the bigon cancel and the perturbed complex is
 perfect~\cite[\S11.10, Prop.~11.1]{HHK2}. By contrast, $\delta_1\neq0$ in every S-complex representing
 $\widetilde C(T(3,4))$, because $h(T(3,4))=1$~\cite[Prop.~4.15]{DSEquiv}. The same kind of bigon, from
@@ -784,17 +800,19 @@ of the two non-dihedral characters, and the differential reduces it to $\operato
 
 On the instanton side, the invariants considered here are determined for every $T(3,n)$: the rank of the
 S-complex differential is zero or one according to $n\bmod6$, and in the rank-one cases its component $\delta_1$ is
-nonzero (Theorem~\ref{thm:C}). What remains open is the pillowcase side: to compute, uniformly for this family,
-the pillowcase Floer homology of~\cite[Conj.~6.5]{HHK2}, or to construct the bounding cochains
-of~\cite[Conj.~D]{CHKK} (both recalled in Section~1.1), and to identify the result with $\Inat$.
+nonzero (Theorem~\ref{thm:C}). The pillowcase side has since been computed for this family: for the decompositions of~\cite[\S10]{HHK2} and
+small perturbations, the pillowcase Floer homology of every $T(3,n)$ agrees with $\Inat$ in every
+grading~\cite{WuebbenV}, which confirms~\cite[Conj.~6.5]{HHK2} for this family. What remains open is to construct the
+bounding cochains of~\cite[Conj.~D]{CHKK} (both conjectures are recalled in Section~1.1) for other decompositions, and
+to identify the pillowcase complex with $\widetilde C$ at chain level~\cite{WuebbenIV}.
 Hedden--Herald--Kirk computed pillowcase Floer homology with zero bounding cochains, of the correct rank, for $T(3,4)$, $T(3,5)$ and
 $T(3,7)$, and for the $(4,5)$-torus knot~\cite[\S\S11.2, 11.6--11.8]{HHK2}; the evidence that some
-decompositions need nonzero cochains is recalled in Remark~\ref{rmk:earring}. A uniform pillowcase
-computation for $T(3,n)$ is not available. The companion paper~\cite{WuebbenII} computes the instanton
+decompositions need nonzero cochains is recalled in Remark~\ref{rmk:earring}. The companion paper~\cite{WuebbenII} computes the instanton
 homology of the pretzel knots $P(-2,3,q)$, a family containing $T(3,4)=P(-2,3,3)$ and
-$T(3,5)=P(-2,3,5)$, and studies Maurer--Cartan deformations of explicit immersed curves for this family in an
-algebraic model of the wrapped Fukaya category of the pillowcase with its corners removed; the identification
-of those deformations with the bounding cochains of~\cite{CHKK} remains open.
+$T(3,5)=P(-2,3,5)$, proves~\cite[Conj.~6.5]{HHK2} for a decomposition of each of them, and studies Maurer--Cartan
+deformations of explicit immersed curves for Smith's decomposition in an algebraic model of the wrapped Fukaya
+category of the pillowcase with its corners removed; the identification of those deformations with the
+bounding cochains of~\cite{CHKK} remains open.
 
 \begin{thebibliography}{CHKK22}
 
@@ -881,9 +899,11 @@ arXiv:2412.06066.
 \bibitem[SW08]{SW} D.~A.~Salamon, K.~Wehrheim, \emph{Instanton Floer homology with Lagrangian boundary
 conditions}, Geom.\ Topol.\ \textbf{12} (2008), 747--918.
 
-\bibitem[Wue26]{WuebbenII} B.~J.~Wuebben, \emph{The instanton homology of the $(-2,3,q)$ pretzel knots
-and Maurer--Cartan deformations in the two-arc algebra of the pillowcase}, companion paper,
-arXiv:2607.26096.
+\bibitem[Wue26a]{WuebbenII} B.~J.~Wuebben, \emph{Instanton and pillowcase homology of the $(-2,3,q)$ pretzel knots}, arXiv:2607.26096 (earlier versions under a different title); current version at \url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
+
+\bibitem[Wue26b]{WuebbenIV} B.~J.~Wuebben, \emph{The S-complex differential of torus knots}, preprint, 2026, \url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
+
+\bibitem[Wue26c]{WuebbenV} B.~J.~Wuebben, \emph{Pillowcase Floer homology of the torus knots $T(3,n)$}, preprint, 2026, \url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
 
 \end{thebibliography}
 

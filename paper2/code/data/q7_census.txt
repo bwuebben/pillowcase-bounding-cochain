@@ -1,0 +1,85 @@
+# The census smoothings of L_{7,PL} at its 82 self-intersection orbits (Section 6.3).  For each orbit: its
+# name, its kind (connector--main or connector--connector), whether the smoothing is generator-preserving,
+# and, if it is, the switch b_s in End(N), given by its four arrows in the labels of N (old, old, new, new).
+S0	connector--main	yes	4 R 3; 0 R 19; 4 R 19; 0 R 3
+S1	connector--main	yes	2 L 1; 20 L 21; 20 L 1; 2 L 21
+S2	connector--connector	yes	2 L 1; 20 L 21; 20 L 1; 2 L 21
+S3	connector--main	yes	16 L 15; 2 L 1; 16 L 1; 2 L 15
+S4	connector--main	yes	6 L 5; 2 L 1; 6 L 1; 2 L 5
+S5	connector--main	yes	2 M 3; 30 M2 27; 2 M 27; 30 M2 3
+S6	connector--connector	yes	2 M 3; 30 M2 27; 2 M 27; 30 M2 3
+S7	connector--main	no	-
+S8	connector--connector	no	-
+S9	connector--connector	yes	2 M 3; 35 M2 36; 35 M2 3; 2 M 36
+S10	connector--main	yes	8 M2 9; 2 M 3; 2 M 9; 8 M2 3
+S11	connector--main	yes	2 M 3; 30 M2 27; 2 M 27; 30 M2 3
+S12	connector--main	yes	17 R 18; 4 R 3; 17 R 3; 4 R 18
+S13	connector--main	yes	7 R 8; 4 R 3; 7 R 3; 4 R 8
+S14	connector--main	yes	4 R 3; 0 R 19; 0 R 3; 4 R 19
+S15	connector--connector	yes	4 R 3; 0 R 19; 0 R 3; 4 R 19
+S16	connector--main	yes	17 R 18; 4 R 3; 17 R 3; 4 R 18
+S17	connector--connector	yes	17 R 18; 4 R 3; 17 R 3; 4 R 18
+S18	connector--main	yes	4 R 3; 22 R 23; 22 R 3; 4 R 23
+S19	connector--connector	yes	4 R 3; 31 R 30; 4 R 30; 31 R 3
+S20	connector--main	yes	4 R 3; 34 R 35; 34 R 3; 4 R 35
+S21	connector--connector	yes	4 R 3; 0 R 19; 0 R 3; 4 R 19
+S22	connector--main	yes	14 R 13; 4 R 3; 14 R 3; 4 R 13
+S23	connector--main	no	-
+S24	connector--main	no	-
+S25	connector--main	yes	6 L 5; 20 L 21; 20 L 5; 6 L 21
+S26	connector--main	yes	17 R 18; 7 R 8; 7 R 18; 17 R 8
+S27	connector--connector	yes	17 R 18; 7 R 8; 7 R 18; 17 R 8
+S28	connector--connector	yes	17 R 18; 7 R 8; 7 R 18; 17 R 8
+S29	connector--main	yes	7 R 8; 26 R 27; 26 R 8; 7 R 27
+S30	connector--connector	yes	10 R 9; 7 R 8; 7 R 9; 10 R 8
+S31	connector--connector	yes	7 R 8; 0 R 19; 0 R 8; 7 R 19
+S32	connector--connector	yes	17 R 18; 7 R 8; 7 R 18; 17 R 8
+S33	connector--main	yes	17 R 18; 7 R 8; 7 R 18; 17 R 8
+S34	connector--main	yes	7 R 8; 22 R 23; 22 R 8; 7 R 23
+S35	connector--main	yes	7 R 8; 34 R 35; 34 R 8; 7 R 35
+S36	connector--connector	yes	7 R 8; 31 R 30; 7 R 30; 31 R 8
+S37	connector--main	yes	7 R 8; 31 R 30; 7 R 30; 31 R 8
+S38	connector--main	yes	8 M2 9; 23 M2 26; 23 M2 9; 8 M2 26
+S39	connector--main	yes	8 M2 9; 35 M2 36; 35 M2 9; 8 M2 36
+S40	connector--main	yes	8 M2 9; 30 M2 27; 8 M2 27; 30 M2 9
+S41	connector--main	yes	10 R 9; 0 R 19; 0 R 9; 10 R 19
+S42	connector--connector	yes	10 R 9; 0 R 19; 0 R 9; 10 R 19
+S43	connector--main	yes	10 R 9; 26 R 27; 26 R 9; 10 R 27
+S44	connector--connector	yes	10 R 9; 0 R 19; 0 R 9; 10 R 19
+S45	connector--connector	yes	17 R 18; 10 R 9; 17 R 9; 10 R 18
+S46	connector--main	yes	10 R 9; 31 R 30; 10 R 30; 31 R 9
+S47	connector--connector	yes	10 R 9; 31 R 30; 10 R 30; 31 R 9
+S48	connector--main	yes	10 R 9; 31 R 30; 10 R 30; 31 R 9
+S49	connector--main	no	-
+S50	connector--main	yes	13 M2 10; 23 M2 26; 23 M2 10; 13 M2 26
+S51	connector--connector	yes	13 M2 10; 23 M2 26; 23 M2 10; 13 M2 26
+S52	connector--main	no	-
+S53	connector--connector	no	-
+S54	connector--main	yes	13 M2 10; 30 M2 27; 13 M2 27; 30 M2 10
+S55	connector--connector	yes	13 M2 10; 30 M2 27; 13 M2 27; 30 M2 10
+S56	connector--connector	yes	13 M2 10; 23 M2 26; 23 M2 10; 13 M2 26
+S57	connector--main	yes	13 M2 10; 30 M2 27; 13 M2 27; 30 M2 10
+S58	connector--main	yes	13 M2 10; 23 M2 26; 23 M2 10; 13 M2 26
+S59	connector--main	yes	14 R 13; 31 R 30; 14 R 30; 31 R 13
+S60	connector--main	yes	16 L 15; 20 L 21; 20 L 15; 16 L 21
+S61	connector--main	no	-
+S62	connector--main	yes	17 R 18; 26 R 27; 26 R 18; 17 R 27
+S63	connector--connector	yes	17 R 18; 0 R 19; 0 R 18; 17 R 19
+S64	connector--connector	yes	17 R 18; 0 R 19; 0 R 18; 17 R 19
+S65	connector--main	yes	17 R 18; 0 R 19; 0 R 18; 17 R 19
+S66	connector--main	yes	0 R 19; 34 R 35; 0 R 35; 34 R 19
+S67	connector--main	yes	0 R 19; 22 R 23; 0 R 23; 22 R 19
+S68	connector--connector	yes	0 R 19; 31 R 30; 0 R 30; 31 R 19
+S69	connector--main	yes	0 R 19; 26 R 27; 0 R 27; 26 R 19
+S70	connector--main	yes	20 M 19; 35 M2 36; 35 M2 19; 20 M 36
+S71	connector--connector	yes	20 M 19; 35 M2 36; 35 M2 19; 20 M 36
+S72	connector--main	yes	20 M 19; 35 M2 36; 35 M2 19; 20 M 36
+S73	connector--connector	no	-
+S74	connector--main	yes	20 L 21; 32 L 33; 20 L 33; 32 L 21
+S75	connector--main	yes	22 R 23; 31 R 30; 22 R 30; 31 R 23
+S76	connector--main	yes	23 M2 26; 35 M2 36; 23 M2 36; 35 M2 26
+S77	connector--connector	yes	23 M2 26; 30 M2 27; 23 M2 27; 30 M2 26
+S78	connector--main	yes	23 M2 26; 30 M2 27; 23 M2 27; 30 M2 26
+S79	connector--connector	yes	23 M2 26; 30 M2 27; 23 M2 27; 30 M2 26
+S80	connector--connector	yes	30 M2 27; 35 M2 36; 35 M2 27; 30 M2 36
+S81	connector--main	yes	31 R 30; 34 R 35; 34 R 30; 31 R 35

@@ -5,19 +5,20 @@ which relates Kronheimer–Mrowka's reduced singular instanton homology I♮(K) 
 homology of immersed curves in the pillowcase, the traceless SU(2) character variety of the
 four-punctured sphere. It also contains the computer code behind the computations. Two families
 are treated: the **torus knots** (papers 1, 4 and 5) and the **pretzel knots P(−2,3,q)** (paper 2).
+Each paper cites the others where their results meet.
 
 | directory | paper | pages |
 |---|---|---|
-| [`paper1/`](paper1) | *Traceless characters and instanton gradings for 2-bridge and (3,n) knots* (arXiv:2607.26095) | 14 |
+| [`paper1/`](paper1) | *Traceless SU(2) characters and ℤ/4 instanton gradings for two-bridge and (3,n)-torus knots* (an earlier version is arXiv:2607.26095) | 14 |
 | [`paper4/`](paper4) | *The S-complex differential of torus knots* | 12 |
 | [`paper5/`](paper5) | *Pillowcase Floer homology of the torus knots T(3,n)* | 38 |
-| [`paper2/`](paper2) | *The instanton homology of the (−2,3,q) pretzel knots and Maurer–Cartan deformations in the two-arc algebra of the pillowcase* (arXiv:2607.26096) | 24 |
+| [`paper2/`](paper2) | *Instanton and pillowcase homology of the (−2,3,q) pretzel knots* (an earlier version, under a different title, is arXiv:2607.26096) | 59 |
 
 For the torus knots, read papers 1, 4 and 5 in that order. Paper 1 assembles the instanton-side
 facts, paper 4 proves new results about the S-complex differential for every torus knot, and paper 5
-computes the pillowcase side for the whole T(3,n) family. Paper 2 treats the pretzel family by different
-methods and does not depend on papers 4 and 5; its first two members, P(−2,3,3) = T(3,4) and
-P(−2,3,5) = T(3,5), are also torus knots covered by paper 5.
+computes the pillowcase side for the whole T(3,n) family. Paper 2 treats the pretzel family; its
+Sections 4 and 5 build on the curves of paper 5, and its first two members, P(−2,3,3) = T(3,4) and
+P(−2,3,5) = T(3,5), are torus knots covered by papers 1, 4 and 5.
 
 ## The papers
 
@@ -34,7 +35,10 @@ The paper records the consequence that, for every torus knot, the S-complex diff
 It also gives a Khovanov-homology proof that rank I♮(T(3,n)) = ‖Δ‖₁, using Schütz's
 decomposition of three-braid complexes, and it compares the rank-one differential of 8₁₉ = T(3,4)
 with the pillowcase bigon of Hedden–Herald–Kirk. The numerical checks are `riley_check.py`,
-`torus_characters.py` and `fs_gradings.py` (see below).
+`torus_characters.py` and `fs_gradings.py` in `pillowcase/`.
+
+The current version cites papers 2, 4 and 5 where they continue this material. arXiv:2607.26095 has
+an earlier version.
 
 ### Paper 4: the S-complex differential of torus knots (`paper4/`)
 
@@ -82,170 +86,64 @@ reproduced. Each script prints every number the paper states, next to the comput
 whole set runs in about twelve minutes (`cd paper5/code && ./run_all.sh`; it needs `numpy` and
 `mpmath`, see `requirements.txt`).
 
+Paper 2 builds on this paper: shearing its curves gives the pillowcase homology of the pretzel knots
+P(−2,3,q) and of a family of twisted torus knots.
+
 ### Paper 2: the (−2,3,q) pretzel knots (`paper2/`)
 
-The integral instanton theorem for the family; a finiteness lemma for morphism complexes over the
-two-arc algebra of Kotelskiy–Watson–Zibrowius; the q = 7 Maurer–Cartan and second-closure
-calculations; Smith's identification of the underlying main immersion; the triple-point
-obstruction; the finite candidate-support tables for comparison; and the precise remaining
-local-support hypothesis. Figure 1 is generated from the computed curves
-(`pillowcase/make_figure.py`).
+The pretzel knots P(−2,3,q), q odd, begin with the torus knots T(3,4) and T(3,5) and are hyperbolic
+for q ≥ 7. The paper studies both sides of the correspondence for this family.
 
-**Theorem (rigorous, unconditional, integral).** For every odd q ≥ 3, the reduced singular
-instanton knot homology I♮(P(−2,3,q)) is free abelian of rank q + 2. Over ℚ the rank q + 2 is due
-to Lobb and Zentner (Algebr. Geom. Topol. 20 (2020)), by the same comparison, and it also follows
-from work of Li and Ye; the new point is the integral statement. The proof combines Hironaka's
-exact formula for the family's Alexander polynomials (Lehmer-like: all coefficients in {0,±1},
-exactly q+2 nonzero), Manion's closed-form reduced integral Khovanov homology of 3-strand pretzels
-(NYJM 24 (2018)), and the integral Kronheimer–Mrowka spectral sequence. The Alexander input is
-re-derived here independently by a validated Conway-skein recursion
-(`pillowcase/skein_alexander.py` — its unique consistent normalization reproduces Lehmer's
-polynomial exactly at q = 7).
+- **Instanton homology.** For every odd q ≥ 3, I♮(P(−2,3,q); ℤ) is free abelian of rank q + 2. Over
+  ℚ this is due to Lobb and Zentner; for q ≥ 7 the integral and graded statements also follow from
+  work of Daemi and Scaduto. The proof here is uniform in q.
+- **The conjecture of Hedden, Herald and Kirk.** Regluing the tangle that Hedden, Herald and Kirk use
+  for T(3,5) by (q − 5)/2 Dehn twists along the Conway sphere gives a decomposition of P(−2,3,q).
+  For small holonomy perturbations its pillowcase complex is computed by hand: it has q + 2 + 4N_q
+  generators, a differential of rank 2N_q (nonzero for q ≥ 9), and homology isomorphic to I♮ as a
+  ℤ/4-graded vector space. This verifies the conjecture for every knot in the family. The same
+  argument applies to the twisted torus knots T(3,n;2,m) with n ≡ 1, 2 (mod 6).
+- **Smith's decomposition.** For Smith's decomposition into Q₋₁/₂ and Q₁/₃ + Q₁/q, the pairing with
+  zero bounding cochain has the wrong rank. In the two-arc algebra of Kotelskiy, Watson and
+  Zibrowius the Maurer–Cartan equation is a finite identity. At q = 7, smoothings of a model of
+  Smith's curve give Maurer–Cartan elements with the correct pairing, and a second closure selects
+  one homotopy class among them, conditionally on the instanton–pillowcase correspondence and a
+  stated localization hypothesis. The Lagrangian correspondence induced by the line of Q₁/₃ is
+  immersed with a triple point, so Gao's representability theorem does not apply to it.
+- **The Khovanov arc.** For q = 5, 7 the selected object is the sum of a rational arc and a closed
+  curve with a two-dimensional local system, and one further Maurer–Cartan term near a corner turns it
+  into the Bar-Natan invariant of the tangle; no rational closure distinguishes the two. The paper
+  asks, without conjecturing an answer, whether the instanton object of the tangle is its Bar-Natan
+  invariant.
 
-**The q = 7 Maurer–Cartan calculation.** In the wrapped Fukaya subcategory that CHKK identify
-with twisted complexes over the two-arc algebra of Kotelskiy–Watson–Zibrowius, the higher products
-vanish, so the Maurer–Cartan equation for a deformation is the finite identity (δ+b)² = 0. The
-morphism complex over that algebra is infinite dimensional; for the pairs of twisted complexes used
-here, which satisfy two explicit finiteness conditions checked by computation, a reduction lemma
-(Lemma 4.1) expresses its homology through three integers, without truncating word length. The resolved `Q_{1/3}+Q_{1/7}` curve encodes to a 31-generator twisted complex; the
-pairing with the earring has dimension 7, and smoothing the curve at any one of four
-self-intersection orbits (`S18`, `S25`, `S69`, `S74`) gives a four-arrow Maurer–Cartan element
-raising it to 9. The four objects represent exactly three homotopy classes, with `S18` and `S25`
-strictly isomorphic. A second closure of the same tangle, `num(Q_{-3/4}+Q_{1/3}+Q_{1/7})`, has
-instanton rank 31 and pairing dimensions 31, 23 and 25 against the three classes. An exhaustive
-enumeration of all 82 self-intersection orbits — 52 connector–main and 30 connector–connector —
-finds 73 generator-preserving smoothings determining 45 distinct, linearly independent four-arrow
-elements; the two closure ranks select only `S18/S25` among them. Within the connector–main
-subfamily (46 occurrences, 38 distinct elements) every element of the `2^38`-element span is
-Maurer–Cartan, and 41 of the `C(38,2) = 703` two-element sums share the same two ranks, so the
-selection genuinely depends on a local-support hypothesis. Separately, the Lagrangian
-correspondence induced by the `Q_{1/3}` line is immersed with a triple point, hence not embedded,
-so Gao's wrapped representability theorem does not apply to it.
-
-**Finite pillowcase computations.** The pillowcase code reports finite polygon computations for
-explicitly specified piecewise-linear immersed curves: finite bigon matrices, triangle and
-quadrilateral tables inside configured edge windows, and screens for candidate correction supports.
-The finite bigon statistic h = n − 2·rank(D) takes the values 5, 5, 7, 15, 17 at
-q = 3, 5, 7, 11, 13 (the q = 3 value is Hedden–Herald–Kirk's; this pipeline needs gcd(3,q) = 1),
-against the instanton rank q + 2 = 5, 7, 9, 13, 15 — a difference of at most two, whose sign flips
-at det K = |q − 6| = 3. The low-order tables single out candidate supports whose finite matrices
-square to zero over GF(2) and have the target statistic at the reported perturbation: a
-two-crossing support at q = 5 (h = 7), a one-crossing support at q = 7 (h = 9), and, at q = 11,
-sixty-two singleton supports passing the finite screen, of which fifty-six square to zero
-(66 and 50 at an independent perturbation).
-
-**What is not claimed.** The q = 5, 11, 13 candidate tables remain statistics of explicitly
-constructed finite matrices; their supports are not proved to satisfy the full immersed-Fukaya
-Maurer–Cartan equation, and the finite edge windows are not proved exhaustive. The q = 7
-Maurer–Cartan statements do avoid those algebraic truncations, but they are statements about
-explicitly presented objects in `Tw(B)`. They do not prove that the CHKK instanton–pillowcase
-tangle assignment exists or selects one of the stated classes. Paper 2 isolates that remaining
-local-support statement as a numbered Hypothesis.
+The source is `paper2/main.tex` with `paper2/sections/*.tex`. The computations are in
+[`paper2/code/`](paper2/code) (Sections 4, 5 and 7, Appendix A) and [`pillowcase/`](pillowcase)
+(Section 6); see the README files there.
 
 ## Building
 
 Build any paper with `pdflatex main.tex` from its directory (run it twice for cross-references).
 Each paper compiles on its own with a standard TeX distribution. Compiled PDFs are included under
-distinctive names: `paper1/traceless-gradings.pdf`, `paper2/pretzel-cochains.pdf`,
+distinctive names: `paper1/traceless-gradings.pdf`, `paper2/pretzel-instanton-pillowcase.pdf`,
 `paper4/s-complex-torus-knots.pdf` and `paper5/pillowcase-torus-knots.pdf`.
 
 ## The code
 
-The code in `pillowcase/` supports papers 1 and 2 (paper 5 has its own, in `paper5/code/`). Everything there is **pure Python 3** (standard library only — no NumPy, no dependencies). The
-curves are built from first principles (quaternion representation theory), then validated
-against Smith's published figures and numbers before the new computations are run. Each module
-is also a self-checking test: run it directly and it prints a `PASS`/`FAIL` battery. Every matrix
-whose rank statistic is displayed is first subjected to a GF(2) square-zero audit; a matrix with
-nonzero square is not treated as a chain complex.
+| directory | papers | requirements |
+|---|---|---|
+| [`pillowcase/`](pillowcase) | paper 2, Section 6; the numerical checks of paper 1 | Python 3, standard library |
+| [`paper2/code/`](paper2/code) | paper 2, Sections 4, 5 and 7 and Appendix A | Python ≥ 3.11; numpy, sympy, mpmath for Sections 4–5 |
+| [`paper5/code/`](paper5/code) | paper 5 | Python ≥ 3.11; numpy, mpmath |
+
+Every program prints each number its paper states, next to the computed value, with `PASS` or
+`FAIL`, and exits with status 0 if and only if all its checks pass. Each directory has a README
+listing what each program checks, and a script `run_all.sh`:
 
 ```bash
-cd pillowcase
-
-# --- validation gates: the reconstruction reproduces Smith's numbers (P(-2,3,5)) ---
-python3 tangles.py     # conventions, Conway sum, seam fiber circles      (50/50)
-python3 resolve.py     # the perturbed tangle sum / seam-circle resolution (11/11)
-python3 earring.py     # the earring figure-eight; the 9-generator gate    (5/5)
-python3 bigons.py      # winding-number bigon counter; 9 gens / 2 bigons   (5/5)
-python3 polygons.py    # generalized immersed-polygon counter              (2/2)
-
-# --- the theorem's Alexander input (independent regression; the proof cites Hironaka) ---
-python3 skein_alexander.py   # sum|Delta(P(-2,3,q))| = q+2, Lehmer-validated   (13/13)
-
-# --- paper 1's numerical checks ---
-python3 riley_check.py       # Thm 1.1: the traceless Riley polynomial, exactly over Z[i][u]  (91 checks)
-python3 torus_characters.py  # Prop 4.1 / Thm 1.2: the (3,n) traceless character count        (65 checks)
-python3 fs_gradings.py       # Z/4 spectral-flow gradings of IC♮(T(3,n)), Anvari-verified
-
-# --- q=7 Maurer–Cartan and second-closure computations ---
-python3 q7_kwz.py --encode
-python3 q7_closure_probe.py --slope=-3/4 --selection-certificate
-python3 q7_quilt_census.py --pairing-census
-python3 q7_quilt_census.py --two-switch-census --strict-pair-census
-
-# --- actual corrected-C3 numerical stability diagnostic (not an analytic proof) ---
-python3 c3_perturbed.py
-python3 c3_q7_compare.py --stability --switch-census
-
-# --- the finite candidate-support computations ---
-python3 b2_result.py         # q=5: support {s_A,s_B}; D^2=0, h: 5 -> 7   (~15 s)
-python3 pretzel_solve.py 3 --triangles-only --max-support 1
-                             # q=7: default singleton; D^2=0, h: 7 -> 9
-python3 pretzel_solve.py 5 --triangles-only --max-support 1
-                             # q=11: 62 pass the finite screen; 56 square to zero (6 failures printed)
-python3 maurer_cartan.py     # finite monogon/self-bigon/self-triangle tables (diagnostics only)
-python3 pert_check.py        # two finite q=5 perturbation runs
-python3 surgery_check.py     # smoothing blue at the q=5,7 supports and recounting bigons
-                             # reproduces the finite deformed matrix entrywise (~2 min)
+sh pillowcase/run_all.sh fast            # paper 2, Section 6, without the slow finite tables
+cd paper2/code && ./run_all.sh --quick   # paper 2, Sections 4, 5 and 7 (about 3 minutes)
+cd paper5/code && ./run_all.sh           # paper 5 (about 12 minutes)
 ```
-
-### Module guide
-
-| file | role |
-|---|---|
-| `grounded.py`   | quaternion primitives (traceless SU(2) words) — the representation-theory base |
-| `tangles.py`    | pillowcase coordinates, Conway sum as a fiber product, seam fiber circles |
-| `resolve.py`    | Smith's cut-and-paste resolution of the seam circles → the **blue** curve |
-| `earring.py`    | the Herald–Kirk earring figure-eight → the **red** curve; the 9-generator gate |
-| `bigons.py`     | finite (winding-number) bigon predicate and matrix → the undeformed tables |
-| `polygons.py`   | finite immersed (k+2)-gon predicate (triangles, quadrilaterals, …) |
-| `deform.py`     | triangle tables, curve construction, reusable GF(2) rank and square-zero checks; `build_pretzel(k)` for the family |
-| `deform_full.py`| triangle + distinct-pair quadrilateral tables (finite windows) |
-| `deform_pent.py`| distinct-support finite pentagon table |
-| `maurer_cartan.py`| finite obstruction-table diagnostics: monogons, self-bigons, self-triangles |
-| `solve_b2.py`   | finite support search over the cached tables (q = 5) |
-| `b2_result.py`  | self-checking q = 5 candidate battery: the two-crossing support, D²=0, h = 7 |
-| `pretzel_solve.py`| the family candidate solver `python3 pretzel_solve.py k` with a mandatory GF(2) square-zero audit (k=2: q=5; k=3: q=7; k=5: q=11) |
-| `q7_kwz.py` | the 31-generator q = 7 twisted complex over the two-arc algebra, the four Maurer–Cartan elements from local smoothings, the finite reduction of the wrapped morphism complex, the strict `S18`–`S25` isomorphism, and the three component classes |
-| `q7_closure_probe.py` | slope `-3/4` rational-earring pairing, auxiliary Alexander/Khovanov certificate, and the complete sixteen-element named-switch span |
-| `q7_quilt_census.py` | exhaustive enumeration of the 82 self-intersection orbits (73 generator-preserving smoothings, 45 distinct elements) and its 52-orbit connector–main subfamily (46 occurrences, 38 elements), all 703 two-element sums, closure-rank distribution, and strict relabeling test |
-| `c3_perturbed.py` | corrected equation-level trace of Smith's `C3` correspondence; numerical diagnostic with explicit source caveats |
-| `c3_q7_compare.py` | two-perturbation comparison of the actual `C3` trace with the PL twisted complex and its 43-singleton enumeration |
-| `skein_alexander.py`| closed-form Alexander polynomials of the family via the validated Conway-skein Chebyshev recursion (Lehmer match at q=7); Σ\|Δ\| = q+2 — an independent regression; the theorem cites Hironaka |
-| `make_figure.py`  | generates paper2's Figure 1 from the computed curves |
-| `riley_check.py`  | **paper 1, Thm 1.1**: the Riley word of 𝔟(p,q) at meridian eigenvalue s = i, computed exactly in Z[i][u]; the traceless Riley polynomial as a gcd over Q(i), matched against φ_p = ∏(u + 4sin²(πk/p)) built as an exact integer polynomial. Also proves the binary-dihedral identity A(AB)A⁻¹ = (AB)⁻¹ symbolically |
-| `torus_characters.py` | **paper 1, Prop 4.1 / Thm 1.2**: direct enumeration of the (3,n) representation arcs and their traceless characters for all n ≤ 25 (independent check of the closed-form count, proved in the paper); the dihedral dichotomy; and the cross-check N(3,n) = 2a against `fs_gradings.py` for all odd n ≤ 43 |
-| `fs_gradings.py`  | **paper 1**: Fintushel–Stern / equivariant-ρ spectral-flow gradings assembling the framed chain complex of IC♮(T(3,n)), verified against Anvari Ex. 6.1 |
-| `pert_check.py` | perturbation stability of the finite tables: reruns the q = 5 pipeline at a second perturbation |
-| `surgery_check.py` | machine check of the combinatorial surgery statement at q = 5, 7: smoothing blue ι-equivariantly at the support crossings and recounting bigons reproduces the finite deformed matrix entrywise; the other sector choice reproduces the undeformed matrix |
-| `diag_geometry.py`, `diag_cancel.py` | diagnostics used while developing the computation |
-
-## Method and scope of claims (paper 2)
-
-The pillowcase computations are carried out in the piecewise-linear immersed-curve model of
-Herald–Kirk and Smith, with polygon counts implemented as winding-number computations inside
-configured edge windows and up to a configured polygon order. The reconstruction is validated
-against Smith's published output before the new computations run.
-
-The scope is separated throughout. The **instanton theorem** (I♮ free abelian of rank q + 2) is
-proved unconditionally from cited results — no pillowcase model enters. The q = 7 Maurer–Cartan and
-second-closure propositions are algebraic statements in the specified two-arc category, verified
-without truncation of word length.
-The remaining identification of that selected deformation with the instanton tangle object is
-conditional on the CHKK correspondence and the q = 7 figure-eight local-support hypothesis. The
-other bigon statistics and candidate supports are finite computations within the model,
-square-zero checked over GF(2), not claimed Floer differentials. We claim no theorem about the
-analytic Atiyah–Floer correspondence. (The q = 17 member is untested: the current seam-resolution
-code cannot yet handle its overlapping seam arcs.)
 
 ## References
 

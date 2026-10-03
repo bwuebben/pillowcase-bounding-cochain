@@ -35,7 +35,7 @@
 \subjclass[2020]{57K18 (primary); 57K10, 57R58, 11P21 (secondary)}
 \keywords{Singular instanton homology, S-complexes, torus knots, traceless character varieties,
 signature, Alexander polynomial, numerical semigroups, pillowcase}
-\date{October 2, 2026}
+\date{First version: October 2, 2026. This version: October 3, 2026}
 
 \begin{abstract}
 For a torus knot $K=T(p,q)$ the traceless $\SU$ character variety is finite and nondegenerate, so
@@ -103,7 +103,8 @@ rank of the S-complex differential of $T(p,q)$ is
 \[
 R(p,q):=\operatorname{rank}_\Q\td=\tfrac12\bigl(1+|\sigma(T(p,q))|-\|\Delta_{T(p,q)}\|_1\bigr)
 \]
-(Proposition~\ref{prop:rankformula}). This raises two questions. For which torus knots does the
+(Proposition~\ref{prop:rankformula}); this consequence is also recorded, with its values for $T(3,n)$,
+in~\cite[Cor.~1.4]{WuebbenI}. This raises two questions. For which torus knots does the
 differential vanish, so that the unperturbed singular Chern--Simons functional is perfect? And which
 components of $\td$, the map $\delta_1$ to the reducible or the map $v$ between irreducibles, carry the
 differential when it does not vanish?
@@ -285,7 +286,12 @@ instanton~\cite[\S9.3, and the same argument in \S9.4]{DSEquiv}, so $\delta_1(\a
 Section~\ref{sec:pillow} lists the evidence: every torus knot with nonzero pillowcase differential
 in~\cite{HHK2} is consistent with (a) and with the components predicted by Theorem~\ref{thm:split}, including $T(4,5)$, whose bigon avoids $r_+$ as Hedden, Herald and
 Kirk point out~\cite[\S11.8]{HHK2}, and $T(4,7)$, with one bigon into $r_+$ and one between irreducible
-generators, exactly as Theorem~\ref{thm:split} requires.
+generators, exactly as Theorem~\ref{thm:split} requires. For the torus knots $T(3,n)$, part~(a) holds, and the
+pillowcase complex has the graded generators of $\tC(K)$ and a differential of rank $R$ consisting of a single
+component of type $\delta_1$~\cite[Thm.~1.3]{Wpill}; in particular part~(b) holds for $n\equiv1,2\pmod6$. Beyond
+torus knots, for the pretzel knots $P(-2,3,q)$ the pillowcase complex of a decomposition obtained from that
+of $T(3,5)$ by Dehn twists along the Conway sphere is again an S-complex over $\mathbb F_2$, but its only nonzero
+component is the differential $d$ of the irreducible part, which is nonzero for $q\ge9$~\cite[Rem.~4.20]{WuebbenII}.
 
 \subsection{Outline}
 The formula in Theorem~\ref{thm:main} combines Moree's count $\|\Delta_{T(p,q)}\|_1=2ab-1$, where
@@ -805,8 +811,14 @@ Amer.\ Math.\ Monthly \textbf{121} (2014), 890--902.
 Floer homology}, Adv.\ Math.\ \textbf{315} (2017), 366--426.
 
 
-\bibitem[Wue]{Wpill} B.~J.~Wuebben, \emph{Pillowcase Floer homology of the torus knots $T(3,n)$}, preprint,
-2026.
+\bibitem[Wue26a]{WuebbenI} B.~J.~Wuebben, \emph{Traceless $\mathrm{SU}(2)$ characters and $\mathbb{Z}/4$ instanton
+gradings for two-bridge and $(3,n)$-torus knots}, arXiv:2607.26095; current version at \url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
+
+\bibitem[Wue26b]{WuebbenII} B.~J.~Wuebben, \emph{Instanton and pillowcase homology of the $(-2,3,q)$ pretzel
+knots}, arXiv:2607.26096 (earlier versions under a different title); current version at \url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
+
+\bibitem[Wue26c]{Wpill} B.~J.~Wuebben, \emph{Pillowcase Floer homology of the torus knots $T(3,n)$}, preprint,
+2026, \url{https://github.com/bwuebben/pillowcase-bounding-cochain}.
 
 \end{thebibliography}
 

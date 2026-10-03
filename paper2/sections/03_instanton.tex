@@ -1,0 +1,209 @@
+\section{The instanton side}\label{sec:inat}
+
+Throughout this section $K_q=P(-2,3,q)$ with $q\ge3$ odd. For a knot $K$ let
+$\ell(K)=\sum_i|a_i(\Delta_K)|$ be the coefficient norm of its Alexander polynomial. Kronheimer and
+Mrowka's integral spectral sequence from reduced Khovanov homology, their rational identification of
+$\Inat$ with $KHI$, and the Alexander-graded Euler characteristic of $KHI$ give
+\begin{equation}\label{eq:ell}
+   \ell(K)\;\le\;\dim_{\Q}\Inat(K;\Q)\;\le\;\dim_{\Q}\widetilde{\Kh}(K;\Q)
+\end{equation}
+\cite[Props.~1.2 and 1.4]{KM2}, \cite[Thm.~1.1 and Cor.~1.2]{KMAlex}. We prove
+Theorem~\ref{thm:inat} by showing that both bounds equal $q+2$ and that the spectral sequence
+collapses over $\Z$. We then record the signature of $K_q$ and the $\Z/4$-graded dimensions of
+$\Inat(K_q)$ that Section~\ref{sec:sheared} compares with the pillowcase.
+
+\subsection{The Alexander polynomial}\label{ss:alex}
+For $m\ge1$ write $[m]_x=1+x+\cdots+x^{m-1}$.
+
+\begin{lemma}\label{lem:alex}
+For every odd $q\ge3$ put
+\[
+ Q_q(x)=(x-2)[2]_x[3]_x[q]_x+[2]_x[3]_x+[2]_x[q]_x+[3]_x[q]_x .
+\]
+Then
+\begin{equation}\label{eq:alex}
+ \Delta_{K_q}(t)\doteq Q_q(-t)=1-t+\sum_{j=3}^{q}(-1)^{j+1}t^j-t^{q+2}+t^{q+3},
+\end{equation}
+where $\doteq$ denotes equality up to a unit $\pm t^k$. In particular $\ell(K_q)=q+2$ and
+$\det K_q=|\Delta_{K_q}(-1)|=|q-6|$.
+\end{lemma}
+
+\begin{proof}
+Hironaka proves that the Alexander polynomial of the $(2,3,q,-1)$-pretzel knot is $Q_q(-t)$, with
+$Q_q$ the first displayed expression \cite[Thm.~1.2]{Hironaka}; the erratum \cite{HironakaErr}
+corrects the statement for pretzel links with more than three positive entries and leaves the
+three-entry case used here unchanged. The $(2,3,q,-1)$-pretzel knot is $K_q$, because the rational
+tangles of fractions $1/2$ and $-1$ sum to the rational tangle of fraction $-1/2$; Hironaka records
+this identification for $q=7$ \cite[p.~442]{Hironaka}. Expanding the geometric sums gives
+$Q_q(x)=1+x-\sum_{j=3}^{q}x^j+x^{q+2}+x^{q+3}$, and substituting $x=-t$ gives the right-hand side of
+\eqref{eq:alex}, since $q$ is odd. It has four coefficients of absolute value $1$ outside the sum
+and $q-2$ inside, so $\ell(K_q)=q+2$. At $t=-1$ the terms outside the sum contribute $2+2$ and each of
+the $q-2$ terms inside contributes $-1$, so $\Delta_{K_q}(-1)=6-q$.
+\end{proof}
+
+\begin{remark}\label{rem:lehmer}
+At $q=7$, $Q_7(x)=1+x-x^3-x^4-x^5-x^6-x^7+x^9+x^{10}$ is Lehmer's polynomial. The substitution
+$t\mapsto-t$ in \eqref{eq:alex} is part of Hironaka's formula, not a normalization ambiguity of the
+Alexander polynomial. The same polynomial is obtained from the reduced Burau representation of the
+braid $(\sigma_1\sigma_2)^5\sigma_1^{q-5}$, whose closure is $K_q$ for $q\ge5$ (Section~\ref{sec:sheared}).
+\end{remark}
+
+The following facts are used for the hyperbolicity and novelty statements of
+Section~\ref{sec:sheared}.
+
+\begin{lemma}\label{lem:not-torus}
+For every odd $q\ge3$ the knot $K_q$ is neither quasi-alternating nor alternating, and hence it is not
+two-bridge. For $q\ge7$ it is not a torus knot.
+\end{lemma}
+
+\begin{proof}
+For a quasi-alternating knot $K$ the rank of $\Inat(K)$ equals $|\det K|$ \cite[Cor.~1.6]{KM2}. By
+\eqref{eq:ell} and Lemma~\ref{lem:alex} the rank of $\Inat(K_q)$ is at least $q+2$, whereas
+$|\det K_q|=|q-6|<q+2$. For an alternating knot the coefficients of the Alexander polynomial
+alternate in sign \cite{Crowell,MurasugiGenus}, so that $|\Delta_K(-1)|=\ell(K)$; for $K_q$ the two
+sides are $|q-6|$ and $q+2$. Two-bridge knots are alternating.
+
+For the last assertion, recall that for coprime $1<a<b$ the Alexander polynomial
+$\Delta_{T(a,b)}=(1-t)(1-t^{ab})/((1-t^a)(1-t^b))$ begins $1-t+t^a-\cdots$ and has degree $(a-1)(b-1)$;
+it is unchanged under mirroring. In \eqref{eq:alex} the coefficient of $t^2$ is $0$ and that of $t^3$
+is $1$, so a torus knot with the same Alexander polynomial would have $a=3$, and comparing degrees
+gives $2(b-1)=q+3$, so $b=(q+5)/2\ge6$. For $b\ge6$ the coefficient of $t^5$ in
+$\Delta_{T(3,b)}=(1-t)(1+t^3+t^6+\cdots)(1+t^b+\cdots)(1-t^{3b})$ is $0$, while the coefficient of
+$t^5$ in \eqref{eq:alex} is $1$.
+\end{proof}
+
+\subsection{Reduced Khovanov homology and the integral spectral sequence}\label{ss:kh-ss}
+Manion computes the reduced Khovanov homology over $\Z$ of the pretzel knots $P(-p,r,s)$ with
+$p,r,s>0$ and $2\le p\le r,s$ that are not quasi-alternating, and proves that it is free
+\cite[Thm.~1.1 and Thm.~3.3]{Manion}. For $p$ even it is $\Z^{p^2}\oplus\Z^{(r-p)(s-p)}$, supported
+in two adjacent $\delta$-gradings. By Lemma~\ref{lem:not-torus}, $K_q$ satisfies these hypotheses for
+every odd $q\ge3$, and substituting $(p,r,s)=(2,3,q)$ gives
+\begin{equation}\label{eq:kh-rank}
+ \widetilde{\Kh}(K_q;\Z)\ \text{is free of rank}\ 4+(3-2)(q-2)=q+2 .
+\end{equation}
+The reduced complex of the mirror is the integral dual complex, so by the universal
+coefficient theorem the reduced Khovanov homology of the mirror is also free of rank $q+2$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:inat}]
+Kronheimer and Mrowka construct a spectral sequence of abelian groups whose $E_2$ page is the reduced
+Khovanov homology of the mirror and whose abutment is $\Inat(K_q;\Z)$ \cite[Prop.~1.2 and
+Thm.~8.12]{KM2}; the underlying filtration, indexed by the vertices of a cube of resolutions, has
+finite length. After tensoring with $\Q$, \eqref{eq:kh-rank} gives $\dim_{\Q}\Inat(K_q;\Q)\le q+2$.
+Kronheimer and Mrowka also identify $\Inat(K_q;\Q)$ with $KHI(K_q;\Q)$ \cite[Prop.~1.4]{KM2}; the
+Alexander-graded Euler characteristic of $KHI$ is the Alexander polynomial up to sign, so the dimension
+of $KHI$ is at least $\ell(K_q)$ \cite[Thm.~1.1 and Cor.~1.2]{KMAlex}. These statements are made over
+$\C$ and pass to $\Q$ by flat base change. By Lemma~\ref{lem:alex},
+$\dim_{\Q}\Inat(K_q;\Q)\ge\ell(K_q)=q+2$, so the two rational bounds agree. Total dimension cannot
+increase from one page to the next in a spectral sequence of finite-dimensional vector spaces, so
+every differential vanishes after tensoring with $\Q$.
+
+The $E_2$ page of the integral spectral sequence is free of rank $q+2$. Inductively each page is free,
+and a homomorphism between free abelian groups whose rationalization vanishes is zero; hence every
+integral differential vanishes. The associated graded group of $\Inat(K_q;\Z)$ is therefore free of
+rank $q+2$, and its finite filtration splits because extensions of free abelian groups split. This
+proves $\Inat(K_q;\Z)\cong\Z^{q+2}$, and the assertions over $\Q$ and $\F_2$ follow by base change and
+the universal coefficient theorem.
+\end{proof}
+
+\begin{remark}\label{rem:inat-attribution}
+The rational squeeze is Lobb and Zentner's proof that the Kronheimer--Mrowka spectral sequence of
+$K_q$ is trivial \cite[Prop.~4.7]{LZ}; their $\Inat$ is Kronheimer and Mrowka's $\Inat$ of the mirror,
+and the rank is unchanged by mirroring. Smith uses the same argument for $q=5$ \cite[proof of
+Thm.~5.9]{Smith}. The rational rank also follows from the work of Li and Ye: $K_q$ is an instanton
+L-space knot \cite[Prop.~7.1(2)]{LiYe}, so each Alexander-graded summand of $KHI(K_q)$ has dimension at
+most one \cite[Thm.~1.9]{LiYe}, and the dimension of $KHI$ is then the number of nonzero coefficients
+of the Alexander polynomial \cite[Thm.~1.1]{KMAlex}. The freeness in Theorem~\ref{thm:inat}
+additionally uses Manion's integral calculation. For $q\ge7$ it also follows from the work of Daemi
+and Scaduto (Proposition~\ref{prop:inat-graded} below). For the torus knots $K_3=T(3,4)$ and
+$K_5=T(3,5)$ it can be read off from the integral S-complexes that Daemi and Scaduto write down
+\cite[\S\S9.3--9.4]{DS19}: there the differential has rank one, because the rank of $\Inat$ is known,
+and one of its components counts a single instanton, so the homology is torsion free. Finally,
+$\det K_q=|q-6|$ never vanishes and equals $1$ exactly for $q=5,7$, the two members whose double
+branched cover is an integral homology sphere.
+\end{remark}
+
+\subsection{The signature}\label{ss:sig}
+We use the convention that positive knots have negative signature, so that $\sigma(T(3,4))=-6$ and
+$\sigma(T(3,5))=-8$; this is the convention of \cite{HHK2} and \cite{WuebbenV}.
+
+\begin{proposition}\label{prop:sig}
+For odd $q\ge1$,
+\[
+ \sigma(K_q)=\begin{cases}-(q+3), & q\in\{1,3,5\},\\ -(q+1), & q\ge7.\end{cases}
+\]
+\end{proposition}
+
+\begin{proof}
+This is \cite[Lemma~8.29]{DS24}, stated there in the same convention; Daemi and Scaduto argue by
+induction from $K_1=T(2,5)$, using the congruence $|\sigma(K)|+1\equiv\det K\pmod 4$ and the change of
+the signature under a crossing change between links of nonzero determinant. An independent check is
+the formula of Gordon and Litherland \cite[Thm.~6]{GordonLitherland}, applied to the checkerboard surface of the
+standard diagram: two discs joined by three twisted bands with $-2$, $3$ and $q$ half-twists. With
+respect to the two white regions between the bands, its Goeritz form is
+$\eta\left(\begin{smallmatrix}1&-3\\-3&q+3\end{smallmatrix}\right)$ for a sign $\eta$ fixed by the
+choice of colouring, with determinant $q-6$. The strands of $K_q$ run antiparallel through the band
+with $-2$ half-twists and parallel through the other two, so the Gordon--Litherland correction term
+is $\mu=\eta(q+3)$, one contribution from each of the $3+q$ crossings of the two odd bands. The
+form has signature $2\eta$ for $q\ge7$ and $0$ for $q\le5$, so $\sigma(K_q)=-\eta(q+1)$ for
+$q\ge7$ and $-\eta(q+3)$ for $q\le5$. The value $\sigma(K_5)=\sigma(T(3,5))=-8$ fixes
+$\eta=1$.
+\end{proof}
+
+\subsection{The \texorpdfstring{$\Z/4$}{Z/4}-graded instanton homology}\label{ss:graded}
+Daemi and Scaduto associate to a knot $K$ an S-complex
+\begin{equation}\label{eq:scomplex}
+ \widetilde C(K)=C(K)\oplus C(K)[-1]\oplus\Z_{(0)},\qquad C[i]_j=C_{i+j},
+\end{equation}
+a decomposition of $\Z/4$-graded modules in which $C(K)$ is generated by the irreducible critical points
+of the singular Chern--Simons functional and the summand $\Z_{(0)}$, in degree $0$, by the reducible one.
+The differential has the shape
+\[
+ \widetilde d=\begin{pmatrix}d&0&0\\ v&-d&\delta_2\\ \delta_1&0&0\end{pmatrix},
+\]
+where $\delta_1$ and $\delta_2$ count instantons to and from the reducible
+\cite[Def.~2.1 and (1.9)]{DS24}, \cite[Def.~3.21]{DS19}. Its homology is $\Inat(K)$: there is a chain
+homotopy equivalence between Kronheimer and Mrowka's complex and $\widetilde C(K)$, homogeneous for the
+$\Z/4$-gradings, and for knots in $S^3$ the resulting isomorphism on homology has degree $\sigma(K)$
+modulo $4$ \cite[Thm.~8.9]{DS19}. We write $I(K)$ for the homology of $(C(K),d)$, the irreducible
+instanton homology.
+
+\begin{proposition}\label{prop:inat-graded}
+Let $q\ge7$ be odd and put $N_1=\lceil\frac{q+1}4\rceil$ and $N_3=\lfloor\frac{q+1}4\rfloor$. Then
+$\Inat(K_q;\Z)$ is free of rank $q+2$, and in Kronheimer and Mrowka's absolute grading its graded
+ranks are
+\begin{equation}\label{eq:graded-vector}
+ \bigl(1+N_3,\ N_1,\ N_1,\ N_3\bigr)\qquad\text{in degrees}\ \gr-\sigma(K_q)=0,1,2,3 .
+\end{equation}
+The same holds with coefficients in $\Q$ and in $\F_2$.
+\end{proposition}
+
+\begin{proof}
+For $q\ge7$, Daemi and Scaduto prove $I(K_q)\cong\Z_{(1)}^{N_1}\oplus\Z_{(3)}^{N_3}$, with the subscripts
+denoting $\Z/4$ degrees in the grading of \eqref{eq:scomplex} \cite[Prop.~8.30]{DS24}; the degrees come
+from \cite[Prop.~8.28]{DS24} and the freeness from \cite[Rem.~8.27]{DS24}. The filtration
+$C[-1]\subset C[-1]\oplus\Z_{(0)}\subset\widetilde C$ induces a spectral sequence
+\begin{equation}\label{eq:ds-ss}
+ I(K_q)\oplus I(K_q)[-1]\oplus\Z_{(0)}\ \Longrightarrow\ \Inat(K_q;\Z)
+\end{equation}
+\cite[(8.5)]{DS24}. Daemi and Scaduto state the homology groups of their \S8 as $\Z/2$-graded, but the
+spectral sequence respects the $\Z/4$-grading: by the shape of $\widetilde d$, the summands $C[-1]$ and
+$C[-1]\oplus\Z_{(0)}$ are subcomplexes, and \eqref{eq:scomplex} is a decomposition of $\Z/4$-graded
+modules, so \eqref{eq:ds-ss} is a spectral sequence of $\Z/4$-graded groups. Since a class of degree $j$
+in $I$ sits in degree $j+1$ in $I[-1]$, the initial page has ranks $1+N_3$, $N_1$, $N_1$ and $N_3$ in
+degrees $0$, $1$, $2$ and $3$, for a total of $1+2(N_1+N_3)=q+2$.
+
+By Theorem~\ref{thm:inat}, the rank of the abutment is also $q+2$. Hence every differential vanishes
+after tensoring with $\Q$, and, as in the proof of Theorem~\ref{thm:inat}, every integral differential
+vanishes and the filtration of $\Inat(K_q;\Z)$ splits. So $\Inat(K_q;\Z)$ is free with the graded ranks
+of the initial page in the grading of \eqref{eq:scomplex}. By \cite[Thm.~8.9]{DS19}, Kronheimer and
+Mrowka's absolute grading is this grading shifted by $\sigma(K_q)$; since $\sigma(K_q)$ is even, the sign
+of the shift does not matter modulo $4$. The assertions over $\Q$ and $\F_2$ follow by base change.
+\end{proof}
+
+For $q=7$, $9$, $11$ and $13$ the vector \eqref{eq:graded-vector} is $(3,2,2,2)$, $(3,3,3,2)$, $(4,3,3,3)$
+and $(4,4,4,3)$. For $q=3,5$ the same spectral sequence has initial rank $q+4$ and a differential of rank
+one. The graded ranks of $\Inat$ of the torus knots $K_3=T(3,4)$ and $K_5=T(3,5)$ are $(1,1,2,1)$ and
+$(2,1,2,2)$ in degrees $\gr-\sigma=0,1,2,3$ \cite[(2.5) and Table~2]{WuebbenV}, and these are the vectors
+with which the pillowcase homology of the two torus knots is compared in \cite{WuebbenV}. They are instances of
+the graded formula of~\cite{WuebbenIV}, which determines $\Inat(K;\Q)$ for every torus knot $K$, and the S-complexes of
+the two knots are described in~\cite{WuebbenI}.

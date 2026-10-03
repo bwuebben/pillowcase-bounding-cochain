@@ -1,36 +1,31 @@
 #!/usr/bin/env python3
 """
-surgery_check.py -- the combinatorial surgery lemma, machine-checked
-(correspondence note notes/cochain-search-note, Part II "Reduction 1"; RESUME sec 0d).
+surgery_check.py -- a finite smoothing comparison for the q=5 and q=7 tables.
 
-CLAIM (combinatorial surgery lemma, deficit members). Let b be the computed
-bounding cochain, supported on P self-crossings of blue. Smooth blue at each
-support crossing -- iota-equivariantly on the T^2 cover (both preimages), in one
-of the two sector pairs -- to get a curve (or curves) blue'. Then for the correct
-sector choice,
+Let partial_b be the tabulated finite matrix obtained from the bigon matrix of
+the pair (red, blue) by adding the tabulated triangle and quadrilateral terms
+through a candidate support of blue self-crossings.  Smooth blue at each
+support crossing -- iota-equivariantly on the T^2 cover (both preimages), in
+one of the two sector pairs -- to get a curve (or curves) blue'.  The program
+tests whether, for some sector choice,
 
-    bigon_matrix(red, blue')  ==  partial_b(red, blue)    entrywise over F_2,
+    bigon_matrix(red, blue')  ==  partial_b(red, blue)    entrywise over F_2.
 
-i.e. the b-DEFORMED differential of the immersed pair equals the UNDEFORMED
-(bigon-only) differential of the SURGERED pair. Mechanism: a triangle through s
-becomes a bigon of blue' rounding the smoothed corner; the q=5 quadrilateral
-through {s_A,s_B} becomes a bigon passing both smoothing sites; a bigon of d
-cancelled by the deformation reappears PAIRED with a polygon-turned-bigon and
-dies mod 2.
+This is a comparison of two finite tables.  It does not compute a bounding
+cochain, the full deformed differential, or all polygons of the smoothed pair.
 
-Per member (q=5 with the build_geometry perturbation, matching the certified
-b2_result numbers; q=7 with the generic family perturbation):
-  1. reproduce the naive complex (gens, d);
+Per member (q=5 with the build_geometry perturbation, matching the b2_result
+tables; q=7 with the generic family perturbation):
+  1. reproduce the undeformed bigon matrix (gens, d);
   2. recompute partial_b independently (targeted triangle sweep via
      deform.triangle_contributions only_s, P-union over preimages; targeted quad
      count via polygons.polygon_through, both preimage pairs, both cyclic
-     orders) and gate it against I^natural;
+     orders) and select the support whose statistic equals I^natural;
   3. for every iota-consistent sector combination (2 per support crossing):
      smooth, rebuild, recount bigons, compare to partial_b entrywise;
   4. PASS iff at least one combination reproduces partial_b exactly with the
      generator set unchanged point-by-point.
-The other sector choice corresponds to the other CF(L,L) generator at the
-crossing; its outcome is reported, not gated.
+The other sector choice is reported, not gated.
 
 Pure stdlib. Runtime a few minutes. Exit 0 iff ALL PASS.
 """
@@ -294,12 +289,12 @@ def run_member(q, builder, support_targets, inat, expect_naive_entries=None):
     print(f"naive: {n} gens, bigons {entries(d0)}, HF = {naive}")
     if expect_naive_entries is not None:
         check(entries(d0) == sorted(expect_naive_entries),
-              f"naive bigon entries match the certified ones {sorted(expect_naive_entries)}")
+              f"naive bigon entries match the tabulated ones {sorted(expect_naive_entries)}")
 
     # locate the support: among self-crossing P-orbits near the published
     # coordinates (they drift with the perturbation), the support is the
     # combination whose deformed differential reaches I^natural -- unique at
-    # deficit members per the certified search (pretzel_solve).
+    # deficit members in the finite search of pretzel_solve.
     cand_lists = locate_supports(blue, support_targets)
     for cl, tgt in zip(cand_lists, support_targets):
         check(len(cl) >= 1 and all(len(o[1]) == 2 for o in cl),
@@ -314,7 +309,7 @@ def run_member(q, builder, support_targets, inat, expect_naive_entries=None):
             supports, Mb = list(combo), M
             break
     check(supports is not None,
-          "a candidate support reaches deformed HF = I^natural (the certified cochain)")
+          "a candidate support gives the tabulated statistic I^natural")
     if supports is None:
         return []
     print(f"support: {[tuple(round(v, 3) for v in pp) for pp, _ in supports]}; "
@@ -367,13 +362,13 @@ def run_member(q, builder, support_targets, inat, expect_naive_entries=None):
 
 if __name__ == "__main__":
     print("== surgery_check: partial_b(red, blue) =?= bigons(red, surgered blue) ==")
-    # q=5: b = s_A + s_B, quadrilateral mechanism (paper2 Computation 1.3(i));
-    # build_geometry perturbation, matching the certified b2_result numbers.
+    # q=5: support {s_A, s_B}, quadrilateral term;
+    # build_geometry perturbation, matching the b2_result tables.
     run_member(5, build_geometry_p, [(0.028, 1.272), (3.057, 4.981)], inat=7,
                expect_naive_entries=[(1, 0), (4, 6)])
-    # q=7: b = single crossing, triangle mechanism (Computation 1.3(ii));
+    # q=7: single crossing, triangle term;
     # generic family perturbation red=(0.16, 0.40).
     run_member(7, lambda: build_pretzel(3), [(0.05, 5.41)], inat=9)
-    print("\n" + ("ALL PASS -- the combinatorial surgery lemma holds at both "
-                  "deficit members" if not FAIL else "FAILURES above"))
+    print("\n" + ("ALL PASS -- at q=5 and q=7 one sector choice reproduces the "
+                  "tabulated matrix entrywise" if not FAIL else "FAILURES above"))
     sys.exit(FAIL)

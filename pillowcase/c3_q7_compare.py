@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Compare the corrected analytic C3 q=7 curve with the finite PL model.
+"""Compare the analytic C3 q=7 curve with the finite PL model.
 
 This is a numerical continuation and exact finite-algebra regression for Gate 1.
-It composes Smith's corrected C3 correspondence with Q_{1/3} and Q_{1/7},
+It composes Smith's perturbed C3 correspondence with Q_{1/3} and Q_{1/7},
 traces one (21,10) lift, and checks three coordinate-independent records:
 
 * the short deck class at every transverse double point;
@@ -137,10 +137,10 @@ def analytic_crossing_records(curve, lift):
     crossings = self_intersections_detailed(curve)
     if len(crossings) != 100:
         raise AssertionError(
-            f"corrected q=7 curve has {len(crossings)} rather than 100 T2 crossings")
+            f"analytic q=7 curve has {len(crossings)} rather than 100 T2 crossings")
     pairs, pairing_diagnostics = iota_crossing_pairs(crossings)
     if len(pairs) != 50:
-        raise AssertionError("corrected q=7 crossings do not form 50 iota pairs")
+        raise AssertionError("analytic q=7 crossings do not form 50 iota pairs")
 
     total_deck = (21, 10)
     maximum_deck_error = 0.0
@@ -706,7 +706,7 @@ def analytic_switch_census(trace_result, base):
 
 def run_one(perturbation, step, base):
     blue, _, _, base_pre = base
-    curve, lift, trace = c3.trace_corrected_main_arclength(
+    curve, lift, trace = c3.trace_main_arclength(
         perturbation, step=step, max_steps=12000)
     if trace["maximum_residual"] > 2.1e-10:
         raise AssertionError("pseudo-arclength residual exceeded its gate")
@@ -736,7 +736,7 @@ def run_one(perturbation, step, base):
     if not all(signature == signatures[0] for signature in signatures[1:]):
         raise AssertionError("analytic KWZ encoding depends on root subdivisions")
 
-    print(f"\n== corrected C3 q=7 trace: t={perturbation:g} ==")
+    print(f"\n== perturbed C3 q=7 trace: t={perturbation:g} ==")
     print(f"points={len(curve) - 1}; steps={trace['steps']}; "
           f"raw closure error={trace['raw_closure_error']:.3e}")
     print(f"max equation residual={trace['maximum_residual']:.3e}; "
@@ -809,7 +809,7 @@ def main(argv=None):
                   "singleton-switch and two-closure census")
 
     print("\nESTABLISHED BY THIS REGRESSION:")
-    print("  the corrected floating-point C3 trace and the q=7 PL curve encode "
+    print("  the floating-point C3 trace and the q=7 PL curve encode "
           "strictly isomorphic 31-generator type-D base objects")
     print("  the analytic trace has exactly two deck-(2,2) nodes, corresponding "
           "to the uniquely characterized PL nodes S18/S25")
@@ -820,8 +820,6 @@ def main(argv=None):
               "satisfy the type-D Maurer--Cartan equation")
     print("NOT ESTABLISHED:")
     print("  interval-rigorous existence/completeness of the numerical trace")
-    print("  the localized corrections to Smith's typeset C3 formulas as an "
-          "author-verified erratum")
     print("  which switch sum (if any) is selected by rigid C3 figure-eight "
           "counts, or that presentation-changing outputs are excluded")
     print("  the CHKK instanton--pillowcase assignment or its bounding-cochain "

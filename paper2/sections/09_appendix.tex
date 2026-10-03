@@ -1,0 +1,158 @@
+\section{Data and computations}\label{app:data}
+
+\subsection{The complex $N_5$}\label{ss:N5}
+Encoding $L_{5,\mathrm{PL}}$ in the chart of \S\ref{ss:explicit} and performing the unit
+cancellations gives the reduced twisted complex $N_5$ on the generators $0,1,\dots,22$.  Its
+$\iota_\circ$ generators are $3,4,9,10,13,14,19,20$, the others carry $\iota_\bullet$, and
+\begin{equation}\label{eq:N5}
+\begin{aligned}
+\delta_{N_5}={}&1\xrightarrow{M^2}0+2\xrightarrow R1+3\xrightarrow M2+4\xrightarrow L3
++4\xrightarrow M5+5\xrightarrow R6+6\xrightarrow{M^2}7+8\xrightarrow R7\\
+&+9\xrightarrow M8+10\xrightarrow L9+10\xrightarrow M11+12\xrightarrow R11
++13\xrightarrow M12+14\xrightarrow L13+14\xrightarrow M15\\
+&+16\xrightarrow R15+17\xrightarrow{M^2}16+18\xrightarrow R17+19\xrightarrow M18
++20\xrightarrow L19+20\xrightarrow M21+21\xrightarrow R22.
+\end{aligned}
+\end{equation}
+No arrow ends where an arrow with the same face label begins, so $\delta_{N_5}^2=0$.  The complex is a
+single arc with ends $0$, at $(0,0)$, and $22$, at $(\pi,0)$.  The encoding of a numerical trace of
+Smith's perturbed curve at $q=5$, computed as in Remark~\ref{rem:analytic}, is strictly isomorphic to
+$N_5$.  Its pairings with $E_{-1/2}$ and $E_{-3/4}$ are $5$ and $15$; the first agrees with Smith's
+rank $5$ for this decomposition \cite[Thm.~5.9]{Smith}.
+
+The smoothing used in Theorem~\ref{thm:structure-full} is the four-arrow element
+\begin{equation}\label{eq:b5}
+ b_5=8\xrightarrow R7+16\xrightarrow R15+8\xrightarrow R15+16\xrightarrow R7 ,
+\end{equation}
+which exchanges the targets of the arrows $8\xrightarrow R7$ and $16\xrightarrow R15$.  The complex
+$(N_5,b_5)$ consists of the arc $0,1,\dots,7,16,17,\dots,22$ and the closed component
+$8,9,\dots,15$, whose word $9\xrightarrow M8$, $10\xrightarrow L9$, $10\xrightarrow M11$,
+$12\xrightarrow R11$, $13\xrightarrow M12$, $14\xrightarrow L13$, $14\xrightarrow M15$,
+$8\xrightarrow R15$ is the doubled word of $c$.  Adding $\kappa_5=12\xrightarrow R11+0\xrightarrow
+R11$ opens the closed component between $11$ and $12$ and attaches $11$ to the end $0$; the result
+is the single arc $22,21,\dots,16,7,6,\dots,0,11,10,9,8,15,14,13,12$.  Its pairings with
+$E_{-1/2}$ and $E_{-3/4}$ are $7$ and $21$, the ranks of reduced Khovanov homology of $P(-2,3,5)$ and
+$K_{-3/4}(5)$.
+
+\subsection{Corner terms}\label{ss:corner-terms}
+The search of Remark~\ref{rem:corner-term} finds the following one-arrow replacements carrying
+$(N_q,b)$ to a complex strictly isomorphic to $\mathrm{BN}_q$, written as elements of
+$\operatorname{End}(N_q)$ (the first term is the deleted arrow):
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+object & first solution & second solution\\
+\midrule
+$(N_7,b_{S_{18}})$ & $\kappa_7=0\xrightarrow R19+36\xrightarrow R19$ & $22\xrightarrow R3+36\xrightarrow R3$\\
+$(N_7,b_{S_{25}})$ & $\kappa_7=0\xrightarrow R19+36\xrightarrow R19$ & $4\xrightarrow R3+36\xrightarrow R3$\\
+$(N_5,b_5)$ & $\kappa_5=12\xrightarrow R11+0\xrightarrow R11$ & $8\xrightarrow R15+0\xrightarrow R15$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The arrows $22\xrightarrow R3$ and $8\xrightarrow R15$ are arrows of $b_{S_{18}}$ and $b_5$ rather
+than of $\delta_{N_q}$, so the second solutions in the first and third rows delete an arrow of the
+smoothing.  The term $\kappa_7$ is the only one that serves both smoothings at $q=7$.  The
+analogous search with $\widetilde{\mathrm{BN}}(T_q)$ in place of $\mathrm{BN}_q$, which is the
+comparison for $t>0$ (Remark~\ref{rem:sign-positive}), finds for both smoothings at $q=7$ the terms
+$2\xrightarrow M3+18\xrightarrow{M^2}3$ and $20\xrightarrow M19+18\xrightarrow{M^2}19$, and at $q=5$
+the terms $10\xrightarrow M11+22\xrightarrow{M^2}11$ and $14\xrightarrow M15+22\xrightarrow{M^2}15$.
+The exact edit distance from $N_q$ to $\mathrm{BN}_q$ is $2$ for $q=5,7$, with two minimal edits in
+each case; at $q=7$ both consist of arrows labelled $R$ and touch the end $36$.
+
+\subsection{Methods}\label{ss:methods}
+All statements of Sections~\ref{sec:smith} and~\ref{sec:khovanov} that rest on computation are finite
+computations in exact arithmetic over $\F_2$, with the exceptions named below.
+
+\emph{Morphism homology.}  Morphism complexes in $\operatorname{Tw}(\mathcal B)$ are computed in
+full, without truncating word length, by the mapping-cone reduction of
+Lemma~\ref{lem:wrapped-reduction}, whose torsion condition is checked for each pair.  A second,
+independent implementation computes $H\operatorname{Mor}(X,Y)$ from the structure of
+$\operatorname{Mor}(X,Y)$ as a module over the polynomial ring $\F_2[H]$ of \cite{KWZ}; it
+reproduces the dimensions of Propositions~\ref{prop:q7-typeD} and~\ref{prop:aux-closure}, and the
+dimensions of Section~\ref{sec:khovanov} were computed with it.
+
+\emph{Encodings.}  Curves given by their lifts to the planar cover are encoded as twisted complexes
+by recording their crossings with the lifts of the arc system and the faces between consecutive
+crossings, as in \S\ref{ss:explicit}.  This encoder was compared with the invariants of $216$
+rational tangles computed by Zibrowius's program \cite{Zibkht}: in every case
+$\widetilde{\mathrm{BN}}(Q)$ is the straight lattice arc and $\widetilde{\Kh}(Q)$ the figure-eight
+around it.  The invariants $\widetilde{\mathrm{BN}}(T_q)$ and $\widetilde{\Kh}(T_q)$ for
+$q=3,5,\dots,21$ were computed with the same program, and the ranks
+$\rk\widetilde{\Kh}(K_r(q);\F_2)$ with Khoca~1.5 \cite{Khoca}.
+
+\emph{Traced curves.}  The perturbed curves of Smith for $q=5,7,11,13,17,19$ were traced numerically
+from the equations of \cite[Prop.~4.1]{Smith}, composed with the lines of slopes $1/3$ and $1/q$
+through $(0,0)$, for several perturbation parameters in $[0.005,0.02]$ and several step sizes, and
+transported to negative perturbation parameter by the symmetry $\sm$ of Remark~\ref{rem:sign}.  For
+$q\le13$ all traces at a given $q$ have strictly isomorphic encodings, isomorphic to $N_q$.  These are
+floating-point computations and serve as corroboration only.
+
+\emph{Searches.}  Strict isomorphism of loop-type complexes is decided by comparing the words of the
+components up to rotation and reversal.  Edit distances are computed by an exact search over the ways
+of cutting the word of one complex into intervals that reassemble to the word of the other; for
+$q=17,19$ the search excludes edit distances at most $5$ and was stopped at $6$.  Chains of algebraic
+switches are enumerated breadth first, up to strict isomorphism, from both ends, and the two sides are
+compared.  Each search is exhaustive within the class it states, and no conclusion is drawn beyond
+that class.
+
+\emph{The sheared curves.}  The proofs in Sections~\ref{sec:sheared} and~\ref{sec:twisted} do not use
+computation.  The following computations corroborate them.
+\begin{enumerate}
+\item[(i)] \emph{Lemma~\ref{lem:straight}.}  Each displayed identity in Steps 1--7 of its proof holds
+ identically in the indeterminates $v$ and $\zeta$, as verified by symbolic computation.  Without the
+ assumption $E=0$ one has $\mathbf{Vec}\,\rho(g)\cdot\mathbf{Vec}\,\rho(a)=\frac12\zeta\sin2v\,E^2$ and
+ $\operatorname{tr}\bigl(\rho(g)\rho(a)\bigr)=-2\zeta\sin2v\,E^2$.  In the Fricke coordinates
+ $x=\operatorname{tr}\rho(A)$, $y=\operatorname{tr}\rho(B)$, $z=\operatorname{tr}\rho(AB)$, the condition
+ $\operatorname{tr}\rho(b)=0$ reads $x=yz$; then $E=y^2+z^2-3$,
+ \[
+  \operatorname{tr}\rho(a)=-yE,\qquad \operatorname{tr}\rho(g)=-zE,\qquad \operatorname{tr}\rho(ga)=yzE^2,
+ \]
+ and $\operatorname{tr}\rho(w)-2$ lies in the ideal generated by $x-yz$ and $E$.  For the word
+ $(ba)^{-2}c\,(ba)^2a$ the same reduction leaves $-y^2-1$, so that word is not trivial on $C_0$.  At three
+ points of $C_0$ with algebraic coordinates, exact quaternion arithmetic gives $\rho(w)=1$, and a
+ numerical trace of $\Pi(C_0)$ at $50$ significant digits satisfies $|\theta-6\gamma+\pi|\le1.4\cdot10^{-47}$.
+\item[(ii)] \emph{Combinatorics.}  For every odd $q\le401$ we verified in exact rational arithmetic: the
+ crossings of the sheared polygons of Corollary~\ref{cor:polygon} with the strands, for both
+ resolutions; the value of $N_q$; the order of the crossing abscissae in $(\frac\pi6,\frac{5\pi}6)$ and
+ the absence of a crossing at $\gamma=\frac\pi2$; the bookkeeping of the graded homology in
+ Theorem~\ref{thm:pillowP}; the count of Remark~\ref{rem:FKPcount}; and the number of generators on the
+ remnant circle.
+\item[(iii)] \emph{Groups.}  Besides the reduced-word check of Lemma~\ref{lem:relator} recorded after its
+ proof, the boundary relation $ba=cd$ holds for the words \eqref{eq:words-n}, and for all $4\le n\le26$ prime
+ to $3$ and $m\le6$ the Alexander polynomial obtained by Fox calculus from the presentation of
+ Lemma~\ref{lem:group} with $h=-m$ equals that of the closure of $(\sigma_1\sigma_2)^n\sigma_1^{2m}$
+ computed by the Burau representation.  The closed form of the Alexander polynomials in
+ Theorem~\ref{thm:twisted} was checked as an identity of rational functions and exactly for $1092$
+ knots, and the determinants for $n\le50$ and $m\le20$.
+\item[(iv)] \emph{The shear.}  Applying $t_e^h$ to the boundary values of points of the traced variety
+ $W_\varepsilon$ reproduces $S_h$ to within $10^{-12}$ for $h=-6,\dots,2$, whereas the shear of the
+ opposite sign is off by about $\pi$.
+\item[(v)] \emph{Numerical Floer complexes.}  The variety $W_\varepsilon$ is traced with the continuation
+ code of \cite{WuebbenV}.  Independent code applies $S_{-m}$, locates the generators on the strands,
+ computes their degrees from \eqref{eq:grading15}, and enumerates the bigons as embedded Jordan domains
+ in $\R^2$.  Maslov indices are computed on the unsheared curve against the line field spanned by
+ $(1,6-q)$, which by Lemma~\ref{lem:shear}(f) gives the index of the sheared curve against $\ell_1$; an
+ index obtained by unwrapping tangent angles along the sheared polygonal curve is unreliable near the
+ junctions when $\varepsilon$ is small or $q$ is large.  The results, including the scan of the
+ resolution type in $24$ directions, are listed in Remark~\ref{rem:numericsP}.  For the twisted torus
+ knots with $n=7,8,13$ and $m=1,2,3$, at two perturbations each, the graded homology agrees with
+ Theorem~\ref{thm:twisted} in all $18$ runs.
+\end{enumerate}
+
+\subsection{Reproducibility}\label{ss:repro}
+The programs that carry out the computations of this paper are included as ancillary files with its
+arXiv submission, and they are also available in the public repository
+\begin{center}
+\url{https://github.com/bwuebben/pillowcase-bounding-cochain}\,.
+\end{center}
+In the ancillary files the programs for Section~\ref{sec:smith} are in the directory \path{pillowcase/}, and
+those for Sections~\ref{sec:sheared}, \ref{sec:twisted} and~\ref{sec:khovanov} and for this appendix are in
+\path{code/}; in the repository these are the directories \path{pillowcase/} and \path{paper2/code/}.  Each
+program prints every number that the paper states next to the computed value and reports whether the two
+agree, and the file \path{README.md} in each directory lists the statements that each program checks.  The
+programs for Sections~\ref{sec:smith} and~\ref{sec:khovanov} use only the Python standard library; those for
+Sections~\ref{sec:sheared} and~\ref{sec:twisted} also use numpy, sympy and mpmath.  The invariants computed
+with Zibrowius's program~\cite{Zibkht} and the ranks computed with Khoca~\cite{Khoca} are included as data,
+together with their input files, so the checks run without these programs.  The instanton dimensions used
+throughout are Theorem~\ref{thm:inat} and Proposition~\ref{prop:aux-closure}, and they are independent of all
+of this code.
