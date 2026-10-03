@@ -64,7 +64,7 @@ Hedden, Herald and Kirk defined a Lagrangian Floer homology in the pillowcase fr
 decomposition of a knot, and conjectured that for a suitable decomposition it recovers I♮. Paper 5
 computes this homology for **every** torus knot T(3,n), using their decomposition:
 
-- **The complex.** For all small holonomy perturbations in an explicit open cone, the immersed curves
+- **The complex.** For all small holonomy perturbations in an explicit closed cone, the immersed curves
   are restricted and the complex has 1 + |σ| generators.
 - **The differential.** There is none when n ≡ 1, 2 (mod 6), and exactly one, to the abelian
   generator, when n ≡ 4, 5 (mod 6).
