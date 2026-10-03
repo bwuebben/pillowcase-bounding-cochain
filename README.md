@@ -56,7 +56,7 @@ R(p,q) = (1 + |σ| − ‖Δ‖₁)/2. The paper proves:
   I♮(T(p,q); ℚ) depends only on σ and ‖Δ‖₁, and the paper writes it down explicitly.
 - **A comparison with the pillowcase.** In each of Hedden–Herald–Kirk's computations, a bigon ends
   at the reducible generator exactly when Daemi–Scaduto's invariant h is positive.
-- **A conjecture** identifying the two complexes at chain level over 𝔽₂.
+- **A conjecture** identifying the two complexes at chain level over 𝔽₂; paper 5 proves it for T(3,n).
 
 ### Paper 5: pillowcase Floer homology of T(3,n) (`paper5/`)
 
@@ -71,8 +71,9 @@ computes this homology for **every** torus knot T(3,n), using their decompositio
 - **The homology** has the ℤ/4-graded dimensions of I♮.
 
 This verifies the Hedden–Herald–Kirk conjecture for an infinite family with nonzero differentials.
-It also proves part of paper 4's chain-level conjecture: the pillowcase complex has the generators
-and the differential that the S-complex predicts.
+Combined with a cobordism inequality of Daemi and Scaduto, it also proves paper 4's chain-level
+conjecture for T(3,n): over 𝔽₂ the pillowcase complex is S-chain homotopy equivalent to the instanton
+S-complex.
 
 The proof rests on an explicit description of the traceless character variety and on the strict
 monotonicity of an angle function along its components. Three inequalities are verified by

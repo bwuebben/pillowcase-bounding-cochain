@@ -462,9 +462,25 @@ and the isomorphism above is an S-isomorphism. This proves Conjecture~\ref{conj:
 Let $n\equiv4,5\pmod6$. By the above, $\pill(K)$ shifted by $\sigma$ is S-isomorphic to the S-complex on the graded
 generators of $\tC(K)$ whose only nonzero component is a rank-one map $\delta_1$ from $C_1$ to the reducible
 summand. Hence Conjecture~\ref{conj:pillow}(b) for $K$ is equivalent to the statement that $\tC(K;\F_2)$ is
-S-chain homotopy equivalent to this complex. Over $\Q$ the corresponding statement holds: $\tC(K;\Q)$ is
-S-isomorphic to the complex whose only nonzero component is $\delta_1$, of rank one~\cite[Rem.~7.4]{W26}. So
-$\pill(K)$ is the reduction modulo $2$ of the rational model, and the remaining question, which requires in
-particular that $\delta_1$ take an odd value on $C_1(K;\Z)$, concerns instanton moduli spaces and is not addressed
-by the pillowcase computation.
+S-chain homotopy equivalent to this complex. We prove it. Recall
+that $d=0$ and $\delta_2=0$, and write $v_{31}\colon C_3\to C_1$ and $v_{13}\colon C_1\to C_3$ for the components of $v$. Over
+$\Q$ the differential of $\tC(K)$ has rank $R=1$ and $\delta_1\neq0$~\cite{W26},~\cite[\S9.5]{DSEquiv}. The map $v_{31}$ and the pair
+$(v_{13},\delta_1)$ have sources and targets in different degrees, so $v_{31}=0$ and $v_{13}=\delta_1(\cdot)\,u$ for some
+$u\in C_3\otimes\Q$; since $v_{31}$ is an integer matrix, it vanishes over $\Z$.
+
+Next, $\delta_1$ takes an odd value on $C_1(K;\Z)$. Daemi and Scaduto define their invariant $h$ for S-complexes over
+any integral domain that is an algebra over $\Z[U^{\pm1},T^{\pm1}]$, in particular over $\F_2$ with $T=U=1$~\cite[\S2.2]{DScaduto},
+and $\tC(K;\F_2)=\tC(K;\Z)\otimes\F_2$. Their cobordism inequality~\cite[Thm.~4.22, Prop.~4.30]{DScaduto} applies to the full twist
+on three strands, which carries $T(3,q)$ to $T(3,q+3)$; there the minimizing reducible is unique, so its count is a unit
+in $\F_2$~\cite[Cor.~4.8]{DScaduto}. Starting from the unknot and $T(2,3)=T(3,2)$, for which $h\ge0$ over every such
+ring~\cite[\S4]{DScaduto}, induction on $q$ gives $h_{\F_2}(T(3,n))\ge1$ for $n\equiv4,5\pmod 6$. Since $d=0$, this means that
+$\delta_1\otimes\F_2\neq0$~\cite[Prop.~4.15, Rem.~4.2]{DSEquiv}.
+
+Write $\delta_1=e\,\delta_1'$ with $\delta_1'\colon C_1(K;\Z)\to\Z$ surjective; then $e$ is odd. For $x_0$ with $\delta_1'(x_0)=1$ we have
+$eu=v_{13}(x_0)\in C_3(K;\Z)$, so over $\F_2$ one has $v_{13}=\delta_1(\cdot)\,w$ with $w$ the reduction of $eu$. The map
+$(\alpha,\beta,m)\mapsto(\alpha,\beta+m\,w,m)$ on $\tC(K;\F_2)=C_*\oplus C_{*-1}\oplus\F_2$ commutes with $\chi$ and is the identity on the
+reducible summand, so it is an S-isomorphism, and conjugating the differential by it replaces $v_{13}$ by
+$v_{13}+\delta_1(\cdot)\,w=0$. Hence $\tC(K;\F_2)$ is S-isomorphic to the complex whose only nonzero component is
+$\delta_1\otimes\F_2$, of rank one. Two such complexes on the same graded generators are S-isomorphic, by a change of
+basis of $C_1$ applied to both copies. This proves Conjecture~\ref{conj:pillow}(b) for these $n$.
 \end{proof}
