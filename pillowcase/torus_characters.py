@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 r"""
 torus_characters.py -- verification of the (3,n)-torus knot traceless character
-count (Proposition "Count" of paper 1, Sec. 4.2) and of the dihedral dichotomy
-(Theorem B), by direct enumeration of the representation arcs.
+count (Proposition 4.1 of paper 1, Sec. 4.2) and of the dihedral dichotomy
+(Theorem 1.2), by direct enumeration of the representation arcs.
 
 Setup (paper 1, Sec. 4.1).  pi_1(S^3 \ T(3,n)) = < x, y | x^3 = y^n >, gcd(3,n)=1.
 The element z = x^3 = y^n is central, so an irreducible SU(2) representation has
@@ -45,7 +45,7 @@ What is verified
     the symmetry (l1,l2) -> (3-l1, n-l2), which preserves (*).  The two sheets
     are reported separately below.
 
-(4) THEOREM B (dihedral dichotomy).  rho(x) has trace 2 cos(pi l1 / 3) = +-1,
+(4) THEOREM 1.2 (dihedral dichotomy).  rho(x) has trace 2 cos(pi l1 / 3) = +-1,
     never 0, so x never goes to a reflection; rho(y) is traceless iff l2 = n/2,
     possible only for n even.  Hence the number of irreducible traceless
     DIHEDRAL characters is 1 for n even and 0 for n odd, which is checked here
@@ -176,9 +176,10 @@ def main():
         s1 = sum(1 for l1, _, _ in tc if l1 == 1)
         s2 = N - s1
         agree = (N == F)
-        # Remark 4.4's symmetry (l1,l2) -> (3-l1, n-l2) preserves (*) and swaps
-        # the sheets, but it preserves ADMISSIBILITY only for n odd (for n even
-        # it breaks the parity match l1 = l2 mod 2).  So balance is an n-odd claim.
+        # The symmetry (l1,l2) -> (3-l1, n-l2) of the proof of Proposition 4.1
+        # preserves (*) and swaps the sheets, but it preserves ADMISSIBILITY only
+        # for n odd (for n even it breaks the parity match l1 = l2 mod 2).  So
+        # balance is an n-odd claim.
         sheets_ok = (s1 == s2) if n % 2 else True
         n_checks += 1 + (n % 2)
         ok &= agree and sheets_ok
@@ -224,11 +225,11 @@ def main():
     print(f"      |rho(z) - (-1)^l1|")
     print(f"    central sign: rho(z) = -1 on {sheet_minus} characters (l1 = 1),"
           f"  +1 on {sheet_plus} (l1 = 2)")
-    print( "      -> Sec. 4.2's 'rho(x)^3 = rho(y)^n = -1' is the l1 = 1 sheet;"
-           " the l1 = 2 sheet has +1.")
+    print( "      -> rho(x)^3 = rho(y)^n = (-1)^l1, as in Sec. 4.2: -1 on the"
+           " l1 = 1 sheet, +1 on the l1 = 2 sheet.")
 
-    # (4) Theorem B: the dihedral dichotomy ---------------------------------
-    print("\n(4) Theorem B: irreducible traceless DIHEDRAL characters = (det - 1)/2")
+    # (4) Theorem 1.2: the dihedral dichotomy ---------------------------------
+    print("\n(4) Theorem 1.2: irreducible traceless DIHEDRAL characters = (det - 1)/2")
     for n in range(2, 26):
         if gcd(3, n) != 1:
             continue

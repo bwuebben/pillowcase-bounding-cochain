@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 r"""
-riley_check.py -- exact Gaussian-integer verification of Theorem A
+riley_check.py -- exact Gaussian-integer verification of Theorem 1.1
 (dihedral rigidity for two-bridge knots) of paper 1.
 
 Everything here is EXACT: the Riley matrices at meridian eigenvalue s = i have
@@ -44,7 +44,7 @@ What is verified
     holds as a polynomial identity -- for every u, before any relator is
     imposed.  So conjugation by A inverts AB: the image < A, B > = < AB > . < A >
     is binary dihedral for EVERY traceless Riley representation.  This is the
-    engine of Theorem A, and it is checked symbolically, not sampled.
+    engine of Theorem 1.1, and it is checked symbolically, not sampled.
 
 (2) THE TRACELESS RILEY POLYNOMIAL.  The relator a w = w b holds iff the four
     entries of A W - W B vanish; their monic gcd over Q(i) is the traceless
@@ -57,7 +57,7 @@ What is verified
     (p-1)/2, constant term det K = p, root sum -p, and -- the point of the
     theorem -- INDEPENDENCE OF q.
 
-(3) THE SMALL CASES printed in Remark 3.2 of the paper:
+(3) THE SMALL CASES printed in Remark 3.1 of the paper:
         phi_3 = u + 3,  phi_5 = u^2 + 5u + 5,
         phi_7 = u^3 + 7u^2 + 14u + 7,  phi_9 = u^4 + 9u^3 + 27u^2 + 30u + 9.
 
@@ -329,7 +329,7 @@ def main():
     print(f"    A (AB) A^-1 = (AB)^-1 in Z[i][u] .... {'PASS' if dihedral else 'FAIL'}")
     print("    => conjugation by the meridian A inverts AB, for EVERY u: the image")
     print("       <A,B> = <AB> . <A> is binary dihedral before any relator is imposed.")
-    print("       (This is the content of Theorem A; the relator only selects which u.)")
+    print("       (This is the content of Theorem 1.1; the relator only selects which u.)")
 
     # (2)-(4) the traceless Riley polynomial, all p <= 9, all q -------------
     print("\n(2) The traceless Riley polynomial phi_{p,q}(i,u), exactly, for all p <= 9")
@@ -359,7 +359,7 @@ def main():
                   f"{len(got)-1:<4} {got[0]}")
 
     # q-independence --------------------------------------------------------
-    print("\n(3) q-independence (Theorem A: the root set depends only on p)")
+    print("\n(3) q-independence (Theorem 1.1: the root set depends only on p)")
     for p, rows in seen.items():
         distinct = {poly for _, poly in rows}
         good = len(distinct) == 1
@@ -376,7 +376,7 @@ def main():
           f" identical ... {'PASS' if same9 else 'FAIL'}")
 
     # (4) the printed small cases and the trigonometric root set ------------
-    print("\n(4) Remark 3.2 small cases, and the roots -4 sin^2(pi k / p)")
+    print("\n(4) Remark 3.1 small cases, and the roots -4 sin^2(pi k / p)")
     printed = {3: [3, 1], 5: [5, 5, 1], 7: [7, 14, 7, 1], 9: [9, 30, 27, 9, 1]}
     for p in (3, 5, 7, 9):
         target = phi_exact(p)

@@ -7,10 +7,10 @@ Self-computes the individual spectral-flow gradings mu(alpha) of the irreducible
 flat connections on the double branched cover Sigma(2,3,n), and assembles the
 Z/4-graded singular instanton CHAIN complex IC^natural = (1+a,a,a,a).
 
-NOTE (correction 2026-07-14): this is the CHAIN complex, not the homology. The
-homology I^natural equals the chain (differential zero) only for n = 1 (mod 6);
-for n = 5 (mod 6) the differential has rank 1 and rank I^natural = 4a-1 = (1+4a)-2
-(e.g. T(3,5) = P(-2,3,5) = 10_124 has rank 7, not 9). See RESEARCH_LOG.md sec 19.
+This is the CHAIN complex, not the homology. The homology I^natural equals the
+chain complex (differential zero) only for n = 1 (mod 6); for n = 5 (mod 6) the
+differential has rank 1 and rank I^natural = 4a-1 = (1+4a)-2 (e.g. T(3,5) =
+P(-2,3,5) = 10_124 has rank 7, not 9; Proposition 5.4 of the paper).
 
 Verified against Anvari (arXiv:1609.05025) Example 6.1:
   Sigma(2,3,7): (1,2,2) -> gr=175 (=7 mod 8), mu=87 (=3 mod 4)
