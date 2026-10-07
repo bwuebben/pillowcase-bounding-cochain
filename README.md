@@ -10,10 +10,10 @@ Each paper cites the others where their results meet.
 | directory | paper | pages |
 |---|---|---|
 | [`paper1/`](paper1) | *Traceless SU(2) characters and ℤ/4 instanton gradings for two-bridge and (3,n)-torus knots*, arXiv:2607.26095 | 15 |
-| [`paper4/`](paper4) | *The S-complex differential of torus knots* | 12 |
-| [`paper5/`](paper5) | *Pillowcase Floer homology of the torus knots T(3,n)* | 40 |
 | [`paper2/`](paper2) | *Instanton and pillowcase homology of the (−2,3,q) pretzel knots*, arXiv:2607.26096 | 37 |
 | [`paper2b/`](paper2b) | *Maurer–Cartan elements in the pillowcase and the Bar-Natan invariant for the (−2,3,q) pretzel knots* | 33 |
+| [`paper4/`](paper4) | *The S-complex differential of torus knots* | 12 |
+| [`paper5/`](paper5) | *Pillowcase Floer homology of the torus knots T(3,n)* | 40 |
 
 For the torus knots, read papers 1, 4 and 5 in that order. Paper 1 assembles the instanton-side
 facts, paper 4 proves new results about the S-complex differential for every torus knot, and paper 5
@@ -41,6 +41,47 @@ with the pillowcase bigon of Hedden–Herald–Kirk. The numerical checks are `r
 `torus_characters.py` and `fs_gradings.py` in `pillowcase/`.
 
 The paper cites papers 2, 2b, 4 and 5 where they continue this material. It is arXiv:2607.26095.
+
+### Paper 2: instanton and pillowcase homology of the (−2,3,q) pretzel knots (`paper2/`)
+
+The pretzel knots P(−2,3,q), q odd, begin with the torus knots T(3,4) and T(3,5) and are hyperbolic
+for q ≥ 7.
+
+- **The conjecture of Hedden, Herald and Kirk.** Regluing the tangle that Hedden, Herald and Kirk use
+  for T(3,5) by (q − 5)/2 Dehn twists along the Conway sphere gives a decomposition of P(−2,3,q).
+  For q ≥ 7 and small holonomy perturbations its pillowcase complex is computed by hand: it has
+  q + 2 + 4N_q generators, a differential of rank 2N_q (nonzero for q ≥ 9), and homology isomorphic
+  to I♮ as a ℤ/4-graded vector space. The same argument applies to the twisted torus knots
+  T(3,n;2,m) with n ≡ 1, 2 (mod 6), under a hypothesis on the chirality of the torus-knot decomposition.
+- **Instanton homology.** For every odd q ≥ 3, I♮(P(−2,3,q); ℤ) is free abelian of rank q + 2. Over
+  ℚ this is due to Lobb and Zentner; for q ≥ 7 the integral and graded statements also follow from
+  work of Daemi and Scaduto. The proof here is uniform in q.
+
+The source is `paper2/main.tex` with `paper2/sections/*.tex`. The computations that corroborate
+Sections 4 and 5 are in [`paper2/code/`](paper2/code).
+
+### Paper 2b: Smith's decomposition and the Bar-Natan invariant (`paper2b/`)
+
+For Smith's decomposition of P(−2,3,q) into Q₋₁/₂ and Q₁/₃ + Q₁/q, the pairing with zero bounding
+cochain has the wrong rank, at q = 5 by Smith's computation and at q = 7 for a model of Smith's curve.
+
+- **Maurer–Cartan elements.** In the algebraic model of Kotelskiy, Watson and Zibrowius, twisted complexes over
+  their algebra 𝓑, the Maurer–Cartan equation is a finite identity. At q = 7, smoothings of the model give Maurer–Cartan
+  elements with the correct pairing, and a second closure selects one homotopy class among them,
+  conditionally on Conjecture D of Cazassus, Herald, Kirk and Kotelskiy and a stated local support
+  hypothesis. The Lagrangian correspondence induced by the line of Q₁/₃ is immersed with a triple
+  point, so Gao's representability theorem does not apply to it.
+- **The Bar-Natan invariant.** For q = 5, 7 the object obtained is the sum of a rational arc and a
+  closed curve with a two-dimensional local system, and one further Maurer–Cartan term near a corner
+  turns it into the Bar-Natan invariant of the tangle; granting the arc case of their intersection formula,
+  no rational closure distinguishes the two. The paper asks, without conjecturing an answer, whether the
+  object that the conjecture assigns to the tangle is its Bar-Natan invariant.
+- **Gradings.** In the normalization used for the comparison with the Bar-Natan invariant, the only
+  bigraded deformation among the four at q = 7 is the one that the second closure excludes.
+
+The source is `paper2b/main.tex` with `paper2b/sections/*.tex`. The computations are in
+[`paper2b/code/`](paper2b/code) (Section 4 and Appendix A) and [`pillowcase/`](pillowcase) (Section 3);
+see the README files there.
 
 ### Paper 4: the S-complex differential of torus knots (`paper4/`)
 
@@ -91,47 +132,6 @@ whole set runs in about twelve minutes (`cd paper5/code && ./run_all.sh`; it nee
 
 Paper 2 builds on this paper: shearing its curves gives the pillowcase homology of the pretzel knots
 P(−2,3,q) and of a family of twisted torus knots.
-
-### Paper 2: instanton and pillowcase homology of the (−2,3,q) pretzel knots (`paper2/`)
-
-The pretzel knots P(−2,3,q), q odd, begin with the torus knots T(3,4) and T(3,5) and are hyperbolic
-for q ≥ 7.
-
-- **The conjecture of Hedden, Herald and Kirk.** Regluing the tangle that Hedden, Herald and Kirk use
-  for T(3,5) by (q − 5)/2 Dehn twists along the Conway sphere gives a decomposition of P(−2,3,q).
-  For q ≥ 7 and small holonomy perturbations its pillowcase complex is computed by hand: it has
-  q + 2 + 4N_q generators, a differential of rank 2N_q (nonzero for q ≥ 9), and homology isomorphic
-  to I♮ as a ℤ/4-graded vector space. The same argument applies to the twisted torus knots
-  T(3,n;2,m) with n ≡ 1, 2 (mod 6), under a hypothesis on the chirality of the torus-knot decomposition.
-- **Instanton homology.** For every odd q ≥ 3, I♮(P(−2,3,q); ℤ) is free abelian of rank q + 2. Over
-  ℚ this is due to Lobb and Zentner; for q ≥ 7 the integral and graded statements also follow from
-  work of Daemi and Scaduto. The proof here is uniform in q.
-
-The source is `paper2/main.tex` with `paper2/sections/*.tex`. The computations that corroborate
-Sections 4 and 5 are in [`paper2/code/`](paper2/code).
-
-### Paper 2b: Smith's decomposition and the Bar-Natan invariant (`paper2b/`)
-
-For Smith's decomposition of P(−2,3,q) into Q₋₁/₂ and Q₁/₃ + Q₁/q, the pairing with zero bounding
-cochain has the wrong rank, at q = 5 by Smith's computation and at q = 7 for a model of Smith's curve.
-
-- **Maurer–Cartan elements.** In the algebraic model of Kotelskiy, Watson and Zibrowius, twisted complexes over
-  their algebra 𝓑, the Maurer–Cartan equation is a finite identity. At q = 7, smoothings of the model give Maurer–Cartan
-  elements with the correct pairing, and a second closure selects one homotopy class among them,
-  conditionally on Conjecture D of Cazassus, Herald, Kirk and Kotelskiy and a stated local support
-  hypothesis. The Lagrangian correspondence induced by the line of Q₁/₃ is immersed with a triple
-  point, so Gao's representability theorem does not apply to it.
-- **The Bar-Natan invariant.** For q = 5, 7 the object obtained is the sum of a rational arc and a
-  closed curve with a two-dimensional local system, and one further Maurer–Cartan term near a corner
-  turns it into the Bar-Natan invariant of the tangle; granting the arc case of their intersection formula,
-  no rational closure distinguishes the two. The paper asks, without conjecturing an answer, whether the
-  object that the conjecture assigns to the tangle is its Bar-Natan invariant.
-- **Gradings.** In the normalization used for the comparison with the Bar-Natan invariant, the only
-  bigraded deformation among the four at q = 7 is the one that the second closure excludes.
-
-The source is `paper2b/main.tex` with `paper2b/sections/*.tex`. The computations are in
-[`paper2b/code/`](paper2b/code) (Section 4 and Appendix A) and [`pillowcase/`](pillowcase) (Section 3);
-see the README files there.
 
 ## Building
 
