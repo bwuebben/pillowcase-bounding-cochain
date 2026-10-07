@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Remark 4.21, joined sectors: numerical Floer complexes of the sheared curves for P(-2,3,q).
+r"""Appendix A.1(v) (summarized in Remark 4.21), joined sectors: numerical Floer complexes of the sheared curves for P(-2,3,q).
 
 For ten perturbations eps = (eps_A, eps_B) in the joined sectors |eps_B| < sqrt(3) |eps_A|, with |5 eps_A| between
 0.002 and 0.3 and |eps_B| between 0.0003 and 0.05, the variety W_eps of the T(3,5) tangle is traced once (the shear
@@ -8,11 +8,11 @@ does not change it, Lemma 4.6(a)).  For each q in {7, 9, ..., 25, 29, 33} and th
 Section 4:
 
   * the graded homology equals (1 + N_3, N_1, N_1, N_3) (Theorem 4.18(3)) in all 240 cases;
-  * every bigon runs from a down-crossing to an up-crossing on one strand, and the number of bigons is twice the rank
+  * every bigon runs from a down-crossing to an up-crossing on one lift of L_0, and the number of bigons is twice the rank
     of the differential (Lemma 4.16, Proposition 4.17);
   * the degrees agree with Proposition 4.15;
   * the generator count q + 2 + 4 N_q (Proposition 4.13) is attained in 178 cases; in the other 62, which occur only at
-    the larger perturbations, a line Delta_k is crossed once instead of three times (Remark 4.12).
+    the larger perturbations, a line D_k is crossed once instead of three times (Remark 4.12).
 
 As consistency checks the script also verifies, in every case, that the arc ends at (pi, (q+3) pi) (Proposition
 4.11(1)), that its lift is embedded, that each line is crossed once (up) or three times (up, down, up), that r_+ lies
@@ -130,7 +130,7 @@ def main():
     print('summary')
     check(f'graded homology = (1 + N_3, N_1, N_1, N_3) in {n_H} of {n_cases} cases'
           + ('' if quick else ' (paper: all 240)'), n_H == n_cases and (quick or n_cases == 240))
-    check(f'bigons run from a down-crossing to an up-crossing on one strand, #bigons = 2 rank d, degrees as in '
+    check(f'bigons run from a down-crossing to an up-crossing on one lift of L_0, #bigons = 2 rank d, degrees as in '
           f'Proposition 4.15, end point, crossing pattern and r_+ as stated: {n_ok_struct} of {n_cases}',
           n_ok_struct == n_cases)
     if not quick:

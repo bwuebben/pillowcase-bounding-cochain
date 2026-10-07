@@ -1,52 +1,45 @@
 \section{Smith's decomposition}\label{sec:smith}
 
-Smith's decomposition of $K_q=P(-2,3,q)$ is \eqref{eq:family} with the earring on the $-2$ band,
-$T_1=\Qh{-1/2}$ and $T_2=Q_{1/3}+Q_{1/q}$ \cite{Smith}.  The red
-curve $\Rnat(\Qh{-1/2})$ does not depend on $q$; the blue curve is Smith's holonomy-perturbed curve
-$\Rp_t(Q_{1/3}+Q_{1/q})$.  In contrast with the decomposition of Section~\ref{sec:sheared}, the
-pairing of these two curves with zero bounding cochain does not have the rank of $\Inat(K_q)$: at $q=7$
-it is $7$ rather than $9$ (Proposition~\ref{prop:q7-typeD}), and the finite statistics of
-\S\ref{sec:compute} differ from $q+2$ by $\pm2$ for $q=5,7,11,13$.  Conditional on the conjecture of
-Cazassus, Herald, Kirk and Kotelskiy \cite[Conj.~D]{CHKK}, Smith deduces that $T_2$ must carry a
-nonzero bounding cochain when $q=5$ \cite[proof of Thm.~5.9]{Smith}.  At $q=7$ we work in the two-arc
-algebra of Section~\ref{sec:background}: local smoothings of the blue curve give Maurer--Cartan
-elements to all orders, and a second closure selects one homotopy class among them, conditionally on a
-localization hypothesis.  Section~\ref{sec:khovanov} relates the selected class to the Khovanov
-invariant of $T_2$.  Statements labelled \emph{Computation} are outputs of the finite procedures of
-\S\ref{sec:compute} and are recorded as data; the statement labelled \emph{Hypothesis} is assumed,
-not proved.
+This section treats Smith's decomposition~\eqref{eq:family} of $K_q$, with the earring on $Q_{-1/2}$: the
+piecewise-linear model of Smith's curve (\S\ref{ss:models}), its pairing dimension with zero bounding cochain at
+$q=7$ (\S\ref{sec:typeD}), and the Maurer--Cartan elements selected by a second closure
+(\S\ref{ss:second-closure}).  Sections~\ref{ss:correspondence} and~\ref{ss:yoneda}, on the triple point of
+a Lagrangian correspondence and on a Yoneda reduction, concern the formal route to identifying the assigned
+object and can be skipped on a first reading.
 
 \subsection{Piecewise-linear models and Smith's cross-resolution}\label{ss:models}
 We work in Smith's coordinates \eqref{eq:smith-coords}, with the corner rule for rational lines and
 the fiber-product description of Conway sums recalled in \S\ref{ss:smith-chart}.  As Smith does, we
 call the images of the lines $\gamma=0$ and $\gamma=\pi$ the \emph{edges} of the pillowcase, and the
 circles of representations that a Conway sum acquires over them \emph{edge circles}
-\cite[Thms.~3.15 and 3.26]{Smith}.  Smith's perturbation resolves each internal edge circle by a
-diagonal cut-and-paste \cite[Thm.~4.22]{Smith}, which replaces it by two arcs crossing once; we call
-these arcs \emph{connectors}, and the remaining arcs of the resolved curve, which come from the fiber
+\cite[Thms.~3.15 and 3.26]{Smith}.  Smith's perturbation performs the cross-resolution
+(\S\ref{ss:smith-chart}) of each internal edge circle \cite[Thm.~4.22]{Smith}; we call the two arcs crossing
+once that replace the circle \emph{connectors}, and the remaining arcs of the resolved curve, which come from the fiber
 product, \emph{inherited strands}.  The earring curve $E_r$ of $\Qh{r}$ is a Herald--Kirk
-figure-eight, the doubled arc closing through the corner folds with one pinch \cite[Def.~6.7]{HK}; this
-specifies a finite curve, not a bounding cochain.  In Smith's notation $\Qh{r}$ is the hat of $Q_r$ (the tangle
+figure-eight, the doubled arc closing around the two end corners, with one pinch \cite[Def.~6.7]{HK}; this
+specifies the immersed curve only, and its bounding cochain is discussed after
+Proposition~\ref{prop:q7-typeD}.  In Smith's notation $\Qh{r}$ is the hat of $Q_r$ (the tangle
 glued into the cobordism of \cite[Fig.~11a]{Smith}, with curve the reflection of the line of $Q_r$ by
-$(\gamma,\theta)\mapsto(\gamma,-\theta)$ \cite[Lem.~2.31]{Smith}), and the earring is his $\natural$, so that
+$(\gamma,\theta)\mapsto(\gamma,-\theta)$ \cite[Lem.~2.31]{Smith}), the earring is his $\natural$, and $\Rnat$
+denotes his perturbed character variety of a tangle carrying the earring, so that
 $E_r=\Rnat(\Qh{r})$.  The closing tangle enters the pairing through its
-mirror image, so $E_r$ surrounds the line of $Q_{-r}$ (\S\ref{ss:kh-smith}); for instance the red
-curve $E_{-1/2}=\Rnat(\Qh{-1/2})$ lies along the line of slope $1/2$.
+mirror image, so $E_r$ surrounds the line of $Q_{-r}$ (\S\ref{ss:kh-smith}); for instance
+$E_{-1/2}=\Rnat(\Qh{-1/2})$ lies along the line of slope $1/2$.
 
 Write $L_{q,\mathrm{PL}}$ for the piecewise-linear curve obtained from the lines of slopes $1/3$ and
-$1/q$ through $(0,0)$ by the fiber product and the crossed local pairing at every edge circle.  These
+$1/q$ through $(0,0)$ by the fiber product and the crosswise joining at every edge circle.  These
 lines are the translates by $(0,\pi)$ of the lines of $Q_{1/3}$ and $Q_{1/q}$, and since the fiber
 product adds the $\theta$-coordinates the two shifts cancel: both fiber products have the same image
 and the same edge circles.  The model represents Smith's perturbed curve for negative values of his
-perturbation parameter (Remark~\ref{rem:sign}).  The red curve $\Rnat(\Qh{-1/2})$ is one immersed
-circle with one pinch; the blue curve has $q-1$ resolved edge circles and is a single proper immersed
-arc.  The model $L_{q,\mathrm{PL}}$ has $40$, $82$ and $240$ transverse self-intersections at
+perturbation parameter (Remark~\ref{rem:sign}).  The earring curve $E_{-1/2}$ is one immersed
+circle with one pinch; the model $L_{q,\mathrm{PL}}$ has $q-1$ resolved edge circles and is a single proper
+immersed arc.  It has $40$, $82$ and $240$ transverse self-intersections at
 $q=5,7,11$.  These are counts for the model: the number is not invariant under regular homotopy, and a
 numerical trace of Smith's perturbed curve at $q=7$ has $50$ (Remark~\ref{rem:analytic}).  At $q=7$
 the model also has twelve tangential self-contacts on the edges, where connectors meet inherited
 strands without crossing; we remove them by a small perturbation that creates no crossings.  We
 require $\gcd(q,3)=1$, since otherwise corner circles appear; this excludes $q=3,9,15,\dots$ from the
-members computed here, but not from Theorem~\ref{thm:inat}.
+members computed here, but not from~\cite[Thm.~1.1]{WuebbenII}.
 
 \begin{proposition}[Smith's cross-resolution and the model]\label{prop:smith-main}
 Let $q$ be odd and $\gcd(q,3)=1$.
@@ -57,43 +50,45 @@ all internal, and no corner circles.
 after an arbitrarily small additional perturbation where Smith's construction requires one,
 $\Rp_t(Q_{1/3}+Q_{1/q})$ contains a subspace homeomorphic to the curve obtained from the fiber
 product by replacing each internal circle with two intervals joined to its ends crosswise; this is
-the pairing used to define $L_{q,\mathrm{PL}}$.  As $t\to0$ the image of each new interval approaches
+the crosswise joining used to define $L_{q,\mathrm{PL}}$, and the components of this subspace are the
+\emph{main components}.  As $t\to0$ the image of each new interval approaches
 the image of the corresponding circle.  The remaining components are circles, the \emph{auxiliary
 components}.
 \item[(c)] For a fixed complementary tangle, there is an arbitrarily small perturbation of it for
-which the Floer pairing with $\Rp_t(Q_{1/3}+Q_{1/q})$ equals the pairing with its main components.
+which the Lagrangian Floer homology of its curve with $\Rp_t(Q_{1/3}+Q_{1/q})$ equals that with the main
+components.
 This remains valid when either tangle carries an earring.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 Smith identifies the two rational character varieties with straight intervals of slopes $1/3$ and
-$1/q$ \cite[Prop.~2.27]{Smith}, and rational tangles of finite slope form a good pair without
+$1/q$ \cite[Prop.~2.27]{Smith}, and rational tangles of finite slope form a good pair, that is, satisfy
+Smith's transversality conditions for a sum \cite[Def.~3.16]{Smith}, without
 preliminary perturbations \cite[example following Thm.~3.26]{Smith}.  Because the denominators $3$ and
 $q$ are coprime, the sum has no corner circles \cite[discussion following Prop.~5.8]{Smith}, so every
 edge circle is internal.  This is (a).  For $t>0$, part (b) is Smith's cross-resolution theorem
 \cite[Thm.~4.22]{Smith}, together with his remark preceding \cite[Thm.~4.20]{Smith} that an
 arbitrarily small additional perturbation makes the relevant spaces manifolds when transversality
-fails.  For $t<0$ it follows from the case of $-t$: the homeomorphism $\hat\sm$ of
-Remark~\ref{rem:sign} maps $\Rp_{-t}(Q_{1/3}+Q_{1/q})$ onto $\Rp_t(Q_{1/3}+Q_{1/q})$ and the
-unperturbed fiber product onto itself, and it acts on the pillowcase of the sum by the translation
-$(\gamma,\theta)\mapsto(\gamma+\pi,\theta)$.  Part (c) is Smith's auxiliary-component result
+fails.  For $t<0$ it follows from the case of $-t$ by the homeomorphism $\hat\sm$ of
+Remark~\ref{rem:sign}, which maps $\Rp_{-t}(Q_{1/3}+Q_{1/q})$ onto $\Rp_t(Q_{1/3}+Q_{1/q})$ and the
+unperturbed fiber product onto itself.  Part (c) is Smith's auxiliary-component result
 \cite[Prop.~5.7]{Smith}, which includes the earring case; its proof uses only that the auxiliary
 components converge to finitely many points of $\Pst$ as $t\to0$, and by the same homeomorphism this
 also holds for $t<0$.
 \end{proof}
 
-Smith states informally that \cite[Thm.~4.22]{Smith} determines the image of the main component up
+Smith states informally that \cite[Thm.~4.22]{Smith} determines the image of the perturbed curve up
 to regular homotopy (\cite[caption of Fig.~3]{Smith} and the outline of the proof in his
 introduction); the formal statement gives the homeomorphism type and the convergence in (b).  We use
-$L_{q,\mathrm{PL}}$ as a representative of that regular-homotopy class, but no proof below depends on
+$L_{q,\mathrm{PL}}$ as a representative of the regular-homotopy class of the main components, but no proof
+below depends on
 this identification; at $q=7$ the type-D encoding of a traced copy of Smith's curve is strictly
 isomorphic to that of $L_{7,\mathrm{PL}}$ (Remark~\ref{rem:analytic}).
 
 \begin{remark}[The sign of the perturbation]\label{rem:sign}
-In Smith's configuration $C_3$ the summands are glued along two inner boundary spheres, with
-pillowcases $P_1$ and $P_2$, and the sum is read off on the outer sphere, with pillowcase $P_3$; write
-$C_{3,t}$ for the perturbed character variety of the configuration.  Its representations are
+For the configuration $C_3$ of \S\ref{ss:smith-chart}, write
+$C_{3,t}$ for its perturbed character variety.  Its representations are
 parametrized by the images of the meridians $a,b,c$ of the outer sphere and of a meridian $x$ of the
 first inner sphere: the perturbation element is $p=\exp\bigl(t\operatorname{Im}(ac^{-1}x)\bigr)$, the
 remaining meridians are $d=ca^{-1}b$ and $y=xp^{-1}a^{-1}pb$, and the perturbed variety is cut out by
@@ -115,17 +110,14 @@ involve $b$ and $y$ changes sign; it translates each of $P_1,P_2,P_3$ by
 $(\gamma,\theta)\mapsto(\gamma+\pi,\theta)$.  The composite $\hat\sm\colon(b,x,t)\mapsto(-b,-x,-t)$
 therefore translates $P_1$ and $P_2$ by $(\pi,\pi)$, which preserves the lines of $Q_{1/3}$ and
 $Q_{1/q}$, and $P_3$ by $(\pi,0)$, so the curve for $t>0$ is the translate by $(\pi,0)$ of the curve
-for $-t$.  This translation is a symplectomorphism of $\Pst$ that permutes the corners, but the
-translated curve is a different representative, and pairings of its smoothings with the earrings can
-differ from those for $t<0$ (Remark~\ref{rem:sign-pairings}).
+for $-t$.  This translation is a symplectomorphism of $\Pst$ that permutes the corners; its effect on
+pairing dimensions is recorded in Remark~\ref{rem:sign-pairings}.
 \end{remark}
 
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[scale=1.1]
-% Figure curves generated by pillowcase/make_figure.py (inlined)
-% AUTO-GENERATED by pillowcase/make_figure.py -- the q=5 PL model curves.
-%% blue folded into 52 pieces; red (both lifts) into 10 pieces.
+% drawn from the piecewise-linear model at q = 5
 \draw[thick] (0,0) rectangle (3.14159,6.28319);
 \foreach \y in {0,3.14159,6.28319}{\fill (-0.035,\y-0.035) rectangle (0.035,\y+0.035); \fill (3.14159-0.035,\y-0.035) rectangle (3.14159+0.035,\y+0.035);}
 \node[below] at (0,0) {\footnotesize $(0,0)$};
@@ -209,18 +201,18 @@ differ from those for $t<0$ (Remark~\ref{rem:sign-pairings}).
 \draw[black,thick] (3.0568,4.9813) circle (3.2pt);
 \node[right] at (0.1081,1.2716) {\footnotesize $s_A$};
 \node[left] at (2.9768,4.9813) {\footnotesize $s_B$};
-\node[blue] at (1.57,-0.55) {\footnotesize blue $=\Rp_t(Q_{1/3}+Q_{1/5})$};
-\node[red] at (1.57,7.0332) {\footnotesize red $=\Rnat(\Qh{-1/2})$};
+\node[blue] at (1.57,-0.55) {\footnotesize blue $=L_{5,\mathrm{PL}}$};
+\node[red] at (1.57,7.40) {\footnotesize red $=E_{-1/2}=\Rnat(\Qh{-1/2})$};
 \end{tikzpicture}
 \caption{The two piecewise-linear model curves at $q=5$ on the fundamental domain
 $[0,\pi]\times[0,2\pi)$ of the pillowcase, in Smith's coordinates (compare \cite[Fig.~31]{Smith}).
-Blue models Smith's perturbed curve $\Rp_t(Q_{1/3}+Q_{1/5})$, a single immersed arc with $40$
+Blue is the model $L_{5,\mathrm{PL}}$ of Smith's perturbed curve $\Rp_t(Q_{1/3}+Q_{1/5})$, a single immersed arc with $40$
 self-intersections clustered along the edges; the small arcs hugging the edges $\gamma\in\{0,\pi\}$ are
 the connectors resolving the four edge circles, drawn at amplitude $\varepsilon\approx0.05$--$0.07$, and
 the V-shaped turnbacks at the border are strands reflecting off the edges in the quotient.  Red is the
-earring figure-eight $\Rnat(\Qh{-1/2})$.  Across the interior the blue strands run nearly parallel to
-red (slopes $8/15$ and $1/2$, crossing angle $\approx0.026$), which is why shallow-angle corner tests
-are needed.  Solid dots are the nine generators: one interior, and two clusters of four near
+earring figure-eight $E_{-1/2}=\Rnat(\Qh{-1/2})$.  Across the interior the blue strands run nearly parallel to
+red (slopes $8/15$ and $1/2$, crossing angle $\approx0.026$).  Solid dots are the nine intersection points of
+the two curves: one interior, and two clusters of four near
 $\gamma=\pi$ that merge at this scale.  The circled self-intersections $s_A,s_B$ are the support of
 Computation~\ref{comp:cochains}(i).  Curves appear as several arcs because the fundamental domain folds
 the double cover.}
@@ -230,7 +222,8 @@ the double cover.}
 \subsection{The \texorpdfstring{$Q_{1/3}$}{Q(1/3)} correspondence is not embedded}\label{ss:correspondence}
 Write $P_i^*$ for the smooth locus of $P_i$, $P^-$ for a pillowcase with the sign of its symplectic
 form reversed, and $C_{3,t}^{\mathrm{reg}}\iss P_1^-\times P_2^-\times P_3$ for the regular locus of
-Smith's perturbed three-sphere correspondence, his $\mathcal R^*$ \cite[Def.~4.9]{Smith}, which maps
+the perturbed correspondence of the three-boundary configuration $C_3$, Smith's $\mathcal R_{D_t}(C_3)^*$
+\cite[Def.~4.9]{Smith}, which maps
 to the product of pillowcases by a Lagrangian immersion \cite[Cor.~4.11]{Smith}.
 
 \begin{lemma}[Reduction to a correspondence between surfaces]\label{lem:surface-reduction}
@@ -238,9 +231,9 @@ Let $A_{1/3}\iss P_1$ be the rational line of $Q_{1/3}$.  Wherever the fiber pro
 \[
  F_{1/3,t}:=A_{1/3}\times_{P_1}C_{3,t}^{\mathrm{reg}}\iss P_2^-\times P_3
 \]
-is an immersed Lagrangian surface.  On a torus-cover chart of the unperturbed main stratum with
-$\gamma\notin\{0,\pi\}$, a branch of $A_{1/3}$ has $\theta_1=\gamma/3+c$, and $F_{1/3,0}$ is the graph
-of the symplectic shear $(\gamma,\eta)\mapsto(\gamma,\eta+\gamma/3+c)$; on compact subsets of such a
+is an immersed Lagrangian surface.  On a torus-cover chart, with $\gamma\notin\{0,\pi\}$, of Smith's
+unperturbed manifold $R(C_3)^*$ \cite[Def.~3.6]{Smith} (on such a chart all representations are binary dihedral), a branch of $A_{1/3}$ has $\theta_1=\gamma/3+\nu$ for a constant $\nu$, and $F_{1/3,0}$ is the graph
+of the symplectic shear $(\gamma,\eta)\mapsto(\gamma,\eta+\gamma/3+\nu)$; on compact subsets of such a
 chart the projection of $F_{1/3,t}$ to $P_2$ remains a local diffeomorphism for small $|t|$.  After
 composition with the rational line of $Q_{1/7}$, the complement of these graph charts lies in
 neighborhoods of the six internal edge circles of Proposition~\ref{prop:smith-main} and of the two
@@ -249,24 +242,26 @@ locus, the target projection $F_{1/3,t}\to P_3^*$ is proper.
 \end{lemma}
 
 \begin{proof}
-On the unperturbed main stratum Smith's boundary-coordinate formulas give $p_1=(\gamma,\beta)$,
-$p_2=(\gamma,\theta-\beta)$ and $p_3=(\gamma,\theta)$.  Imposing $\beta=\gamma/3+c$ and writing
+Over such a chart Smith's boundary-coordinate formulas give $p_1=(\gamma,\beta)$,
+$p_2=(\gamma,\theta-\beta)$ and $p_3=(\gamma,\theta)$ \cite[(3.1.1)--(3.1.6) and the proof of
+Prop.~3.20]{Smith}.  Imposing $\beta=\gamma/3+\nu$ and writing
 $\eta=\theta-\beta$ gives the displayed graph, which preserves $d\gamma\wedge d\theta$, so the
 transverse composition is Lagrangian; the local-diffeomorphism property persists on compact subsets by
 the implicit function theorem.  For $Q_{1/3}$ and $Q_{1/7}$ there are six internal edge circles, and
-\cite[Thm.~4.22]{Smith} replaces precisely their neighborhoods by the crossed pieces used to construct
-$L_{7,\mathrm{PL}}$.  For properness, let $\overline A_{1/3}$ be the compact rational arc and
-$\overline F_{1/3,t}:=\overline A_{1/3}\times_{P_1}\mathcal R_{D_t}(C_3)$, a compact space.  The
+\cite[Thm.~4.22]{Smith} replaces precisely their neighborhoods by their cross-resolutions, as in the
+construction of $L_{7,\mathrm{PL}}$.  For properness, let $\overline A_{1/3}$ be the compact rational arc and
+$\overline F_{1/3,t}:=\overline A_{1/3}\times_{P_1}\mathcal R_{D_t}(C_3)$, a compact space; here
+$\mathcal R_{D_t}(C_3)$ is Smith's notation for $C_{3,t}$ \cite[\S4.1]{Smith}.  The
 boundary restriction of $\mathcal R_{D_t}(C_3)$ lies either in $P_1^*\times P_2^*\times P_3^*$ or in
-the product of the three corner strata \cite[Prop.~4.3]{Smith}, and its regular Lagrangian locus is
+the product of the three corner strata \cite[Prop.~4.3]{Smith} (for $t<0$ via Remark~\ref{rem:sign}), and its regular Lagrangian locus is
 the former \cite[Cor.~4.11]{Smith}.  Hence $\overline F_{1/3,t}\setminus F_{1/3,t}$ maps to the corners
 of $P_3$, and the inverse image of a compact subset of $P_3^*$ is compact and lies in $F_{1/3,t}$.
 \end{proof}
 
 \begin{proposition}[A triple-point obstruction]\label{prop:partial-triple}
 For every sufficiently small $t<0$, the partial fiber product of Lemma~\ref{lem:surface-reduction} has
-three distinct transverse points whose images in $P_2^*\times P_3^*$ are all
-$\bigl((0,\pi/2),(0,\pi/2)\bigr)$.  Consequently $F_{1/3,t}\to P_2^-\times P_3$ is not embedded.
+three distinct points, at each of which the fiber product is transverse, with common image
+$\bigl((0,\pi/2),(0,\pi/2)\bigr)$ in $P_2^*\times P_3^*$.  Consequently $F_{1/3,t}\to P_2^-\times P_3$ is not embedded.
 \end{proposition}
 
 \begin{proof}
@@ -294,7 +289,7 @@ $\partial_\beta\operatorname{Re}(y)=-2t\sin^2\alpha+O(t^2)$ and
 $\partial_\alpha(3\theta_1-\gamma_1)=\pm3+O(t)$, the fiber product is transverse at all three points.
 Finally, the symmetry $\sm$ of Remark~\ref{rem:sign} maps the fiber product of $A^0_{1/3}$ with
 $C_{3,t}$ onto that of $A_{1/3}$ with $C_{3,-t}$, preserving distinctness, transversality and
-$\gamma_1$, fixing $p_3$ and translating $p_2$ by $(0,\pi)$.  Since $(0,3\pi/2)=\iota(0,\pi/2)$, the
+$\gamma_1$, fixing $p_3$ and translating $p_2$ by $(0,\pi)$.  Since $(0,3\pi/2)=\rho(0,\pi/2)$, the
 three image points again map to $\bigl((0,\pi/2),(0,\pi/2)\bigr)$; replacing $t$ by $-t$ gives the
 statement.
 \end{proof}
@@ -306,7 +301,7 @@ whose projection to the target is proper; only the geometric composition may be 
 \cite[Assumption~7.10]{Gao}, and the unobstructedness input \cite[Thm.~7.12]{Gao} has the same
 hypotheses.  By Proposition~\ref{prop:partial-triple}, Gao's theorem cannot be invoked for
 $F_{1/3,t}$, whose exactness, cylindricity and Chern class have not been checked either.  The triple
-point is not generic, since the three sheets are pairwise transverse, but splitting it into double
+point is not generic, although the three sheets are pairwise transverse; splitting it into double
 points leaves $F_{1/3,t}$ non-embedded.  Gao expects the results of his \S6 to extend to immersed
 Lagrangians \cite[Rem.~6.1]{Gao}, but no immersed version of \cite[Thm.~7.24]{Gao} is stated.
 Fukaya's compact theorem \cite{FukayaCorr} does not apply verbatim to $\Pst$, and the torus double
@@ -314,15 +309,16 @@ cover does not help by itself: Smith's perturbed $C_3$ variety has singular poin
 that are cones on tori \cite[Thm.~4.16]{Smith}, and the required equivariant correspondence functor
 has not been constructed \cite[\S11.5]{CHKK}.
 
-\subsection{The pairing with zero bounding cochain at \texorpdfstring{$q=7$}{q=7}}\label{sec:typeD}
-We use the two-arc algebra $\mathcal B$, the arc system $s^\circ,s^\bullet$ with its faces $L,M,R$,
-the twisted complexes of curves, unit cancellations, morphism complexes and pairings as in
+\subsection{The pairing dimension with zero bounding cochain at \texorpdfstring{$q=7$}{q=7}}\label{sec:typeD}
+We use the algebra $\mathcal B$, the arc system $s^\circ,s^\bullet$ with its faces $L,M,R$,
+the twisted complexes of curves, unit cancellations, morphism complexes and pairing dimensions as in
 \S\ref{ss:kwz}, ignoring gradings, and we omit exponents equal to one in arrows
 $i\xrightarrow{X^k}j$.  A perturbation $b$ of a twisted complex is Maurer--Cartan exactly when
 \eqref{eq:typeD-MC} holds, a finite identity.  A recorded degree is the relative quantum grading
-$\gr_q$ of \cite{KWZ}; it plays no part in the Maurer--Cartan equation or in any pairing.
+$\gr_q$ of \cite{KWZ}, computed in the chart below, that is, with $(0,\pi)$ as the special puncture; it plays
+no part in the Maurer--Cartan equation or in any pairing dimension.
 
-\subsubsection*{Finiteness of the morphism complex}
+\subsubsection{Finiteness of the morphism complex}
 Since $\mathcal B$ is infinite dimensional, so is the morphism complex $\operatorname{Mor}(\mathcal
 E,N)$ of two finite twisted complexes, and its homology need not be finite.  The \emph{identity part}
 $\operatorname{Mor}^\times$ of $\operatorname{Mor}(\mathcal E,N)$ is spanned by the entries labelled
@@ -343,10 +339,10 @@ $H(\operatorname{Mor}^X)\cong\F_2[U_X]^{f_X}\oplus\bigoplus_i\F_2[U_X]/(p_{X,i})
 and nonconstant polynomials $p_{X,i}$.
 \item[(c)] $H\operatorname{Mor}(\mathcal E,N)$ is finite dimensional if and only if $f_L=f_M=f_R=0$,
 that is, if and only if each $\operatorname{Mor}^X\otimes_{\F_2[U_X]}\F_2(U_X)$ is acyclic.  In that
-case, with $e=\dim\operatorname{Mor}^\times$, $\tau=\dim_{\F_2}H(\operatorname{Mor}^+)=\sum_{X,i}\deg
-p_{X,i}$, and $r$ the rank of $\beta_*\colon\operatorname{Mor}^\times\to H(\operatorname{Mor}^+)$,
+case, with $e=\dim\operatorname{Mor}^\times$ and $\tau=\dim_{\F_2}H(\operatorname{Mor}^+)=\sum_{X,i}\deg
+p_{X,i}$, and with $\beta_*\colon\operatorname{Mor}^\times\to H(\operatorname{Mor}^+)$ the induced map,
 \begin{equation}\label{eq:wrapped-reduction}
- \dim_{\F_2}H\operatorname{Mor}(\mathcal E,N)=e+\tau-2r.
+ \dim_{\F_2}H\operatorname{Mor}(\mathcal E,N)=e+\tau-2\rk\beta_*.
 \end{equation}
 \end{enumerate}
 \end{lemma}
@@ -362,7 +358,7 @@ theorem over the principal ideal domain $\F_2[U_X]$.  For (c), the cone gives th
 $0\to\operatorname{coker}\beta_*\to H\operatorname{Mor}(\mathcal E,N)\to\ker\beta_*\to0$, so the
 homology is finite exactly when $H(\operatorname{Mor}^+)$ has no free summand, and $f_X$ is the
 dimension of $H(\operatorname{Mor}^X\otimes\F_2(U_X))$ by flatness.  When $H(\operatorname{Mor}^+)$ is
-finite, the sequence gives dimension $(\tau-r)+(e-r)$.
+finite, the sequence gives dimension $(\tau-\rk\beta_*)+(e-\rk\beta_*)$.
 \end{proof}
 
 \begin{remark}\label{rem:kwz-cone}
@@ -375,15 +371,18 @@ in this paper, exact computation over $\F_2[U_X]$ shows $f_L=f_M=f_R=0$ and $p_{
 $i$, so that $\tau$ is the number of torsion summands.
 \end{remark}
 
-\subsubsection*{The two explicit twisted complexes}\label{ss:explicit}
-We send the corner $(0,\pi)$ to infinity.  The curves encoded below, namely the arc $N$ with ends at
+\subsubsection{The two explicit twisted complexes}\label{ss:explicit}
+We send the corner $(0,\pi)$ to infinity, so that the faces $L$, $M$ and $R$ contain the corners
+$(\pi,\pi)$, $(\pi,0)$ and $(0,0)$ (Figure~\ref{fig:chart}).  The curves encoded below, namely the arc $N$ with ends at
 $(0,0)$ and $(\pi,0)$, its smoothings and closed earring curves, meet neither $(0,\pi)$ nor the corner
-$(\pi,\pi)$ that no tangle character variety meets.  CHKK's description applies to any corner, since
+$(\pi,\pi)$ that no tangle character variety meets.  The description of~\cite[\S11.5]{CHKK} applies to any
+corner, since
 translations of the pillowcase permute the corners, and in either case morphisms are computed in the
 wrapped category of the pillowcase with all four corners removed, so the morphism homology does not
-depend on which of the two corners is at infinity.
+depend on which of the two corners is at infinity.  For a slope $r$ we write $\mathcal E_r$ for the reduced
+twisted complex that encodes the earring curve $E_r$ in this chart.
 
-In this chart the $q=7$ blue curve meets the arc system in $74$ points of the torus cover, that is, in
+In this chart the model $L_{7,\mathrm{PL}}$ meets the arc system in $74$ points of the torus cover, that is, in
 $37$ points of the pillowcase.  Three unit cancellations leave the $31$-generator complex $N$ whose
 $\iota_\circ$ generators are $1,2,5,6,15,16,20,21,32,33$; the remaining generators in
 \[
@@ -402,8 +401,8 @@ carry $\iota_\bullet$, and
 &+30\xrightarrow{M^2}27+31\xrightarrow R30+32\xrightarrow M31
 +32\xrightarrow L33+33\xrightarrow M34+34\xrightarrow R35+35\xrightarrow{M^2}36.
 \end{align*}
-Direct path multiplication gives $\delta_N^2=0$.  The red earring curve meets the arc system in eight
-points, and one unit cancellation leaves a six-generator complex $\mathcal E$ with $\iota_\circ$
+Direct path multiplication gives $\delta_N^2=0$.  The earring curve $E_{-1/2}$ meets the arc system in eight
+points, and one unit cancellation leaves a six-generator complex $\mathcal E=\mathcal E_{-1/2}$ with $\iota_\circ$
 generators $5,6$, $\iota_\bullet$ generators $0,3,4,7$, and
 \begin{equation}\label{eq:red-typeD}
  \delta_{\mathcal E}=3\xrightarrow{M^2}0+4\xrightarrow R3+5\xrightarrow M4
@@ -411,29 +410,35 @@ generators $5,6$, $\iota_\bullet$ generators $0,3,4,7$, and
 \end{equation}
 again with $\delta_{\mathcal E}^2=0$.
 
-\subsubsection*{Local reconnections}\label{ss:smoothings}
-A self-intersection of $L_{7,\mathrm{PL}}$ is \emph{connector--main} if one branch is a connector and
+\subsubsection{Smoothings and switches}\label{ss:smoothings}
+A self-intersection of $L_{7,\mathrm{PL}}$ is \emph{connector--inherited} if one branch is a connector and
 the other an inherited strand, and \emph{connector--connector} if both branches are connectors.  The
-lift of the blue curve to the torus double cover is a single closed immersed curve $C$ of homology class
-$(21,10)$; the involution $\iota$ reverses its orientation, and each self-intersection orbit $s$ of the
-model consists of two transverse double points of $C$ interchanged by $\iota$.  Exactly one of the two
+lift of $L_{7,\mathrm{PL}}$ to the torus double cover is a single closed immersed curve $C$ of homology class
+$(21,10)$; the involution $\rho$ reverses its orientation, and each self-intersection orbit $s$ of the
+model consists of two transverse double points of $C$ interchanged by $\rho$.  We label the orbits
+$S_0,S_1,\dots$ in the order in which the ancillary files enumerate them (\S\ref{ss:repro}); the indices are arbitrary labels; the four orbits of Proposition~\ref{prop:q7-typeD} are identified by their coordinates, the others through the ancillary files.  Exactly one of the two
 smoothings of a double point is compatible with the orientation of $C$; it splits off the loop of $C$
-between the two visits.  The \emph{census smoothing} at $s$ performs it at both points of $s$, in
-disjoint disks; the pair is $\iota$-invariant and defines a smoothing of the pillowcase curve.
-Performing the other smoothing at both points gives the \emph{opposite smoothing}.  At $38$ of the $82$
-orbits the two branches lie on the same lift of the pillowcase arc, and there the census smoothing is
+between the two visits.  The \emph{oriented smoothing} at $s$ performs it at both points of $s$, in
+disjoint disks; the pair is $\rho$-invariant and defines a smoothing of the pillowcase curve.
+Performing the other smoothing at both points gives the \emph{unoriented smoothing}.  At $38$ of the $82$
+orbits the two branches lie on the same lift of the pillowcase arc, and there the oriented smoothing is
 also compatible with an orientation of that arc; the four orbits below are of this kind.  A smoothing
 is \emph{generator-preserving} if, after the three unit cancellations, its encoding has the same
 idempotent module $V_N$; its differential then differs from $\delta_N$ by an element
-$b_s\in\operatorname{End}(N)$, the \emph{switch} at $s$.
+$b_s\in\operatorname{End}(N)$, the \emph{switch} at $s$.  An \emph{algebraic switch} of a reduced twisted
+complex $X$ is an element of $\operatorname{End}(X)$ that replaces two arrows $i\xrightarrow{Y^k}j$ and
+$i'\xrightarrow{Y^k}j'$ of $\delta_X$, with $j$ and $j'$ of the same idempotent, by $i\xrightarrow{Y^k}j'$
+and $i'\xrightarrow{Y^k}j$, and for which the result satisfies the Maurer--Cartan equation.  A switch is
+defined by a smoothing of the curve, whereas an algebraic switch is defined by the complex alone and need not
+come from a smoothing.
 
 \begin{proposition}\label{prop:q7-typeD}
-The wrapped morphism homology over $\F_2$ satisfies
+The pairing dimension of $\mathcal E$ with $N$ is
 \[
  \dim_{\F_2}H\operatorname{Mor}_{\operatorname{Tw}(\mathcal B)}(\mathcal E,N)=7.
 \]
 At each of the four self-intersection orbits $S_{18},S_{25},S_{69},S_{74}$ of $L_{7,\mathrm{PL}}$
-tabulated below, the census smoothing produces a four-arrow switch $b_s\in\operatorname{End}(N)$ with
+tabulated below, the oriented smoothing produces a four-arrow switch $b_s\in\operatorname{End}(N)$ with
 \[
  D_N(b_s)=0,\qquad b_s^2=0,
  \qquad
@@ -441,61 +446,66 @@ tabulated below, the census smoothing produces a four-arrow switch $b_s\in\opera
 \]
 \end{proposition}
 
-The proposition holds to all orders inside $\operatorname{Tw}(\mathcal B)$, because the Maurer--Cartan
-equation there is the finite identity $(\delta_N+b_s)^2=0$.  The four orbits and their switches are as
-follows; the last column records $\gr_q$ of the four terms and is not used in the proof.
+Since the Maurer--Cartan equation in $\operatorname{Tw}(\mathcal B)$ is the finite identity
+$(\delta_N+b_s)^2=0$, the elements $b_s$ satisfy the Maurer--Cartan equation with no higher terms.  The
+four orbits and their
+switches are as follows; the last column records the multiset of quantum degrees $\gr_q$ of the four terms, relative to the grading of $N$, and is not used in the proof.
 \begin{center}
 \small
 \begin{tabular}{c|c|c|c|c}
 $s$ & $(\gamma,\theta)$ & old arrows & new arrows & $\gr_q$ \\ \hline
-$S_{18}$ & $(0.0304313,4.5024806)$ & $4\xrightarrow R3,\ 22\xrightarrow R23$
+$S_{18}$ & $(0.0304,4.502)$ & $4\xrightarrow R3,\ 22\xrightarrow R23$
  & $22\xrightarrow R3,\ 4\xrightarrow R23$ & $-8,0,0,8$ \\
-$S_{25}$ & $(3.0828526,1.7672244)$ & $6\xrightarrow L5,\ 20\xrightarrow L21$
+$S_{25}$ & $(3.083,1.767)$ & $6\xrightarrow L5,\ 20\xrightarrow L21$
  & $20\xrightarrow L5,\ 6\xrightarrow L21$ & $-8,0,0,8$ \\
-$S_{69}$ & $(0.0415966492,5.4053953343)$ & $0\xrightarrow R19,\ 26\xrightarrow R27$
+$S_{69}$ & $(0.0416,5.405)$ & $0\xrightarrow R19,\ 26\xrightarrow R27$
  & $0\xrightarrow R27,\ 26\xrightarrow R19$ & $-8,0,0,8$ \\
-$S_{74}$ & $(3.079988,3.561056)$ & $20\xrightarrow L21,\ 32\xrightarrow L33$
+$S_{74}$ & $(3.080,3.561)$ & $20\xrightarrow L21,\ 32\xrightarrow L33$
  & $20\xrightarrow L33,\ 32\xrightarrow L21$ & $-4,0,0,4$
 \end{tabular}
 \end{center}
 Each smoothing is disjoint from the arc system, so it keeps the generators, and $b_s$ is the sum of
-the two old and the two new arrows.  Every displayed arrow has relative delta degree $-1$; by the
-$\gr_q$ column, computed in the chart of \S\ref{ss:explicit}, none of the four deformations is bigraded, which is immaterial here.
+the two old and the two new arrows.  Every displayed arrow has relative $\delta$-degree $-1$.  The column
+$\gr_q$ uses $(0,\pi)$ as the special puncture, the normalization of the chart of \S\ref{ss:explicit}, and in
+it none of the four deformations is bigraded.  In the normalization of Section~\ref{sec:khovanov}, in which
+$(\pi,\pi)$ is special (\S\ref{ss:kh-smith}), the column reads $-8,0,0,8$; $-8,0,0,8$; $0,0,0,0$;
+$-4,0,0,4$: the object $(N,b_{S_{69}})$ is bigraded there, and the other three are not.  Gradings play no
+part in this section.
 
 \begin{proof}[Proof of Proposition~\ref{prop:q7-typeD}]
 For each row, every composite of an arrow of $b_s$ with an arrow of $\delta_N$, in either order, is zero
 in $\mathcal B$, because the face labels differ or the endpoints do not match; and $b_s^2=0$ because no
 target of an arrow of $b_s$ is the source of another.  Direct encoding of the smoothed curve gives
-$\delta_{N_s}=\delta_N+b_s$ entry by entry, for smoothing disks of radii $0.003$, $0.006$ and $0.009$.
-The census smoothing splits $C$ into three torus components: an $\iota$-invariant one, which projects to
+$\delta_{N_s}=\delta_N+b_s$ entry by entry (Appendix~\ref{ss:methods}).
+The oriented smoothing splits $C$ into three torus components: a $\rho$-invariant one, which projects to
 an arc, and two that project to one closed pillowcase component, the loop.  With the orientations
-induced from $C$, their classes and the wrapped dimensions of arc and loop are
+induced from $C$, their classes and the pairing dimensions of $\mathcal E$ with arc and loop are
 \begin{center}
 \begin{tabular}{c|c|c}
-$s$ & torus component classes & wrapped dimensions, arc $+$ loop \\ \hline
+$s$ & torus component classes & pairing dimensions, arc $+$ loop \\ \hline
 $S_{18}$, $S_{25}$ & $(17,6),(2,2),(2,2)$ & $5+4$ \\
 $S_{69}$ & $(17,8),(2,1),(2,1)$ & $5+4$ \\
 $S_{74}$ & $(15,8),(3,1),(3,1)$ & $7+2$.
 \end{tabular}
 \end{center}
-The calculation uses the full positive path algebra, with no word cutoff.  For each pair the torsion
+The morphism complexes are computed in full, without truncating path length.  For each pair the torsion
 condition of Lemma~\ref{lem:wrapped-reduction}(c) holds by exact computation over $\F_2[U_X]$, and
 \eqref{eq:wrapped-reduction} gives the dimensions from the following data:
 \begin{center}
 \small
 \begin{tabular}{c|c|c|c|c}
-object or component & $e$ & $\tau$ & $r$ & $e+\tau-2r$ \\ \hline
+object or component & $e$ & $\tau$ & $\rk\beta_*$ & $e+\tau-2\rk\beta_*$ \\ \hline
 $N$ & $104$ & $105$ & $101$ & $7$ \\
 $N_{S_{18}}$, $N_{S_{25}}$: arc; loop & $80$; $24$ & $85$; $20$ & $80$; $20$ & $5$; $4$ \\
 $N_{S_{69}}$: arc; loop & $84$; $20$ & $85$; $20$ & $82$; $18$ & $5$; $4$ \\
 $N_{S_{74}}$: arc; loop & $76$; $28$ & $75$; $30$ & $72$; $28$ & $7$; $2$
 \end{tabular}
 \end{center}
-Hence the undeformed dimension is seven and the four deformed dimensions are nine.
+Hence the undeformed pairing dimension is seven and the four deformed pairing dimensions are nine.
 \end{proof}
 
-By Theorem~\ref{thm:inat}, $\dim_{\F_2}\Inat(K_7)=9$.  Under the CHKK correspondence the red curve
-carries the zero cochain: Smith proves this for the earring on $Q_0$ by comparison with the
+By~\cite[Thm.~1.1]{WuebbenII}, $\dim_{\F_2}\Inat(K_7)=9$.  Under Conjecture~D of~\cite{CHKK} the earring
+curve $E_{-1/2}$ carries the zero cochain: Smith proves this for the earring on $Q_0$ by comparison with the
 two-component unlink \cite[Lem.~5.3]{Smith}, and the argument applies verbatim to $\Qh{r}$ for every
 slope $r$, with the unlink $\operatorname{num}(Q_r+Q_{-r})$ in place of
 $\operatorname{num}(Q_0+Q_0)$; Smith uses it for $r=-1/2$ \cite[proof of Thm.~5.9]{Smith}.
@@ -503,18 +513,55 @@ Conditional on \cite[Conj.~D]{CHKK}, Proposition~\ref{prop:q7-typeD} therefore i
 assigned to $Q_{1/3}+Q_{1/7}$ is not $N$ with the zero cochain.
 
 \subsection{Selection by a second closure}\label{ss:second-closure}
-Rank nine alone does not determine the object: among the four deformations of
-Proposition~\ref{prop:q7-typeD} it is attained by three homotopy classes
-(Corollary~\ref{cor:q7-classes}), and in the census of Proposition~\ref{prop:aux-selection} it is
+Pairing dimension nine alone does not determine the object: among the four deformations of
+Proposition~\ref{prop:q7-typeD} it is attained by three homotopy-equivalence classes
+(Corollary~\ref{cor:q7-classes}), and in the enumeration of Proposition~\ref{prop:aux-selection} it is
 attained at $11$ orbits by $9$ distinct switches.  We therefore pair the same tangle with a second
-closure, whose instanton homology is computed by the squeeze of Theorem~\ref{thm:inat}.
+closure, whose instanton homology is computed by the squeeze of~\cite[\S3]{WuebbenII}.
 
 \begin{proposition}[The second closure]\label{prop:aux-closure}
 Set $K_*:=\operatorname{num}(Q_{-3/4}+Q_{1/3}+Q_{1/7})$.  Then $\Inat(K_*;\Z)\cong\Z^{31}$.  Encoding
 the piecewise-linear curve of the earring tangle $\Qh{-3/4}$ as above gives the $14$-generator twisted
-complex $\mathcal E_*$ of \eqref{eq:aux-typeD}.  Its wrapped morphism dimensions with $(N,b_s)$ are
+complex $\mathcal E_*=\mathcal E_{-3/4}$ of \eqref{eq:aux-typeD}.  Its pairing dimensions with $(N,b_s)$ are
 $31$, $31$, $23$ and $25$ for $s=S_{18}$, $S_{25}$, $S_{69}$ and $S_{74}$, and $25$ with $N$.
 \end{proposition}
+
+\begin{proof}
+The knot $K_*$ has the $14$-crossing planar diagram
+\[
+\begin{aligned}
+&(24,13,25,14),\ (10,25,11,26),\ (26,11,27,12),\ (12,27,13,0),\ (7,14,8,15),\ (15,8,16,9),\\
+&(9,16,10,17),\ (23,6,24,7),\ (5,22,6,23),\ (21,4,22,5),\ (3,20,4,21),\ (19,2,20,3),\\
+&(1,18,2,19),\ (17,0,18,1)
+\end{aligned}
+\]
+in the usual $PD$ convention; in the knot table distributed with SnapPy \cite{SnapPy} it is $K14n12201$.
+Seifert's algorithm gives
+\[
+ \Delta_{K_*}(t)=t^{-6}-t^{-5}+2t^{-3}-4t^{-2}+5t^{-1}-5+5t-4t^2+2t^3-t^5+t^6,
+\]
+so the coefficient norm is $\|\Delta_{K_*}\|=31$, and $|\Delta_{K_*}(-1)|=23$.  The reduced Khovanov homology of $K_*$ over $\Z$ is free,
+with ranks $(1,0,1,1,1,2,3,3,4,5,4,3,2,1)$ in homological degrees $0$ through $13$, summing to $31$
+(computed with Khoca \cite{Khoca}).  The proof of~\cite[Thm.~1.1]{WuebbenII} applies verbatim.  It squeezes
+$\Inat$ between two bounds: the coefficient norm $\|\Delta_K\|$ of the Alexander polynomial, the sum of the absolute values
+of its coefficients, bounds $\rk\Inat(K)$ below~\cite{KMAlex}, and the rank of reduced Khovanov homology bounds it
+above, by the spectral sequence of Kronheimer and Mrowka~\cite{KM2}.  For $K_*$ the two bounds agree, the integral
+spectral sequence collapses on a free $E_2$ page, and $\Inat(K_*;\Z)\cong\Z^{31}$.  The knot $K_*$ is not Khovanov-thin; the squeeze closes because $\|\Delta_{K_*}\|$
+equals the Khovanov rank.  The complex $\mathcal E_*$ has $\iota_\circ$ generators $1,2,7,8,11,12$,
+$\iota_\bullet$ generators $0,3,4,5,6,9,10,13$, and
+\begin{equation}\label{eq:aux-typeD}
+\begin{aligned}
+ \delta_{\mathcal E_*}={}&1\xrightarrow M0+1\xrightarrow L2+2\xrightarrow M3+3\xrightarrow R4
+ +5\xrightarrow{M^2}4+6\xrightarrow R5+7\xrightarrow M6\\
+ &+8\xrightarrow L7+8\xrightarrow M9+10\xrightarrow R9+11\xrightarrow M10
+ +12\xrightarrow L11+12\xrightarrow M13+0\xrightarrow R13 .
+\end{aligned}
+\end{equation}
+For each of the five pairs the torsion condition of Lemma~\ref{lem:wrapped-reduction}(c) holds by exact
+computation, and the data $(e,\tau,\rk\beta_*)$ are $(228,251,227)$ for $N$ and
+for $(N,b_{S_{74}})$, $(228,251,224)$ for $(N,b_{S_{18}})$ and $(N,b_{S_{25}})$, and $(228,251,228)$ for
+$(N,b_{S_{69}})$, giving $25$, $31$ and $23$.
+\end{proof}
 
 \begin{corollary}\label{cor:q7-classes}
 The four deformations of Proposition~\ref{prop:q7-typeD} represent exactly three homotopy-equivalence
@@ -528,105 +575,36 @@ generators, carries $\delta_N+b_{S_{18}}$ entry by entry to $\delta_N+b_{S_{25}}
 $\mathcal E_*$ is a dg functor, so $\dim H\operatorname{Mor}(\mathcal E_*,-)$ is a homotopy invariant;
 by Proposition~\ref{prop:aux-closure} it takes the values $31$, $23$ and $25$ on the $S_{18}/S_{25}$,
 $S_{69}$ and $S_{74}$ objects.  The proof does not use the classification of curves by twisted
-complexes \cite[\S11.5]{CHKK}, \cite[Thm.~4.3]{HKK}, \cite[Thm.~1.5]{KWZ}, which concerns graded and
+complexes \cite[\S11.5]{CHKK}, \cite[Thm.~4.3]{HKK}, \cite[Thm.~1.5]{KWZ}; the last two concern graded and
 bigraded objects.
 \end{proof}
 
-\begin{proposition}[Census smoothings]\label{prop:aux-selection}
-The model $L_{7,\mathrm{PL}}$ has $82$ self-intersection orbits, $52$ connector--main and $30$
-connector--connector.  Of the $82$ census smoothings, $73$ are generator-preserving.  They determine
+Propositions~\ref{prop:aux-selection}--\ref{prop:aux-span} treat smoothings at all self-intersection orbits
+of $L_{7,\mathrm{PL}}$, which, with their smoothings, are read off from the floating-point geometry of the
+model (Appendix~\ref{ss:methods}); the computations with the resulting complexes are exact over $\F_2$.
+
+\begin{proposition}[Oriented smoothings]\label{prop:aux-selection}
+The model $L_{7,\mathrm{PL}}$, with its self-intersections and their smoothings computed as in
+Appendix~\ref{ss:methods}, has $82$ self-intersection orbits, $52$ connector--inherited and $30$
+connector--connector.  Of the $82$ oriented smoothings, $73$ are generator-preserving.  They determine
 $45$ distinct, linearly independent switches $b_s\in\operatorname{End}(N)$, and every one satisfies
-$D_N(b_s)=0$ and $b_s^2=0$.  Among all $73$ occurrences, the simultaneous wrapped dimensions $9$
-against $\mathcal E$ and $31$ against $\mathcal E_*$ occur only at $S_{18}$ and $S_{25}$.  These are
-also the only orbits whose shorter branch loop has torus class $(2,2)$ up to sign.
+$D_N(b_s)=0$ and $b_s^2=0$.  Among these $73$ smoothings, the simultaneous pairing dimensions $9$
+with $\mathcal E$ and $31$ with $\mathcal E_*$ occur only at $S_{18}$ and $S_{25}$.  These are
+also the only orbits at which the shorter branch loop has torus class $(2,2)$ up to sign; here a double
+point of the orbit cuts $C$ into two loops, and the shorter one is that whose torus class has smaller
+$\ell^1$-norm.
 \end{proposition}
 
-\begin{proposition}[The remaining single smoothings]\label{prop:aux-remaining}
-The census smoothings at the nine orbits $S_7,S_8,S_{23},S_{24},S_{49},S_{52},S_{53},S_{61},S_{73}$
-are not generator-preserving.  Their encodings $N_s$ are $31$-generator twisted complexes whose wrapped
-dimensions against $(\mathcal E,\mathcal E_*)$ are $(3,23)$ at $S_7$, $(5,23)$ at $S_8$, $S_{53}$ and
-$S_{73}$, and $(7,25)$ at the other five.  Hence, among all $82$ census smoothings, the pair $(9,31)$
-occurs only at $S_{18}$ and $S_{25}$.  Among the $82$ opposite smoothings the pair $(9,31)$ also occurs
-exactly at $S_{18}$ and $S_{25}$; there the smoothed curve is connected, its encoding has $21$
-generators, and its wrapped dimension against the earring $\widehat{\mathcal E}_{3/4}$ of $\Qh{3/4}$ is
-$69$, whereas that of $(N,b_{S_{18}})$ is $103$.  The knot $\operatorname{num}(Q_{3/4}+Q_{1/3}+Q_{1/7})$
-is alternating with determinant $103$, so $\dim_{\Q}\Inat=103$.
-\end{proposition}
-
-\begin{proposition}[How far the two closures reach]\label{prop:aux-span}
-Every element $b=\epsilon_{18}b_{S_{18}}+\epsilon_{25}b_{S_{25}}+\epsilon_{69}b_{S_{69}}
-+\epsilon_{74}b_{S_{74}}$, $\epsilon_s\in\F_2$, is Maurer--Cartan, and among these $16$ deformations
-the pair $(9,31)$ occurs only for $b=b_{S_{18}}$ and $b=b_{S_{25}}$.  The connector--main subcensus
-consists of $46$ occurrences and $38$ distinct switches; these are linearly independent, every sum of
-two of them is Maurer--Cartan, and hence all $2^{38}$ elements of their span are distinct and
-Maurer--Cartan.  Of the $\binom{38}{2}=703$ two-switch sums, $41$ also have the pair $(9,31)$, and none
-of these $41$ presentations is carried to the $S_{18}$ presentation by an idempotent-preserving
-permutation of the $31$ generators.
-\end{proposition}
-
-\begin{hypothesis}[$q=7$ local support]\label{hyp:q7-support}
-If the CHKK tangle assignment is defined for $Q_{1/3}+Q_{1/7}$ with Smith's perturbation for small
-$t<0$, the object of $\operatorname{Tw}(\mathcal B)$ that it determines (an immersed curve with a
-bounding cochain) is homotopy equivalent to one of the following: $(N,b_s)$ for one of the $45$
-distinct switches of Proposition~\ref{prop:aux-selection}; the encoding $N_s$ of the census smoothing
-at one of the nine orbits of Proposition~\ref{prop:aux-remaining}; or $(N,b)$ for an element
-$b\in\operatorname{span}_{\F_2}\{b_{S_{18}},b_{S_{25}},b_{S_{69}},b_{S_{74}}\}$.  Equivalently, it is
-homotopy equivalent to the encoding of the census smoothing at one of the $82$ self-intersection
-orbits, or to $(N,b)$ for $b$ in this span.
-\end{hypothesis}
-
-The hypothesis refers to the representative $L_{7,\mathrm{PL}}$, perturbed off its tangential
-self-contacts; its set of self-intersections is not an invariant of the regular-homotopy class
-(Remark~\ref{rem:analytic}).
-
-\begin{corollary}[Conditional selection]\label{cor:aux-conditional}
-Assume the CHKK instanton--pillowcase correspondence and Hypothesis~\ref{hyp:q7-support}.  Then the
-object assigned to $Q_{1/3}+Q_{1/7}$ is homotopy equivalent to the common $S_{18}/S_{25}$ class.
-\end{corollary}
-
-\begin{proof}[Proof of Propositions~\ref{prop:aux-closure}--\ref{prop:aux-span} and
-Corollary~\ref{cor:aux-conditional}]
-The knot $K_*$ has the $14$-crossing planar diagram
-\[
-\begin{aligned}
-&(24,13,25,14),\ (10,25,11,26),\ (26,11,27,12),\ (12,27,13,0),\ (7,14,8,15),\ (15,8,16,9),\\
-&(9,16,10,17),\ (23,6,24,7),\ (5,22,6,23),\ (21,4,22,5),\ (3,20,4,21),\ (19,2,20,3),\\
-&(1,18,2,19),\ (17,0,18,1)
-\end{aligned}
-\]
-in the usual $PD$ convention; in the census of SnapPy \cite{SnapPy} it is $K14n12201$.  Seifert's
-algorithm gives
-\[
- \Delta_{K_*}(t)=t^{-6}-t^{-5}+2t^{-3}-4t^{-2}+5t^{-1}-5+5t-4t^2+2t^3-t^5+t^6,
-\]
-so $\ell(K_*)=31$ and $|\Delta_{K_*}(-1)|=23$.  The reduced Khovanov homology of $K_*$ over $\Z$ is free,
-with ranks $(1,0,1,1,1,2,3,3,4,5,4,3,2,1)$ in homological degrees $0$ through $13$, summing to $31$
-(computed with Khoca \cite{Khoca}).  The proof of Theorem~\ref{thm:inat} applies verbatim: the two
-bounds agree, the integral Kronheimer--Mrowka spectral sequence collapses on a free $E_2$ page, and
-$\Inat(K_*;\Z)\cong\Z^{31}$.  The knot $K_*$ is not Khovanov-thin; the squeeze closes because $\ell(K_*)$
-equals the Khovanov rank.  The complex $\mathcal E_*$ has $\iota_\circ$ generators $1,2,7,8,11,12$,
-$\iota_\bullet$ generators $0,3,4,5,6,9,10,13$, and
-\begin{equation}\label{eq:aux-typeD}
-\begin{aligned}
- \delta_{\mathcal E_*}={}&1\xrightarrow M0+1\xrightarrow L2+2\xrightarrow M3+3\xrightarrow R4
- +5\xrightarrow{M^2}4+6\xrightarrow R5+7\xrightarrow M6\\
- &+8\xrightarrow L7+8\xrightarrow M9+10\xrightarrow R9+11\xrightarrow M10
- +12\xrightarrow L11+12\xrightarrow M13+0\xrightarrow R13 .
-\end{aligned}
-\end{equation}
-For every pair used below the torsion condition of Lemma~\ref{lem:wrapped-reduction}(c) holds by exact
-computation; for the pairing with $\mathcal E_*$ the data $(e,\tau,r)$ are $(228,251,227)$ for $N$ and
-for $(N,b_{S_{74}})$, $(228,251,224)$ for $(N,b_{S_{18}})$ and $(N,b_{S_{25}})$, and $(228,251,228)$ for
-$(N,b_{S_{69}})$, giving $25$, $31$ and $23$.  Under the correspondence the cochains on $\Qh{-1/2}$ and
-$\Qh{-3/4}$ vanish, by the argument following Proposition~\ref{prop:q7-typeD}.
-
-For the census, the provenance of each segment partitions the $82$ orbits into $52$ connector--main
-and $30$ connector--connector orbits, and the census smoothing is encoded directly at every orbit.  The
+\begin{proof}
+The provenance of each segment partitions the $82$ orbits into $52$ connector--inherited
+and $30$ connector--connector orbits.  No orbit has two inherited branches: since the fiber product adds the
+$\theta$-coordinates, the inherited strands are segments of lines of the common slope $1/3+1/7=10/21$ on
+the torus cover, and so are pairwise disjoint.  The oriented smoothing is encoded directly at every orbit.  The
 nine orbits of Proposition~\ref{prop:aux-remaining} change the cancelled module; at every other orbit
 the two differentials differ by two old and two new arrows, and exact path multiplication gives
-$D_N(b_s)=b_s^2=0$.  Duplicate presentations leave $45$ distinct elements, linearly independent in the
-basis of arrows.  Applying \eqref{eq:wrapped-reduction} to both earrings gives the following census of
-the pairs $\bigl(\dim H\operatorname{Mor}(\mathcal E,(N,b_s)),\dim H\operatorname{Mor}(\mathcal
+$D_N(b_s)=b_s^2=0$.  Coinciding switches leave $45$ distinct elements, linearly independent in the
+basis of arrows.  The torsion condition of Lemma~\ref{lem:wrapped-reduction}(c) holds for each pair by exact computation, and
+applying \eqref{eq:wrapped-reduction} with both earrings gives the following distribution of the pairs $\bigl(\dim H\operatorname{Mor}(\mathcal E,(N,b_s)),\dim H\operatorname{Mor}(\mathcal
 E_*,(N,b_s))\bigr)$:
 \[
 \begin{array}{c|cccccccc}
@@ -640,75 +618,134 @@ whose last column consists of $S_{18}$ and $S_{25}$.  For the class label, the t
 the two visits of a torus point of an orbit close up to complementary branch loops with classes summing
 to $(21,10)$; the class of smaller $\ell^1$ norm, up to sign, is the same at both torus points, and
 $(2,2)$ occurs only at $S_{18}$ and $S_{25}$.
+\end{proof}
 
-For Proposition~\ref{prop:aux-remaining}, the smoothed curves at the nine excluded orbits and the
-opposite smoothings at all $82$ orbits are encoded as standalone twisted complexes and paired with
-$\mathcal E$ and $\mathcal E_*$, and at $S_{18}$ and $S_{25}$ with $\widehat{\mathcal E}_{3/4}$, with the
+\begin{proposition}[The remaining single smoothings]\label{prop:aux-remaining}
+The oriented smoothings at the nine orbits $S_7,S_8,S_{23},S_{24},S_{49},S_{52},S_{53},S_{61},S_{73}$
+are not generator-preserving.  Their encodings $N_s$ are $31$-generator twisted complexes whose pairing
+dimensions with $(\mathcal E,\mathcal E_*)$ are $(3,23)$ at $S_7$, $(5,23)$ at $S_8$, $S_{53}$ and
+$S_{73}$, and $(7,25)$ at the other five.  Hence, among all $82$ oriented smoothings, the pair $(9,31)$
+occurs only at $S_{18}$ and $S_{25}$.  Among the $82$ unoriented smoothings the pair $(9,31)$ also occurs
+exactly at $S_{18}$ and $S_{25}$; there the smoothed curve is connected, its encoding has $21$
+generators, and $\mathcal E_{3/4}$, the complex of the earring curve of $\Qh{3/4}$, has pairing dimension $69$
+with it, against $103$ with $(N,b_{S_{18}})$.  The knot
+$\operatorname{num}(Q_{3/4}+Q_{1/3}+Q_{1/7})$ is alternating with determinant $103$, so $\dim_{\Q}\Inat=103$.
+\end{proposition}
+
+\begin{proof}
+The smoothed curves at the nine excluded orbits and the
+unoriented smoothings at all $82$ orbits are encoded as standalone twisted complexes and paired with
+$\mathcal E$ and $\mathcal E_*$, and at $S_{18}$ and $S_{25}$ with $\mathcal E_{3/4}$, with the
 torsion condition verified in each case.  The knot $\operatorname{num}(Q_{3/4}+Q_{1/3}+Q_{1/7})$ is the
 numerator closure of three rational tangles of the same sign, hence alternating, with determinant
-$|4\cdot3\cdot7\,(3/4+1/3+1/7)|=103$, and for quasi-alternating knots the rank of $\Inat$ is the
-determinant \cite[Cor.~1.6]{KM2}.
+$|4\cdot3\cdot7\,(3/4+1/3+1/7)|=103$; alternating knots are quasi-alternating \cite[Lemma~3.2]{OSbranched}, and for
+quasi-alternating knots the rank of $\Inat$ is the determinant \cite[Cor.~1.6]{KM2}.
+\end{proof}
 
-For Proposition~\ref{prop:aux-span}, exact multiplication verifies the Maurer--Cartan equation for the
-sum of each pair of the $38$ connector--main switches; since each switch is closed and square-zero,
-these checks say that all mixed anticommutators vanish, so the whole span is Maurer--Cartan.  The two
-reductions applied to all $703$ two-switch sums give $41$ with the pair $(9,31)$.  Regarding each
-differential as a directed graph on the $31$ generators, labelled by idempotents, faces and path
-lengths, an exhaustive search over label-preserving bijections finds none carrying the $S_{18}$
-differential to any of the $41$, and does find the $S_{18}$--$S_{25}$ permutation; this distinguishes
-strict presentations only.  Every sum of the four named switches is Maurer--Cartan; eight of the $16$
-have dimension seven against $\mathcal E$, and the other eight have dimension nine and auxiliary
-dimension $31$ for $b_{S_{18}}$ and $b_{S_{25}}$; $23$ for $b_{S_{69}}$, $b_{S_{18}}+b_{S_{25}}+b_{S_{69}}$,
+\begin{proposition}[How far the two closures reach]\label{prop:aux-span}
+Every element $b=\epsilon_{18}b_{S_{18}}+\epsilon_{25}b_{S_{25}}+\epsilon_{69}b_{S_{69}}
++\epsilon_{74}b_{S_{74}}$, $\epsilon_s\in\F_2$, is Maurer--Cartan, and among these $16$ deformations
+the pair $(9,31)$ occurs only for $b=b_{S_{18}}$ and $b=b_{S_{25}}$.  The $46$ generator-preserving
+oriented smoothings at connector--inherited orbits give $38$ distinct switches; these are linearly
+independent, every sum of two of them is Maurer--Cartan, and hence all $2^{38}$ elements of their span are
+distinct and Maurer--Cartan.  Of the $\binom{38}{2}=703$ two-switch sums, $41$ also have the pair $(9,31)$,
+and none of these $41$ complexes is strictly isomorphic to $(N,b_{S_{18}})$.
+\end{proposition}
+
+\begin{proof}
+Exact multiplication verifies the Maurer--Cartan equation for the
+sum of each pair of the $38$ connector--inherited switches; since each switch is closed and square-zero,
+these checks say that all mixed anticommutators vanish, so the whole span is Maurer--Cartan.  Applying
+\eqref{eq:wrapped-reduction} with both earrings to all $703$ two-switch sums gives $41$ with the pair
+$(9,31)$.  Regarding each differential as a directed graph on the $31$ generators, labelled by idempotents,
+faces and path lengths, an exhaustive search over label-preserving bijections finds none carrying the
+$S_{18}$ differential to any of the $41$, and does find the $S_{18}$--$S_{25}$ permutation; this excludes
+strict isomorphism only, not homotopy equivalence.  Every sum of the four named switches is
+Maurer--Cartan; eight of the $16$ have pairing dimension seven with $\mathcal E$, and the other eight have
+pairing dimension nine with $\mathcal E$ and pairing dimension with $\mathcal E_*$ equal to $31$ for
+$b_{S_{18}}$ and $b_{S_{25}}$; $23$ for $b_{S_{69}}$, $b_{S_{18}}+b_{S_{25}}+b_{S_{69}}$,
 $b_{S_{25}}+b_{S_{69}}+b_{S_{74}}$ and $b_{S_{18}}+b_{S_{25}}+b_{S_{69}}+b_{S_{74}}$; and $25$ for
 $b_{S_{74}}$ and $b_{S_{18}}+b_{S_{74}}$.
+\end{proof}
 
-Under the correspondence, pairing the assigned object with the two earrings must give dimensions $9$
-and $31$, which are homotopy invariants.  Among the objects allowed by Hypothesis~\ref{hyp:q7-support},
-the census, the pairs $(3,23)$, $(5,23)$ and $(7,25)$ of Proposition~\ref{prop:aux-remaining}, and the
-sixteen sums leave only $(N,b_{S_{18}})$ and $(N,b_{S_{25}})$, which are strictly isomorphic by
-Corollary~\ref{cor:q7-classes}.
+\begin{hypothesis}[$q=7$ local support]\label{hyp:q7-support}
+If the tangle assignment of Cazassus, Herald, Kirk and Kotelskiy is defined for $Q_{1/3}+Q_{1/7}$ with
+Smith's perturbation for small
+$t<0$, the object of $\operatorname{Tw}(\mathcal B)$ that it determines (an immersed curve with a
+bounding cochain) is homotopy equivalent to one of the following: $(N,b_s)$ for one of the $45$
+distinct switches of Proposition~\ref{prop:aux-selection}; the encoding $N_s$ of the oriented smoothing
+at one of the nine orbits of Proposition~\ref{prop:aux-remaining}; or $(N,b)$ for an element
+$b\in\operatorname{span}_{\F_2}\{b_{S_{18}},b_{S_{25}},b_{S_{69}},b_{S_{74}}\}$.  Equivalently, it is
+homotopy equivalent to the encoding of the oriented smoothing at one of the $82$ self-intersection
+orbits, or to $(N,b)$ for $b$ in this span.
+\end{hypothesis}
+
+In the language of immersed Floer theory, apart from the span of the four switches, the hypothesis says
+that the bounding cochain is concentrated at one self-intersection of the model and acts there as the oriented smoothing.  The span of the four switches of Proposition~\ref{prop:q7-typeD}, each of which reaches pairing
+dimension nine, is included so that the hypothesis also covers combinations of these deformations.  The
+hypothesis refers to the representative $L_{7,\mathrm{PL}}$, perturbed off its tangential
+self-contacts; its set of self-intersections is not an invariant of the regular-homotopy class
+(Remark~\ref{rem:analytic}).
+
+\begin{corollary}[Conditional selection]\label{cor:aux-conditional}
+Assume Conjecture~D of~\cite{CHKK} and Hypothesis~\ref{hyp:q7-support}.  Then the
+object assigned to $Q_{1/3}+Q_{1/7}$ is homotopy equivalent to the common $S_{18}/S_{25}$ class.
+\end{corollary}
+
+\begin{proof}
+Under Conjecture~D of~\cite{CHKK} the cochains on $\Qh{-1/2}$ and $\Qh{-3/4}$ vanish, by the argument
+following Proposition~\ref{prop:q7-typeD}, so pairing the assigned object with the two earrings must give
+the pairing dimensions $9$ and $31$, which are homotopy invariants.  Among the objects allowed by
+Hypothesis~\ref{hyp:q7-support}, Propositions~\ref{prop:aux-selection}--\ref{prop:aux-span} leave only
+$(N,b_{S_{18}})$ and $(N,b_{S_{25}})$, which are strictly isomorphic by Corollary~\ref{cor:q7-classes}.
 \end{proof}
 
 \begin{remark}[The traced analytic curve]\label{rem:analytic}
 A numerical trace of Smith's perturbed curve $\Rp_t(Q_{1/3}+Q_{1/7})$ at $t=-0.015$ and at $t=-0.02$,
 computed through the symmetry $\sm$ of Remark~\ref{rem:sign} from the composition of $C_{3,-t}$ with the
 lines of slopes $1/3$ and $1/7$ through $(0,0)$, has $50$ transverse self-intersection orbits rather
-than $82$, and its type-D encoding is strictly isomorphic to $N$.  On the traced curve the census gives
-$43$ generator-preserving census smoothings with $43$ distinct switches, and the pair $(9,31)$ occurs at
+than $82$, and its type-D encoding is strictly isomorphic to $N$.  On the traced curve $43$ of the
+oriented smoothings are generator-preserving, with $43$ distinct switches, and the pair $(9,31)$ occurs at
 exactly two of them, the orbits whose shorter branch loop has class $(2,2)$, which correspond to
-$S_{18}$ and $S_{25}$.  The census smoothings at the other seven orbits change the cancelled module and
-were not paired.  Among generator-preserving smoothings the selection is therefore not an artifact of
+$S_{18}$ and $S_{25}$.  The oriented smoothings at the other seven orbits change the cancelled module, and
+their pairing dimensions were not computed.  Among generator-preserving smoothings the selection is therefore not an artifact of
 the piecewise-linear model, although the trace is a floating-point computation and not a proof.
 \end{remark}
 
 \begin{remark}[Scope]\label{rem:q7-scope}
 Proposition~\ref{prop:q7-typeD} proves existence of four Maurer--Cartan elements, and
-Proposition~\ref{prop:aux-selection} an exhaustive census in the stated geometric class; neither
-proves selection by the tangle.  The ungraded delta-degree $-1$ endomorphism cohomology of $N$ is much
-larger than its one-dimensional part in relative quantum grading zero, and the Maurer--Cartan class
-spanning that part changes the wrapped dimension seven to five, not to nine.
-Corollary~\ref{cor:aux-conditional} assumes the CHKK correspondence and that the assigned object lies
+Proposition~\ref{prop:aux-selection} an exhaustive enumeration in the stated geometric class; neither
+proves selection by the tangle.  The $\delta$-degree $-1$ part of the endomorphism cohomology of $N$ is
+$20$-dimensional, and its quantum-degree-zero part is one-dimensional in either normalization.  With $(0,\pi)$
+special it is spanned by the class of $b_{S_{10}}$, equivalently of the arrow $2\xrightarrow M9$, and
+$(N,b_{S_{10}})$ has pairing dimensions $5$ and $25$ with $\mathcal E$ and $\mathcal E_*$.  With $(\pi,\pi)$
+special it is spanned by the class of $b_{S_{69}}$, and $(N,b_{S_{69}})$ has pairing dimensions $9$ and $23$.
+Corollary~\ref{cor:aux-conditional} assumes Conjecture~D of~\cite{CHKK} and that the assigned object lies
 in one of the stated classes, and the algebraic calculation proves neither assumption.  The restriction
 on support is essential: Proposition~\ref{prop:aux-span} exhibits $41$ two-switch sums outside the
-hypothesis with the same two closure dimensions.  The elements $b_s$ are not expressed in an ordered
-branch-jump complex, and they are not homogeneous in the only available grading.
+hypothesis with the same two closure dimensions.  The four elements $b_s$ of
+Proposition~\ref{prop:q7-typeD} are not expressed in the immersed Floer complex of Akaho and
+Joyce~\cite{AkahoJoyce}, whose generators at a transverse self-intersection are its two ordered branch
+jumps.  Among them only $b_{S_{69}}$ is homogeneous in the quantum grading, and only in the normalization of
+Section~\ref{sec:khovanov}.
 \end{remark}
 
 \begin{remark}[The opposite sign of the perturbation]\label{rem:sign-pairings}
 For small $t>0$ the curve, its self-intersections and their smoothings are the translates by
 $(\gamma,\theta)\mapsto(\gamma+\pi,\theta)$ of those used here (Remark~\ref{rem:sign}), while the
 earring curves do not depend on $t$; since the translation is a symplectomorphism of $\Pst$ of order
-two, we computed the pairings for $t>0$ as those of the present objects with the translated earrings.
-The undeformed pairings remain $7$ and $25$, and the smoothings at $S_{18}$ and $S_{25}$ still give
-$(9,31)$, but those at $S_{69}$ and $S_{74}$ give $(5,25)$ and $(7,25)$.  Dimension nine against the
-first earring is reached by seven of the $45$ distinct switches: those at $S_{10}$, $S_{18}$, $S_{22}$,
-$S_{25}$, $S_{29}$, $S_{30}$, and the one shared by $S_{26},S_{27},S_{28},S_{32},S_{33}$.  Among the $82$ census smoothings, the $82$ opposite smoothings and the $16$ elements of the
+two, we computed the pairing dimensions for $t>0$ as those of the translated earrings with the present
+objects.  The undeformed pairing dimensions remain $7$ and $25$, and the smoothings at $S_{18}$ and $S_{25}$
+still give $(9,31)$, but those at $S_{69}$ and $S_{74}$ give $(5,25)$ and $(7,25)$.  Pairing dimension nine
+with the first earring is reached by seven of the $45$ distinct switches: those at $S_{10}$, $S_{18}$,
+$S_{22}$, $S_{25}$, $S_{29}$, $S_{30}$, and the one shared by $S_{26},S_{27},S_{28},S_{32},S_{33}$.  Among the
+$82$ oriented smoothings, the $82$ unoriented smoothings and the $16$ elements of the
 span of Proposition~\ref{prop:aux-span}, the pair $(9,31)$ again occurs only at $S_{18}$ and $S_{25}$,
-the opposite smoothings there are again separated by the third closure ($69$ against $103$), and in the
-span only $b_{S_{18}}$ and $b_{S_{25}}$ reach dimension nine.  The two-closure selection therefore holds
-for either sign of $t$, whereas Proposition~\ref{prop:q7-typeD} does not: for $t>0$ only two of the four
-objects have dimension nine.  All other values in this section are stated for $t<0$; the bigon
-statistics of Table~\ref{tab:family} are the same for both signs.
+the unoriented smoothings there are again separated by the third closure ($69$ against $103$), and in the
+span only $b_{S_{18}}$ and $b_{S_{25}}$ reach pairing dimension nine.  The two-closure selection therefore
+holds for either sign of $t$, whereas Proposition~\ref{prop:q7-typeD} does not: for $t>0$ only two of the
+four objects have pairing dimension nine.  All other values in this section are stated for $t<0$; the
+numbers $h_q^{\mathrm{big}}$ of Table~\ref{tab:family} are the same for both signs.
 \end{remark}
 
 \subsection{A two-generator Yoneda reduction}\label{ss:yoneda}
@@ -717,155 +754,45 @@ every figure-eight bubble: Fukaya, in the compact setting \cite[Thms.~6.3 and~7.
 Gao, under the hypotheses recalled in \S\ref{ss:correspondence}, obtain the composed object with its
 bounding cochain by a cyclic element and the Yoneda lemma.  Since $N$ and the $b_s$ are
 encoded in the chart of \S\ref{ss:explicit}, which sends $(0,\pi)$ to infinity, let $\mathcal C\subset\mathcal W(\Pst)$
-be the CHKK full subcategory of unobstructed objects missing the corner $(0,\pi)$ (CHKK's description applies to
-any corner, \S\ref{ss:explicit}), and let $G=a^\circ\oplus a^\bullet$ be the arcs ending at the other corners, so that $\mathcal B=\operatorname{End}_{\mathcal C}(G)$.  Then $G$
+be the full subcategory of~\cite[\S11.5]{CHKK} of unobstructed objects missing the corner $(0,\pi)$ (the
+description there applies to any corner, \S\ref{ss:explicit}), and let $\mathbf a=a^\circ\oplus a^\bullet$ be the sum of the arcs ending at
+the other corners, so that $\mathcal B=\operatorname{End}_{\mathcal C}(\mathbf a)$.  Then $\mathbf a$
 generates $\mathcal C$ and $\operatorname{Tw}\mathcal C\simeq\operatorname{Tw}(\mathcal B)$
 \cite[\S11.5]{CHKK}, by \cite[Thm.~7.6]{Bocklandt} and \cite[\S3]{HKK}.
 
-\begin{proposition}[Yoneda recognition]\label{prop:yoneda-recognition}
-Assume that the quilted module $\mathcal M_{F_{1/3,t}}(A_{1/7})$ is defined and is represented by an
-object $X_{1/3,1/7}\in\mathcal C$.  If there is an $A_\infty$ quasi-isomorphism of right
-$\mathcal B$-modules
+\begin{remark}[Yoneda recognition]\label{rem:yoneda-recognition}
+Assume that the quilted module $\mathcal M_{F_{1/3,t}}(A_{1/7})$, the $A_\infty$ module over $\mathcal C$
+whose value on an object $Y$ is the quilted Floer complex of $Y$, $F_{1/3,t}$ and $A_{1/7}$, is defined and is
+represented by an object $X_{1/3,1/7}\in\mathcal C$, and that there is an $A_\infty$ quasi-isomorphism of
+right $\mathcal B$-modules
 \[
  \mathcal M_{F_{1/3,t}}(A_{1/7})\big|_{\mathcal B}
  \simeq
- \operatorname{Mor}_{\operatorname{Tw}(\mathcal B)}\bigl(G,(N,b_{S_{18}})\bigr),
+ \operatorname{Mor}_{\operatorname{Tw}(\mathcal B)}\bigl(\mathbf a,(N,b_{S_{18}})\bigr).
 \]
-then $X_{1/3,1/7}\simeq(N,b_{S_{18}})\simeq(N,b_{S_{25}})$ in $\mathcal C$.  The module must be given
-on $a^\circ$ and $a^\bullet$ as full chain-level complexes with every $\mathcal B$-action and higher
-module map; homology dimensions of pairings with two test objects do not imply the conclusion.
-\end{proposition}
+Then $X_{1/3,1/7}\simeq(N,b_{S_{18}})\simeq(N,b_{S_{25}})$ in $\operatorname{Tw}\mathcal C$.  This is the Yoneda lemma:
+since $\mathbf a$ generates $\mathcal C$, restricted Yoneda is cohomologically fully faithful on
+$\mathcal C$, with values in perfect $\mathcal B$-modules; representability identifies the first module
+with the Yoneda module of $X_{1/3,1/7}$, so the assumed quasi-isomorphism is the image of a homotopy
+equivalence $X_{1/3,1/7}\simeq(N,b_{S_{18}})$, and the second equivalence is
+Corollary~\ref{cor:q7-classes}.  The module must be given on $a^\circ$ and $a^\bullet$ as full chain-level
+complexes with every $\mathcal B$-action and higher module map; pairing dimensions with two test objects
+do not imply the conclusion (Example~\ref{ex:yoneda-two-tests}).
+\end{remark}
 
-\begin{proof}
-Since $G$ generates $\mathcal C$, restricted Yoneda is cohomologically fully faithful on $\mathcal C$,
-with values in perfect $\mathcal B$-modules.  Representability identifies the first module with the
-Yoneda module of $X_{1/3,1/7}$, so the assumed quasi-isomorphism is the image of a homotopy equivalence
-$X_{1/3,1/7}\simeq(N,b_{S_{18}})$; the second equivalence is Corollary~\ref{cor:q7-classes}.  For the
-last assertion, the two-switch sum $(N,b_{S_{18}}+b_{S_{35}})$ is one of the $41$ collisions of
-Proposition~\ref{prop:aux-span}; but against the figure-eight curve $Z$ built, as the earrings above,
-from the line of slope $-1/3$ through $(0,0)$, its wrapped dimension is $11$, against $9$ for
-$(N,b_{S_{18}})$.  That line passes through $(\pi,\pi)$, whereas the line of $Q_{-1/3}$ joins $(\pi,0)$ to $(0,\pi)$; so $Z$ is not
-the earring $E_{1/3}$; the
-argument uses only that $\dim H\operatorname{Mor}(Z,-)$ is a homotopy invariant.
-\end{proof}
+\begin{example}\label{ex:yoneda-two-tests}
+Let $Z$ be the figure-eight curve built, as the earrings above, from the line of slope $1/3$ through
+$(0,0)$.  This line passes through $(\pi,\pi)$, whereas the line of $Q_{1/3}$ joins $(\pi,0)$ to
+$(0,\pi)$, so $Z$ is not the earring $E_{-1/3}$.  The objects $(N,b_{S_{18}})$ and
+$(N,b_{S_{18}}+b_{S_{35}})$ have equal pairing dimensions, $9$ and $31$, with $\mathcal E$ and
+$\mathcal E_*$; the second is one of the $41$ two-switch sums of Proposition~\ref{prop:aux-span} with the
+pair $(9,31)$.  With $Z$, however, their pairing dimensions are $9$ and $11$.  Since
+$\dim H\operatorname{Mor}(Z,-)$ is a homotopy invariant, the two objects are not homotopy equivalent.
+\end{example}
 
-By Proposition~\ref{prop:partial-triple}, the proposition becomes usable only after a wrapped
-representability theorem for immersed correspondences that covers the triple point, or an embedded
+By Proposition~\ref{prop:partial-triple}, Remark~\ref{rem:yoneda-recognition} becomes usable only after a
+wrapped representability theorem for immersed correspondences that covers the triple point, or an embedded
 correspondence inducing the same quilted module; neither is currently available.  The full
 $\mathcal B$-module comparison would then remain, and so would the identification of the symplectic
-assignment with the instanton tangle invariant, which CHKK state as \cite[Conj.~D]{CHKK}.
-
-\subsection{Finite polygon counts and candidate supports}\label{sec:compute}
-For $q=5,7,11,13$ we also record the output of a finite combinatorial test on the piecewise-linear
-curves $R_{\mathrm{PL}}=\Rnat(\Qh{-1/2})$ and $L_{q,\mathrm{PL}}$.  De~Silva, Robbin and Salamon
-identify holomorphic strips with combinatorial lunes for transverse embedded loops on a surface
-\cite{dSRS}; their hypotheses do not cover immersed curves in the orbifold pillowcase, nor the higher
-polygons of a bounding-cochain deformation.
-
-\subsubsection*{The finite winding test}\label{ss:polygons}
-For intersection points $x,y$ choose an arc $\alpha$ on red from $x$ to $y$ and an arc $\beta$ on blue
-from $y$ to $x$, and lift $\alpha\cdot\bar\beta$ to the torus.  The pair is a \emph{candidate bigon}
-when (a) the lifted loop is null-homologous, (b) its winding function vanishes at the four corners,
-(c) that function is nonnegative on the sampled complementary regions, and (d) the local sectors at $x$
-and $y$ are convex.  The same conditions at every vertex define candidate triangles and
-quadrilaterals; we call their conjunction the \emph{low-order test}, and the set of self-intersections
-at which the tabulated windows contain a complete polygon the \emph{active set}.  The matrices use one
-fixed lift of the red curve and sum over the two torus preimages of a blue self-intersection.  Candidate
-arcs are restricted to explicit windows of segment indices, only single traversals are considered, and
-no geometric bound proves the windows exhaustive.  The parameters
-$(\varepsilon_{\rm blue},\varepsilon_{\rm red},r_{\rm red})$ (connector amplitude, red perturbation
-amplitude, red pinch parameter) are $(0.05,0.10,0.25)$ at $q=5$ and $(0.05,0.16,0.40)$ at $q=7,11,13$
-unless stated otherwise.  With $C_q$ the $\F_2$-vector space on the transverse intersections and
-$D_q^{\mathrm{big}}$ the matrix of candidate bigons, the \emph{bigon-rank statistic} is
-\begin{equation}\label{eq:big-stat}
- h_q^{\mathrm{big}}:=\dim_{\F_2}C_q-2\rk_{\F_2}D_q^{\mathrm{big}};
-\end{equation}
-this is a definition for a finite matrix, not the homology of a Floer complex.
-
-At $q=5$ the curves meet in nine points (one interior, two clusters of four near $\gamma=\pi$), and the
-test accepts exactly two candidate bigons with distinct vertices, so $h_5^{\mathrm{big}}=9-2\cdot2=5$;
-this agrees with the nine intersections and two bigons in Smith's proof of \cite[Thm.~5.9]{Smith}.  The
-generator counts depend on the parameters ($19$ against $23$ at $q=11$, $27$ against $25$ at $q=13$),
-while the statistic agrees at two independent parameter choices, at both of which the raw bigon
-matrices for $q=5,7,11,13$ square to zero.  One non-generic earring parameter choice at $q=7$, which
-collapses the $13$ generators to nine, was excluded.
-
-\begin{computation}[Finite bigon-rank pattern]\label{comp:law}
-For the specified representatives and parameters,
-\[
- h_5^{\mathrm{big}}=5,\qquad h_7^{\mathrm{big}}=7,\qquad
- h_{11}^{\mathrm{big}}=15,\qquad h_{13}^{\mathrm{big}}=17,
-\]
-and the raw bigon matrices square to zero over $\F_2$.  The value $5$ at $q=3$ in
-Table~\ref{tab:family} is the computation of Hedden, Herald and Kirk \cite[\S11.6]{HHK2} from a
-different tangle presentation; it is not an output of this family.
-\end{computation}
-
-\begin{table}[ht]
-\centering
-\small
-\begin{tabular}{c|ccccc}
- $q$ & $\det K_q$ & bigon statistic & $\dim_{\F_2}\Inat$ & difference & required rank change \\ \hline
- $3$ & $3$ & $5$ (external) & $5$ & $0$ & $0$ \\
- $5$ & $1$ & $5$ & $7$ & $-2$ & $-1$ \\
- $7$ & $1$ & $7$ & $9$ & $-2$ & $-1$ \\
- $11$ & $5$ & $15$ & $13$ & $+2$ & $+1$ \\
- $13$ & $7$ & $17$ & $15$ & $+2$ & $+1$ \\
-\end{tabular}
-\medskip
-\caption{A finite numerical pattern.  The instanton column is Theorem~\ref{thm:inat}.  The
-bigon-statistic column for $q\ge5$ concerns the specified finite matrices; the $q=3$ entry is
-external.  The last column is the change in matrix rank that a deformed differential on the same
-generators would require.}
-\label{tab:family}
-\end{table}
-
-At the five displayed rows $h_q^{\mathrm{big}}-(q+2)=2\,\sgn\bigl(|q-6|-3\bigr)$, so the sign of the
-difference changes as $\det K_q$ crosses $3$; at $q=11,13$ the statistic is $q+4$.  This is a
-finite-sample observation, not a theorem and not an identification of $h_q^{\mathrm{big}}$ with a Floer
-homology.
-
-A genuine deformation is a different object.  An immersed Floer theory has two ordered branch-jump
-generators at each transverse self-intersection, of complementary degrees in a graded setup
-\cite{AkahoJoyce}; a bounding cochain must satisfy the full Maurer--Cartan series, with repeated inputs
-at every order; and square-zero of the deformed differential is necessary, though not sufficient, for
-a proposed finite matrix.  The search below labels the underlying double point instead.  For a finite
-set $S$ of self-intersections, a \emph{support}, let $D_q^{\mathrm{tab}}(S)$ add to
-$D_q^{\mathrm{big}}$ the tabulated triangle and quadrilateral terms through \emph{distinct} crossings
-of $S$, and put
-\begin{equation}\label{eq:tab-stat}
- h_q^{\mathrm{tab}}(S):=\dim_{\F_2}C_q-2\rk_{\F_2}D_q^{\mathrm{tab}}(S).
-\end{equation}
-Repeated insertions and higher operations are absent, and the accompanying Maurer--Cartan test uses
-only the tabulated monogon, self-bigon and distinct-input self-triangle terms.
-
-\begin{computation}[Low-order candidate supports]\label{comp:cochains}
-\begin{enumerate}
-\item[(i)] At $q=5$, among the singleton and two-element subsets of the active set, the unique smallest
-support with $h_5^{\mathrm{tab}}=7$ is $S=\{s_A,s_B\}$, with $(\gamma,\theta)\approx(0.03,1.27)$ and
-$(3.06,4.98)$.  One tabulated quadrilateral changes the $(x_4,y_6)$ bigon entry from $1$ to $0$; the
-resulting matrix has the sole entry $(x_1,y_0)$ and squares to zero.
-\item[(ii)] At $q=7$, among the tested singleton crossings passing the low-order test, one crossing near
-$(0.042,5.405)$ has $h_7^{\mathrm{tab}}=9$.  Its tabulated triangle changes one bigon entry from $1$ to
-$0$; the resulting matrix has entries $(6,4)$ and $(7,5)$ and squares to zero.
-\item[(iii)] At the default $q=11$ parameters, $62$ singleton crossings pass the low-order test and give
-matrix rank three.  Exactly $56$ of the resulting matrices square to zero; the square of each of the
-other six has a single nonzero entry, namely $(9,15)$, $(9,16)$, $(0,14)$, and $(9,14)$ for the
-remaining three.  At the parameters $(0.03,0.10,0.25)$ the same test returns $66$ singletons of the
-target rank, of which $16$ fail square-zero and $50$ pass.
-\end{enumerate}
-\end{computation}
-
-At $q=5$ the raw bigon matrix has rank two, and the pair $s_A,s_B$ of Figure~\ref{fig:pillow} is the
-only tested support that lowers the tabulated rank to one, so $h_5^{\mathrm{tab}}=9-2=7$; minimality
-holds only within this search.  At $q=7$ the raw rank three drops to two and
-$h_7^{\mathrm{tab}}=13-4=9$; at the parameters $(0.07,0.16,0.40)$ the crossing is near
-$(0.058,5.413)$ and gives the same entries.  This crossing is $S_{69}$, whose type-D deformation is the
-four-arrow switch $b_{S_{69}}$ rather than the single untyped support of the table.  At $q=11$ the raw
-matrix has $19$ generators and rank two at the default parameters, and $23$ generators and rank four at
-the second; the model has $240$ self-intersections, some less than $10^{-3}$ apart.  Resolving both
-local sectors at the selected $q=5$ and $q=7$ crossings and recounting candidate bigons reproduces the
-tabulated matrices for one sector choice; at $q=7$ Proposition~\ref{prop:q7-typeD} replaces this
-experiment by an all-orders calculation.  Computation~\ref{comp:cochains} proves neither existence nor
-uniqueness of a bounding cochain: the candidates are not ordered branch jumps, the full Maurer--Cartan
-series is never tested, and neither $56$ nor $50$ counts bounding cochains.
+assignment with the instanton tangle invariant, which Cazassus, Herald, Kirk and Kotelskiy state
+as~\cite[Conj.~D]{CHKK}.

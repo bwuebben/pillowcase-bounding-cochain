@@ -1,0 +1,80 @@
+\section{Discussion}\label{sec:disc}
+
+\subsection{Relation to earlier work}\label{ss:disc-prior}
+For the decomposition of~\cite[\S4]{WuebbenII}, obtained from Hedden, Herald and Kirk's decomposition of $T(3,5)$
+by regluing, the pillowcase Floer homology with zero bounding cochain already agrees with $\Inat(K_q)$ in every
+grading, for odd $q\ge7$~\cite[Thm.~1.2]{WuebbenII} and for $q=5$ by the computation of Hedden, Herald and
+Kirk~\cite[\S11]{HHK2}; no bounding cochain is needed there.
+
+Smith proves that for $q=5$ his decomposition $\Qh{-1/2}\cup(Q_{1/3}+Q_{1/5})$ with zero bounding
+cochains gives a Floer homology of rank $5$ rather than $\dim\Inat=7$ \cite[proof of Thm.~5.9]{Smith}, so that
+under Conjecture~D of~\cite{CHKK} a nonzero bounding cochain is required \cite[Thm.~5.9]{Smith};
+in his closing paragraph he proposes finding the bounding cochains that correct the rank.  Sections~\ref{sec:smith} and~\ref{sec:khovanov} give
+two answers at $q=5$ and $q=7$ that, granting the arc case of the intersection formula~\cite[Thm.~5.25]{KWZ},
+no rational closure distinguishes: the smoothings $(N_q,b)$, and their deformations
+$(N_q,b+\kappa_q)\cong\mathrm{BN}_q$.
+
+For rational tangles the traceless character varieties coincide with the invariants of Kotelskiy,
+Watson and Zibrowius \cite[\S1.8]{KWZ}.  Hedden, Herald, Hogancamp and Kirk assemble Khovanov's tangle invariant from the
+traceless character varieties of the crossingless resolutions \cite[Thm.~1.1 and Cor.~1.2]{HHHK},
+with a result that agrees with $\widetilde{\Kh}(T)$ \cite{KWZagree}, and they ask whether higher terms
+can be added so as to recover the Kronheimer--Mrowka spectral sequence \cite[Question~1.4]{HHHK}.
+Cazassus, Herald, Kirk and Kotelskiy conjecture curve-valued instanton invariants $I(T)$ and
+$I^\natural(T)$ of tangles, and predict that the relevant algebra is that of \cite{KWZ}
+\cite[Conj.~E and \S11.4]{CHKK}.  They do not
+conjecture $I(T)=\widetilde{\mathrm{BN}}(T)$, which cannot hold for all tangles because
+$\dim\Inat<\rk\widetilde{\Kh}$ for some knots, for instance $T(4,5)$ \cite[\S\S10.2--10.3]{CHKK}.
+Question~\ref{q:arc} concerns one tangle, $T_q$, for whose closures $P(-2,3,q)$ and $K_*$ the two
+dimensions agree (\cite[\S3]{WuebbenII} and Proposition~\ref{prop:aux-closure}).  Kotelskiy, Watson
+and Zibrowius suggest that the differentials of the spectral sequences from Khovanov homology to
+Heegaard Floer and instanton homology might be realized by smoothing self-intersections of
+$\widetilde{\mathrm{BN}}(T)$ and $\widetilde{\Kh}(T)$ \cite[\S1.8]{KWZ}.  Sections~\ref{sec:smith}
+and~\ref{sec:khovanov} proceed in the opposite direction: a smoothing of the curve on the instanton
+side reaches the Khovanov rank, and one further term carries it to the Bar-Natan invariant $\mathrm{BN}_q$.
+
+Smoothing a self-intersection of an immersed curve by a degree-one bounding cochain is Lagrangian
+surgery.  Palmer and Woodward prove that immersed Floer cohomology is invariant under surgery for
+Lagrangians of dimension at least three, and in dimension two under an additional assumption
+\cite[Thm.~1.3]{PalmerWoodward}; for curves on surfaces, Auroux and Smith compare surgery with the
+mapping cone, which involves a bounding cochain \cite[Lem.~2.25 and Rem.~2.26]{AurouxSmith}.  The
+corner term $\kappa_q$ is of a different kind: it is supported on chords around a corner
+(Remark~\ref{rem:corner-term}), which are morphisms of the wrapped category of
+\cite[\S11.5]{CHKK} and not self-intersection points of the curve.
+
+\subsection{Open problems}\label{ss:disc-open}
+\emph{The assigned object.}  Granting the arc case of the intersection formula of Kotelskiy, Watson and
+Zibrowius~\cite[Thm.~5.25]{KWZ}, Question~\ref{q:arc} cannot be decided by rational closures at $q=5,7$
+(Corollary~\ref{cor:closures-full}); curves parallel to $c$, and gradings, separate the
+candidates (Remark~\ref{rem:sharpness}).  For $q\ge11$ a deformation of Smith's curve to
+$\mathrm{BN}_q$, if it exists, is not small in the sense of Remark~\ref{rem:q11}.
+
+\emph{The support of the bounding cochain.}  Proposition~\ref{prop:hyp-conflict} shows that
+Hypothesis~\ref{hyp:q7-support} is not implied by closure data.  A direct proof would have to identify
+the rigid figure-eight boundary strata of the quilted moduli spaces, exclude simultaneous support at
+several self-intersection orbits, and intertwine the output with the switches of
+\S\ref{ss:smoothings}.  In the strip-shrinking model the zero-width boundary stratum is predicted to
+contain quilted trajectories with any positive number of figure-eight bubbles, and the zero-input
+correction a count of figure-eight bubble trees \cite[\S\S4.2--4.4]{BottmanWehrheim}, so neither zero
+input nor index zero forces support at a single self-intersection orbit.  A proof must use the geometry near the six internal
+edge circles.
+
+\emph{The formal route.}  Remark~\ref{rem:yoneda-recognition} reduces the identification of the
+assigned object to a wrapped representability theorem of the kind Gao proves
+\cite[Thm.~7.24 and Cor.~7.25]{Gao}, and Gao's theorem requires an embedded correspondence; by Proposition~\ref{prop:partial-triple} the correspondence
+induced by the line of $Q_{1/3}$ has a triple point.  An immersed version of Gao's theorem covering
+this triple point, or an embedded replacement inducing the same quilted module, would be needed, and
+neither is available.  Independently, every selection statement of Sections~\ref{sec:smith}
+and~\ref{sec:khovanov} is conditional on the correspondence between instanton and pillowcase
+invariants \cite[Conj.~D]{CHKK}; neither Fukaya's nor Gao's correspondence theorem
+\cite{FukayaCorr,Gao} compares the two.
+
+\emph{Gradings of bounding cochains.}  In the normalization of Section~\ref{sec:khovanov} the object
+$(N,b_{S_{69}})$ is bigraded, and the class of $b_{S_{69}}$ spans the quantum-degree-zero part of the
+$\delta$-degree $-1$ endomorphism cohomology of $N$.  The $S_{18}/S_{25}$ and $S_{74}$ objects are not
+bigraded (\S\ref{ss:smoothings}, Remark~\ref{rem:q7-scope}).
+
+A selection by homogeneity of degree zero for the grading of $N$ would therefore choose the $S_{69}$ class, which the second closure excludes (Proposition~\ref{prop:aux-closure}).  Bigradedness of the deformed object alone does not select: among the objects allowed by Hypothesis~\ref{hyp:q7-support} with pairing dimension nine with $\mathcal E$, the bigraded ones also include $(N,b_{S_{18}}+b_{S_{74}})$ and the switches at $S_{34}$, $S_{38}$, $S_{75}$ and $S_{77}$, all with pairing dimension $25$ with $\mathcal E_*$.  None of the bigraded allowed objects has the pair $(9,31)$.  For $t>0$, with $(0,\pi)$ special (Remark~\ref{rem:sign-positive}), the same holds with $S_{10}$ in place of $S_{69}$.
+
+No quantum grading is known on the instanton side, so this is an observation and not a test.  A
+$\Z/4$-graded selection principle compatible with the absolute grading of Hedden, Herald and
+Kirk~\cite[\S6.1]{HHK2} would replace the closure arguments of Section~\ref{sec:smith} by a structural one.

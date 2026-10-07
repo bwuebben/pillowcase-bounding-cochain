@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Lemma 4.7 and Appendix A.3(i): the image of the central circle C_0 of the T(3,5) tangle is straight.
+r"""Lemma 4.7 and Appendix A.1(i): the image of the central circle C_0 of the T(3,5) tangle is straight.
 
 The tangle is that of Hedden, Herald and Kirk for T(3,5) with (r, s) = (2, -1).  Its group is free on A, B, and at
 eps = 0 the boundary meridians are (4.1)
@@ -12,7 +12,7 @@ This script checks:
   (1) every displayed identity in Steps 1-7 of the proof of Lemma 4.7, symbolically in the indeterminates v, zeta
       (quaternions written p = p_0 + vec p; beta = rho(b), N = rho(B) = cos v + sin v Q, zeta = beta . Q,
       U = cos v beta + sin v (beta x Q), E = 4 cos^2 v + 4 zeta^2 sin^2 v - 3, Q' = 2 zeta beta - Q, xi = beta N^-1);
-  (2) the identities stated in Appendix A.3(i) without the assumption E = 0:
+  (2) the identities stated in Appendix A.1(i) without the assumption E = 0:
       vec rho(g) . vec rho(a) = (1/2) zeta sin 2v E^2  and  tr(rho(g) rho(a)) = -2 zeta sin 2v E^2;
   (3) the Fricke form: with x = tr A, y = tr B, z = tr AB one has tr b = yz - x, and on {x = yz}
       E = y^2 + z^2 - 3, tr a = -yE, tr g = -zE, tr(ga) = yz E^2, while tr w - 2 lies in the ideal (x - yz, E);
@@ -184,8 +184,8 @@ def part1():
         diff = add(word, scal(-1, ek(th + 2 * j * gam)), -1)
         check(f'Step 7: rho((ba)^{j} c (ba)^{-j} a) = -e^((theta + {2 * j} gamma) k)',
               all(sp.simplify(sp.expand(x.rewrite(sp.exp))) == 0 for x in diff))
-    # (2) the general identities (Appendix A.3(i))
-    print('(2) without the assumption E = 0 (Appendix A.3(i))')
+    # (2) the general identities (Appendix A.1(i))
+    print('(2) without the assumption E = 0 (Appendix A.1(i))')
     check('vec rho(g) . vec rho(a) = (1/2) zeta sin 2v E^2', is_zero(vec(rg).dot(vec(ra)) - zt * sp.sin(2 * v) * E ** 2 / 2))
     check('tr(rho(g) rho(a)) = -2 zeta sin 2v E^2', is_zero(2 * qm(rg, ra)[0] + 2 * zt * sp.sin(2 * v) * E ** 2))
     check('tr rho(B) = 2 cos v and tr rho(AB) = -2 zeta sin v, so y^2 + z^2 - 3 = E',
@@ -195,7 +195,7 @@ def part1():
 
 # ---------------------------------------------------------------------------------------------- Fricke form
 def part3():
-    print('(3) Fricke coordinates x = tr A, y = tr B, z = tr AB (Appendix A.3(i))')
+    print('(3) Fricke coordinates x = tr A, y = tr B, z = tr AB (Appendix A.1(i))')
     x, y, z, t = sp.symbols('x y z t')
     A = sp.Matrix([[x, -1], [1, 0]])
     B = sp.Matrix([[0, t], [-1 / t, y]])                 # tr B = y, tr AB = t + 1/t

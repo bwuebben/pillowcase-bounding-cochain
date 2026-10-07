@@ -1,4 +1,4 @@
-# Invariants of rational tangles Q_s computed by kht++ (Appendix A.3): one block per slope s, with the kht++
+# Invariants of rational tangles Q_s computed by kht++ (Appendix A.4): one block per slope s, with the kht++
 # input word, the components of BN~(Q_s) (lines "BN") and the component of Kh~(Q_s) (line "Kh"), as printed by
 # kht++ in its files cxBNr-c2 and cxKhr-c2.
 slope ∞

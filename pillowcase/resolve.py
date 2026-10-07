@@ -1,27 +1,28 @@
 #!/usr/bin/env python3
 """
-resolve.py -- step (b): the perturbed tangle sum (RESEARCH_LOG sec 25).
+resolve.py -- the perturbed tangle sum.
 
-Implements Smith's Theorem thm:cross (arXiv:2412.06066, read in TeX source
-2026-07-16), whose content we independently pinned in secs 23-24: perturbing the
-middle piece C_3 of a Conway sum resolves each seam fiber circle by CUT-AND-PASTE:
+Implements Smith's Theorem thm:cross (arXiv:2412.06066), applied to the seam fiber
+circles computed in tangles.py: perturbing the middle piece C_3 of a Conway sum
+resolves each seam fiber circle by cut-and-paste:
 
   * Each fiber circle (seam s, arc [lo,hi]) meets the abelian locus at its two fold
     endpoints rho_0 (theta=lo) and rho_pi (theta=hi) -- cone-on-4-points singular
     points of the unperturbed variety.
   * The resolution deletes the circle and reconnects the four main-curve branch
-    ends DIAGONALLY:  A+(lo) <-> A-(hi)  and  A-(lo) <-> A+(hi),  where A+ is the
+    ends diagonally:  A+(lo) <-> A-(hi)  and  A-(lo) <-> A+(hi),  where A+ is the
     branch on the (0,pi)-annulus side of the seam and A- the (pi,2pi) side.
     (The s-sign data of Smith's lem:endop only routes the invisible internal
     halves; the visible outcome is always this diagonal.)
   * Each connector crosses the seam once; the two connectors of one circle cross
-    each other once => ONE new P self-intersection per resolved circle (a possible
+    each other once => one new P self-intersection per resolved circle (a possible
     finite candidate-support location), plus transversal crossings with whatever
     other strands come near the seam arc.
 
-Validated by hand + figure against Smith's worked example R_t(Q_{1/2}+Q_{-1/3})
-(his Figures Ex3/ExResA/ExResB): one circle at gamma=pi with arc [pi/6, 5pi/6];
-the resolution splits the curve into TWO components -- a corner-to-corner arc
+Compared with Smith's worked example R_t(Q_{1/2}+Q_{-1/3}) (his Figures
+Ex3/ExResA/ExResB; test (12) below checks the circle and the component count):
+one circle at gamma=pi with arc [pi/6, 5pi/6];
+the resolution splits the curve into two components -- a corner-to-corner arc
 through 2 fundamental-domain strands and a closed loop through 4.
 
 Everything lives on the double cover T^2 = [0,2pi)^2 with iota(g,t)=(-g,-t);
@@ -273,7 +274,7 @@ def resolve(segs, circles, eps=0.05):
         # walk: chain -> connector -> chain -> ... until loop closes
         path = []
         cur_chain = chi0
-        # orient so we END at a port (start from the other end)
+        # orient so we end at a port (start from the other end)
         (c_i, pos) = chain_ends[end_key]
         pts = list(chains[cur_chain])
         if pos == 0:
@@ -413,7 +414,7 @@ def P_components(polylines):
 
 
 # ---------------------------------------------------------------------------
-# battery (sec 25)
+# validation battery
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
     results = []
@@ -422,7 +423,7 @@ if __name__ == "__main__":
         results.append(bool(ok))
         print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
 
-    print("== resolution of the perturbed tangle sum (RESEARCH_LOG sec 25) ==\n")
+    print("== resolution of the perturbed tangle sum ==\n")
 
     print("(12) Smith's worked example: R_t(Q(1/2)+Q(-1/3))  [his Figs Ex3/ExResA/ExResB]")
     sA = segments(curve(south_twists(2)))[0]
@@ -448,7 +449,7 @@ if __name__ == "__main__":
     check("P self-crossings = 3 (1 connector X + 2 connector-vs-R2-bounce)",
           len(orbs) == 3)
 
-    print("\n(13) the BLUE curve of P(-2,3,5): R_t(Q(1/3)+Q(1/5))  [Smith Fig 2bigons]")
+    print("\n(13) the blue curve of P(-2,3,5): R_t(Q(1/3)+Q(1/5))  [Smith Fig 2bigons]")
     s3 = segments(curve(south_twists(3)))[0]
     s5 = segments(curve(south_twists(5)))[0]
     bsum = tangle_sum(s3, s5)

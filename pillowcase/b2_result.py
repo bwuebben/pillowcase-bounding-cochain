@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-b2_result.py -- finite q=5 candidate computation (RESEARCH_LOG sec 31).
+b2_result.py -- finite q=5 candidate computation.
 End-to-end reproduction + assertions for the truncated polygon tables.
 
   B = {s_A, s_B},   two self-crossings of the blue curve
@@ -69,7 +69,7 @@ def main():
         results.append(bool(ok))
         print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
 
-    print("== P(-2,3,5): finite candidate support B={s_A,s_B} (sec 31) ==\n")
+    print("== P(-2,3,5): finite candidate support B={s_A,s_B} ==\n")
     red, blue, x = build_geometry()
     gens, d = bigon_matrix(red, blue)
     n = len(gens)
@@ -81,7 +81,7 @@ def main():
     check("D_big squares to zero", not raw_square)
     print(f"finite bigon statistic h_big=n-2 rank(D_big)="
           f"{n - 2 * rank_f2(d)} (rank(D_big)={rank_f2(d)})")
-    check("finite bigon gate: 9 generators, rank D_big = 2, h_big = 5",
+    check("finite bigon matrix: 9 generators, rank D_big = 2, h_big = 5",
           n == 9 and rank_f2(d) == 2 and n - 2 * rank_f2(d) == 5)
 
     Pcross, TriP = triangle_contributions_P(red, blue, gens)

@@ -7,7 +7,7 @@ L_{7,PL} there are two iota-invariant smoothings: the census smoothing
 smoothing (``pairing=2``).  ``q7_quilt_census.py --all-node-census`` pairs the
 73 census smoothings that preserve the 31-generator module of N.  This program
 treats the remaining cases.  Every smoothed curve is encoded as a standalone
-twisted complex over the two-arc algebra, one representative for each pair of
+twisted complex over the algebra B, one representative for each pair of
 involution-related torus components, and paired with rational earrings by the
 exact mapping-cone reduction ``q7_kwz.exact_red_blue_homology``, which raises an
 error unless every face complex has torsion homology.

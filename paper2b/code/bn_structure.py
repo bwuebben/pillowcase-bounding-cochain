@@ -1,6 +1,6 @@
-"""Theorem 7.1 (the structure theorem), Remark 7.3 and Appendix A.1.
+"""Theorem 4.1 (the structure theorem), Remark 4.3 and Appendix A.1.
 
-Exact computations in Tw(B) over F2.  Every statement of Theorem 7.1 asserts that two explicit reduced twisted
+Exact computations in Tw(B) over F2.  Every statement of Theorem 4.1 asserts that two explicit reduced twisted
 complexes are strictly isomorphic, or that an explicit matrix over B squares to zero; all complexes involved are of
 loop type, so strict isomorphism is decided by comparing the words of their components.
 
@@ -8,10 +8,10 @@ loop type, so strict isomorphism is decided by comparing the words of their comp
   (b) For odd 5 <= q <= 21, BN_q = Phi(BN~(T_q)) is the arc obtained from alpha_q by sliding its end at (0,0) twice
       around that corner, parallel to c; among the 24 slides of alpha_q it is the only one.
   (c) (delta + kappa_q)^2 = (delta + b + kappa_q)^2 = 0 and (N_q, b + kappa_q) is strictly isomorphic to BN_q.
-Remark 7.3: for t > 0 the comparison object is BN~(T_q) itself, the slide is at (pi,0), and (c) holds with kappa'_q;
+Remark 4.3: for t > 0 the comparison object is BN~(T_q) itself, the slide is at (pi,0), and (c) holds with kappa'_q;
 (N_q, b + kappa'_q) pairs to 13 (q = 7) and 9 (q = 5) with E_{-1}, against rk Kh~(K_{-1}(q)) = 11 and 7.
 Appendix A.1: the complex N_5, the smoothing b_5 and the corner term kappa_5.
-Section 7.2: alpha_q and BN_q are bigraded arcs; c and (c, J_2) admit a delta-grading but no bigrading.
+Section 4.2: alpha_q and BN_q are bigraded arcs; c and (c, J_2) admit a delta-grading but no bigrading.
 BN~(T_q) is read from the output of kht++ in data/kht (see README for how to regenerate it).
 """
 import sys, time
@@ -63,7 +63,7 @@ def grading_obstructions(X):
 
 def main():
     t0 = time.time()
-    rep = A.Report('Theorem 7.1, Remark 7.3 and Appendix A.1')
+    rep = A.Report('Theorem 4.1, Remark 4.3 and Appendix A.1')
     pl = O.complexes('pl_models')
     traced = O.complexes('traced_curves')
     E, _ = O.E()
@@ -71,7 +71,7 @@ def main():
     E_half, E_34, E_m1 = G.earring(F(-1, 2)), G.earring(F(-3, 4)), G.earring(F(-1))
     kh = O.khovanov_ranks()
 
-    rep.section('the curves of Section 7.2 and the translation Phi')
+    rep.section('the curves of Section 4.2 and the translation Phi')
     for q in (5, 7):
         a = G.alpha(q)
         rep.check(f'q={q}: Phi(alpha_q) strictly isomorphic to alpha_q', True,
@@ -83,7 +83,7 @@ def main():
     rep.check('alpha_q joins (0,0) and (pi,0) (q = 5, 7)', True,
               all({G.corner_of(G.R0), G.corner_of(G.Mq(q))} == {'(0,0)', '(pi,0)'} for q in (5, 7)))
 
-    rep.section('gradings (Section 7.2)')
+    rep.section('gradings (Section 4.2)')
     ob_c, ob_cJ = grading_obstructions(G.c_curve(1)), grading_obstructions(G.c_curve(2))
     rep.check('c admits a delta-grading but no bigrading', True, len(ob_c) == 1 and ob_c[0][2] == 0 and ob_c[0][:2] != (0, 0))
     rep.check('(c, J_2) (the doubled word) admits a delta-grading but no bigrading', True,
@@ -145,7 +145,7 @@ def main():
               (A.hom_dim(E_half, Y5), A.hom_dim(E_34, Y5)))
     rep.check('rk Kh~ of P(-2,3,5) and of K_{-3/4}(5)', (7, 21), (kh[('-1/2', 5)], kh[('-3/4', 5)]))
 
-    rep.section('Section 6.3: N_7 and the encodings of L_{7,PL}')
+    rep.section('Section 3.3: N_7 and the encodings of L_{7,PL}')
     N7, L7 = O.N7()
     rep.check('N_7 strictly isomorphic to the encoding of L_{7,PL}', True, A.strictly_isomorphic(N7, pl['N7'][0]))
     rep.check('(N_7, b_S18), (N_7, b_S25) strictly isomorphic to the encoded census smoothings at S_18, S_25',
@@ -155,7 +155,7 @@ def main():
     rep.check('N_7: ends (label at (0,0), label at (pi,0))', (36, 18),
               (L7[[e for e, c in ends7.items() if c == '(0,0)'][0]], L7[[e for e, c in ends7.items() if c == '(pi,0)'][0]]))
 
-    rep.section('Theorem 7.1(a)')
+    rep.section('Theorem 4.1(a)')
     for q in (7, 5):
         Nq, L = O.N(q)
         for bname, b in O.selected_b(q).items():
@@ -171,7 +171,7 @@ def main():
             rep.check(f'q={q}, {bname}: (N_q, b) strictly isomorphic to alpha_q + (c, J_2)', True,
                       A.strictly_isomorphic(X, A.union(G.alpha(q), G.c_curve(2))))
 
-    rep.section('Theorem 7.1(b), q = 5, 7, ..., 21')
+    rep.section('Theorem 4.1(b), q = 5, 7, ..., 21')
     nq = 0
     for q in range(5, 23, 2):
         BNk = O.kht_bn(q)
@@ -194,7 +194,7 @@ def main():
     rep.check('two periods of c end at p_4 = p_0 + 2(p_2 - p_0), a lift of (0,0)', '(0,0)',
               G.corner_of((G.R0[0] + 4 * d[0], G.R0[1] + 4 * d[1])))
 
-    rep.section('Theorem 7.1(c)')
+    rep.section('Theorem 4.1(c)')
     for q in (7, 5):
         Nq, L = O.N(q)
         kap = O.kappa(q)
@@ -211,7 +211,7 @@ def main():
             rep.check(f'q={q}, {bname}: (N_q, b + kappa_q) strictly isomorphic to BN_q', True,
                       A.strictly_isomorphic(Y, G.bn_smith(q)))
 
-    rep.section('Remark 7.3 (t > 0)')
+    rep.section('Remark 4.3 (t > 0)')
     for q in (7, 5):
         Nq, L = O.N(q)
         BNk = O.kht_bn(q)

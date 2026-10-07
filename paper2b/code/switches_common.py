@@ -1,9 +1,9 @@
-"""Finite searches among reduced loop-type twisted complexes (Remarks 7.2 and 7.11, Appendix A.3, "Searches").
+"""Finite searches among reduced loop-type twisted complexes (Remarks 4.2 and 4.11, Appendix A.4, "Searches").
 
-* Algebraic switches (Remark 7.2): replace two arrows i -Y^k-> j and i' -Y^k-> j' of delta_X, with j and j' of the
+* Algebraic switches (Remark 4.2): replace two arrows i -Y^k-> j and i' -Y^k-> j' of delta_X, with j and j' of the
   same idempotent (and i, i' of the same idempotent), by i -Y^k-> j' and i' -Y^k-> j, such that the result satisfies
   the Maurer--Cartan equation.
-* Edit distance (Remark 7.11): the least number of arrows that must be deleted from delta_X, and the same number
+* Edit distance (Remark 4.11): the least number of arrows that must be deleted from delta_X, and the same number
   added, to reach a complex strictly isomorphic to a target arc T.  All arrows are non-identity elements, so every
   candidate is reduced and strict isomorphism is homotopy equivalence.  X + edit is strictly isomorphic to T with
   2r changed arrows if and only if the word of T is the concatenation of r + 1 pairwise disjoint intervals of the

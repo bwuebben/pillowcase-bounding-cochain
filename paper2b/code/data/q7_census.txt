@@ -1,4 +1,4 @@
-# The census smoothings of L_{7,PL} at its 82 self-intersection orbits (Section 6.3).  For each orbit: its
+# The census smoothings of L_{7,PL} at its 82 self-intersection orbits (Section 3.3).  For each orbit: its
 # name, its kind (connector--main or connector--connector), whether the smoothing is generator-preserving,
 # and, if it is, the switch b_s in End(N), given by its four arrows in the labels of N (old, old, new, new).
 S0	connector--main	yes	4 R 3; 0 R 19; 4 R 19; 0 R 3

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Remark 5.8 and Appendix A.3(v): numerical Floer complexes for the twisted torus knots T(3, n; 2, m).
+r"""Remark 5.8 and Appendix A.1(v): numerical Floer complexes for the twisted torus knots T(3, n; 2, m).
 
 For n = 7, 8, 13 and m = 1, 2, 3, the variety of the tangle of Hedden, Herald and Kirk for T(3, n) (with the
 parameters (r, s) of Section 5) is traced with the continuation code of the companion paper on T(3,n), at the two

@@ -1,4 +1,4 @@
-# Encodings of the piecewise-linear models L_{q,PL} (q = 5, 7, 11, 13) in the chart of Section 6.3, after the
+# Encodings of the piecewise-linear models L_{q,PL} (q = 5, 7, 11, 13) in the chart of Section 3.3, after the
 # unit cancellations, produced by the programs of the directory pillowcase/; generators numbered along the
 # encoding.  N5_orb13 and N5_orb18 are the encodings of the census smoothings of L_{5,PL} at two of its
 # self-intersection orbits, and N7_orb18, N7_orb25 those of L_{7,PL} at S_18 and S_25.

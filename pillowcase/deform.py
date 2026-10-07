@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-deform.py -- step (e), part 2: the deformed differential of P(-2,3,5)
-(RESEARCH_LOG sec 28).
+deform.py -- triangle tables for a truncated deformed differential of P(-2,3,5).
 
 For each blue self-crossing s and each ordered generator pair (x,y), this finite
 model counts immersed triangles that contribute to a truncated candidate matrix
@@ -12,8 +11,8 @@ D_tab:
 A triangle for D_tab(x)->y has corners x, y (generators = red^blue) and s (a
 blue self-crossing); its boundary is  red arc(x->y) + blue arc(y->s) + blue arc
 (s->x), switching blue branch at s. Counting on the C_+ lift with the red arc on
-C_+ gives the pillowcase count directly (same convention validated for the bigons
-in sec 27).  The code reports the finite statistic #gens - 2 rank(D_tab), but it
+C_+ gives the pillowcase count directly (the same convention as for the bigons in
+bigons.py).  The code reports the finite statistic #gens - 2 rank(D_tab), but it
 does not identify that statistic with Floer homology: the all-order, branch-typed
 Maurer--Cartan deformation is not implemented here.  In particular, every
 reported candidate matrix must first pass the algebraic check D_tab^2 = 0.
@@ -35,16 +34,16 @@ def build_geometry():
 
 
 def build_geometry_p(blue_eps=0.05, red_eps=0.10, red_phi=0.25):
-    """Parametric geometry -- for perturbation-stability checks (RESEARCH_LOG sec 30)."""
+    """Parametric geometry -- for perturbation-stability checks."""
     return build_pretzel(2, blue_eps, red_eps, red_phi)
 
 
 def build_pretzel(k, blue_eps=0.05, red_eps=0.16, red_phi=0.40):
-    """The pillowcase Lagrangians for P(-2,3,2k+1) = num(Q_{-1/2}+Q_{1/3}+Q_{1/(2k+1)})
-    (RESEARCH_LOG sec 33). blue = R_t(Q_{1/3}+Q_{1/(2k+1)}) (the perturbed Conway sum,
-    resolved); red = R^natural(hat Q_{-1/2}) (the earring, FIXED across the family).
-    Requires gcd(2k+1,3)=1 (else corner circles appear and resolve fails). NOTE the
-    default red perturbation (0.16,0.40) is GENERIC for the family; (0.10,0.25) is
+    """The pillowcase Lagrangians for P(-2,3,2k+1) = num(Q_{-1/2}+Q_{1/3}+Q_{1/(2k+1)}).
+    blue = R_t(Q_{1/3}+Q_{1/(2k+1)}) (the perturbed Conway sum,
+    resolved); red = R^natural(hat Q_{-1/2}) (the earring, fixed across the family).
+    Requires gcd(2k+1,3)=1 (else corner circles appear and resolve fails). Note: the
+    default red perturbation (0.16,0.40) is generic for the family; (0.10,0.25) is
     degenerate for k=3 (collapses 13 generators to 9)."""
     q = 2 * k + 1
     assert (q % 3) != 0, f"P(-2,3,{q}) needs gcd({q},3)=1 (corner-circle-free)"
@@ -181,10 +180,11 @@ def square_entries_f2(M):
 
 def triangle_contributions_P(red, blue, gens, maxspan_blue=180, maxspan_red=60):
     """Full sweep: for every blue self-crossing (all T^2 preimages) count mod-2
-    the triangles g_i -> g_j through it, then GROUP the two T^2 preimages of each
-    pillowcase self-crossing into one P-orbit and UNION their triangle entries
-    (the P-count with red arc on C_+ picks whichever preimage closes; different
-    P-triangles through one P-crossing may use different preimages).
+    the triangles g_i -> g_j through it, then group the two T^2 preimages of each
+    pillowcase self-crossing into one P-orbit and take the union of their
+    triangle entries (the P-count with red arc on C_+ picks whichever preimage
+    closes; different P-triangles through one P-crossing may use different
+    preimages).
     Returns (Pcross, TriP): Pcross = list of (Prep_point, [preimage dicts]);
     TriP = list of n x n F_2 matrices, one per P-crossing."""
     scross = self_intersections_detailed(blue)

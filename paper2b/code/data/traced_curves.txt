@@ -1,4 +1,4 @@
-# Encodings of numerical traces of Smith's perturbed curve R_t(Q_{1/3} + Q_{1/q}) (Appendix A.3): the curve
+# Encodings of numerical traces of Smith's perturbed curve R_t(Q_{1/3} + Q_{1/q}) (Appendix A.4): the curve
 # traced from the equations of [Smith, Prop. 4.1] composed with the lines of slopes 1/3 and 1/q through (0,0)
 # (program c3_perturbed.py of the directory pillowcase/), for the perturbation parameter t and step size s in
 # the name, mapped to the plane by x = 1 - theta/pi, y = 1 + gamma/pi, cut at its two corner passages and

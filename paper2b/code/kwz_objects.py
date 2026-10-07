@@ -1,9 +1,9 @@
-"""The explicit twisted complexes of Sections 6 and 7 and Appendix A, in the paper's notation, and loaders for the
+"""The explicit twisted complexes of Sections 3 and 4 and Appendix A, in the paper's notation, and loaders for the
 data files.
 
-Generators carry the labels printed in the paper.  N_7 is the complex N of Section 6.3, E and E_* are the earring
-complexes (6.2) and (6.3) of the first and second closures, N_5 and b_5 are (A.1) and (A.2), and the corner terms
-kappa_q and kappa'_q are those of Theorem 7.1(c) and Remark 7.3.
+Generators carry the labels printed in the paper.  N_7 is the complex N of Section 3.3, E and E_* are the earring
+complexes (3.2) and (3.3) of the first and second closures, N_5 and b_5 are (A.1) and (A.2), and the corner terms
+kappa_q and kappa'_q are those of Theorem 4.1(c) and Remark 4.3.
 """
 import os
 
@@ -12,7 +12,7 @@ import kwz_algebra as A
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, 'data')
 
-# ---------------------------------------------------------------- Section 6.3
+# ---------------------------------------------------------------- Section 3.3
 N7_LABELS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 30, 31, 32, 33,
              34, 35, 36]
 N7_CIRC = {1, 2, 5, 6, 15, 16, 20, 21, 32, 33}
@@ -29,7 +29,7 @@ ESTAR_CIRC = {1, 2, 7, 8, 11, 12}
 ESTAR_ARROWS = """1 M 0; 1 L 2; 2 M 3; 3 R 4; 5 M2 4; 6 R 5; 7 M 6; 8 L 7; 8 M 9; 10 R 9; 11 M 10; 12 L 11;
 12 M 13; 0 R 13"""
 
-# the four switches of the table in Section 6.3: (old arrows, new arrows)
+# the four switches of the table in Section 3.3: (old arrows, new arrows)
 SWITCHES7 = {'S18': ("4 R 3; 22 R 23", "22 R 3; 4 R 23"),
              'S25': ("6 L 5; 20 L 21", "20 L 5; 6 L 21"),
              'S69': ("0 R 19; 26 R 27", "0 R 27; 26 R 19"),
@@ -42,7 +42,7 @@ N5_ARROWS = """1 M2 0; 2 R 1; 3 M 2; 4 L 3; 4 M 5; 5 R 6; 6 M2 7; 8 R 7; 9 M 8; 
 13 M 12; 14 L 13; 14 M 15; 16 R 15; 17 M2 16; 18 R 17; 19 M 18; 20 L 19; 20 M 21; 21 R 22"""
 B5 = "8 R 7; 16 R 15; 8 R 15; 16 R 7"
 
-# ---------------------------------------------------------------- corner terms (Theorem 7.1(c), Remark 7.3)
+# ---------------------------------------------------------------- corner terms (Theorem 4.1(c), Remark 4.3)
 KAPPA = {7: "0 R 19; 36 R 19", 5: "12 R 11; 0 R 11"}
 KAPPA_PRIME = {7: "2 M 3; 18 M2 3", 5: "10 M 11; 22 M2 11"}
 
@@ -140,7 +140,7 @@ def slope_key(r):
 
 
 def slope_set(q):
-    """The slopes r of Corollary 7.6 and the paragraph after it: every slope with |r| <= 2 and denominator at most
+    """The slopes r of Corollary 4.6 and the paragraph after it: every slope with |r| <= 2 and denominator at most
     14, every slope with |r| <= 5 and denominator at most 6, the integers with |r| <= 10, +-r_q, and infinity (None)."""
     import math
     from fractions import Fraction as F

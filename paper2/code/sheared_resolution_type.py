@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Proposition 4.10 and Remark 4.21: which resolution of the double points c_+, c_- of W occurs.
+r"""Proposition 4.10 and Appendix A.1(v): which resolution of the double points c_+, c_- of W occurs.
 
 Proposition 4.10 gives d kappa_c(0) = (-tau, -1/2) at c = (pi/2, pi/2, tau), tau = +-sqrt(3)/2, so that the resolution
 is joined for |eps_B| < sqrt(3) |eps_A| and split for |eps_B| > sqrt(3) |eps_A|.  The script

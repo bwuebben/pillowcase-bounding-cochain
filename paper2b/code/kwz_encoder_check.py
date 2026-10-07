@@ -1,11 +1,11 @@
-"""The encoder of curves as twisted complexes, against Zibrowius's program kht++ (Appendix A.3 and Section 7.1).
+"""The encoder of curves as twisted complexes, against Zibrowius's program kht++ (Appendix A.4 and Section 4.1).
 
 1. For each of the 216 rational tangles Q_s in data/kht_rational.txt, BN~(Q_s) computed by kht++ is strictly
    isomorphic to the encoding of the straight lattice arc of KWZ slope s, and Kh~(Q_s) to the encoding of the
-   figure-eight around it (Appendix A.3, "Encodings").
-2. In Smith's coordinates, Phi(Kh~(Q_{-r})) is the earring curve E_r of Q^_r (Section 7.1): the encodings agree at
-   49 slopes of the slope set of Corollary 7.6 (every seventh slope); we also check all 342 slopes.
-3. The encodings of E_{-1/2} and E_{-3/4} are the complexes E and E_* printed in (6.2) and (6.3).
+   figure-eight around it (Appendix A.4, "Encodings").
+2. In Smith's coordinates, Phi(Kh~(Q_{-r})) is the earring curve E_r of Q^_r (Section 4.1): the encodings agree at
+   49 slopes of the slope set of Corollary 4.6 (every seventh slope); we also check all 342 slopes.
+3. The encodings of E_{-1/2} and E_{-3/4} are the complexes E and E_* printed in (3.2) and (3.3).
 """
 import sys, time
 from fractions import Fraction as F
@@ -21,7 +21,7 @@ def kwz_slope(s):
 
 def main():
     t0 = time.time()
-    rep = A.Report('Encoder against kht++ (Appendix A.3, Section 7.1)')
+    rep = A.Report('Encoder against kht++ (Appendix A.4, Section 4.1)')
     rep.section('1. rational tangles computed by kht++')
     data = O.read_kht_rational()
     ok_bn = ok_kh = 0
@@ -54,8 +54,8 @@ def main():
     rep.section('3. the printed earring complexes')
     E, _ = O.E()
     Es, _ = O.Estar()
-    rep.check('E_{-1/2} strictly isomorphic to E of (6.2)', True, A.strictly_isomorphic(G.earring(F(-1, 2)), E))
-    rep.check('E_{-3/4} strictly isomorphic to E_* of (6.3)', True, A.strictly_isomorphic(G.earring(F(-3, 4)), Es))
+    rep.check('E_{-1/2} strictly isomorphic to E of (3.2)', True, A.strictly_isomorphic(G.earring(F(-1, 2)), E))
+    rep.check('E_{-3/4} strictly isomorphic to E_* of (3.3)', True, A.strictly_isomorphic(G.earring(F(-3, 4)), Es))
     return rep.finish(t0)
 
 

@@ -1,0 +1,235 @@
+\section{Data and computations}\label{app:data}
+
+\subsection{The complex \texorpdfstring{$N_5$}{N\_5}}\label{ss:N5}
+Encoding $L_{5,\mathrm{PL}}$ in the chart of \S\ref{ss:explicit} and performing the unit
+cancellations gives the reduced twisted complex $N_5$ on the generators $0,1,\dots,22$.  Its
+$\iota_\circ$ generators are $3,4,9,10,13,14,19,20$, the others carry $\iota_\bullet$, and
+\begin{equation}\label{eq:N5}
+\begin{aligned}
+\delta_{N_5}={}&1\xrightarrow{M^2}0+2\xrightarrow R1+3\xrightarrow M2+4\xrightarrow L3
++4\xrightarrow M5+5\xrightarrow R6+6\xrightarrow{M^2}7+8\xrightarrow R7\\
+&+9\xrightarrow M8+10\xrightarrow L9+10\xrightarrow M11+12\xrightarrow R11
++13\xrightarrow M12+14\xrightarrow L13+14\xrightarrow M15\\
+&+16\xrightarrow R15+17\xrightarrow{M^2}16+18\xrightarrow R17+19\xrightarrow M18
++20\xrightarrow L19+20\xrightarrow M21+21\xrightarrow R22.
+\end{aligned}
+\end{equation}
+No arrow ends where an arrow with the same face label begins, so $\delta_{N_5}^2=0$.  The complex is a
+single arc with ends $0$, at $(0,0)$, and $22$, at $(\pi,0)$.  The encoding of a numerical trace of
+Smith's perturbed curve at $q=5$, computed as in Remark~\ref{rem:analytic}, is strictly isomorphic to
+$N_5$.  Its pairing dimensions with $E_{-1/2}$ and $E_{-3/4}$ are $5$ and $15$; the first agrees with Smith's
+rank $5$ for this decomposition \cite[proof of Thm.~5.9]{Smith}.
+
+The smoothing used in Theorem~\ref{thm:structure-full} is the four-arrow element
+\begin{equation}\label{eq:b5}
+ b_5=8\xrightarrow R7+16\xrightarrow R15+8\xrightarrow R15+16\xrightarrow R7 ,
+\end{equation}
+which exchanges the targets of the arrows $8\xrightarrow R7$ and $16\xrightarrow R15$.  The complex
+$(N_5,b_5)$ consists of the arc $0,1,\dots,7,16,17,\dots,22$ and the closed component
+$8,9,\dots,15$, whose word $9\xrightarrow M8$, $10\xrightarrow L9$, $10\xrightarrow M11$,
+$12\xrightarrow R11$, $13\xrightarrow M12$, $14\xrightarrow L13$, $14\xrightarrow M15$,
+$8\xrightarrow R15$ is the doubled word of $c$.  Adding $\kappa_5=12\xrightarrow R11+0\xrightarrow
+R11$ opens the closed component between $11$ and $12$ and attaches $11$ to the end $0$; the result
+is the single arc $22,21,\dots,16,7,6,\dots,0,11,10,9,8,15,14,13,12$.  Its pairing dimensions with
+$E_{-1/2}$ and $E_{-3/4}$ are $7$ and $21$, the ranks of reduced Khovanov homology of $P(-2,3,5)$ and
+$K_{-3/4}(5)$.
+
+\subsection{Corner terms}\label{ss:corner-terms}
+The search of Remark~\ref{rem:corner-term} finds the following one-arrow replacements carrying
+$(N_q,b)$ to a complex strictly isomorphic to $\mathrm{BN}_q$, written as elements of
+$\operatorname{End}(N_q)$ (the first term is the deleted arrow):
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+object & first solution & second solution\\
+\midrule
+$(N_7,b_{S_{18}})$ & $\kappa_7=0\xrightarrow R19+36\xrightarrow R19$ & $22\xrightarrow R3+36\xrightarrow R3$\\
+$(N_7,b_{S_{25}})$ & $\kappa_7=0\xrightarrow R19+36\xrightarrow R19$ & $4\xrightarrow R3+36\xrightarrow R3$\\
+$(N_5,b_5)$ & $\kappa_5=12\xrightarrow R11+0\xrightarrow R11$ & $8\xrightarrow R15+0\xrightarrow R15$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The arrows $22\xrightarrow R3$ and $8\xrightarrow R15$ are arrows of $b_{S_{18}}$ and $b_5$ rather
+than of $\delta_{N_q}$, so the second solutions in the first and third rows delete an arrow of the
+smoothing.  The term $\kappa_7$ is the only one that serves both smoothings at $q=7$.  The
+analogous search with $\widetilde{\mathrm{BN}}(T_q)$ in place of $\mathrm{BN}_q$, which is the
+comparison for $t>0$ (Remark~\ref{rem:sign-positive}), finds for both smoothings at $q=7$ the terms
+$2\xrightarrow M3+18\xrightarrow{M^2}3$ and $20\xrightarrow M19+18\xrightarrow{M^2}19$, and at $q=5$
+the terms $10\xrightarrow M11+22\xrightarrow{M^2}11$ and $14\xrightarrow M15+22\xrightarrow{M^2}15$.
+The exact edit distance from $N_q$ to $\mathrm{BN}_q$ is $2$ for $q=5,7$, with two minimal edits in
+each case; at $q=7$ both consist of arrows labelled $R$ and touch the end $36$.
+
+\subsection{Finite polygon counts and candidate supports}\label{sec:compute}
+For $q=5,7,11,13$ we record the output of a finite combinatorial test on the piecewise-linear
+curves $R_{\mathrm{PL}}=\Rnat(\Qh{-1/2})$ and $L_{q,\mathrm{PL}}$; at $q=7$ it is superseded by the exact
+calculation of Proposition~\ref{prop:q7-typeD}.  De~Silva, Robbin and Salamon
+identify holomorphic strips with combinatorial lunes for transverse embedded loops on a surface
+\cite{dSRS}; their hypotheses do not cover immersed curves in the orbifold pillowcase, nor the higher
+polygons of a bounding-cochain deformation.  The statements labelled Computation below record outputs of
+this test as data.
+
+\subsubsection{The finite winding test}\label{ss:polygons}
+For intersection points $x,y$ choose an arc $\alpha$ on $R_{\mathrm{PL}}$ from $x$ to $y$ and an arc
+$\beta$ on $L_{q,\mathrm{PL}}$ from $y$ to $x$, and lift $\alpha\cdot\bar\beta$ to the torus.  The pair is a
+\emph{candidate bigon} when (a) the lifted loop is null-homologous, (b) its winding function vanishes at
+the four corners, (c) that function is nonnegative on the sampled complementary regions, and (d) the
+local sectors at $x$ and $y$ are convex.  The same conditions at every vertex define candidate triangles
+and quadrilaterals; we call their conjunction the \emph{low-order test}.  The matrices use one
+fixed lift of $R_{\mathrm{PL}}$ and sum over the two torus preimages of a self-intersection of
+$L_{q,\mathrm{PL}}$.  The arcs $\alpha$ and $\beta$ range over explicitly listed subarcs of the two curves,
+each traversed at most once, and no geometric bound shows that these subarcs exhaust all candidates.  We
+write $A_q$ for the set of self-intersections of $L_{q,\mathrm{PL}}$ that are vertices of a candidate
+triangle or quadrilateral found in this way.  The parameters $(\varepsilon_L,\varepsilon_R,r_R)$, namely
+the connector amplitude of $L_{q,\mathrm{PL}}$ and the perturbation amplitude and pinch parameter of
+$R_{\mathrm{PL}}$, are $(0.05,0.10,0.25)$ at $q=5$ and $(0.05,0.16,0.40)$ at $q=7,11,13$
+unless stated otherwise.  With $C_q$ the $\F_2$-vector space on the transverse intersections and
+$D_q^{\mathrm{big}}$ the matrix of candidate bigons, put
+\begin{equation}\label{eq:big-stat}
+ h_q^{\mathrm{big}}:=\dim_{\F_2}C_q-2\rk_{\F_2}D_q^{\mathrm{big}};
+\end{equation}
+this is a number attached to a finite matrix, not the homology of a Floer complex.
+
+At $q=5$ the curves meet in nine points (one interior, two clusters of four near $\gamma=\pi$), and the
+test accepts exactly two candidate bigons with distinct vertices, so $h_5^{\mathrm{big}}=9-2\cdot2=5$;
+this agrees with the nine intersections and two bigons in Smith's proof of \cite[Thm.~5.9]{Smith}.  The
+generator counts depend on the parameters: at $q=11$ the matrix $D_{11}^{\mathrm{big}}$ has $19$ generators
+and rank two at the parameters $(0.05,0.16,0.40)$, and $23$ generators and rank four at the parameters $(0.03,0.10,0.25)$, and at $q=13$ there are $27$ against $25$ generators; at $q=11$ the model has $240$ self-intersections, some less than $10^{-3}$ apart.  The value of $h_q^{\mathrm{big}}$
+agrees at two independent parameter choices, at both of which the matrices $D_q^{\mathrm{big}}$ for
+$q=5,7,11,13$ square to zero.  One non-generic earring parameter choice at $q=7$,
+which collapses the $13$ generators to nine, was excluded.
+
+\begin{computation}[Bigon ranks]\label{comp:law}
+For the specified representatives and parameters,
+\[
+ h_5^{\mathrm{big}}=5,\qquad h_7^{\mathrm{big}}=7,\qquad
+ h_{11}^{\mathrm{big}}=15,\qquad h_{13}^{\mathrm{big}}=17,
+\]
+and the matrices $D_q^{\mathrm{big}}$ square to zero over $\F_2$.  The value $5$ at $q=3$ in
+Table~\ref{tab:family} is the computation of Hedden, Herald and Kirk \cite[\S11.6]{HHK2} from a
+different decomposition; it is not an output of this family.
+\end{computation}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{c|ccccc}
+ $q$ & $\det K_q$ & $h_q^{\mathrm{big}}$ & $\dim_{\F_2}\Inat$ & difference & required rank change \\ \hline
+ $3$ & $3$ & $5$ (external) & $5$ & $0$ & $0$ \\
+ $5$ & $1$ & $5$ & $7$ & $-2$ & $-1$ \\
+ $7$ & $1$ & $7$ & $9$ & $-2$ & $-1$ \\
+ $11$ & $5$ & $15$ & $13$ & $+2$ & $+1$ \\
+ $13$ & $7$ & $17$ & $15$ & $+2$ & $+1$ \\
+\end{tabular}
+\medskip
+\caption{Bigon ranks and instanton dimensions.  The instanton column is~\cite[Thm.~1.1]{WuebbenII}.  The
+column $h_q^{\mathrm{big}}$ for $q\ge5$ concerns the specified finite matrices; the $q=3$ entry is
+external.  The last column is the change in matrix rank that a deformed differential on the same
+generators would require.}
+\label{tab:family}
+\end{table}
+
+A genuine deformation is a different object.  An immersed Floer theory has two ordered branch-jump
+generators at each transverse self-intersection, of complementary degrees in a graded setup
+\cite{AkahoJoyce}; a bounding cochain must satisfy the full Maurer--Cartan series, with repeated inputs
+at every order; and square-zero of the deformed differential is necessary, though not sufficient, for
+a proposed finite matrix.  The search below labels the underlying double point instead.  For a finite
+set $S$ of self-intersections, a \emph{support}, let $D_q^{\mathrm{tab}}(S)$ add to
+$D_q^{\mathrm{big}}$ the candidate triangle and quadrilateral terms through \emph{distinct} crossings
+of $S$, and put
+\begin{equation}\label{eq:tab-stat}
+ h_q^{\mathrm{tab}}(S):=\dim_{\F_2}C_q-2\rk_{\F_2}D_q^{\mathrm{tab}}(S).
+\end{equation}
+Repeated insertions and higher operations are absent, and the accompanying Maurer--Cartan test uses
+only the candidate monogon, self-bigon and distinct-input self-triangle terms.
+
+\begin{computation}[Low-order candidate supports]\label{comp:cochains}
+\begin{enumerate}
+\item[(i)] At $q=5$, among the singleton and two-element subsets of $A_5$, the unique smallest
+support with $h_5^{\mathrm{tab}}=7$ is $S=\{s_A,s_B\}$, with $(\gamma,\theta)\approx(0.03,1.27)$ and
+$(3.06,4.98)$.  One candidate quadrilateral changes the $(x_4,y_6)$ bigon entry from $1$ to $0$; the
+resulting matrix has the sole entry $(x_1,y_0)$ and squares to zero.
+\item[(ii)] At $q=7$, among the tested singleton crossings passing the low-order test, one crossing near
+$(0.042,5.405)$ has $h_7^{\mathrm{tab}}=9$.  Its candidate triangle changes one bigon entry from $1$ to
+$0$; the resulting matrix has entries $(6,4)$ and $(7,5)$ and squares to zero.
+\item[(iii)] At $q=11$ with the parameters $(0.05,0.16,0.40)$, $62$ singleton crossings pass the low-order
+test and give matrix rank three.  Exactly $56$ of the resulting matrices square to zero; the square of each
+of the other six has a single nonzero entry, namely $(9,15)$, $(9,16)$, $(0,14)$, and $(9,14)$ for the
+remaining three.  At the parameters $(0.03,0.10,0.25)$ the same test returns $66$ singletons of the
+target rank, of which $16$ fail square-zero and $50$ pass.
+\end{enumerate}
+\end{computation}
+
+At $q=5$ the matrix $D_5^{\mathrm{big}}$ has rank two, and the pair $s_A,s_B$ of Figure~\ref{fig:pillow} is
+the only tested support that lowers the rank to one, so $h_5^{\mathrm{tab}}=9-2=7$; minimality
+holds only within this search.  At $q=7$ the rank three of $D_7^{\mathrm{big}}$ drops to two and
+$h_7^{\mathrm{tab}}=13-4=9$; at the parameters $(0.07,0.16,0.40)$ the crossing is near
+$(0.058,5.413)$ and gives the same entries.  This crossing is $S_{69}$, whose type-D deformation is the
+four-arrow switch $b_{S_{69}}$ rather than a support labelled only by its double point, as in
+Computation~\ref{comp:cochains}.    Resolving both local sectors at the selected $q=5$ and $q=7$ crossings and
+recounting candidate bigons reproduces the matrices $D_q^{\mathrm{tab}}(S)$ for one sector choice; at $q=7$
+Proposition~\ref{prop:q7-typeD} replaces this experiment by an exact calculation.
+Computation~\ref{comp:cochains} proves neither existence nor uniqueness of a bounding cochain: the
+candidates are not ordered branch jumps, the full Maurer--Cartan series is never tested, and neither $56$
+nor $50$ counts bounding cochains.
+
+\subsection{Methods}\label{ss:methods}
+All statements of Sections~\ref{sec:smith} and~\ref{sec:khovanov} that rest on computation are finite
+computations in exact arithmetic over $\F_2$, with the following exceptions, which are floating-point
+computations: the geometry of the piecewise-linear curves of Section~\ref{sec:smith} (their self-intersections and
+their crossings with the arc system, from which the encodings and the enumeration of smoothings are read off),
+which uses numerical tolerances; the finite winding
+test of \S\ref{sec:compute}, which evaluates winding functions on sampled regions; and the traced curves described
+below.
+
+\emph{Morphism homology.}  Morphism complexes in $\operatorname{Tw}(\mathcal B)$ are computed in
+full, without truncating word length, by the mapping-cone reduction of
+Lemma~\ref{lem:wrapped-reduction}, whose torsion condition is checked for each pair.  A second,
+independent implementation computes $H\operatorname{Mor}(X,Y)$ from the structure of
+$\operatorname{Mor}(X,Y)$ as a module over the polynomial ring $\F_2[H]$ of \cite{KWZ}; it
+reproduces the dimensions of Propositions~\ref{prop:q7-typeD} and~\ref{prop:aux-closure}, and the
+dimensions of Section~\ref{sec:khovanov} were computed with it.
+
+\emph{Encodings.}  Curves given by their lifts to the planar cover are encoded as twisted complexes
+by recording their crossings with the lifts of the arc system and the faces between consecutive
+crossings, as in \S\ref{ss:explicit}.  The smoothed curves of Proposition~\ref{prop:q7-typeD} were encoded
+with smoothing disks of radii $0.003$, $0.006$ and $0.009$, with the same result.  This encoder was compared with the invariants of $216$
+rational tangles computed by Zibrowius's program \cite{Zibkht}: in every case
+$\widetilde{\mathrm{BN}}(Q)$ is the straight lattice arc and $\widetilde{\Kh}(Q)$ the figure-eight
+around it.  The identification of the earring curve $E_r$ with $\Phi\bigl(\widetilde{\Kh}(Q_{-r})\bigr)$ in
+\S\ref{ss:kh-smith} was checked by comparing encodings at $49$ slopes, and the two sides
+of~\eqref{eq:kwz-pairing} were compared at the $340$ slopes used for $q=5$ and the $342$ slopes used for $q=7$
+in Corollary~\ref{cor:closures-full}; they agree at every slope.  The invariants $\widetilde{\mathrm{BN}}(T_q)$
+and $\widetilde{\Kh}(T_q)$ for $q=3,5,\dots,21$ were computed with the same program, and the ranks
+$\rk\widetilde{\Kh}(K_r(q);\F_2)$ with Khoca~1.5 \cite{Khoca}.
+
+\emph{Traced curves.}  The perturbed curves of Smith for $q=5,7,11,13,17,19$ were traced numerically
+from the equations of \cite[Prop.~4.1]{Smith}, composed with the lines of slopes $1/3$ and $1/q$
+through $(0,0)$, for several perturbation parameters in $[0.005,0.02]$ and several step sizes, and
+transported to negative perturbation parameter by the symmetry $\sm$ of Remark~\ref{rem:sign}.  For
+$q\le13$ all traces at a given $q$ have strictly isomorphic encodings, isomorphic to $N_q$.  These are
+floating-point computations and serve as corroboration only.
+
+\emph{Searches.}  Strict isomorphism of loop-type complexes is decided by comparing the words of the
+components up to rotation and reversal.  Edit distances are computed by an exact search over the ways
+of cutting the word of one complex into intervals that reassemble to the word of the other; for
+$q=17,19$ the search excludes edit distances at most $5$ and was stopped at $6$.  Chains of algebraic
+switches are enumerated breadth first, up to strict isomorphism, from both ends, and the two sides are
+compared.  Each search is exhaustive within the class it states, and no conclusion is drawn beyond
+that class.
+
+\subsection{Reproducibility}\label{ss:repro}
+The programs that carry out the computations of this paper are included as ancillary files with its
+arXiv submission, and they are also available in the public repository
+\begin{center}
+\url{https://github.com/bwuebben/pillowcase-bounding-cochain}\,.
+\end{center}
+In the ancillary files the programs for Section~\ref{sec:smith} and \S\ref{sec:compute} are in the directory
+\path{pillowcase/}, and those for Section~\ref{sec:khovanov} and the rest of this appendix are in \path{code/}; in the repository these are the
+directories \path{pillowcase/} and \path{paper2b/code/}. Each program prints the numbers of the statements it checks next to the computed values and reports whether the two agree, and the file \path{README.md} in each directory
+lists the statements that each program checks; there, oriented and unoriented smoothings are called census
+and opposite smoothings, and connector--inherited self-intersections connector--main ones. The programs use only
+the Python standard library. The invariants
+computed with Zibrowius's program~\cite{Zibkht} and the ranks computed with Khoca~\cite{Khoca} are included as
+data, together with their input files, so the checks run without these programs. The instanton dimensions used
+throughout are~\cite[Thm.~1.1]{WuebbenII} and Proposition~\ref{prop:aux-closure}, and they are independent of all
+of this code.

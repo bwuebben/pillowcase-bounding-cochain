@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Section 5.2-5.3 and Appendix A.3(iii): Alexander polynomials, determinants and signatures of the twisted torus
+r"""Section 5.2-5.3 and Appendix A.1(iii): Alexander polynomials, determinants and signatures of the twisted torus
 knots T(3, n; 2, m), the closures of (sigma_1 sigma_2)^n sigma_1^(2m).
 
 Reduced Burau representation of B_3: psi(sigma_1) = [[-t, 1], [0, 1]], psi(sigma_2) = [[1, 0], [t, -t]], and

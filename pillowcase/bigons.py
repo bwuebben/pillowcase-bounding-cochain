@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-bigons.py -- step (d): the pillowcase-aware immersed-bigon counter
-(RESEARCH_LOG sec 27).
+bigons.py -- the pillowcase-aware immersed-bigon counter.
 
 Finite implementation of a bigon predicate for immersed piecewise-linear curves
 in the pillowcase, motivated by the de Silva--Robbin--Salamon lune criterion. A
@@ -18,15 +17,15 @@ w with:
 
 Lifting: an immersed bigon in P* lifts to T^2 (simply-connected domain, free
 cover away from corners); fixing the lift with alpha on C_+ makes the T^2 count
-EQUAL the P count. Blue's corner passages are Lagrangian arc-endpoints: bigon
-boundaries may not contain them (this is what kills the unlink's fake (x,y)
+equal the P count. Blue's corner passages are Lagrangian arc-endpoints: bigon
+boundaries may not contain them (this is what excludes the unlink's spurious (x,y)
 lens -- that region is handled by the separate triangle table).
 
 Counting convention: an ordered pair (x,y) is accepted when w >= 0 (not all 0);
 the reversed loop has w <= 0, so each geometric lune is counted for exactly one
 ordering. The matrix D_big[x][y] is the accepted-lune count mod 2. The quantity
 h_big=#gens-2 rank(D_big) is reported only as a finite matrix statistic.
-Limitation (noted): boundary arcs are single-traversal (no multiply-wrapping
+Limitation: boundary arcs are single-traversal (no multiply-wrapping
 lunes). Consequently this file does not establish a complete Floer differential.
 """
 import math
@@ -270,7 +269,7 @@ def _pt_seg_dist(p, a, b):
 
 
 def _corner_ok(E, c0, p, u_dir, v_dir, r_clear):
-    """Convex-corner test at loop corner p with outgoing rays u,v (both FROM p):
+    """Convex-corner test at loop corner p with outgoing rays u,v (both from p):
     the two sectors' windings must be {m, m+1}, m >= 0, with the (m+1)-side (the
     disk) subtending angle < pi. Adaptive sampling keeps clearance from the rays."""
     au = math.atan2(u_dir[1], u_dir[0])
@@ -368,7 +367,7 @@ def is_lune(alpha, beta_rev, x, y, dirs_x=None, dirs_y=None):
 # finite bigon matrix between two curves
 # ---------------------------------------------------------------------------
 def floer_rank(redC, blue, verbose=False):
-    """Historical API name for the finite bigon statistic.
+    """The finite bigon statistic of two curves.
 
     Returns (n_gens, n_accepted_lunes, rank_D_big, h_big). It does not assert
     that D_big is the complete Floer differential.
@@ -414,7 +413,7 @@ def floer_rank(redC, blue, verbose=False):
 
 
 # ---------------------------------------------------------------------------
-# battery (sec 27)
+# validation battery
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
     results = []
@@ -423,7 +422,7 @@ if __name__ == "__main__":
         results.append(bool(ok))
         print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
 
-    print("== finite pillowcase bigon predicate (RESEARCH_LOG sec 27) ==\n")
+    print("== finite pillowcase bigon predicate ==\n")
 
     print("(16) synthetic: two circles crossing twice, corners all outside")
     NA = 120
@@ -436,7 +435,7 @@ if __name__ == "__main__":
           f"(got {n} gens, {nl} lunes, rank {r}, h {hf})",
           n == 2 and nl == 3 and r == 1 and hf == 0)
 
-    print("\n(17) the unlink (Smith Fig UnlinkA): NO bigons -- the (x,b,y) region"
+    print("\n(17) the unlink (Smith Fig UnlinkA): no bigons -- the (x,b,y) region"
           " is a mu^2-triangle, not a bigon")
     red_u = f8((1, 0), eps=0.30, phi=0.20, N=601)
     blue_u = arch(amp=0.5)[0]
@@ -446,7 +445,7 @@ if __name__ == "__main__":
     check(f"2 generators, 0 bigons, h_big=2 (got {n} gens, {nl} lunes, "
           f"h_big {hf})", n == 2 and nl == 0 and hf == 2)
 
-    print("\n(18) FINITE GATE: P(-2,3,5) -> 2 accepted bigons, h_big=5")
+    print("\n(18) finite table: P(-2,3,5) -> 2 accepted bigons, h_big=5")
     s3 = segments(curve(south_twists(3)))[0]
     s5 = segments(curve(south_twists(5)))[0]
     blue_polys, _ = resolve(tangle_sum(s3, s5), fiber_circles(s3, s5), eps=0.05)

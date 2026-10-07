@@ -1,39 +1,41 @@
 #!/usr/bin/env python3
 """
-tangles.py -- the compass-pinned tangle calculus on the pillowcase (RESEARCH_LOG sec 23).
+tangles.py -- the compass-pinned tangle calculus on the pillowcase.
 
-Resolves the sec-22 blocker (puncture labeling) by DERIVATION, not convention-guessing:
+The puncture labeling is derived from the representation theory, not fixed by convention:
 
   * A traceless SU(2) rep of the 4-punctured sphere forces the four meridian axes to be
-    COPLANAR (Re(X1 X2 X3) = 0 is the scalar triple product of the axes), so every rep has
-    the binary-dihedral normal form beta = (0, gamma, theta+gamma, theta) of sec 1.
+    coplanar (Re(X1 X2 X3) = 0 is the scalar triple product of the axes), so every rep has
+    the binary-dihedral normal form beta = (0, gamma, theta+gamma, theta).
   * The product relation x1 x2 x3 x4 = 1 gives exact angle identities:
     West-pair angle = East-pair angle, North = South.
-  * SLOT CONVENTION: (x1,x2,x3,x4) = (NW, SW, SE, NE), counterclockwise from NW.
-    gamma = angle(x1,x2) = WEST angle; theta = angle(x1,x4) = NORTH angle.
+  * Slot convention: (x1,x2,x3,x4) = (NW, SW, SE, NE), counterclockwise from NW.
+    gamma = angle(x1,x2) = West angle; theta = angle(x1,x4) = North angle.
   * Conway sum T1+T2 glues T1's East punctures to T2's West punctures. East=West inside
-    each tangle => the glued angle is SHARED: the sum is the fiber product over gamma,
-    and rotating T2's frame onto the glued pair shows theta ADDS:
+    each tangle => the glued angle is shared: the sum is the fiber product over gamma,
+    and rotating T2's frame onto the glued pair shows that theta adds:
         L(T1+T2) = {(g, t1+t2) : (g,t1) in L1~, (g,t2) in L2~}  on the torus double cover,
-    where L~ is the FULL iota-invariant lift (both lifts are legitimate gluing frames).
+    where L~ is the full iota-invariant lift (both lifts are legitimate gluing frames).
   * Twist calculus (derived by the reflection recursion b -> 2*phi - b):
     East twists (slots SE,NE)  : line theta = n*gamma   (Conway fraction n, slope n)
     South twists (slots SW,SE) : line theta = gamma/n   (fraction 1/n, slope 1/n)
     rotate = cyclic slot shift : (gamma,theta) -> (-theta,gamma), i.e. F -> -1/F.
     Fraction p/q <-> slope p/q <-> class (q,p); numerator closure pairs with theta=0
-    (det = p), denominator closure with gamma=0 (det = q).  pcase.py Layer 1's
-    "(p,q) paired with the infinity line" is the 90-degree-rotated presentation of
-    the same dictionary -- both det-correct, hence the old steep/shallow ambiguity.
+    (det = p), denominator closure with gamma=0 (det = q).  The presentation
+    "(p,q) paired with the infinity line" is the 90-degree-rotated form of the
+    same dictionary; both are det-correct, so the determinant alone does not
+    distinguish a steep slope from a shallow one.
 
-Sec 24 adds the SEAM FIBER-CIRCLE rule (the sum components the generic fiber product
-misses): when both curves touch a seam gamma in {0,pi} at non-corner points, the S^1
+The seam fiber-circle rule supplies the sum components the generic fiber product
+misses: when both curves touch a seam gamma in {0,pi} at non-corner points, the S^1
 stabilizer of the aligned glued axes gives a circle component mapping 2:1 onto the
 seam arc [|th1-th2|, pi-|pi-(th1+th2)|], with
     cos th_out(alpha) = cos th1 cos th2 + sin th1 sin th2 cos alpha
--- derived here, validated by an explicit-SO(3) 3D engine (glue3d_*), and identical
+-- derived here, checked against an explicit-SO(3) 3D engine (glue3d_*), and identical
 to Smith's published formula (arXiv:2412.06066).
 
-Everything here is grounded rep theory (quaternion words), no Smith conventions.
+Everything here is computed from representation theory (quaternion words),
+independently of Smith's conventions.
 Validation battery in __main__; run `python3 tangles.py` (50 checks).
 """
 import math
@@ -138,7 +140,7 @@ def segments(arcs, eps=1e-12):
 
 
 def fiber_sum(segsA, segsB, eps=1e-12):
-    """The Conway sum on curves: fiber product over gamma, theta adds (sec 23)."""
+    """The Conway sum on curves: fiber product over gamma, theta adds."""
     out = []
     B = sorted(segsB)
     for (a0, a1, s0, s1) in segsA:
@@ -161,12 +163,12 @@ def tangle_sum(wordsA_or_segs, wordsB_or_segs, N=360):
     return fiber_sum(to_segs(wordsA_or_segs), to_segs(wordsB_or_segs))
 
 
-# --- seam fiber circles (Smith Thm 4.22, derived independently in sec 24) -------------
+# --- seam fiber circles (Smith Thm 4.22, derived independently below) ----------------
 def seam_points(segs, tol=1e-9, dedup=1e-6):
     """Seam-touching theta-values of a curve on T^2, folded to P-coordinates:
-    {0.0: [...], pi: [...]}, theta in the OPEN interval (0,pi) -- corner points are
+    {0.0: [...], pi: [...]}, theta in the open interval (0,pi) -- corner points are
     excluded (reducible for rational summands: the S^1 of gluings is all-conjugate,
-    no circle; derivation in RESEARCH_LOG sec 24)."""
+    so there is no circle)."""
     out = {0.0: [], PI: []}
     for (g0, g1, t0, t1) in segs:
         for s in (0.0, PI, TAU):
@@ -187,8 +189,8 @@ def seam_points(segs, tol=1e-9, dedup=1e-6):
 
 def fiber_circles(segsA, segsB):
     """The seam fiber circles of the Conway sum (the components the generic fiber
-    product misses): ONE circle per seam s in {0,pi} per pair of non-corner seam
-    points (s,th1) in L1, (s,th2) in L2.  Derivation (sec 24): at the seam the glued
+    product misses): one circle per seam s in {0,pi} per pair of non-corner seam
+    points (s,th1) in L1, (s,th2) in L2.  Derivation: at the seam the glued
     axis pair is aligned, its stabilizer is S^1, and for irreducible rho_i the S^1 of
     gluings gives distinct characters. Outer North angle along the family:
         cos th_out(alpha) = cos th1 cos th2 + sin th1 sin th2 cos 2alpha,
@@ -224,7 +226,7 @@ def fiber_sum_full(segsA, segsB):
 # --- independent 3D validation engine: explicit quaternion gluing ---------------------
 # No coplanarity assumed anywhere below: representations live in full SU(2), the
 # gluing rotation is constructed explicitly, and the outer boundary is read off by
-# finding the common plane -- so it also *tests* the sec-23 coplanarity lemma.
+# finding the common plane -- so it also *tests* the coplanarity lemma above.
 
 def _axis(X):
     n = math.sqrt(X[1] ** 2 + X[2] ** 2 + X[3] ** 2)
@@ -283,7 +285,7 @@ FLIP = (0.0, 1.0, 0.0, 0.0)  # conjugation by i: the iota-lift (beta -> -beta)
 def pillowcase_read(axes):
     """(gamma, theta) from four coplanar meridian axes, robust at seams (where
     grounded.pillowcase_coords degenerates). Finds the common plane from the most
-    transverse axis pair; ASSERTS coplanarity (the sec-23 lemma, here a test)."""
+    transverse axis pair; asserts coplanarity (the coplanarity lemma, here a test)."""
     best, bn = None, 0.0
     for i in range(4):
         for j in range(i + 1, 4):
@@ -474,7 +476,7 @@ if __name__ == "__main__":
               if expect_zero else f"  [{'PASS' if ok else 'FAIL'}] {name}")
         return ok
 
-    print("== compass-pinned tangle calculus: validation battery (RESEARCH_LOG sec 23) ==\n")
+    print("== compass-pinned tangle calculus: validation battery ==\n")
 
     print("(1) base tangles on their edges")
     check("0-tangle on theta=0 (slope 0/1)", subtorus_residual(cloud(segments(curve(ZERO))[0]), 0, 1))
@@ -503,7 +505,7 @@ if __name__ == "__main__":
                        cloud(segments(curve(south_twists(-n)))[0]))
         check(f"rotate(T_{n}) == Q(-1/{n}) as curves (Hausdorff)", hd, tol=2e-2)
 
-    print("(6) Conway sum: T_m + T_n = T_{m+n}  [the sec-22 failure, now derived]")
+    print("(6) Conway sum: T_m + T_n = T_{m+n}")
     for (m, n) in ((1, 1), (2, 3), (-1, 3), (2, -5), (1, -1)):
         s = tangle_sum(east_twists(m), east_twists(n))
         r = subtorus_residual(cloud(s), m + n, 1)
@@ -525,8 +527,8 @@ if __name__ == "__main__":
     check("P(-2,3,5) = +Q(-1/2) on slope 1/30", subtorus_residual(cloud(pretzel), 1, 30))
     check("  30 sheets over generic gamma", 0.0 if sheets_at(pretzel, 1.234) == 30 else 1.0)
     print("  (slope 1/30: numerator-closure det = 1 = det T(3,5) -- the torus-pretzel")
-    print("   coincidence of sec 19; the unperturbed pairing is degenerate, hence Smith")
-    print("   perturbs before summing. Next step: shear + earring on THIS assembly.)")
+    print("   coincidence; the unperturbed pairing is degenerate, hence Smith perturbs")
+    print("   before summing; resolve.py and earring.py treat the perturbed assembly.)")
 
     # ------------------------------------------------------------------ seam circles
     def d_P(u, v):

@@ -6,8 +6,7 @@ and the image of the unperturbed arc in the pillowcase is a straight segment
 \cite[Props.~3.6, 3.9 and~5.7]{WuebbenV}. There is no central circle,
 so the argument of Section~\ref{sec:sheared} goes through without an analogue of
 Lemma~\ref{lem:straight}. Regluing the trivial tangle by powers of the twist $t_e$ produces the twisted
-torus knots $T(3,n;2,m)$, and Theorem~\ref{thm:H} below computes their pillowcase homology, identifies the
-knots, and compares the result with their instanton homology. On the pillowcase side, the one input
+torus knots $T(3,n;2,m)$, and Theorem~\ref{thm:H} below computes their pillowcase homology, identifies the knots under a hypothesis on the chirality of the torus-knot decomposition, and compares the result with their instanton homology. On the pillowcase side, the one input
 beyond \cite{WuebbenV} and Section~\ref{sec:sheared} is Hedden, Herald and Kirk's computation of the Floer
 homology of a circle that misses the edges \cite[Thm.~5.4]{HHK2}, which we use for the closed components.
 
@@ -18,7 +17,7 @@ positive braid
 \beta_{n,m}=(\sigma_1\sigma_2)^n\sigma_1^{2m}\in B_3 ,
 \]
 that is, $T(3,n)$ with $m$ positive full twists added on two adjacent strands; $T(3,n;2,0)=T(3,n)$. Clay
-and Watson write $T^m_{3,n}$ for this knot \cite[\S3.2]{ClayWatson}, and Daemi and Scaduto write
+and Watson write $T^m_{3,n}$ for this knot when $n\equiv2\pmod3$ \cite[\S3.2]{ClayWatson}, and Daemi and Scaduto write
 $T(3,n;2,m)$ \cite[\S8.5]{DS24}. The knots of Section~\ref{sec:sheared} are the case $n=5$:
 $T(3,5;2,m)=P(-2,3,5+2m)$. Throughout we put
 \[
@@ -28,23 +27,25 @@ and for $n\equiv1,2\pmod6$ we write $n=6j+1$ or $n=6j+2$, so that $\nu=2j$.
 
 For $n\ge4$ coprime to $3$ let $(Y_n,T_n)$ be the tangle of \cite[\S10]{HHK2} for $T(3,n)$ with the
 parameters $(r,s)=((2n+1)/3,-2)$ if $n\equiv1$ and $(r,s)=((n+1)/3,-1)$ if $n\equiv2\pmod3$, as
-in \cite{WuebbenV}, and let $K_h(3,n)=(Y_n,T_n)\cup_{t_e^h}(D,U)$ be the regluing of
-Section~\ref{sec:sheared}. Lemma~\ref{lem:group} and its proof apply to every $n$, with the boundary words
-$a,b,c$ of \cite[(3.2)]{WuebbenV}: $\pi_1(S^3\setminus K_h(3,n))=\langle A,B\mid t_e^h(b)=c\rangle$ with
-$t_e^h(b)=(ba)^hb(ba)^{-h}$, and $K_{h-1}(3,n)$ differs from $K_h(3,n)$ by one full twist of two strands,
-hence by one crossing change. As in Section~\ref{sec:sheared}, where it is verified for $n=5$ (Remark~\ref{rem:chirality}), we use the convention, shared with \cite{HHK2}
-and \cite{WuebbenV}, that $K_0(3,n)$ is the positive torus knot $T(3,n)$.
+in \cite{WuebbenV}, and let $K^{(h)}(3,n)=(Y_n,T_n)\cup_{t_e^h}(D,U)$ be the regluing of
+Section~\ref{sec:sheared}; for $n=5$ this is the knot $K^{(h)}$ of Section~\ref{sec:sheared}. Lemma~\ref{lem:group} and its proof apply to every $n$, with the boundary words
+$a,b,c$ of \cite[(3.2)]{WuebbenV}: $\pi_1(S^3\setminus K^{(h)}(3,n))=\langle A,B\mid t_e^h(b)=c\rangle$ with
+$t_e^h(b)=(ba)^hb(ba)^{-h}$, and $K^{(h-1)}(3,n)$ differs from $K^{(h)}(3,n)$ by one full twist of two strands,
+hence by one crossing change. The knot group does not determine whether $K^{(0)}(3,n)$ is the positive torus knot $T(3,n)$ or its
+mirror image. For $n=5$ we verified that it is $T(3,5)$ (Remark~\ref{rem:chirality}); for the knots of
+Theorem~\ref{thm:H} it is a hypothesis of the theorem, shared with \cite{HHK2} and \cite{WuebbenV}.
 
 We write $\varepsilon=(\varepsilon_A,\varepsilon_B)$ for the parameters of the holonomy perturbation $\pi$
-of \cite{WuebbenV} and $L_1^{\mathrm V}$ for the resulting curve of $(Y_n,T_n)$. By Lemma~\ref{lem:shear}, the
-curve of $(Y_n,T_n)$ in the decomposition of $K_{-m}(3,n)$ is $L_1=S_{-m}\circ L_1^{\mathrm V}$, where
+of \cite{WuebbenV} (see (P1) in \S\ref{ss:straight}) and $L_1^{\mathrm{tor}}$ for the resulting curve of $(Y_n,T_n)$. By Lemma~\ref{lem:shear}, the
+curve of $(Y_n,T_n)$ in the decomposition of $K^{(-m)}(3,n)$ is $L_1=S_{-m}\circ L_1^{\mathrm{tor}}$, where
 $S_{-m}(\gamma,\theta)=(\gamma,\theta+2m\gamma)$. For the trivial side we use the earring curve
 $L_0=L_0^{\epsilon,g}$ of \cite[Def.~3.4]{HHK2} with $\epsilon>0$ and $g=\delta\sin$; in \cite{WuebbenV},
 $\delta=0$. Recall that $\ell(K)$ denotes the sum of the absolute values of the coefficients of $\Delta_K$.
 
 \begin{theorem}\label{thm:H}
-Let $n\ge7$ with $n\equiv1$ or $2\pmod6$, let $m\ge1$, define $j,\nu,M$ as above, and put
-$K=K_{-m}(3,n)$ and $(a,b)=(\lfloor M/2\rfloor,\lceil M/2\rceil)$.
+Let $n\ge7$ with $n\equiv1$ or $2\pmod6$, let $m\ge1$, and define $j,\nu,M$ as above. Assume, as in~\cite{HHK2}
+and~\cite{WuebbenV}, that the tangle $(Y_n,T_n)$ glued to the trivial tangle, $K^{(0)}(3,n)$, is the positive torus knot
+$T(3,n)$. Put $K=K^{(-m)}(3,n)$ and $(M_0,M_1)=(\lfloor M/2\rfloor,\lceil M/2\rceil)$.
 \begin{enumerate}
 \item[(i)] $K=T(3,n;2,m)$.
 \item[(ii)] $\sigma(K)=\sigma(T(3,n))-2m=-(4\nu+2M)$, and $\ell(K)=|\sigma(K)|+1$.
@@ -55,7 +56,7 @@ the arc meets $L_0$ transversely in $1+2M$ points and carries no bigon. For each
 such $\delta$ the pair $(L_0,L_1)$ is admissible, and with $\gr(r_+)=\sigma(K)$ the graded dimensions of
 $\Hnat(Y_n,T_n,\pi)$ are
 \[
-\bigl(1+2j+a,\ 2j+b,\ 2j+b,\ 2j+a\bigr)\qquad\text{in degrees }\gr-\sigma(K)=0,1,2,3,
+\bigl(1+2j+M_0,\ 2j+M_1,\ 2j+M_1,\ 2j+M_0\bigr)\qquad\text{in degrees }\gr-\sigma(K)=0,1,2,3,
 \]
 whatever absolute gradings are chosen on the circles.
 \item[(iv)] $\Inat(K;\Z)$ is free of rank $|\sigma(K)|+1$, and $\Hnat(Y_n,T_n,\pi)\cong\Inat(K;\F_2)$ as
@@ -81,8 +82,8 @@ Let $\psi$ be the reduced Burau representation of $B_3$,
 \]
 For $\beta\in B_3$ whose closure $\hat\beta$ is a knot,
 $\Delta_{\hat\beta}(t)\doteq\frac{1-t}{1-t^3}\det\bigl(I-\psi(\beta)\bigr)$ by Burau's formula~\cite[Thm.~3.11]{Birman}; here $\doteq$ denotes equality up
-to a unit $\pm t^k$. Daemi and Scaduto record a formula for the Alexander polynomials of all twisted torus
-links \cite[Prop.~8.32]{DS24}; we need the coefficient norm, which the closed form below displays directly.
+to a unit $\pm t^k$. Daemi and Scaduto record a formula for the Alexander polynomials of the twisted torus
+links $T(p,q;2,k)$ \cite[Prop.~8.32]{DS24}; we need the coefficient norm, which the closed form below displays directly.
 
 \begin{lemma}\label{lem:conj}
 For $\nu,m\ge0$, $\sigma_1^{-1}(\sigma_1\sigma_2)^{3\nu+2}\sigma_1^{2m}\sigma_1=(\sigma_1\sigma_2)^{3\nu+1}\sigma_1^{2m+2}$ in
@@ -204,9 +205,9 @@ Clay and Watson prove that for $\nu\ge0$ and $m\ge0$ the group of $T(3,3\nu+2;2,
 \begin{lemma}\label{lem:twisted-group}
 \begin{enumerate}
 \item[(a)] If $n=3\nu+2\ge5$ and $m\ge0$, then $\alpha\mapsto A$, $\beta\mapsto B^{-1}$ induces an isomorphism
-$\pi^m_{3\nu+2}\cong\pi_1(S^3\setminus K_{-m}(3,n))$.
+$\pi^m_{3\nu+2}\cong\pi_1(S^3\setminus K^{(-m)}(3,n))$.
 \item[(b)] If $n=3\nu+1\ge4$ and $m\ge1$, then $\alpha\mapsto AB^{2\nu+1}$, $\beta\mapsto B$ induces an isomorphism
-$\pi^{m-1}_{3\nu+2}\cong\pi_1(S^3\setminus K_{-m}(3,n))$.
+$\pi^{m-1}_{3\nu+2}\cong\pi_1(S^3\setminus K^{(-m)}(3,n))$.
 \end{enumerate}
 \end{lemma}
 
@@ -224,73 +225,73 @@ of the inverse of the corresponding relator is $R=AC^mA^2B^{2\nu+1}C^{-m}B^{\nu+
 $\beta\mapsto B^{-1}$ we have $Y\mapsto B^\nu A$, $A(B^\nu A)^m=C^mA$ and $(B^\nu A)^{-m}=B^\nu C^{-m}B^{-\nu}$, so Clay and
 Watson's relator goes to $AC^mA^2\cdot B^{\nu+1}\cdot B^\nu C^{-m}B^{-\nu}\cdot B^{2\nu+1}=R$.
 
-(b) Here $a=AB^\nu$, $b=B^{-(2\nu+1)}A^{-2}$ and $c=B^{-(2\nu+1)}AB^{3\nu+1}$ \cite[(3.2)]{WuebbenV}. With $Z=B^{\nu+1}A$ we
-have $ba=B^{-(2\nu+1)}Z^{-1}B^{2\nu+1}$, so the relation reads $Z^mA^{-2}B^{-(2\nu+1)}Z^{-m}=AB^\nu$, whose relator has
-inverse $R_H=AB^\nu Z^mB^{2\nu+1}A^2Z^{-m}$. Under $\alpha\mapsto AB^{2\nu+1}$, $\beta\mapsto B$ we have
-$Y\mapsto B^{-\nu}AB^{2\nu+1}=B^{-(2\nu+1)}ZB^{2\nu+1}$. Using $B^{2\nu+1}A=B^\nu Z$, the left side
-$\alpha^2Y^{m-1}\alpha$ goes to $AB^\nu Z^mB^\nu ZB^{2\nu+1}$ and the right side $\beta^{2\nu+1}Y^{m-1}\beta^{\nu+1}$ to
-$Z^{m-1}B^{3\nu+2}$. The relator therefore goes to $AB^\nu Z^mB^\nu ZB^{-(\nu+1)}Z^{1-m}$, which equals $R_H$ because
-$B^\nu Z=B^{2\nu+1}A$ and $AB^{-(\nu+1)}Z=A^2$.
+(b) Here $a=AB^\nu$, $b=B^{-(2\nu+1)}A^{-2}$ and $c=B^{-(2\nu+1)}AB^{3\nu+1}$ \cite[(3.2)]{WuebbenV}. With $\Xi=B^{\nu+1}A$ we
+have $ba=B^{-(2\nu+1)}\Xi^{-1}B^{2\nu+1}$, so the relation reads $\Xi^mA^{-2}B^{-(2\nu+1)}\Xi^{-m}=AB^\nu$, whose relator has
+inverse $R_H=AB^\nu \Xi^mB^{2\nu+1}A^2\Xi^{-m}$. Under $\alpha\mapsto AB^{2\nu+1}$, $\beta\mapsto B$ we have
+$Y\mapsto B^{-\nu}AB^{2\nu+1}=B^{-(2\nu+1)}\Xi B^{2\nu+1}$. Using $B^{2\nu+1}A=B^\nu \Xi$, the left side
+$\alpha^2Y^{m-1}\alpha$ goes to $AB^\nu \Xi^mB^\nu \Xi B^{2\nu+1}$ and the right side $\beta^{2\nu+1}Y^{m-1}\beta^{\nu+1}$ to
+$\Xi^{m-1}B^{3\nu+2}$. The relator therefore goes to $AB^\nu \Xi^mB^\nu \Xi B^{-(\nu+1)}\Xi^{1-m}$, which equals $R_H$ because
+$B^\nu \Xi=B^{2\nu+1}A$ and $AB^{-(\nu+1)}\Xi=A^2$.
 \end{proof}
 
 At $m=0$ in (a), and at $m=1$ in (b), Clay and Watson's relation is $\alpha^3=\beta^{3\nu+2}$, the group of the torus
 knot $T(3,3\nu+2)$; part (a) at $\nu=1$ is Lemma~\ref{lem:relator}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:H}\,(i) and (ii)]
-Let $K=K_{-m}(3,n)$. For $n=3\nu+2$, Lemma~\ref{lem:twisted-group}(a) identifies $\pi_1(S^3\setminus K)$ with the
+Let $K=K^{(-m)}(3,n)$. For $n=3\nu+2$, Lemma~\ref{lem:twisted-group}(a) identifies $\pi_1(S^3\setminus K)$ with the
 group of $T(3,n;2,m)$. For $n=3\nu+1$, part (b) identifies it with the group of $T(3,3\nu+2;2,m-1)$, which is
 $T(3,n;2,m)$ by Lemma~\ref{lem:conj}. Both groups are generated by two elements, and both knots are
 nontrivial by Proposition~\ref{prop:twisted-alex}, so both knots are prime by Norwood's
 theorem \cite{Norwood}. Prime knots with isomorphic groups are equivalent \cite[Cor.~2.1]{GordonLuecke},
 by a homeomorphism of $S^3$ that may reverse orientation. Hence $K$ is $T(3,n;2,m)$ or its mirror image.
 
-The chirality follows by induction on $m$, as in the proof of Theorem~\ref{thm:topology}. By our convention
-$K_0(3,n)=T(3,n)$. Suppose that $\sigma(K_{-m}(3,n))=\sigma(T(3,n))-2m$ for some $m\ge0$. The knot $K_{-(m+1)}(3,n)$
-differs from $K_{-m}(3,n)$ by one crossing change, so their signatures differ by at most
+The chirality follows by induction on $m$, as in the proof of Theorem~\ref{thm:topology}. By hypothesis
+$K^{(0)}(3,n)=T(3,n)$. Suppose that $\sigma(K^{(-m)}(3,n))=\sigma(T(3,n))-2m$ for some $m\ge0$. The knot $K^{(-m-1)}(3,n)$
+differs from $K^{(-m)}(3,n)$ by one crossing change, so their signatures differ by at most
 $2$ \cite[(10.2)]{Murasugi}. By Proposition~\ref{prop:twisted-sig}, $T(3,n;2,m+1)$ and its mirror image have
 signatures $\mp s$ with $s=|\sigma(T(3,n))|+2m+2$, and only $-s$ lies within $2$ of $\sigma(T(3,n))-2m=-(s-2)$,
-since $s+(s-2)>2$. Hence $K_{-(m+1)}(3,n)=T(3,n;2,m+1)$. This proves (i), and (ii) is
+since $s+(s-2)>2$. Hence $K^{(-m-1)}(3,n)=T(3,n;2,m+1)$. This proves (i), and (ii) is
 Proposition~\ref{prop:twisted-sig}.
 \end{proof}
 
 \subsection{The pillowcase homology}\label{ss:twisted-pillow}
 
 \begin{proof}[Proof of Theorem~\ref{thm:H}\,(iii)]
-Let $s=2$ for $n\equiv1$ and $s=4$ for $n\equiv2\pmod6$, so that $s+2m-1=2M+1$.
+Let $\omega=2$ for $n\equiv1$ and $\omega=4$ for $n\equiv2\pmod6$, so that $\omega+2m-1=2M+1$.
 
-\emph{The arc.} By \cite[Prop.~5.7(3) and Lemma~6.1]{WuebbenV}, for small $\varepsilon\neq0$ the lift $\tilde A^{\mathrm V}$
-of the arc of $L_1^{\mathrm V}$ starting at $(0,0)$ is, away from its ends, $C^1$-close to the segment from $(0,0)$ to
-$(\pi,s\pi)$, along which $\theta=s\gamma$ \cite[Prop.~3.9]{WuebbenV}. Near $(0,0)$ it has the form
-$y\,c(\varepsilon)+y^3R(y,\varepsilon)$, where $c$ and $R$ are real-analytic and $c(0)$ is a positive multiple of $(1,s)$
+\emph{The arc.} By \cite[Prop.~5.7(3) and Lemma~6.1]{WuebbenV}, for small $\varepsilon\neq0$ the lift $\tilde A^{\mathrm{tor}}$
+of the arc of $L_1^{\mathrm{tor}}$ starting at $(0,0)$ is, away from its ends, $C^1$-close to the segment from $(0,0)$ to
+$(\pi,\omega\pi)$, along which $\theta=\omega\gamma$ \cite[Prop.~3.9]{WuebbenV}. Near $(0,0)$ it has the form
+$y\,\mathbf c(\varepsilon)+y^3R(y,\varepsilon)$, where $\mathbf c=(c_1,c_2)$ and $R$ are real-analytic and $\mathbf c(0)$ is a positive multiple of $(1,\omega)$
 \cite[Lemma~5.1]{WuebbenV}, and the same holds at its other end. The shear $S_{-m}$ is linear. Hence the lift
-$\tilde A=S_{-m}\tilde A^{\mathrm V}$ is $C^1$-close, away from its ends, to the segment from $(0,0)$ to
-$(\pi,(s+2m)\pi)$, on which $\varphi=(2M+1)\gamma$; near $(0,0)$ it equals
-$y\,S_{-m}c(\varepsilon)+y^3S_{-m}R(y,\varepsilon)$, and the $\varphi$-component of $S_{-m}c(0)$ is $(2M+1)\,c_1(0)>0$. So, as
+$\tilde A=S_{-m}\tilde A^{\mathrm{tor}}$ is $C^1$-close, away from its ends, to the segment from $(0,0)$ to
+$(\pi,(\omega+2m)\pi)$, on which $\varphi=(2M+1)\gamma$; near $(0,0)$ it equals
+$y\,S_{-m}\mathbf c(\varepsilon)+y^3S_{-m}R(y,\varepsilon)$, and the $\varphi$-component of $S_{-m}\mathbf c(0)$ is $(2M+1)\,c_1(0)>0$. So, as
 in \cite[Cor.~5.3]{WuebbenV}, $\varphi$ is strictly monotone along $\tilde A$ with $|d\varphi|$ bounded below in
-arclength, and the limiting slopes $s+2m+O(|\varepsilon|)$ differ from $1$. The interior of $\tilde A$ lies in the open
+arclength, and the limiting slopes $\omega+2m+O(|\varepsilon|)$ differ from $1$. The interior of $\tilde A$ lies in the open
 strip $0<\gamma<\pi$, and $\tilde A$ ends on the line $\varphi=(2M+1)\pi$. It therefore crosses exactly the lines
-$\Delta_1,\dots,\Delta_M$, each once and transversally, and meets $\Delta_0$ only at its initial point. Since $\tilde A$ is
+$\mathcal D_1,\dots,\mathcal D_M$, each once and transversally, and meets $\mathcal D_0$ only at its initial point. Since $\tilde A$ is
 embedded, the arc has no fishtail and is a restricted immersed arc.
 
-\emph{The circles.} By \cite[Prop.~5.7(3)]{WuebbenV}, the other components of $L_1^{\mathrm V}$ are circles
+\emph{The circles.} By \cite[Prop.~5.7(3)]{WuebbenV}, the other components of $L_1^{\mathrm{tor}}$ are circles
 $C^1$-close to the $2\lfloor\nu/2\rfloor=2j$ non-central circles \cite[Prop.~3.6]{WuebbenV}. They are restricted,
 miss the left and right edges, and have vertical degree $2$ \cite[Cor.~4.8 and Lemma~6.6]{WuebbenV}. By
 Lemma~\ref{lem:shear} their images under $S_{-m}$ have the same three properties. Along these images
 $\varphi$ need not be monotone: $S_{-m}$ adds $2m\gamma$ to $\varphi$, and $\gamma$ is not monotone along a closed curve.
 
-\emph{The earring curve.} The strands $S^k_\pm$ of $L_0=L_0^{\epsilon,g}$ are the translates of $\pm\tilde L_0^{\epsilon,g}$
+\emph{The earring curve.} The lifts $S^k_\pm$ of $L_0=L_0^{\epsilon,g}$ are the translates of $\pm\tilde L_0^{\epsilon,g}$
 by $(0,2\pi k)$, where $\tilde L_0^{\epsilon,g}$ is given by \cite[(13)]{HHK2}. At the point with parameter $t$ the slope
 of either is $(1-\epsilon\cos t)/(1+\epsilon\cos t)+\delta\cos\gamma$, and, for small $\epsilon$, one has
 $\cos t>\epsilon/2$ on $S^k_+$ over the front strip $0<\gamma<\pi$, and $\cos t<-\epsilon/2$ on $S^k_-$ over
-$2\epsilon\le\gamma\le\pi-2\epsilon$. Hence for $|\delta|<\epsilon^2/2$ the strands $S^k_+$ have slope less than $1$ over
-the front strip and the strands $S^k_-$ slope greater than $1$ over $2\epsilon\le\gamma\le\pi-2\epsilon$, as for
-$\delta=0$ \cite[\S2.2]{WuebbenV}, and they lie within $\sqrt2\,\epsilon+|\delta|$ of $\Delta_k$. The proofs of
-\cite[Cor.~5.3(4), Prop.~6.3 and Lemma~6.8]{WuebbenV} use only these properties of the strands, the slope
+$2\epsilon\le\gamma\le\pi-2\epsilon$. Hence for $|\delta|<\epsilon^2/2$ the lifts $S^k_+$ have slope less than $1$ over
+the front strip and the lifts $S^k_-$ slope greater than $1$ over $2\epsilon\le\gamma\le\pi-2\epsilon$, as for
+$\delta=0$ \cite[\S2.2]{WuebbenV}, and they lie within $\sqrt2\,\epsilon+|\delta|$ of $\mathcal D_k$. The proofs of
+\cite[Cor.~5.3(4), Prop.~6.3 and Lemma~6.8]{WuebbenV} use only these properties of the lifts of $L_0$, the slope
 of $S^k_-$ only at points at distance much larger than $\epsilon$ from the edges, and the
 properties of the arc established above. Therefore, for small $\epsilon$ and $|\delta|<\epsilon^2/2$, the arc meets
 $L_0$ transversely in exactly $1+2M$ points: the generator $r_+$ of \cite[Lemma~5.1]{HHK2}, which lies on $S^0_+$
-because $\tilde A$ leaves $(0,0)$ above $\Delta_0$, and a pair $x_k^\pm\in S^k_\pm$ near the crossing of $\tilde A$ with
-$\Delta_k$ for $k=1,\dots,M$.
+because $\tilde A$ leaves $(0,0)$ above $\mathcal D_0$, and a pair $x_k^\pm\in S^k_\pm$ near the crossing of $\tilde A$ with
+$\mathcal D_k$ for $k=1,\dots,M$.
 
 \emph{Transversality on the circles.} Fix $\epsilon$ and let $C$ be a circle of $L_1$. Since
 $L_0^{\epsilon,\delta\sin}=c_{\delta\sin}\circ L_0^{\epsilon,0}$, where $c_g(\gamma,\theta)=(\gamma,\theta+g(\gamma))$ \cite[(11), p.~18]{HHK2},
@@ -305,16 +306,16 @@ almost every $\delta$. For such $\delta$ the pair $(L_0,L_1)$ is admissible: $L_
 are transverse, and the argument of \cite[Lemma~6.6]{WuebbenV} applies, since $L_0$ lies near $\Delta$ and each
 circle of $L_1$ lies in the open strip with vertical degree $2$.
 
-\emph{Bigons and gradings on the arc.} By \cite[Lemma~6.4]{WuebbenV}, the boundary of a bigon from $p$ to $q$
-lifts to a closed curve made of a sub-path of one lift of a component of $L_1$ and an arc of one strand,
-which contains lifts $\tilde p$, $\tilde q$ of both corners. Every lift of the arc is a translate of $\tilde A$ under the
-deck group $G$, which permutes the strands, and $\tilde A$ meets each strand at most once. So a bigon between
-generators on the arc would have $\tilde p=\tilde q$, hence $p=q$, which is impossible since $\gr(p,q)=1$
+\emph{Bigons and gradings on the arc.} By \cite[Lemma~6.4]{WuebbenV} ((P9) in \S\ref{ss:perturbed-P}), the boundary of a
+bigon from $p$ to $p'$ lifts to a closed curve made of a sub-path of one lift of a component of $L_1$ and an arc of one
+lift of $L_0$, which contains lifts $\tilde p$, $\tilde p'$ of both corners. Every lift of the arc is a translate of $\tilde A$
+under the deck group $G$, which permutes the lifts of $L_0$, and $\tilde A$ meets each of them at most once. So a bigon
+between generators on the arc would have $\tilde p=\tilde p'$, hence $p=p'$, which is impossible since $\gr(p,p')=1$
 \cite[Prop.~3.8]{HHK2}. Thus the arc carries no bigon. For the degrees, $\deg=\gr-\sigma(K)$ satisfies $\deg r_+=0$
 by \cite[(19)]{HHK2} and $\deg x_k^-=\deg x_k^+-1$ \cite[\S5.1]{HHK2}. Since $\varphi$ has no critical point on $\tilde A$,
 \cite[Lemma~6.8]{WuebbenV} applies to $r_+\in S^0_+$ and $x_1^+\in S^1_+$, and to $x_{k-1}^+$ and $x_k^+$; each step
 changes the degree by $2$. Hence $\deg x_k^+=2k$ and $\deg x_k^-=2k-1$ modulo $4$, and the homology of the arc,
-which equals its complex, has dimensions $(1+a,b,b,a)$, since $a$ and $b$ count the even and the odd
+which equals its complex, has dimensions $(1+M_0,M_1,M_1,M_0)$, since $M_0$ and $M_1$ count the even and the odd
 $k\in\{1,\dots,M\}$.
 
 \emph{The total.} By \cite[Thm.~5.4]{HHK2}, each circle contributes $(1,1,1,1)$, whatever its absolute grading; this
@@ -322,7 +323,7 @@ applies to $L_0^{\epsilon,\delta\sin}=c_{\delta\sin}\circ L_0^{\epsilon,0}$ beca
 $c_{-\delta\sin}$ to $(L_0^{\epsilon,0},c_{-\delta\sin}(C))$, and $c_{-\delta\sin}(C)$ again misses the edges and has vertical degree~$2$.
 There is no differential between different components \cite[p.~37]{HHK2}, and $\Hnat(Y_n,T_n,\pi)$ is the direct
 sum of the contributions of the components \cite[p.~34]{HHK2}. Adding $2j$ copies of $(1,1,1,1)$ to
-$(1+a,b,b,a)$ gives the stated vector.
+$(1+M_0,M_1,M_1,M_0)$ gives the stated vector.
 \end{proof}
 
 \begin{remark}\label{rem:twisted-numerics}
@@ -368,7 +369,7 @@ coefficient theorem.
 
 \begin{proof}[Proof of Theorem~\ref{thm:H}\,(iv)]
 By (i), (ii) and Proposition~\ref{prop:twisted-inat}, $\Inat(K;\Z)$ is free of rank $|\sigma(K)|+1$, with
-$|\sigma(K)|/4=2j+M/2$. Hence $\lfloor|\sigma(K)|/4\rfloor=2j+a$ and $\lceil|\sigma(K)|/4\rceil=2j+b$, and the graded
+$|\sigma(K)|/4=2j+M/2$. Hence $\lfloor|\sigma(K)|/4\rfloor=2j+M_0$ and $\lceil|\sigma(K)|/4\rceil=2j+M_1$, and the graded
 dimensions of $\Inat(K;\F_2)$ are the vector of (iii).
 \end{proof}
 

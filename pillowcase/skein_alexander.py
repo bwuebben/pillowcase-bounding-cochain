@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 skein_alexander.py -- the Alexander polynomials of P(-2,3,q) via the Conway skein
-recursion on the q-twist band (RESEARCH_LOG sec 37). Replaces the broken diagram
-approach (alexander.py) with a method that is validated end-to-end.
+recursion on the q-twist band. The recursion is seeded with the known polynomials
+for q = 3, 5 and checked against the known polynomial for q = 7.
 
 Derivation. In the q-band of P(-2,3,q), switching one crossing gives P(-2,3,q-2)
 and smoothing gives the 2-component link P(-2,3,q-1). Writing a_q (knots, q odd)
@@ -15,9 +15,9 @@ three-term recursion  A_{q+2} = w A_q - A_{q-2}  over odd q, whose general
 solution is  A_q = alpha(t) t^{(q-3)/2} + beta(t) t^{-(q-3)/2}  (lambda^2 - w
 lambda + 1 = 0 has roots t, 1/t). Everything is determined by two seeds; the
 sign/normalization ambiguities (Delta is defined up to +-t^k, and these pretzels
-famously satisfy Hironaka's Delta(-x) twist) are fixed by VALIDATION: we search
-the finite normalization choices for the unique one making the recursion
-reproduce the third known polynomial (q=7: Lehmer's polynomial) exactly.
+famously satisfy Hironaka's Delta(-x) twist) are fixed by a check against a known
+value: we search the finite normalization choices for the unique one making the
+recursion reproduce the third known polynomial (q=7: Lehmer's polynomial) exactly.
 
 Known inputs (documented, independently checkable):
   q=3:  P(-2,3,3) = T(3,4) = 8_19:  Delta = t^3 - t^2 + 1 - t^-2 + t^-3
@@ -26,8 +26,8 @@ Known inputs (documented, independently checkable):
         t^5 + t^4 - t^2 - t - 1 - t^-1 - t^-2 + t^-4 + t^-5
 
 The target quantity l(K) = sum |coefficients of Delta| is invariant under all the
-normalization ambiguity (global sign, t -> -t, shift), so the validated recursion
-computes it rigorously for q = 11, 13, 17, 19, ...
+normalization ambiguity (global sign, t -> -t, shift), so the normalized recursion
+determines it exactly for q = 11, 13, 17, 19, ...
 """
 
 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
         results.append(bool(ok))
         print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
 
-    print("== Alexander of P(-2,3,q) via the validated skein recursion (sec 37) ==\n")
+    print("== Alexander of P(-2,3,q) via the validated skein recursion ==\n")
 
     got = find_normalization()
     check("a unique-normalization match reproduces Lehmer at q=7", got is not None)

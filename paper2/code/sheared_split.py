@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Remark 4.21, split sectors: numerical Floer complexes of the sheared arc and remnant circle for P(-2,3,q).
+r"""Appendix A.1(v) (summarized in Remark 4.21), split sectors: numerical Floer complexes of the sheared arc and remnant circle for P(-2,3,q).
 
 For five perturbations eps = (eps_A, eps_B) with |eps_B| > sqrt(3) |eps_A|, the variety W_eps of the T(3,5) tangle is an
 arc and a remnant circle (Proposition 4.10).  For q = 7, 9, ..., 21 and earring parameter 0.002 (40 cases) the script
@@ -13,7 +13,7 @@ computes, as described in sheared_complex.py:
   * the total, which equals (1 + N_3, N_1, N_1, N_3).
 
 The paper records: all 40 cases agree; the circle carries 4 + 4 N_q generators in 37 cases, and in the other three
-(q = 17, at the three larger perturbations) a cancelling pair is missing; a strand meets the lift of the circle up to
+(q = 17, at the three larger perturbations) a canceling pair is missing; a lift of L_0 meets the lift of the circle up to
 seven times (q = 21).
 
 Floating-point numerics; these computations are not used in the proofs.
@@ -31,7 +31,7 @@ from sheared_complex import (PI, normalize_arc, shear, generators, mu_passages, 
 PERTURBATIONS = [(0.0, 0.03), (0.0078, 0.029), (-0.004, -0.02), (0.0, 0.01), (0.001, 0.004)]   # (eps_A, eps_B)
 QS = tuple(range(7, 22, 2))
 EARRING = 0.002
-EPS_BOUND = 0.031         # the bound |eps| <= 0.031 stated in Remark 4.21
+EPS_BOUND = 0.031         # the bound |eps| <= 0.031 stated in Appendix A.1(v)
 
 checks = []
 
@@ -138,14 +138,14 @@ def main():
                 maxmult = (c['maxmult'], q)
             print(f'    q={q:2d}: arc end {a["end"]} monotone {a["mono"]} generators {a["ngen"]}/{q - 2} H {a["H"]} | '
                   f'circle generators {c["ngen"]}/{4 + 4 * Nq(q)} bigons {c["nbigon"]} rank d {c["rank"]} H {c["H"]} '
-                  f'strand multiplicity {c["maxmult"]} | total {tot} {"OK" if ok else "MISMATCH"}', flush=True)
+                  f'multiplicity on a lift of L_0 {c["maxmult"]} | total {tot} {"OK" if ok else "MISMATCH"}', flush=True)
     print('summary')
     check(f'all {n_cases} cases agree with Propositions 4.13, 4.17 and Theorem 4.18 (paper: 40 of 40)',
           n_cases == 40 and n_agree == 40)
     check(f'the circle carries 4 + 4 N_q generators in {n_full} cases (paper: 37); the others are {short} '
           f'(paper: q = 17 at the three larger perturbations)',
           n_full == 37 and sorted(short) == sorted([(17, PERTURBATIONS[i]) for i in (0, 1, 2)]))
-    check(f'a strand meets the lift of the circle at most {maxmult[0]} times, attained at q = {maxmult[1]} '
+    check(f'a lift of L_0 meets the lift of the circle at most {maxmult[0]} times, attained at q = {maxmult[1]} '
           f'(paper: seven times, q = 21)', maxmult == (7, 21))
     check(f'max |eps| over the five perturbations = {max(norms):.5f} (paper: |eps| <= {EPS_BOUND})',
           max(norms) <= EPS_BOUND)

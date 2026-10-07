@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-maurer_cartan.py -- step (e), part 4: finite self-polygon diagnostics for the
-blue curve (RESEARCH_LOG sec 29).
+maurer_cartan.py -- finite self-polygon diagnostics for the blue curve.
 
 The full bounding-cochain equation is an ordered, branch-typed all-order series.
 The implementation below does not compute that series. It records finite-window
@@ -107,7 +106,7 @@ def orbit_group(blue, tol=1e-7):
 
 
 def _selftest():
-    """Guard: the monogon counter must FIND a genuine teardrop (else mu^0 = 0 below
+    """Guard: the monogon counter must find a genuine teardrop (else mu^0 = 0 below
     could be a false negative). A limacon inner loop is one embedded teardrop."""
     import math
     from tangles import TAU
@@ -127,7 +126,7 @@ def _selftest():
 
 if __name__ == "__main__":
     import json
-    print("== finite self-polygon obstruction tables (RESEARCH_LOG sec 29) ==")
+    print("== finite self-polygon obstruction tables ==")
     assert _selftest(), "monogon counter self-test failed -- mu^0=0 would be unreliable"
     red, blue, xinfo = build_geometry()
     orbs = orbit_group(blue)
@@ -145,10 +144,10 @@ if __name__ == "__main__":
     print(f"  crossings with nonzero mu^0: {sum(mu0)}")
 
     # mu^1: blue self-bigons per ordered crossing pair (S_i -> S).
-    # Pruned T^2-CONSISTENTLY by circular blue-edge window (NOT pillowcase
+    # Pruned T^2-consistently by circular blue-edge window (not by pillowcase
     # distance: 4 of 9 generators/many crossings fold under T^2 -> P and are far
-    # in edge-index despite being close in P; a P-distance prune wrongly drops
-    # cross-lift polygons -- this was the sec-30/31 bug).
+    # in edge-index despite being close in P, so a P-distance prune wrongly drops
+    # cross-lift polygons).
     from deform_full import circular_window_ok
     nb = len(blue) - 1
     print("\n=== mu^1 (blue self-bigons) per P-crossing pair [edge-window pruned] ===")

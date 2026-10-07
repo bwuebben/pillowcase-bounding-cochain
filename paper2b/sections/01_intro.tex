@@ -1,0 +1,205 @@
+\section{Introduction}\label{sec:intro}
+
+\subsection{Bounding cochains in the pillowcase}
+Let $K\subset S^3$ be a knot. On the gauge-theoretic side sits the reduced singular instanton knot
+homology $\Inat(K)$ of Kronheimer and Mrowka~\cite{KM1,KM2}. On the symplectic side sits the pillowcase
+program of Hedden, Herald and Kirk~\cite{HHK1,HHK2}. Cut $K$ along a Conway sphere into two $2$-tangles.
+The traceless $\SU$ character variety of the four-punctured sphere is the \emph{pillowcase}, a two-sphere
+with four orbifold points, and after a holonomy perturbation each tangle determines an immersed curve in
+it; the tangle that carries the earring of the reduced theory gives a figure-eight curve. Hedden, Herald
+and Kirk conjecture that for a suitable decomposition the Lagrangian Floer homology of the two curves is
+isomorphic to $\Inat(K;\F_2)$~\cite[Conj.~6.5]{HHK2}. For general decompositions figure-eight bubbles at
+the self-intersections of the curves deform the differential. Cazassus, Herald, Kirk and Kotelskiy
+conjecture that each tangle is assigned an immersed curve together with a bounding cochain, and that the
+deformed theory recovers $\Inat(K)$~\cite[Conj.~D]{CHKK}. Conditional on this conjecture, Smith proves that
+the cochain on one Conway-sum tangle in $P(-2,3,5)$ cannot vanish~\cite[proof of Thm.~5.9]{Smith}.
+
+This paper studies Smith's decomposition of the pretzel knots $K_q=P(-2,3,q)$, $q\ge3$
+odd~\eqref{eq:family}, as the numerator closure of a sum of three rational tangles,
+$K_q=\operatorname{num}(Q_{-1/2}+Q_{1/3}+Q_{1/q})$, with the earring on the $-2$ band. Smith shows that
+the Floer homology with zero bounding cochain has the wrong rank at
+$q=5$~\cite[proof of Thm.~5.9]{Smith}, and at $q=7$ the same holds for a piecewise-linear model of his curve
+(Proposition~\ref{prop:q7-typeD}). We work over the algebra $\mathcal B$ of Kotelskiy, Watson and
+Zibrowius~\cite{KWZ}, the endomorphism algebra of two arcs in the four-punctured sphere. For $q=5,7$ we
+construct Maurer--Cartan elements for the twisted complex of the model over $\mathcal B$ that correct the
+rank, and we identify the resulting objects with the Bar-Natan invariant of the tangle $Q_{1/3}+Q_{1/q}$ up
+to one further term (Theorems~\ref{thm:structure} and~\ref{thm:pairing}). The companion paper~\cite{WuebbenII} computes
+$\Inat(K_q;\Z)\cong\Z^{q+2}$ for every odd $q\ge3$~\cite[Thm.~1.1]{WuebbenII}; these instanton dimensions
+are the targets of the pairing dimensions computed here. It also shows that for a different decomposition
+of $K_q$, obtained from the tangle of Hedden, Herald and Kirk for $T(3,5)$ by regluing, the pillowcase Floer
+homology with zero bounding cochain is isomorphic to $\Inat(K_q;\F_2)$ as a $\Z/4$-graded vector space, for
+odd $q\ge7$~\cite[Thm.~1.2]{WuebbenII}.
+
+\subsection{Smith's decomposition}
+In Smith's decomposition the earring is placed on the summand $Q_{-1/2}$, which gives the tangle
+$\Qh{-1/2}$; for a slope $r$ we write $\Qh{r}$ for the tangle $Q_r$ with an earring, whose curve $E_r$
+surrounds the line of $Q_{-r}$ (\S\S\ref{ss:models} and~\ref{ss:kh-smith}). The other tangle is
+$T_q=Q_{1/3}+Q_{1/q}$. We work in Smith's coordinates on the pillowcase, with his holonomy perturbation
+for small negative values of its parameter $t$ (\S\ref{ss:smith-chart}). Following Cazassus, Herald, Kirk
+and Kotelskiy~\cite[\S11]{CHKK}, we encode curves as twisted complexes over $\mathcal B$. The higher
+products of $\mathcal B$ vanish, so the Maurer--Cartan equation for a deformation $b$ of a twisted complex
+$(V,\delta)$ is the finite identity $(\delta+b)^2=0$. The pairing dimension of two twisted complexes is the
+dimension of the homology of their morphism complex, a Floer homology dimension for curves in the position
+required by~\cite[Thm.~5.22]{KWZ} (\S\ref{ss:kwz}). We write $N_q$ for the twisted complex of a
+piecewise-linear model of Smith's curve for $T_q$, and $\mathcal E_r$ for that of the earring curve $E_r$,
+with $\mathcal E=\mathcal E_{-1/2}$.
+
+Under the equivalence of $\operatorname{Tw}(\mathcal B)$ with the twisted complexes over the relevant
+wrapped Fukaya category of the pillowcase~\cite[\S11.5]{CHKK}, the deformed complexes $(N_q,b)$ play the role
+of immersed curves with bounding cochains. The switch of a smoothing at a self-intersection, defined below,
+is the twisted-complex form of the Lagrangian surgery there, which in immersed Floer theory corresponds to a degree-one bounding cochain at that point (for curves on surfaces compare Auroux and Smith, \S\ref{ss:disc-prior}). We do not express the switches in the immersed Floer complex
+of Akaho and Joyce~\cite{AkahoJoyce} (Remark~\ref{rem:q7-scope}).
+
+For $q=7$ the pairing dimension of $\mathcal E$ with $N_7$ is $7$, not $9=\dim\Inat(K_7)$
+(Proposition~\ref{prop:q7-typeD}). Each self-intersection of the model lifts to two double points of its lift to the torus double cover, exchanged by the elliptic involution; we call the pair a \emph{self-intersection orbit}. A smoothing of the
+model at a self-intersection orbit that keeps the generators of $N_7$ changes its differential by a matrix
+$b_s$, the \emph{switch} of the smoothing. At four self-intersection orbits, labelled
+$S_{18},S_{25},S_{69},S_{74}$ in \S\ref{ss:smoothings}, smoothing gives a switch $b_s$ that is a
+Maurer--Cartan element and raises the pairing dimension to $9$, and the four objects $(N_7,b_s)$ fall into
+three homotopy-equivalence classes (Corollary~\ref{cor:q7-classes}). Replacing $\Qh{-1/2}$ by $\Qh{-3/4}$
+closes $T_7$ into a second knot $K_*$. Its reduced Khovanov homology is free of rank $31$, which equals the
+coefficient norm of its Alexander polynomial, so the bounds of Kronheimer and Mrowka~\cite{KMAlex,KM2} give
+$\Inat(K_*;\Z)\cong\Z^{31}$, and the pairing dimensions with the second earring separate the three classes
+(Proposition~\ref{prop:aux-closure}).
+
+\emph{Conditional selection at $q=7$.} Assume the conjecture of Cazassus, Herald, Kirk and Kotelskiy, and
+assume Hypothesis~\ref{hyp:q7-support}: the assigned object is homotopy equivalent to the oriented smoothing
+of the model at a single self-intersection orbit, or to the deformation of $N_7$ by a combination of the four
+switches above.
+Then the object assigned to $T_7$ is homotopy equivalent to the common class of $(N_7,b_{S_{18}})$ and
+$(N_7,b_{S_{25}})$ (Corollary~\ref{cor:aux-conditional}). The orbits $S_{18}$ and $S_{25}$ are the two at
+which a double point cuts the lift into two loops the shorter of which has torus class $(2,2)$ up to sign
+(Proposition~\ref{prop:aux-selection}). For positive $t$ two of the four smoothings give $5$ and $7$ instead
+of $9$, and the two-closure selection holds for both signs (Remark~\ref{rem:sign-pairings}). We also show that Gao's wrapped representability
+theorem~\cite{Gao} cannot be applied to the Lagrangian correspondence induced by the line of $Q_{1/3}$,
+which is immersed with a triple point (Proposition~\ref{prop:partial-triple}).
+
+Kotelskiy, Watson and Zibrowius assign to $T_q$ its Bar-Natan invariant $\widetilde{\mathrm{BN}}(T_q)$, an
+immersed multicurve with local systems in the four-punctured sphere~\cite{KWZ}. Drawn in Smith's
+coordinates it becomes an object $\mathrm{BN}_q$ of $\operatorname{Tw}(\mathcal B)$ (\S\ref{ss:kh-smith}).
+For $r\in\Q\cup\{\infty\}$ let $K_r(q)=\operatorname{num}(Q_r+T_q)$, so that $K_{-1/2}(q)=K_q$. A compact
+curve in the pillowcase is \emph{linear} if its lifts to the plane lie close to parallel straight lines and
+are graphs over them (Definition~\ref{def:linear}). Two twisted complexes are \emph{strictly isomorphic} if
+a bijection of their generators that preserves idempotents carries one differential to the other entry by
+entry (\S\ref{ss:kwz}). For odd $q$ put $r_q=(1-q)/(3q-4)$. Let $\alpha_q$ be the straight arc between
+$(0,0)$ and $(\pi,0)$ that the earring curve $E_{r_q}$ surrounds, and let $c$ be the boundary of a regular
+neighborhood of the straight arc that $E_{-1}$ surrounds; $c$ separates $\{(\pi,0),(0,\pi)\}$ from
+$\{(0,0),(\pi,\pi)\}$ (\S\ref{ss:kh-structure}). For $q\in\{5,7\}$ let $b$ be one of the selected elements
+$b_{S_{18}},b_{S_{25}}$ at $q=7$, or at $q=5$ the switch $b_5$ of a smoothing that raises the pairing
+dimension with $\mathcal E$ from $5$ to $7$ (\S\ref{ss:kh-structure}).
+
+\begin{theorem}\label{thm:structure}
+Let $q\in\{5,7\}$.
+\begin{enumerate}
+\item The object $(N_q,b)$ is strictly isomorphic to $\alpha_q\oplus(c,J_2)$, where $J_2$ is the
+indecomposable two-dimensional local system on $c$.
+\item There is a term $\kappa_q\in\operatorname{End}(N_q)$, which replaces one arrow of the differential near
+the corner $(0,0)$, such that $b+\kappa_q$ is a Maurer--Cartan element and $(N_q,b+\kappa_q)$ is strictly
+isomorphic to $\mathrm{BN}_q$.
+\end{enumerate}
+For every odd $q$ with $5\le q\le21$, $\mathrm{BN}_q$ is an arc obtained from $\alpha_q$ by sliding one of its
+ends along~$c$.
+\end{theorem}
+
+\begin{theorem}\label{thm:pairing}
+Let $5\le q\le21$ be odd, and let $\Gamma$ be a linear curve parallel neither to $\alpha_q$ nor to $c$.
+Then the minimal intersection numbers satisfy $i(\Gamma,\mathrm{BN}_q)=i(\Gamma,\alpha_q)+2\,i(\Gamma,c)$,
+and if $\Gamma$ is bigraded, with the corner $(\pi,\pi)$ as the special puncture of~\cite{KWZ}, then,
+granting the arc case of the intersection formula of Kotelskiy, Watson and Zibrowius~\cite[Thm.~5.25]{KWZ},
+$\dim\HF(\Gamma,\mathrm{BN}_q)=\dim\HF\bigl(\Gamma,\alpha_q\oplus(c,J_2)\bigr)$.
+\end{theorem}
+
+\begin{corollary}\label{cor:closures}
+Granting the arc case of the intersection formula of Kotelskiy, Watson and Zibrowius~\cite[Thm.~5.25]{KWZ}, for
+$q\in\{5,7\}$ and every $r\in\Q\cup\{\infty\}$,
+\[
+\dim\HF\bigl(E_r,(N_q,b)\bigr)=\dim\HF\bigl(E_r,(N_q,b+\kappa_q)\bigr)=\rk\widetilde{\Kh}\bigl(K_r(q);\F_2\bigr).
+\]
+\end{corollary}
+
+Thus, granting that case, no rational closure distinguishes $(N_q,b)$ from $\mathrm{BN}_q$; curves parallel to $c$ do
+(Remark~\ref{rem:sharpness}). Section~\ref{sec:khovanov} states these results in precise form
+(Theorems~\ref{thm:structure-full} and~\ref{thm:pairing-full}, Corollary~\ref{cor:closures-full}). The
+element $b$ is the switch of a smoothing of the model at one self-intersection, a Lagrangian surgery, and
+already reaches the Khovanov rank, whereas $\kappa_q$ is supported on chords around the corner $(0,0)$ and
+not at a self-intersection of the curve. Kotelskiy, Watson and Zibrowius suggest that the spectral sequences from
+Khovanov homology to Heegaard Floer and instanton homology might be realized by smoothing self-intersections
+of $\widetilde{\mathrm{BN}}(T)$ and $\widetilde{\Kh}(T)$~\cite[\S1.8]{KWZ}, and
+Theorem~\ref{thm:structure} proceeds in the opposite direction, from a smoothing of the curve on the
+instanton side to the Bar-Natan invariant.
+
+\begin{question}\label{q:arc}
+Let $q\ge5$ be odd and prime to $3$. If the tangle assignment of Cazassus, Herald, Kirk and Kotelskiy is
+defined for $T_q$ with Smith's perturbation for small $t<0$, is the object of $\operatorname{Tw}(\mathcal B)$
+that it determines homotopy equivalent to $\mathrm{BN}_q$?
+\end{question}
+
+The evidence for $q=5,7$ is Theorem~\ref{thm:structure} and Corollary~\ref{cor:closures}. Two
+observations point the other way. First, $\mathrm{BN}_7$ is not homotopy equivalent to any object allowed
+by Hypothesis~\ref{hyp:q7-support} (Proposition~\ref{prop:hyp-conflict}). An affirmative answer for
+$q=7$ would therefore show that the hypothesis fails, and, granting the arc case of the intersection
+formula~\cite[Thm.~5.25]{KWZ}, no rational closure could detect the failure. Second, for $q=11,13$ the encoding of a numerical trace of Smith's curve has pairing dimension
+$q+4$ with $E_{-1/2}$, and for $q=17,19$ pairing dimension $q+8$, against $\rk\widetilde{\Kh}(K_q)=q+2$; in
+finite searches no deformation by a few switches reaches $\mathrm{BN}_q$ (Remark~\ref{rem:q11}). These
+searches do not exclude a larger bounding cochain, and we pose the question without conjecturing an answer.
+
+\subsection{Outline of the arguments}
+\emph{The Maurer--Cartan elements at $q=7$.} For small $t$, Smith's perturbed curve contains a component
+homeomorphic to the fiber product of the lines of $Q_{1/3}$ and $Q_{1/7}$ with each circle that the Conway sum
+acquires over an edge of the pillowcase replaced by two arcs crossing once, joined crosswise to the rest of
+the curve (the \emph{cross-resolution} of \S\ref{ss:smith-chart}), and its other components are circles
+that can be moved off any fixed complementary curve (Proposition~\ref{prop:smith-main}, after~\cite{Smith}).
+Performing the same cross-resolution on the fiber product of the two lines, drawn piecewise linearly, gives a
+curve homeomorphic to that component, the model. Encoding the model by its crossings with the arc system of
+$\mathcal B$ gives, after unit cancellations, the twisted complex $N=N_7$ on $31$ generators. Morphism
+complexes between finite twisted complexes are infinite dimensional, and Lemma~\ref{lem:wrapped-reduction}
+computes their homology exactly: the morphism complex is a mapping cone onto free modules over the
+polynomial rings of the three faces, and its homology is finite dimensional exactly when those modules are
+acyclic over the fraction fields. Each self-intersection of the model has two smoothings; since
+$\mathcal B$ has no higher products, the switch $b_s$ of a smoothing that preserves the generators is a
+Maurer--Cartan element exactly when $(\delta_N+b_s)^2=0$, a finite check. The enumeration of all $82$
+self-intersection orbits (Propositions~\ref{prop:aux-selection} and~\ref{prop:aux-remaining}) compares the
+pairing dimensions with the two earrings against the instanton dimensions $9$ and $31$.
+
+\emph{Theorems~\ref{thm:structure} and~\ref{thm:pairing}.} All objects in the statements are reduced
+twisted complexes of loop type, and a strict isomorphism between two of them is decided by comparing
+the words of their components; $\widetilde{\mathrm{BN}}(T_q)$ is computed with Zibrowius's
+program~\cite{Zibkht}. For Theorem~\ref{thm:pairing} we realize each curve by a geodesic in a metric of
+nonpositive curvature (the Alexander--Berg--Bishop theorem, see~\cite[Thm.~7.28]{AKP}), in which minimal
+intersection numbers are counted locally. A lift of $\mathrm{BN}_q$ agrees with the union of a lift of
+$\alpha_q$ and two periods of a lift of $c$ outside small discs at five lattice points, and a four-case
+local count at one lattice point~\eqref{eq:local-identity} gives the identity of intersection numbers. For
+bigraded curves we then use the intersection formulas of Kotelskiy, Watson and
+Zibrowius~\cite[Thm.~5.25]{KWZ} and of Zibrowius~\cite[Thm.~4.45]{Zibrowius}.
+
+\subsection{Scope of claims}
+Proposition~\ref{prop:q7-typeD}, Theorems~\ref{thm:structure} and~\ref{thm:pairing} and
+Corollary~\ref{cor:closures} are statements about explicitly presented objects of
+$\operatorname{Tw}(\mathcal B)$; they neither assume nor prove Conjecture~D of~\cite{CHKK}, and
+they do not identify the object that the conjecture of Cazassus, Herald, Kirk and Kotelskiy assigns to $T_q$.
+Proposition~\ref{prop:smith-main} identifies the homeomorphism type of the main components of Smith's curve;
+it is not proved that their twisted complex is $N_q$. This is corroborated for $q\le13$ by numerical traces
+(Remark~\ref{rem:analytic}, \S\ref{ss:methods}), and Hypothesis~\ref{hyp:q7-support} is formulated for the
+model. Corollary~\ref{cor:aux-conditional} is conditional on Conjecture~D of~\cite{CHKK} and on
+Hypothesis~\ref{hyp:q7-support}. The second statement of Theorem~\ref{thm:pairing}, Corollary~\ref{cor:closures} and the second statement of Proposition~\ref{prop:hyp-conflict} grant the arc case of the intersection formula of Kotelskiy, Watson and
+Zibrowius~\cite[Thm.~5.25]{KWZ}, the case of an arc that ends at a puncture, which they assert is treated
+like the compact case but do not write out (proof of Theorem~\ref{thm:pairing-full}); the dimensions of
+Corollary~\ref{cor:closures} are also computed directly at several hundred slopes. The identifications of $N_q$ and of the switches with the encodings and smoothings of the piecewise-linear curves
+rest on the floating-point geometry of these curves (Appendix~\ref{ss:methods}), and so do the second part of
+Proposition~\ref{prop:q7-typeD}, Propositions~\ref{prop:aux-selection}--\ref{prop:aux-span},
+Corollary~\ref{cor:aux-conditional} and Proposition~\ref{prop:hyp-conflict}, whereas all statements about
+the displayed complexes are exact. Statements labelled \emph{Computation} (Appendix~\ref{sec:compute}) are outputs of
+finite procedures and are recorded as data.
+
+\subsection{Organization}
+Section~\ref{sec:background} recalls the pillowcase, Smith's coordinates and the algebra $\mathcal B$.
+Section~\ref{sec:smith} treats Smith's decomposition with zero bounding cochain and the Maurer--Cartan
+elements at $q=7$, and Section~\ref{sec:khovanov} relates them to the Bar-Natan invariant.
+Section~\ref{sec:disc} discusses related work and open problems, and Appendix~\ref{app:data} prints the
+remaining data, records finite polygon counts, and describes the computations.
+
+\subsection*{Acknowledgements}
+The pillowcase model and the geometry used here are due to Hedden, Herald and Kirk~\cite{HHK1,HHK2},
+Cazassus, Herald, Kirk and Kotelskiy~\cite{CHKK}, Herald and Kirk~\cite{HK}, and Smith~\cite{Smith}. The
+immersed-curve invariants are those of Kotelskiy, Watson and Zibrowius~\cite{KWZ}, computed with Zibrowius's
+program~\cite{Zibkht}, and the ranks of reduced Khovanov homology were computed with Khoca~\cite{Khoca}.

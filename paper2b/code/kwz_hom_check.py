@@ -1,10 +1,10 @@
-"""The two implementations of the morphism homology (Lemma 6.5 and Appendix A.3, "Morphism homology").
+"""The two implementations of the morphism homology (Lemma 3.5 and Appendix A.4, "Morphism homology").
 
-The dimensions of Propositions 6.7 and 6.8 are computed with both methods of kwz_algebra: the mapping-cone
-reduction of Lemma 6.5 (with its data e, tau, r and the free ranks f_L, f_M, f_R) and the F2[H]-module structure.
-Also checked: the data (e, tau, r) printed after (6.3); the torsion statements of Remark 6.6 (for End(N) one has
+The dimensions of Propositions 3.7 and 3.8 are computed with both methods of kwz_algebra: the mapping-cone
+reduction of Lemma 3.5 (with its data e, tau, r and the free ranks f_L, f_M, f_R) and the F2[H]-module structure.
+Also checked: the data (e, tau, r) printed after (3.3); the torsion statements of Remark 3.6 (for End(N) one has
 f_M = f_R = 1, for the one-generator complex (iota_circ, 0) one has f_L = f_M = 1, and p_{X,i} = U_X for every pair
-used); and the agreement of the two methods on every pairing of Section 7 that the other scripts use.
+used); and the agreement of the two methods on every pairing of Section 4 that the other scripts use.
 """
 import sys, time
 from fractions import Fraction as F
@@ -16,7 +16,7 @@ import kwz_objects as O
 
 def main():
     t0 = time.time()
-    rep = A.Report('Morphism homology: Lemma 6.5 and the F2[H] method (Propositions 6.7, 6.8; Appendix A.3)')
+    rep = A.Report('Morphism homology: Lemma 3.5 and the F2[H] method (Propositions 3.7, 3.8; Appendix A.4)')
     N, NL = O.N7()
     E, _ = O.E()
     Es, _ = O.Estar()
@@ -26,23 +26,23 @@ def main():
     paper = {'N': (7, 25), 'S18': (9, 31), 'S25': (9, 31), 'S69': (9, 23), 'S74': (9, 25)}
     etr = {'N': (228, 251, 227), 'S74': (228, 251, 227), 'S18': (228, 251, 224), 'S25': (228, 251, 224),
            'S69': (228, 251, 228)}
-    rep.section('Propositions 6.7 and 6.8: (dim with E, dim with E_*)')
+    rep.section('Propositions 3.7 and 3.8: (dim with E, dim with E_*)')
     for name, X in objs.items():
         rep.check(f'{name}: Maurer--Cartan', True, A.is_mc(X))
         h = (A.hom_dim(E, X), A.hom_dim(Es, X))
         c1, c2 = A.hom_dim_cone(E, X), A.hom_dim_cone(Es, X)
         rep.check(f'{name}: dimensions by the F2[H] method', paper[name], h)
-        rep.check(f'{name}: dimensions by Lemma 6.5', paper[name], (c1['dim'], c2['dim']))
+        rep.check(f'{name}: dimensions by Lemma 3.5', paper[name], (c1['dim'], c2['dim']))
         rep.check(f'{name}: (e, tau, r) for the pairing with E_*', etr[name], (c2['e'], c2['tau'], c2['r']))
         rep.check(f'{name}: torsion condition f_L = f_M = f_R = 0 and p = U (both pairings)', True,
                   all(c['f'] == {'L': 0, 'M': 0, 'R': 0} and c['m'] == 1 for c in (c1, c2)))
-    rep.section('Remark 6.6')
+    rep.section('Remark 3.6')
     cN = A.hom_dim_cone(N, N)
     rep.check('End(N): (f_L, f_M, f_R)', (0, 1, 1), (cN['f']['L'], cN['f']['M'], cN['f']['R']))
     one = (['w'], [])
     c1 = A.hom_dim_cone(one, one)
     rep.check('End(iota_circ, 0): (f_L, f_M, f_R)', (1, 1, 0), (c1['f']['L'], c1['f']['M'], c1['f']['R']))
-    rep.section('the two methods on the pairings of Section 7 (additional check)')
+    rep.section('the two methods on the pairings of Section 4 (additional check)')
     pairs = []
     for q in (5, 7):
         Nq, L = O.N(q)

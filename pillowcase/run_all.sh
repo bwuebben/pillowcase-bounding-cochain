@@ -1,5 +1,5 @@
 #!/bin/sh
-# Run the computations of Section 6. Pure Python 3, standard library only.
+# Run the computations of Section 3. Pure Python 3, standard library only.
 #
 #     sh run_all.sh          everything (the q = 11 screens take several minutes)
 #     sh run_all.sh fast     the reconstruction checks and the exact q = 7 programs
@@ -17,7 +17,7 @@ done
 echo; echo "=== Alexander polynomials (independent check) ==="
 $PY skein_alexander.py
 
-echo; echo "=== exact q = 7 computations in the two-arc algebra ==="
+echo; echo "=== exact q = 7 computations in the algebra B ==="
 $PY q7_kwz.py --encode
 $PY q7_closure_probe.py --slope=-3/4 --selection-certificate
 $PY q7_quilt_census.py --all-node-census

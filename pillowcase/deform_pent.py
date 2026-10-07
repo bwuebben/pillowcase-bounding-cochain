@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """
-deform_pent.py -- step (e), part 6: the mu^4 PENTAGON layer of the deformed
-differential (RESEARCH_LOG sec 31).
+deform_pent.py -- the mu^4 pentagon layer of the deformed differential.
 
-The earlier finite search found the triangle/quadrilateral tables insufficient:
-canceling the (4,6) bigon via the
-{S35,S36} quad leaves (3,6),(3,4),(6,5), uncancelable below pentagon order. Here we
-enumerate the 3-b-vertex polygons (immersed pentagons) g_i -> g_j through ordered
-crossing TRIPLES, using the length-general polygons.polygon_through. Locality: a
-pentagon is a small disk, so its 3 b-vertices and 2 generators all sit in cluster C
-(gens {3,4,5,6}); triples are pruned to mutually-close near-C crossings and the two
-generators to near-C. P-orbit preimages are unioned (deform convention).
+In the finite triangle/quadrilateral tables, canceling the (4,6) bigon via the
+{S35,S36} quad leaves (3,6),(3,4),(6,5), which cannot be canceled below pentagon
+order. Here we enumerate the 3-b-vertex polygons (immersed pentagons) g_i -> g_j
+through ordered crossing triples, using the length-general polygons.polygon_through.
+Locality: a pentagon is a small disk, so its 3 b-vertices and 2 generators all sit
+in cluster C (gens {3,4,5,6}); triples are pruned to mutually-close near-C
+crossings and the two generators to near-C. P-orbit preimages are unioned (deform
+convention).
 
-Output: Pent[frozenset(a,b,c)][i][j] appended to deform_pent.json (same P-orbit
+Output: Pent[frozenset(a,b,c)][i][j] written to deform_pent.json (same P-orbit
 indexing as deform_full.json), consumed by solve_b2.py's cubic table term.  Like
 the lower-order files, this is an untyped distinct-support truncation, not a
 complete A-infinity operation or bounding-cochain deformation.
@@ -26,7 +25,7 @@ from deform import build_geometry, bigon_matrix, triangle_contributions_P
 
 def build_pent(red, blue, gens, crossings, gP, cluster_gens, near_cross,
                triple_tol=0.42, gen_tol=0.80):
-    """Enumerate Pent per unordered near-C crossing TRIPLE. Returns
+    """Enumerate Pent per unordered near-C crossing triple. Returns
     {frozenset(a,b,c): n x n F_2 matrix} (nonzero entries only)."""
     n = len(gens)
     Pent = {}

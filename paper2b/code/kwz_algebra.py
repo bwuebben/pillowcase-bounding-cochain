@@ -1,6 +1,6 @@
-"""Twisted complexes over the two-arc algebra B of Kotelskiy, Watson and Zibrowius, and their morphism homology.
+"""Twisted complexes over the algebra B of Kotelskiy, Watson and Zibrowius, and their morphism homology.
 
-Conventions (Section 2.6 and Section 6.3 of the paper).
+Conventions (Section 2.3 and Section 3.3 of the paper).
 
 * An object is a pair (gens, arrows).  gens[i] is the idempotent of generator i: 'b' for iota_bullet and 'w' for
   iota_circ.  An arrow (i, kind, k, j) with kind in {'D', 'S'} and k >= 1 is the matrix entry kind^k from generator
@@ -18,7 +18,7 @@ Two exact methods are implemented, and they are independent of each other.
   0 -> Mor -(H^n)-> Mor -> Mor/H^n -> 0 one gets dim H(Mor/H^n) = sum_i 2 min(n, n_i) + r n when
   H(Mor) = F2[H]^r + sum_i F2[H]/(H^{n_i}).  The free rank r is dim H(Mor at H = 1); the exponents n_i are read
   off from dim H(Mor/H^n), n = 1, 2, ..., which stops as soon as the increment equals r.
-* hom_dim_cone(X, Y): the mapping-cone reduction of Lemma 6.5.  Mor is the cone of the chain map beta from the
+* hom_dim_cone(X, Y): the mapping-cone reduction of Lemma 3.5.  Mor is the cone of the chain map beta from the
   identity part (dimension e) to the positive part, which splits into three free complexes over F2[U_X],
   X = L, M, R, with U_L = L, U_R = R and U_M = M^2.  With h_m = dim H(C/U^m C) for the positive part C one has
   h_{m+1} - h_m = f + 2 #{i : deg p_i > m}, where f is the free rank of H(C).  So h_{m+1} = h_m implies f = 0 and
@@ -524,7 +524,7 @@ def hom_dim(X, Y):
     return sum(ns)
 
 
-# ----------------------------------------------------------------------------------------------- method 2: Lemma 6.5
+# ----------------------------------------------------------------------------------------------- method 2: Lemma 3.5
 
 def _face(kind, idem):
     if kind == 'S':
@@ -533,7 +533,7 @@ def _face(kind, idem):
 
 
 def hom_dim_cone(X, Y, mmax=40):
-    """dim H Mor(X, Y) by the mapping-cone reduction of Lemma 6.5.  Returns a dict with e, tau, r, f (free ranks of
+    """dim H Mor(X, Y) by the mapping-cone reduction of Lemma 3.5.  Returns a dict with e, tau, r, f (free ranks of
     the three face complexes), m (a power of U that annihilates H of the positive part) and dim.  dim is None if some
     f_X > 0 (infinite homology)."""
     gx, ax = X

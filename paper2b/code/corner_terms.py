@@ -1,4 +1,4 @@
-"""Remark 7.2 (the corner term) and Appendix A.2 (corner terms and minimal edits).  Exact finite searches over F2.
+"""Remark 4.2 (the corner term) and Appendix A.2 (corner terms and minimal edits).  Exact finite searches over F2.
 
 1. One-arrow replacements.  For (N_q, b), b in {b_S18, b_S25} at q = 7 and b = b_5 at q = 5: every complex obtained
    by deleting one arrow and adding one arrow between two generators that meet at most one arrow, with every label
@@ -8,7 +8,7 @@
    same search with BN~(T_q) in place of BN_q gives the terms for t > 0 listed in Appendix A.2.
 2. Minimal edits.  The edit distance from N_q to BN_q is 2 for q = 5, 7, with two minimal edits in each case; at
    q = 7 both consist of arrows labelled R and touch the end 36.
-3. Sums of switches (Remark 7.2).  N_7 has 110 algebraic switches and N_5 has 58; no sum of at most three of them
+3. Sums of switches (Remark 4.2).  N_7 has 110 algebraic switches and N_5 has 58; no sum of at most three of them
    (221 925 and 32 567 sums) is strictly isomorphic to BN_q.  Of the 45 distinct switches of census smoothings at
    q = 7, 41 are algebraic switches (65 of the 73 occurrences); the other four exchange the heads of an M-arrow and
    an M2-arrow, and no sum of at most three of the 45 is strictly isomorphic to BN_7.
@@ -51,7 +51,7 @@ def term(Nq, L, dl, new):
 
 def main():
     t0 = time.time()
-    rep = A.Report('Remark 7.2 and Appendix A.2: corner terms, minimal edits, sums of switches')
+    rep = A.Report('Remark 4.2 and Appendix A.2: corner terms, minimal edits, sums of switches')
     expected_ii = {(7, 'b_S18'): ['0 -R-> 19 + 36 -R-> 19', '22 -R-> 3 + 36 -R-> 3'],
                    (7, 'b_S25'): ['0 -R-> 19 + 36 -R-> 19', '4 -R-> 3 + 36 -R-> 3'],
                    (5, 'b_5'): ['12 -R-> 11 + 0 -R-> 11', '8 -R-> 15 + 0 -R-> 15']}

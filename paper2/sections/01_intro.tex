@@ -9,27 +9,28 @@ Kirk~\cite{HHK1,HHK2}. Write $K=(Y,T)\cup(D,U)$ as the union of a tangle and the
 Conway sphere. The traceless $\SU$ character variety of the four-punctured sphere is the
 \emph{pillowcase}, a two-sphere with four orbifold points, and after a holonomy perturbation each side
 determines an immersed curve in its smooth part: the tangle side a curve $L_1$, and the trivial side,
-with an earring, the curve $L_0$. Their Lagrangian Floer homology $\Hnat(Y,T,\pi)$ is defined when the
-pair is admissible, and Hedden, Herald and Kirk conjecture that for suitable perturbations it is
-isomorphic to $\Inat(K;\F_2)$ as a $\Z/4$-graded vector space~\cite[Conj.~6.5]{HHK2} (Conjecture~\ref{conj:hhk65}).
+with an earring, the curve $L_0$, which depends on a small earring parameter $\epsilon>0$ (\S\ref{ss:earring}). Their Lagrangian Floer homology $\Hnat(Y,T,\pi)$ is defined when $L_1$ is restricted and the pair is admissible (Definitions~\ref{def:restricted} and~\ref{def:admissible}), and Hedden, Herald and Kirk conjecture that for suitable perturbations it is
+isomorphic to $\Inat(K)$~\cite[Conj.~6.5]{HHK2} (Conjecture~\ref{conj:hhk65}), and they compare the $\Z/4$
+gradings of the two sides~\cite[\S\S6.1, 11]{HHK2}.
 For general decompositions figure-eight bubbles at the self-intersections of the curves deform the
 differential. Cazassus, Herald, Kirk and Kotelskiy conjecture that each tangle is assigned an immersed
 curve together with a bounding cochain, and that the deformed theory recovers
 $\Inat(K)$~\cite[Conj.~D]{CHKK}; conditional on this conjecture, Smith proves that the cochain on one
 Conway-sum tangle in $P(-2,3,5)$ cannot vanish~\cite[proof of Thm.~5.9]{Smith}.
 
-This paper studies both sides for the pretzel knots $K_q=P(-2,3,q)$, $q\ge3$ odd~\eqref{eq:family}. The
+This paper studies both sides for the pretzel knots $K_q=P(-2,3,q)$, $q\ge3$ odd (\S\ref{ss:knots}). The
 smallest members are the torus knots $K_3=T(3,4)$ and $K_5=T(3,5)$, whose instanton and pillowcase
 homology are treated in~\cite{WuebbenI,WuebbenIV,WuebbenV}, and for $q\ge7$ the knot $K_q$ is
-hyperbolic. We use two decompositions of $K_q$. In the first, the tangle of Hedden, Herald and Kirk
-for $T(3,5)$ is reglued to the trivial tangle by Dehn twists along the Conway sphere. There the curves
-need no bounding cochain, and we prove the conjecture of Hedden, Herald and Kirk for every $K_q$, and for
-a family of twisted torus knots (Theorems~\ref{thm:hhk} and~\ref{thm:twisted}). The second is Smith's
-decomposition $K_q=\operatorname{num}(Q_{-1/2}+Q_{1/3}+Q_{1/q})$, with the earring on the $-2$ band. There
-the pairing with zero bounding cochain has the wrong rank. For $q=5,7$ we construct Maurer--Cartan
-elements in the two-arc algebra of Kotelskiy, Watson and Zibrowius~\cite{KWZ} that correct it, and we
-identify the resulting objects with the Bar-Natan invariant of the tangle $Q_{1/3}+Q_{1/q}$ up to one
-further term (Theorems~\ref{thm:structure} and~\ref{thm:pairing}).
+hyperbolic. We decompose $K_q$ by regluing the tangle of Hedden, Herald and Kirk for $T(3,5)$ to the
+trivial tangle by Dehn twists along the Conway sphere. For this decomposition we compute the pillowcase
+homology with zero bounding cochain and find that it agrees with $\Inat(K_q)$; this proves the conjecture of
+Hedden, Herald and Kirk for every $K_q$, and the same method applies to a family of twisted torus knots
+(Theorems~\ref{thm:hhk} and~\ref{thm:twisted}). Smith decomposes the same knots as a sum of rational tangles,
+with the earring on the $-2$ band. For that decomposition the pairing with zero bounding cochain has the wrong
+rank at $q=5$~\cite[proof of Thm.~5.9]{Smith}, and also at $q=7$ for a piecewise-linear model of Smith's
+curve~\cite{WuebbenIIb}. The companion paper~\cite{WuebbenIIb} constructs, for $q=5,7$, Maurer--Cartan elements
+that correct the rank, in the two-arc algebra of Kotelskiy, Watson and Zibrowius~\cite{KWZ}; the instanton
+dimensions of Theorem~\ref{thm:inat} are its targets.
 
 \subsection{The instanton side}
 \begin{theorem}\label{thm:inat}
@@ -45,7 +46,7 @@ The rank over $\Q$ is due to Lobb and Zentner~\cite[Prop.~4.7]{LZ}. For $q\ge7$ 
 graded ranks follow from the computation of the irreducible instanton homology of $K_q$ by Daemi and
 Scaduto~\cite[Prop.~8.30]{DS24} together with their integral spectral sequence
 (Proposition~\ref{prop:inat-graded}). Our proof of freeness is uniform in $q$: it runs Lobb and
-Zentner's squeeze with integer coefficients, using Manion's integral computation of Khovanov
+Zentner's two-sided rank bound with integer coefficients, using Manion's integral computation of Khovanov
 homology~\cite{Manion} and the integral spectral sequence of Kronheimer and Mrowka. For $q=3,5$ the
 graded ranks are those of the torus knots in~\cite{WuebbenV}. Section~\ref{sec:inat} gives the proof and
 Remark~\ref{rem:inat-attribution} the remaining attributions.
@@ -56,9 +57,17 @@ complement has free fundamental group of rank two, glued to the trivial tangle~\
 Let $t_e$ be the Dehn twist along the curve of the Conway sphere that separates two of the punctures from
 the other two. Regluing by $t_e^{-m}$ adds $m$ full twists on two strands, and the resulting knot is
 $K_{5+2m}$ (Theorem~\ref{thm:topology}). That the original gluing gives the positive torus knot $T(3,5)$ is verified by a
-computer-assisted argument (Remark~\ref{rem:chirality}). The holonomy perturbations on the tangle side are those of~\cite{WuebbenV},
-with parameters $\varepsilon=(\varepsilon_A,\varepsilon_B)$ in a closed cone $\mathcal C_a$
-(\S\ref{ss:perturbed-P}).
+computer-assisted argument (Remark~\ref{rem:chirality}). The unperturbed character variety $R(Y,T)$ is the union
+of an arc and a circle that meet in two points $c_\pm$ (\S\ref{ss:straight}). The holonomy perturbations on the
+tangle side are those of~\cite[\S10]{HHK2} used in~\cite{WuebbenV}: they are supported near two curves in $Y$,
+with perturbation functions $\varepsilon_A\sin$ and $\varepsilon_B\sin$, and items (P1)--(P9) in
+\S\S\ref{ss:straight}--\ref{ss:perturbed-P} recall the facts about them that we use from~\cite{WuebbenV}. For $a>0$ the closed cone
+$\mathcal C_a$ is the set of parameters $\varepsilon=(\varepsilon_A,\varepsilon_B)$ such that, at both $c=c_+$ and $c=c_-$, the
+linear part of $\kappa_c(\varepsilon)$, the critical value near $c$ of the function to which the equations of the
+perturbed variety reduce near $c$, has absolute value at least $a|\varepsilon|$~\cite[Def.~5.5]{WuebbenV}; it is the
+complement of an open conical neighborhood of the two lines $\{\varepsilon_B=\mp\sqrt3\,\varepsilon_A\}$
+(Proposition~\ref{prop:restype}). The generator $r_+$ below is the intersection point of $L_0$ and $L_1$ near the
+corner $(0,0)$ that comes from the abelian representation of the knot group (\S\ref{ss:decomp}).
 
 \begin{theorem}\label{thm:hhk}
 Let $q\ge7$ be odd, and let $K_q=(Y,T)\cup_{t_e^{-(q-5)/2}}(D,U)$ be the decomposition above. Fix $a>0$.
@@ -68,19 +77,19 @@ parameter:
 \item $L_1$ is a restricted immersed $1$-manifold, and $(L_0,L_1)$ is admissible;
 \item the Floer complex has $q+2+4N_q$ generators, where $N_q=\lfloor 5(q-6)/12\rfloor-\lfloor(q-6)/12\rfloor$;
 \item the differential has rank $2N_q$, and it is nonzero for $q\ge9$;
-\item with the absolute grading normalized by $\gr(r_+)=\sigma(K_q)$,
-$\Hnat(Y,T,\pi)\cong\Inat(K_q;\F_2)$ as $\Z/4$-graded vector spaces.
+\item with the absolute grading normalized by $\gr(r_+)=\sigma(K_q)$, as in~\cite[(19)]{HHK2}, and with any absolute grading on the circle component of $L_1$ when there is one, there is an isomorphism $\Hnat(Y,T,\pi)\cong\Inat(K_q;\F_2)$ of $\Z/4$-graded vector spaces.
 \end{enumerate}
 In particular, the conjecture of Hedden, Herald and Kirk~\cite[Conj.~6.5]{HHK2} holds for every $K_q$.
 \end{theorem}
 
-The perturbation can resolve the double points of the curve in two ways, joined for
-$|\varepsilon_B|<\sqrt3\,|\varepsilon_A|$ and split for $|\varepsilon_B|>\sqrt3\,|\varepsilon_A|$; both occur in
-$\mathcal C_a$ and the theorem holds in both. For $q\ge9$ the complex is not minimal. Hedden, Herald and
+The perturbation resolves the two double points $c_\pm$ of $R(Y,T)$ in one of two ways, joined for
+$|\varepsilon_B|<\sqrt3\,|\varepsilon_A|$ and split for $|\varepsilon_B|>\sqrt3\,|\varepsilon_A|$ (\S\ref{ss:perturbed-P} and
+Proposition~\ref{prop:restype}); for small $a$ both occur in $\mathcal C_a$, and the theorem holds in both. For $q\ge9$ the complex is not minimal. Hedden, Herald and
 Kirk verify the conclusion of their conjecture for two-bridge knots~\cite[\S7]{HHK2}, a family that
-contains hyperbolic knots, and for $T(3,4)$ and $T(3,5)$~\cite[\S\S10--11]{HHK2}; the torus knots
+contains hyperbolic knots, and for several torus knots, among them $T(3,4)$, $T(3,5)$ and $T(3,7)$~\cite[\S\S10--11]{HHK2}; the torus knots
 $T(3,n)$ are treated in~\cite{WuebbenV}. Fukumoto, Kirk and Pinz\'on-Caicedo describe the unperturbed
-character variety of the decomposition used here and count $9$ generators for $P(-2,3,7)$~\cite[\S5]{FKP}
+character variety of the pretzel knots for a decomposition of their own and count $9$ generators for
+$P(-2,3,7)$~\cite[\S5]{FKP}
 (Remark~\ref{rem:FKPcount}). For $q\ge7$ the knot $K_q$ is hyperbolic and not two-bridge
 (Proposition~\ref{prop:hyperbolic}). To our knowledge, these are the first hyperbolic knots outside the
 two-bridge family for which the conjecture is verified, with the $\Z/4$ gradings and nonzero Floer
@@ -91,9 +100,10 @@ $T(3,n;2,m)$ is the closure of the braid $(\sigma_1\sigma_2)^n\sigma_1^{2m}$.
 
 \begin{theorem}\label{thm:twisted}
 Let $n\ge7$ with $n\equiv1$ or $2\pmod 6$, let $m\ge1$, and let $K=T(3,n;2,m)$. Then
-$\sigma(K)=\sigma(T(3,n))-2m$, and $\Inat(K;\Z)$ is free of rank $|\sigma(K)|+1$. The tangle of~\cite[\S10]{HHK2}
-for $T(3,n)$, reglued by $t_e^{-m}$, is a decomposition of $K$, and for small holonomy perturbations and
-generic small earring parameters it satisfies the conclusion of~\cite[Conj.~6.5]{HHK2}:
+$\sigma(K)=\sigma(T(3,n))-2m$, and $\Inat(K;\Z)$ is free of rank $|\sigma(K)|+1$. Assume, as in~\cite{HHK2}
+and~\cite{WuebbenV}, that the tangle of~\cite[\S10]{HHK2} for $T(3,n)$ glued to the trivial tangle is the positive
+torus knot $T(3,n)$. Then this tangle, reglued by $t_e^{-m}$, is a decomposition of $K$, and for small holonomy
+perturbations and generic small earring parameters it satisfies the conclusion of~\cite[Conj.~6.5]{HHK2}:
 $\Hnat\cong\Inat(K;\F_2)$ as $\Z/4$-graded vector spaces.
 \end{theorem}
 
@@ -103,95 +113,15 @@ $T(3,6j+2;2,m)=T(3,6j+1;2,m+1)$ (Lemma~\ref{lem:conj}). The other members, $T(3,
 and $M\ge2$, are not torus knots, not alternating and not pretzel knots
 $P(-2,3,q)$ (Lemma~\ref{lem:twisted-not-torus}). We make no claim about their hyperbolicity.
 
-\subsection{Smith's decomposition}
-In Smith's decomposition the earring is placed on the tangle $\Qh{-1/2}$, and the other tangle is
-$T_q=Q_{1/3}+Q_{1/q}$. We work in Smith's coordinates on the pillowcase, with his holonomy perturbation
-for small negative values of its parameter $t$ (Remark~\ref{rem:sign}). Following Cazassus, Herald, Kirk
-and Kotelskiy~\cite[\S11]{CHKK}, we encode curves as twisted complexes over the two-arc algebra
-$\mathcal B$ of Kotelskiy, Watson and Zibrowius. The higher products of $\mathcal B$ vanish, so the
-Maurer--Cartan equation for a deformation $b$ of a twisted complex $(V,\delta)$ is the finite identity
-$(\delta+b)^2=0$. We write $N_q$ for the twisted complex of a piecewise-linear model of Smith's curve for
-$T_q$ and $\mathcal E$ for that of the earring curve.
-
-For $q=7$ the pairing of $\mathcal E$ with $N_7$ has dimension $7$, not $9=\dim\Inat(K_7)$
-(Proposition~\ref{prop:q7-typeD}). Smoothing the model at any one of four of its self-intersections
-gives a Maurer--Cartan element $b_s$ that raises the dimension to $9$, and the four objects $(N_7,b_s)$
-fall into three homotopy classes (Corollary~\ref{cor:q7-classes}). Replacing $\Qh{-1/2}$ by $\Qh{-3/4}$
-closes $T_7$ into a second knot, whose instanton homology is free of rank $31$ by the same squeeze, and
-the pairings with the second earring separate the three classes (Proposition~\ref{prop:aux-closure}).
-Conditional on the conjecture of Cazassus, Herald, Kirk and Kotelskiy and on a localization hypothesis
-(Hypothesis~\ref{hyp:q7-support}), the two closures together select one class, that of $b_{S_{18}}$ and
-$b_{S_{25}}$ (Corollary~\ref{cor:aux-conditional}). For positive $t$ two of the four smoothings give $5$
-and $7$ instead of $9$, and the two-closure selection holds for both signs
-(Remark~\ref{rem:sign-pairings}). We also show that Gao's wrapped representability theorem~\cite{Gao}
-cannot be applied to the Lagrangian correspondence induced by the line of $Q_{1/3}$, which is immersed
-with a triple point (Proposition~\ref{prop:partial-triple}).
-
-Kotelskiy, Watson and Zibrowius assign to $T_q$ its Bar-Natan invariant $\widetilde{\mathrm{BN}}(T_q)$, an
-immersed multicurve with local systems in the four-punctured sphere~\cite{KWZ}. Drawn in Smith's
-coordinates it becomes an object $\mathrm{BN}_q$ of $\operatorname{Tw}(\mathcal B)$ (\S\ref{ss:kh-smith}).
-For $r\in\Q\cup\{\infty\}$ let $K_r(q)=\operatorname{num}(Q_r+T_q)$, and let $E_r$ be the earring curve of
-$\Qh{r}$, so that $K_{-1/2}(q)=K_q$. A compact curve in the pillowcase is \emph{linear} if its lifts to
-the plane lie close to parallel straight lines and are graphs over them (Definition~\ref{def:linear}). For
-$q\in\{5,7\}$ let $b$ be one of the selected elements $b_{S_{18}},b_{S_{25}}$ at $q=7$, or at $q=5$ the
-switch $b_5$ of a smoothing that raises the pairing with $E_{-1/2}$ from $5$ to $7$ (\S\ref{ss:kh-structure}).
-
-\begin{theorem}\label{thm:structure}
-Let $q\in\{5,7\}$.
-\begin{enumerate}
-\item The object $(N_q,b)$ is strictly isomorphic to $\alpha_q\oplus(c,J_2)$, where $\alpha_q$ is a linear
-arc between two corners and $(c,J_2)$ is a linear simple closed curve $c$ carrying the indecomposable
-two-dimensional local system $J_2$.
-\item There is a term $\kappa_q\in\operatorname{End}(N_q)$, which replaces one arrow of the differential near
-the corner $(0,0)$, such that $b+\kappa_q$ is a Maurer--Cartan element and $(N_q,b+\kappa_q)$ is strictly
-isomorphic to $\mathrm{BN}_q$.
-\end{enumerate}
-For every odd $q$ with $5\le q\le21$, $\mathrm{BN}_q$ is an arc obtained from $\alpha_q$ by sliding one of its
-ends along $c$.
-\end{theorem}
-
-\begin{theorem}\label{thm:pairing}
-Let $5\le q\le21$ be odd, and let $R$ be a linear curve parallel neither to $\alpha_q$ nor to $c$. Then
-the minimal intersection numbers satisfy $i(R,\mathrm{BN}_q)=i(R,\alpha_q)+2\,i(R,c)$, and if $R$ is
-bigraded, with the corner $(\pi,\pi)$ as the special puncture of~\cite{KWZ},
-$\dim\HF(R,\mathrm{BN}_q)=\dim\HF\bigl(R,\alpha_q\oplus(c,J_2)\bigr)$.
-\end{theorem}
-
-\begin{corollary}\label{cor:closures}
-For $q\in\{5,7\}$ and every $r\in\Q\cup\{\infty\}$,
-\[
-\dim\HF\bigl(E_r,(N_q,b)\bigr)=\dim\HF\bigl(E_r,(N_q,b+\kappa_q)\bigr)=\rk\widetilde{\Kh}\bigl(K_r(q);\F_2\bigr).
-\]
-\end{corollary}
-
-Thus no rational closure distinguishes $(N_q,b)$ from $\mathrm{BN}_q$; curves parallel to $c$ do
-(Remark~\ref{rem:sharpness}). Section~\ref{sec:khovanov} states these results in precise form
-(Theorems~\ref{thm:structure-full} and~\ref{thm:pairing-full}, Corollary~\ref{cor:closures-full}).
-
-\begin{question}\label{q:arc}
-Let $q\ge5$ be odd and prime to $3$. If the tangle assignment of Cazassus, Herald, Kirk and Kotelskiy is
-defined for $T_q$ with Smith's perturbation for small $t<0$, is the object of $\operatorname{Tw}(\mathcal B)$
-that it determines homotopy equivalent to $\mathrm{BN}_q$?
-\end{question}
-
-The evidence for $q=5,7$ is Theorem~\ref{thm:structure} and Corollary~\ref{cor:closures}. Two
-observations point the other way. First, $\mathrm{BN}_7$ is not homotopy equivalent to any object allowed
-by Hypothesis~\ref{hyp:q7-support} (Proposition~\ref{prop:hyp-conflict}). An affirmative answer for
-$q=7$ would therefore show that the hypothesis fails, and no rational closure could detect the
-failure. Second, for $q=11,13$ the encoding of a numerical trace of Smith's curve pairs with $E_{-1/2}$
-to $q+4$, and for $q=17,19$ to $q+8$, against $\rk\widetilde{\Kh}(K_q)=q+2$; in finite searches no
-deformation by a few switches reaches $\mathrm{BN}_q$ (Remark~\ref{rem:q11}). These searches do not
-exclude a larger bounding cochain, and we pose the question without conjecturing an answer.
-
 \subsection{Outline of the arguments}
 \emph{Theorem~\ref{thm:hhk}.} The regluing replaces $L_1$ by its image under the linear shear
 $(\gamma,\theta)\mapsto(\gamma,\theta+(q-5)\gamma)$ of the pillowcase (Lemma~\ref{lem:shear}). The unperturbed
-character variety of the $T(3,5)$ tangle is the union of an arc and a central circle meeting it in two
-points. A word in the tangle group whose trace is constant on the central circle shows that its image
-in the pillowcase is a union of straight segments (Lemma~\ref{lem:straight} and
+character variety of the $T(3,5)$ tangle is the union of an arc of binary dihedral characters and a circle of characters, the \emph{central circle}, meeting it in two
+points. A word $w$ in the tangle group with $\rho(w)=1$ for every representation $\rho$ on the central
+circle shows that its image in the pillowcase is a union of straight segments (Lemma~\ref{lem:straight} and
 Corollary~\ref{cor:polygon}). The perturbed curves are then those of~\cite{WuebbenV}, sheared, and on them
 we compute the intersection points with $L_0$, their $\Z/4$ gradings, and the bigons by hand. The
-bigons come in zigzags along the strands of the earring, which gives the rank $2N_q$ of the
+bigons come in chains along the lifts of the earring curve $L_0$ to $\R^2$, which gives the rank $2N_q$ of the
 differential (Lemma~\ref{lem:zigzag}). The identification of the reglued knot uses only its
 fundamental group: the relator is that of Clay and Watson's presentation of the twisted torus
 knots~\cite[Prop.~22]{ClayWatson} (Lemma~\ref{lem:relator}), two-generator knots are prime~\cite{Norwood},
@@ -205,49 +135,26 @@ degree to the homology, by a theorem of Hedden, Herald and Kirk~\cite[Thm.~5.4]{
 the Burau matrix of the braid gives the signature and the coefficient norm of the Alexander polynomial,
 and the instanton rank follows from the work of Daemi and Scaduto.
 
-\emph{Theorems~\ref{thm:structure} and~\ref{thm:pairing}.} All objects in the statements are reduced
-twisted complexes of loop type, and a strict isomorphism between two of them is decided by comparing
-the words of their components; $\widetilde{\mathrm{BN}}(T_q)$ is computed with Zibrowius's
-program~\cite{Zibkht}. For the pairing theorem we realize each curve by a geodesic in a metric of
-nonpositive curvature (Alexander--Berg--Bishop~\cite{AKP}), where minimal intersection numbers are
-counted locally, and we use the pairing theorems of Kotelskiy, Watson and Zibrowius~\cite{KWZ,Zibrowius}
-for bigraded curves.
-
 \subsection{Scope of claims}
 Theorem~\ref{thm:inat} is unconditional. Theorems~\ref{thm:hhk} and~\ref{thm:twisted} rest on the analysis of
 the perturbed curves of the torus-knot tangles in~\cite{WuebbenV}. For Theorem~\ref{thm:hhk} the base case is verified by
-computer (Remark~\ref{rem:chirality}); for Theorem~\ref{thm:twisted} it rests on the convention, shared with~\cite{HHK2}
-and~\cite{WuebbenV}, that the decomposition of $T(3,n)$ gives the positive torus knot, which the knot group cannot detect. Theorem~\ref{thm:twisted} also uses the
+computer (Remark~\ref{rem:chirality}); for the decomposition in Theorem~\ref{thm:twisted} it is a hypothesis of the
+statement, shared with~\cite{HHK2} and~\cite{WuebbenV}, that the decomposition of $T(3,n)$ gives the positive torus
+knot, which the knot group cannot detect. Theorem~\ref{thm:twisted} also uses the
 computation of Hedden, Herald and Kirk for circles that miss the edges~\cite[Thm.~5.4]{HHK2}, whose proof
 in~\cite{HHK2} rests on their invariance theorem~\cite[Thm.~4.1]{HHK2} (Remark~\ref{rem:invariance}). Numerical traces of the perturbed
 curves agree with them (Remark~\ref{rem:numericsP}) but are not used in the proofs.
-The second statement of Theorem~\ref{thm:pairing}, and Corollary~\ref{cor:closures} for all slopes, use the pairing
-theorem of Kotelskiy, Watson and Zibrowius for arcs that end at a puncture, which they state but write out only
-for compact curves (proof of Theorem~\ref{thm:pairing-full}); the dimensions of Corollary~\ref{cor:closures} are
-also computed directly at several hundred slopes. Proposition~\ref{prop:q7-typeD}, Theorems~\ref{thm:structure}
-and~\ref{thm:pairing} and Corollary~\ref{cor:closures} are statements about explicitly presented objects of $\operatorname{Tw}(\mathcal B)$;
-they neither assume nor prove the instanton--pillowcase correspondence, and they do not identify the
-object that the conjecture of Cazassus, Herald, Kirk and Kotelskiy assigns to $T_q$. The piecewise-linear
-model represents Smith's perturbed curve in the sense of Proposition~\ref{prop:smith-main}.
-Corollary~\ref{cor:aux-conditional} is conditional on that conjecture and on
-Hypothesis~\ref{hyp:q7-support}. Statements labelled \emph{Computation} are outputs of finite procedures
-and are recorded as data.
 
 \subsection{Organization}
-Section~\ref{sec:background} recalls the pillowcase Floer theory of Hedden, Herald and Kirk, Smith's
-coordinates and the two-arc algebra. Section~\ref{sec:inat} proves Theorem~\ref{thm:inat}.
-Section~\ref{sec:sheared} proves Theorem~\ref{thm:hhk}, and Section~\ref{sec:twisted} proves
-Theorem~\ref{thm:twisted}. Section~\ref{sec:smith} treats Smith's decomposition with zero bounding cochain
-and the Maurer--Cartan elements at $q=7$, and Section~\ref{sec:khovanov} relates them to the Bar-Natan
-invariant. Section~\ref{sec:disc} discusses related work and open problems, and
-Appendix~\ref{app:data} prints the remaining data and describes the computations.
+Section~\ref{sec:background} recalls the pillowcase Floer theory of Hedden, Herald and Kirk.
+Section~\ref{sec:inat} proves Theorem~\ref{thm:inat}. Section~\ref{sec:sheared} proves Theorem~\ref{thm:hhk},
+and Section~\ref{sec:twisted} proves Theorem~\ref{thm:twisted}. Section~\ref{sec:disc} discusses related work
+and open problems, and Appendix~\ref{app:data} describes the verified computation behind
+Remark~\ref{rem:chirality} and the computations that corroborate the proofs.
 
 \subsection*{Acknowledgements}
-The pillowcase model and the geometry used here are due to Hedden, Herald and Kirk~\cite{HHK1,HHK2},
-Cazassus, Herald, Kirk and Kotelskiy~\cite{CHKK}, Herald and Kirk~\cite{HK}, Fukumoto, Kirk and
-Pinz\'on-Caicedo~\cite{FKP}, and Smith~\cite{Smith}. The immersed-curve invariants are those of Kotelskiy,
-Watson and Zibrowius~\cite{KWZ}, computed with Zibrowius's program~\cite{Zibkht}. The closed-form Khovanov
-input is Manion's~\cite{Manion}, the Alexander polynomials belong to Hironaka's family~\cite{Hironaka}, the
+The pillowcase model and the geometry used here are due to Hedden, Herald and Kirk~\cite{HHK1,HHK2} and to
+Fukumoto, Kirk and Pinz\'on-Caicedo~\cite{FKP}. The closed-form Khovanov input is Manion's~\cite{Manion}, the Alexander polynomials belong to Hironaka's family~\cite{Hironaka}, the
 presentation of the twisted torus knot groups is Clay and Watson's~\cite{ClayWatson}, the rational rank of
 the instanton homology is Lobb and Zentner's~\cite{LZ}, and the integral and graded instanton computations
 for $q\ge7$ and for twisted torus knots also follow from the work of Daemi and Scaduto~\cite{DS24}.

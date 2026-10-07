@@ -1,6 +1,6 @@
-# The smoothings of the piecewise-linear model L_{7,PL} at its 82 self-intersection orbits (Section 6.3):
+# The smoothings of the piecewise-linear model L_{7,PL} at its 82 self-intersection orbits (Section 3.3):
 # for each orbit, the census smoothing and the opposite smoothing, encoded as standalone reduced twisted
-# complexes in the chart of Section 6.3 (generators numbered along the encoding).  Produced with the smoothing
+# complexes in the chart of Section 3.3 (generators numbered along the encoding).  Produced with the smoothing
 # routine of surgery_check.py and the encoder of q7_kwz.py in the directory pillowcase/, at the orbits of the census
 # of q7_quilt_census.py (smoothing radius 0.006).
 complex S0_census

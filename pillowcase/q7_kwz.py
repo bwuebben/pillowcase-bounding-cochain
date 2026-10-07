@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 q7_kwz.py -- exact q=7 records, the S69 straight-through witness, and the
-KWZ/type-D proof certificate for the finite PL curves (Q7_HANDOFF_2026-08-12).
+KWZ/type-D proof certificate for the finite PL curves.
 
 The KWZ arc system must use a special puncture which no tangle arc meets.  The
 q=7 blue arc meets (0,0) and (pi,0), so this module uses the CHKK top-left
@@ -41,7 +41,7 @@ from maurer_cartan import orbit_group
 from polygons import _assemble_loop, arc_between, bounds_disk
 from tangles import PI, TAU
 
-# Published default perturbation (handoff sec. 2).
+# Default perturbation parameters (the defaults of deform.build_pretzel).
 DEFAULT = dict(blue_eps=0.05, red_eps=0.16, red_phi=0.40)
 
 # CHKK Section 11.5 singles out the pillowcase corner missed by tangle
@@ -51,7 +51,7 @@ DEFAULT = dict(blue_eps=0.05, red_eps=0.16, red_phi=0.40)
 KWZ_SPECIAL = (0.0, PI)
 
 # Physical orbits that survive the degree-one screen, identified by pillowcase
-# coordinates at DEFAULT (handoff secs. 2 and 5).
+# coordinates at DEFAULT.
 TARGETS = {
     "S69": (0.041596649200926095, 5.405395334342216),
     "S18": (0.0304313, 4.5024806),
@@ -59,7 +59,7 @@ TARGETS = {
     "S74": (3.079988, 3.561056),
 }
 
-# Session record of the straight-through self-bigon (handoff sec. 4).
+# Recorded edge pairs and through-parameter of the straight-through self-bigon.
 WITNESS_EDGES = ((6, 905), (43, 945))
 WITNESS_THROUGH_PARAM = 941.640214
 
@@ -116,7 +116,7 @@ def akaho_degrees(s):
     Convention checked against the published Akaho--Joyce turning formula for
     an oriented curve in an oriented surface: the jump A -> B has degree 1 iff
     the oriented angle from dirA to dirB is positive.  The two orderings are
-    complementary.  This is the convention the handoff used for S69.
+    complementary.  The S69 records below use this convention.
     """
     ang = oriented_angle(s["dirA"], s["dirB"])
     deg_AB = 1 if ang > 0 else 0
@@ -137,7 +137,7 @@ def branch_loop(blue, s, start_branch):
 
 
 def short_deck(loop_fwd, loop_rev):
-    """The shorter of the two branch-to-branch classes, as used in the handoff.
+    """The shorter of the two branch-to-branch classes.
 
     For S69 this is ±(2,1), not the long complementary lobe.
     """
@@ -292,7 +292,7 @@ def accepted_self_bigon(blue, s0, s1, sel0, sel1, fb0, fb1):
 
 
 def find_handoff_witness(blue, orbs, s69_pre1):
-    """Locate the straight-through self-bigon of handoff sec. 4."""
+    """Locate the recorded straight-through self-bigon (WITNESS_EDGES)."""
     hit0 = find_crossing_by_edges(orbs, WITNESS_EDGES[0])
     hit1 = find_crossing_by_edges(orbs, WITNESS_EDGES[1])
     if hit0 is None or hit1 is None:
@@ -300,10 +300,10 @@ def find_handoff_witness(blue, orbs, s69_pre1):
     _, s0 = hit0
     _, s1 = hit1
     through = loc_param(s69_pre1["kB"], s69_pre1["tB"])
-    # Handoff: branch states (1,0), orientations (forward, backward).
+    # Recorded typing: branch states (1,0), orientations (forward, backward).
     typed = accepted_self_bigon(blue, s0, s1, 1, 0, True, False)
     if typed is None:
-        # search all typings if the recorded one drifted
+        # search all typings if the recorded one is not accepted
         for sel0 in (0, 1):
             for sel1 in (0, 1):
                 for fb0 in (True, False):
@@ -332,7 +332,7 @@ def find_handoff_witness(blue, orbs, s69_pre1):
 
 
 # ---------------------------------------------------------------------------
-# Pillowcase-to-disk chart at the (0,0) corner (handoff sec. 7)
+# Pillowcase-to-disk chart at the (0,0) corner
 # ---------------------------------------------------------------------------
 def r3_of(gamma, theta):
     return (math.cos(gamma), math.cos(theta), math.sin(gamma) * math.sin(theta))
@@ -370,14 +370,14 @@ def unwrap_seams(poly):
     """Lift a closed T^2 polyline across the seams gamma in {0, pi}.
 
     Returns a list of unwrapped R^2 points, so that a subsequent chart call
-    can be applied after folding to a fundamental domain.  This is the
-    bookkeeping step the handoff lists before the disk chart.
+    can be applied after folding to a fundamental domain.  This bookkeeping
+    step precedes the disk chart.
     """
     return unwrap_path(poly)
 
 
 # ---------------------------------------------------------------------------
-# KWZ skeleton encoding (handoff sec. 7, KWZ Def. 5.1--5.17)
+# KWZ skeleton encoding (KWZ Def. 5.1--5.17)
 # ---------------------------------------------------------------------------
 # Disk chart: punctures at infinity (pillowcase (0,0)), (-1,0), (0,0), (1,0).
 # Parameterizing arcs x = ±1/2 split the plane into three faces:
@@ -386,7 +386,7 @@ def unwrap_seams(poly):
 #   R : x >  1/2   (puncture (1,0),  D-loops)
 # Algebra words are pairs (face, winding) with multiplication
 #   (f, m) * (g, n) = (f, m+n) if f == g else 0
-# which is the handoff relation DS = SD = 0 together with D-powers
+# which is the relation DS = SD = 0 together with D-powers
 # (and S-powers) composing additively inside one face.
 
 SKELETON = (-0.5, 0.5)
@@ -459,7 +459,7 @@ def _cross_x(p, q, xc):
 
 
 def skeleton_hits(segs):
-    """Legacy chart-segment finder, retained only for comparison.
+    """Chart-segment finder, kept only for comparison.
 
     This misses intersections across ``CHART_JUMP`` breaks and must not be
     used to construct the type-D object.  Use :func:`torus_skeleton_hits`.
@@ -563,7 +563,8 @@ def torus_skeleton_hits(blue, n_samp=40, max_abs=float("inf")):
 
     Subdivision is used only to bracket roots; each accepted intersection is
     then bisected on the exact PL edge.  This makes crossings independent of
-    the chart-space jump splitting that corrupted the earlier 25-dot count.
+    the splitting at chart-space jumps, across which the chart-segment finder
+    :func:`skeleton_hits` misses intersections.
     The default has no affine-chart cutoff: finite roots high in the chart are
     genuine skeleton intersections, even near the deleted projection corner.
     """
@@ -795,7 +796,7 @@ def _match_unique(h, uniq, ytol=0.001):
 
 
 def single_copy_precurve(data, ytol=0.001):
-    """Legacy first-return attempt, retained as a negative diagnostic.
+    """First-return construction, kept as a negative diagnostic.
 
     The T^2 walk covers P twice.  Walking the skeleton hits in parameter
     order and recording first returns to the starting geometric dot gives
@@ -1930,7 +1931,7 @@ def report_standard_pairing(blue, orbs, data):
 
 
 def report_end_cohomology(data):
-    """Degree-minus-one cohomology of the corrected blue End complex."""
+    """Degree-minus-one cohomology of the blue End complex End(N)."""
     print("== graded degree-minus-one cohomology of End(N) ==")
     pre = data["precurve"]
     grades, grading_ok = generator_bigradings(pre["vertices"], pre["delta"])
@@ -2704,7 +2705,7 @@ def physical_smoothing_pairing(red, blue, support, data, pairing=1, eps=0.006,
 
 
 def report_admissible_kwz(red, blue, targets, data):
-    """Correct q=7 KWZ calculation using the CHKK special puncture (0,pi)."""
+    """The q=7 KWZ calculation in the admissible chart (CHKK special puncture (0,pi))."""
     print("== admissible-special-puncture KWZ pairing and S69 deformation ==")
     red_data, red_vertices, red_delta = _q7_red_type_d(red)
     pre = data["precurve"]
@@ -3231,14 +3232,14 @@ def report_witness(blue, orbs, named):
     if rec is None or rec["n_pre"] < 2:
         check(False, "S69 has two preimages")
         return None
-    # Handoff: preimage 1 has edges (845, 941).
+    # Recorded: preimage 1 has edges (845, 941).
     pre = rec["preimages"]
     pre1 = min(pre, key=lambda p: abs(p["kB"] - 941) + abs(p["kA"] - 845))
     print(f"  S69 preimage-1 edges ({pre1['kA']},{pre1['kB']})  "
           f"paramB={pre1['paramB']:.9f}")
     w = find_handoff_witness(blue, orbs, pre1)
     if w is None:
-        check(False, "found crossings with handoff edge pairs (6,905) and (43,945)")
+        check(False, "found crossings with the recorded edge pairs (6,905) and (43,945)")
         return None
     print(f"  corner0 S{w['idx0']} edges ({w['s0']['kA']},{w['s0']['kB']})")
     print(f"  corner1 S{w['idx1']} edges ({w['s1']['kA']},{w['s1']['kB']})")
@@ -3267,7 +3268,7 @@ def report_chart():
         print(f"  other x-coords (sorted) = {[round(x, 6) for x in xs]}")
         print(f"  other |y| = {[round(y, 8) for y in ys]}")
         check(all(y < 1e-9 for y in ys), "other corners land on the x-axis")
-        # Handoff: they map to (-1,0), (0,0), (1,0).
+        # Expected: they map to (-1,0), (0,0), (1,0).
         check(abs(xs[0] + 1) < 1e-6 and abs(xs[1]) < 1e-6 and abs(xs[2] - 1) < 1e-6,
               "other corners map to (-1,0), (0,0), (1,0)")
 
@@ -3305,7 +3306,7 @@ def main(argv=None):
     only_w = "--witness" in argv
     only_r = "--records" in argv
     only_e = "--encode" in argv
-    print("== q7_kwz: records, witness, chart, type-D (Q7_HANDOFF_2026-08-12) ==\n")
+    print("== q7_kwz: records, witness, chart, type-D ==\n")
     red, blue, _ = build_q7()
     named, recs, orbs = named_records(blue)
     if not only_w and not only_e:

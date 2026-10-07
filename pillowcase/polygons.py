@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-polygons.py -- step (e), part 1: the generalized immersed-polygon counter
-(RESEARCH_LOG sec 28).
+polygons.py -- the generalized immersed-polygon counter.
 
 This file implements the finite winding-number predicate used by the paper's
 triangle and higher-polygon tables. The intended Floer-theoretic interpretation
@@ -129,7 +128,7 @@ def bounds_disk(loop, corner_indices, verbose=False):
 # arc extraction on a closed polyline between two (edge, param) points
 # ---------------------------------------------------------------------------
 def arc_between(poly, k0, t0, k1, t1, forward=True):
-    """Sub-polyline of a CLOSED poly from point (k0,t0) to (k1,t1), walking in the
+    """Sub-polyline of a closed poly from point (k0,t0) to (k1,t1), walking in the
     direction of increasing (forward) or decreasing edge index. Points are locally
     consistent (short deltas); returns list of (gamma,theta) on T^2."""
     E = _short_edges(poly)
@@ -239,7 +238,7 @@ def _assemble_loop(arcs):
 
 
 # ---------------------------------------------------------------------------
-# battery (sec 28)
+# validation battery
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
     from tangles import curve, segments, tangle_sum, fiber_circles, south_twists
@@ -253,7 +252,7 @@ if __name__ == "__main__":
         results.append(bool(ok))
         print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
 
-    print("== the generalized immersed-polygon counter (RESEARCH_LOG sec 28) ==\n")
+    print("== the generalized immersed-polygon counter ==\n")
 
     # ---- (E1) sanity: bounds_disk reproduces is_lune on a synthetic 2-gon -----
     print("(E1) bounds_disk on a synthetic lens (2 circles crossing twice)")
@@ -276,16 +275,16 @@ if __name__ == "__main__":
                 got += 1
     check(f"synthetic lens: >=1 disk found by bounds_disk (got {got})", got >= 1)
 
-    # ---- (E2) THE (x,b,y) TRIANGLE on a genuine single-curve node -------------
+    # ---- (E2) the (x,b,y) triangle on a genuine single-curve node -------------
     # Mirrors the unlink prototype (Smith Fig UnlinkB) on exactly the code path
-    # used for the real target: a curve with a GENUINE self-crossing (node b) on
+    # used for P(-2,3,5): a curve with a genuine self-crossing (node b) on
     # T^2, cut twice by a transverse line -> two generators x,y bracketing the
-    # node -> exactly ONE immersed (x,b,y) mu^2-triangle. (The unlink's own pinch
+    # node -> exactly one immersed (x,b,y) mu^2-triangle. (The unlink's own pinch
     # is a C_+ ^ C_- crossing between the two lifts of the earring, not a single-
     # polyline self-crossing; blue in P(-2,3,5) is a single iota-invariant curve
-    # whose 40 self-crossings ARE genuine nodes, so this is the faithful test.)
+    # whose 40 self-crossings are genuine nodes, so this is the appropriate test.)
     print("\n(E2) genuine figure-eight node b, cut by a transverse line:"
-          " exactly ONE (x,b,y) triangle")
+          " exactly one (x,b,y) triangle")
     Ncr = 1400
     red_fe = []
     for k in range(Ncr + 1):

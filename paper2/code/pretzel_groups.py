@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Lemmas 4.1, 4.2 and 5.7, and Appendix A.3(iii): the fundamental groups of the reglued knots.
+r"""Lemmas 4.1, 4.2 and 5.7, and Appendix A.1(iii): the fundamental groups of the reglued knots.
 
 For the tangle of Hedden, Herald and Kirk for T(3,n), with the parameters (r, s) of Section 5, the group of the tangle
 complement is free on A, B and at eps = 0 the boundary meridians are
@@ -10,7 +10,7 @@ so that (r, s) = (nu+1, -1) gives (4.2) for n = 3 nu + 2, and (r, s) = (2 nu + 1
 for n = 3 nu + 1.  By Lemma 4.1 the group of the knot K^(h) obtained by regluing with t_e^h is <A, B | t_e^h(b) = c>,
 t_e^h(b) = (ba)^h b (ba)^-h.  The script checks, in the free group (exact reduced words):
 
-  (1) ba = cd for these words (Appendix A.3(iii)), and at h = 0 the relation b = c is A^3 B^5 = 1 for n = 5;
+  (1) ba = cd for these words (Appendix A.1(iii)), and at h = 0 the relation b = c is A^3 B^5 = 1 for n = 5;
   (2) Lemma 4.2, recorded after its proof: for n in {5, 8, ..., 29} and 0 <= m <= 15, the relation t_e^-m(b) = c is
       equivalent to the cyclic word R_{n,m} = B^(nu+1) A C^m A^2 B^(2nu+1) C^-m, C = A B^nu, and under alpha = A,
       beta = B^-1 the relator of Clay and Watson (4.4) is a cyclic permutation of R_{n,m}; with t_e^+m in place of
@@ -18,7 +18,7 @@ t_e^h(b) = (ba)^h b (ba)^-h.  The script checks, in the free group (exact reduce
   (3) Lemma 5.7(b), as a word identity: for n = 3 nu + 1 with 1 <= nu <= 15 and 1 <= m <= 15, alpha -> A B^(2nu+1),
       beta -> B carries the relator of Clay and Watson for T(3, 3nu+2; 2, m-1) to a cyclic permutation of the
       relator of <A, B | t_e^-m(b) = c> or of its inverse (the lemma is proved by hand; this is a check);
-  (4) Appendix A.3(iii): for every n <= 26 prime to 3 (n >= 4, where the tangle is defined) and 0 <= m <= 6, the
+  (4) Appendix A.1(iii): for every n <= 26 prime to 3 (n >= 4, where the tangle is defined) and 0 <= m <= 6, the
       Alexander polynomial computed by Fox calculus from <A, B | t_e^-m(b) = c> equals that of the closure of
       (sigma_1 sigma_2)^n sigma_1^(2m), computed with the reduced Burau representation.
 
@@ -157,7 +157,7 @@ def burau_alexander(n, m):
 
 def main():
     t0 = time.time()
-    print('(1) the boundary relation ba = cd (Appendix A.3(iii))')
+    print('(1) the boundary relation ba = cd (Appendix A.1(iii))')
     good = []
     for n in [n for n in range(4, 30) if n % 3]:
         a, b, c, d = words(n)
@@ -191,7 +191,7 @@ def main():
                for nu in range(1, 6) for m in range(1, 6))
     check('control: with m in place of m - 1 no match occurs (1 <= nu, m <= 5)', not ctrl)
 
-    print('(4) Fox calculus against Burau: 4 <= n <= 26 prime to 3, 0 <= m <= 6 (Appendix A.3(iii))')
+    print('(4) Fox calculus against Burau: 4 <= n <= 26 prime to 3, 0 <= m <= 6 (Appendix A.1(iii))')
     bad, cnt = [], 0
     for n in [n for n in range(4, 27) if n % 3]:
         for m in range(0, 7):

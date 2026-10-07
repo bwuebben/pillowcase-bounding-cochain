@@ -1,10 +1,10 @@
-"""Rational closures: equation (7.1), Corollary 7.6 and the paragraph after it.  Exact computations over F2, with the
+"""Rational closures: equation (4.1), Corollary 4.6 and the paragraph after it.  Exact computations over F2, with the
 ranks of reduced Khovanov homology read from data/khovanov_ranks.txt (computed with Khoca 1.5).
 
-For q = 5 (340 slopes) and q = 7 (342 slopes) of the slope set of Corollary 7.6:
-  * (7.1): dim HF(E_r, BN_q) = rk Kh~(K_r(q); F2) at every slope (equivalently, by Phi, KWZ's pairing theorem
+For q = 5 (340 slopes) and q = 7 (342 slopes) of the slope set of Corollary 4.6:
+  * (4.1): dim HF(E_r, BN_q) = rk Kh~(K_r(q); F2) at every slope (equivalently, by Phi, KWZ's pairing theorem
     dim HF(Kh~(Q_{-r}), BN~(T_q)) = rk Kh~(K_r(q)) in their chart, which is also checked);
-  * Corollary 7.6: dim HF(E_r, (N_q, b)) = dim HF(E_r, (N_q, b + kappa_q)) = rk Kh~ at every slope, with the table
+  * Corollary 4.6: dim HF(E_r, (N_q, b)) = dim HF(E_r, (N_q, b + kappa_q)) = rk Kh~ at every slope, with the table
     at E_{-1} (parallel to c) and E_{r_q} (parallel to alpha_q), and the undeformed values 7, 28 (q = 5) and 11, 44
     (q = 7);
   * the slope set has 108 slopes with odd numerator and odd denominator, for which the arc of E_r joins (pi,0) to
@@ -44,7 +44,7 @@ def main():
     ap.add_argument('--sample', type=int, default=0)
     args = ap.parse_args()
     t0 = time.time()
-    rep = A.Report('Rational closures: (7.1), Corollary 7.6')
+    rep = A.Report('Rational closures: (4.1), Corollary 4.6')
     kh = O.khovanov_ranks()
     nslopes = {5: 340, 7: 342}
     below = {5: 40, 7: 43}
@@ -74,11 +74,11 @@ def main():
                          'BNkwz': A.hom_dim(G.kh_rational(None if r is None else -r), BNk),
                          'X': [A.hom_dim(Er, X) for X in Xs], 'Y': [A.hom_dim(Er, Y) for Y in Ys],
                          'N': A.hom_dim(Er, Nq)}
-        rep.check('(7.1): dim HF(E_r, BN_q) = rk Kh~ (number of slopes)', nslopes[q],
+        rep.check('(4.1): dim HF(E_r, BN_q) = rk Kh~ (number of slopes)', nslopes[q],
                   sum(v['BN'] == v['kh'] for v in rows.values()))
         rep.check("KWZ's pairing theorem in their chart: dim HF(Kh~(Q_-r), BN~(T_q)) = rk Kh~ (number of slopes)",
                   nslopes[q], sum(v['BNkwz'] == v['kh'] for v in rows.values()), 'expected')
-        rep.check('Corollary 7.6: the three numbers agree (number of slopes)', nslopes[q],
+        rep.check('Corollary 4.6: the three numbers agree (number of slopes)', nslopes[q],
                   sum(all(x == v['kh'] for x in v['X'] + v['Y']) for v in rows.values()))
         e1, eq_ = rows['-1'], rows[str(O.r_q(q))]
         rep.check('E_{-1}: (N_q, b), (N_q, b + kappa_q), rk Kh~', table[q]['-1'], (e1['X'][0], e1['Y'][0], e1['kh']))

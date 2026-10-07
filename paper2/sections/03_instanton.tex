@@ -48,8 +48,8 @@ Alexander polynomial. The same polynomial is obtained from the reduced Burau rep
 braid $(\sigma_1\sigma_2)^5\sigma_1^{q-5}$, whose closure is $K_q$ for $q\ge5$ (Section~\ref{sec:sheared}).
 \end{remark}
 
-The following facts are used for the hyperbolicity and novelty statements of
-Section~\ref{sec:sheared}.
+The following facts are used in Section~\ref{sec:sheared} to show that $K_q$ is hyperbolic and not
+two-bridge.
 
 \begin{lemma}\label{lem:not-torus}
 For every odd $q\ge3$ the knot $K_q$ is neither quasi-alternating nor alternating, and hence it is not
@@ -107,8 +107,8 @@ the universal coefficient theorem.
 \end{proof}
 
 \begin{remark}\label{rem:inat-attribution}
-The rational squeeze is Lobb and Zentner's proof that the Kronheimer--Mrowka spectral sequence of
-$K_q$ is trivial \cite[Prop.~4.7]{LZ}; their $\Inat$ is Kronheimer and Mrowka's $\Inat$ of the mirror,
+The argument with the two-sided rank bound~\eqref{eq:ell} over $\Q$ is Lobb and Zentner's proof that the
+Kronheimer--Mrowka spectral sequence of $K_q$ is trivial \cite[Prop.~4.7]{LZ}; their $\Inat$ is Kronheimer and Mrowka's $\Inat$ of the mirror,
 and the rank is unchanged by mirroring. Smith uses the same argument for $q=5$ \cite[proof of
 Thm.~5.9]{Smith}. The rational rank also follows from the work of Li and Ye: $K_q$ is an instanton
 L-space knot \cite[Prop.~7.1(2)]{LiYe}, so each Alexander-graded summand of $KHI(K_q)$ has dimension at
@@ -142,7 +142,7 @@ the formula of Gordon and Litherland \cite[Thm.~6]{GordonLitherland}, applied to
 standard diagram: two discs joined by three twisted bands with $-2$, $3$ and $q$ half-twists. With
 respect to the two white regions between the bands, its Goeritz form is
 $\eta\left(\begin{smallmatrix}1&-3\\-3&q+3\end{smallmatrix}\right)$ for a sign $\eta$ fixed by the
-choice of colouring, with determinant $q-6$. The strands of $K_q$ run antiparallel through the band
+choice of coloring, with determinant $q-6$. The strands of $K_q$ run antiparallel through the band
 with $-2$ half-twists and parallel through the other two, so the Gordon--Litherland correction term
 is $\mu=\eta(q+3)$, one contribution from each of the $3+q$ crossings of the two odd bands. The
 form has signature $2\eta$ for $q\ge7$ and $0$ for $q\le5$, so $\sigma(K_q)=-\eta(q+1)$ for
@@ -162,7 +162,10 @@ The differential has the shape
  \widetilde d=\begin{pmatrix}d&0&0\\ v&-d&\delta_2\\ \delta_1&0&0\end{pmatrix},
 \]
 where $\delta_1$ and $\delta_2$ count instantons to and from the reducible
-\cite[Def.~2.1 and (1.9)]{DS24}, \cite[Def.~3.21]{DS19}. Its homology is $\Inat(K)$: there is a chain
+\cite[Def.~2.1 and (1.9)]{DS24}, \cite[Def.~3.21]{DS19}. The S-complex structure is the map
+$\chi\colon\widetilde C(K)\to\widetilde C(K)$ of degree $+1$ given in the decomposition~\eqref{eq:scomplex} by the matrix $\left(\begin{smallmatrix}0&0&0\\ 1&0&0\\ 0&0&0\end{smallmatrix}\right)$, which maps $C(K)$ identically onto $C(K)[-1]$; it satisfies
+$\chi^2=0$ and $\chi\widetilde d+\widetilde d\chi=0$~\cite[\S4.1]{DS19}. The homology of $(\widetilde C(K),\widetilde d)$ is
+$\Inat(K)$: there is a chain
 homotopy equivalence between Kronheimer and Mrowka's complex and $\widetilde C(K)$, homogeneous for the
 $\Z/4$-gradings, and for knots in $S^3$ the resulting isomorphism on homology has degree $\sigma(K)$
 modulo $4$ \cite[Thm.~8.9]{DS19}. We write $I(K)$ for the homology of $(C(K),d)$, the irreducible

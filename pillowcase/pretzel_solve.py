@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
 """
-pretzel_solve.py -- finite polygon candidate search for P(-2,3,2k+1)
-(RESEARCH_LOG sec 33). For a given k this builds the piecewise-linear pillowcase
-curves, a truncated matrix (bigons + triangles + distinct-support
-quadrilaterals), and a finite obstruction screen (self-bigons and distinct-input
-self-triangles). It searches for supports whose rank-derived statistic equals the
-rigorous instanton rank.
+pretzel_solve.py -- finite polygon candidate search for P(-2,3,2k+1).
+
+For a given k this builds the piecewise-linear pillowcase curves, a truncated
+matrix (bigons + triangles + distinct-support quadrilaterals), and a finite
+obstruction screen (self-bigons and distinct-input self-triangles). It searches
+for supports whose rank-derived statistic equals the instanton rank, which is
+known exactly (see below).
 
 These supports are candidates, not proved bounding cochains. In particular the
 tables omit branch typing, repeated insertions, arbitrary higher operations, and
 a convergence argument. A mandatory D_tab^2 check below is therefore a sanity
 test, not a substitute for the missing all-order A-infinity argument.
 
-rank I^natural(P(-2,3,q)) = q+2 rigorously for all odd q (Theorem A; see INAT
-below). The finite statistic changes in different directions in the tested cases.
+rank I^natural(P(-2,3,q)) = q+2 for all odd q (Theorem 1.1 of the companion paper
+on the instanton side; see the table INAT below). The finite statistic changes in
+different directions in the tested cases.
 """
 import argparse
 import itertools
@@ -24,9 +26,10 @@ from maurer_cartan import orbit_group, monogon, self_polygon
 from solve_b2 import deformed, entries
 from earring import P_point
 
-# rank I^natural(P(-2,3,2k+1)) = (2k+1)+2, RIGOROUS (Theorem A, RESEARCH_LOG
-# sec 37 / paper2 Thm 1.1): l = sum|Delta| = q+2 (skein_alexander.py, validated)
-# = u = dim Kh_r = q+2 (Manion NYJM 24 (2018) Thm 1.1) squeezes I^natural.
+# rank I^natural(P(-2,3,2k+1)) = (2k+1)+2 (Theorem 1.1 of the companion paper on
+# the instanton side): l = sum|Delta| = q+2 (checked independently by
+# skein_alexander.py) = u = dim Kh_r = q+2 (Manion NYJM 24 (2018) Thm 1.1)
+# squeezes I^natural.
 INAT = {k: (2 * k + 1) + 2 for k in (2, 3, 5, 6, 8, 9)}
 
 

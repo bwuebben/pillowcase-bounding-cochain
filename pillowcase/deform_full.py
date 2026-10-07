@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """
-deform_full.py -- step (e), part 3: finite triangle/quadrilateral tables for
-P(-2,3,5) (RESEARCH_LOG sec 28/29).
+deform_full.py -- finite triangle/quadrilateral tables for P(-2,3,5).
 
-The historical filename is retained for compatibility; this is not the full
-bounding-cochain deformation. In particular it indexes an untyped support set,
-uses unordered distinct pairs, and omits repeated insertions and higher polygons.
+Despite the file name, this is not the full bounding-cochain deformation. In
+particular it indexes an untyped support set, uses unordered distinct pairs, and
+omits repeated insertions and higher polygons.
 
 D_tab[i][j] = d[i][j]
               + sum_{S in B}       Tri[S][i][j]
               + sum_{S<S' in B}    Quad[{S,S'}][i][j]             (mod 2).
 
 Tri and Quad are enumerated over the pillowcase self-crossings (P-orbits), each the
-UNION over its T^2 preimages (deform.triangle_contributions_P convention). Locality
+union over its T^2 preimages (deform.triangle_contributions_P convention). Locality
 is the tractability lever: an immersed polygon is a small disk, so its b-vertices and
 its two generators all sit in one cluster -- crossing tuples and generator pairs are
 pruned by mutual pillowcase distance before calling polygons.polygon_through.
@@ -36,7 +35,7 @@ def circular_window_ok(indices, n, W):
     cycle of n edges. This is the T^2-consistent locality test: the blue boundary
     of a small immersed disk traverses a contiguous band of blue edges, so its
     anchor edges (generators' kB and the crossings' branch edges) must cluster in
-    an index window -- NOT in pillowcase (gamma,theta) distance, since 4 of the 9
+    an index window -- not in pillowcase (gamma,theta) distance, since 4 of the 9
     generators fold under T^2 -> P and are far in edge-index despite being close in P."""
     xs = sorted(i % n for i in indices)
     if not xs:
@@ -91,7 +90,7 @@ if __name__ == "__main__":
     gP = [list(P_point(g['pt'])) for g in gens]
     print(f"{n} generators, bigons {[(i,j) for i in range(n) for j in range(n) if d[i][j]]}")
 
-    # triangles: the validated full sweep (P-orbit indexed), NOT distance-pruned
+    # triangles: the full sweep of deform.py (P-orbit indexed), not distance-pruned
     Pcross, TriP = triangle_contributions_P(red, blue, gens)
     crossings = [(pp, preims) for (pp, preims) in Pcross]
     ntri = sum(1 for M in TriP if any(any(r) for r in M))

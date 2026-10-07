@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-solve_b2.py -- step (e), part 5: finite support search for q=5
-(RESEARCH_LOG sec 29/30).
+solve_b2.py -- finite support search for q=5.
 
 Loads the cached deformed-differential tables (deform_full.json: d, Tri per
 crossing, Quad per distinct crossing-pair) and evaluates, for any support
@@ -10,7 +9,7 @@ B subset {crossings},
     D_tab[i][j] = d[i][j]  XOR  (+)_{S in B} Tri[S][i][j]
                           XOR  (+)_{ {S,S'} subset B } Quad[{S,S'}][i][j]
 
-then searches all subsets of the ACTIVE crossings (those appearing in Tri or Quad)
+then searches all subsets of the active crossings (those appearing in Tri or Quad)
 for rank(D_tab) = 1, equivalently the finite statistic 9-2 rank(D_tab)=7.
 
 This is a truncated, untyped, distinct-support computation. It neither solves the

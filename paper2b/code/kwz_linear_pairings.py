@@ -1,7 +1,7 @@
-"""Linear test curves: Remark 7.7 (the direction of c), Remark 7.8 (curves parallel to c) and Proposition 7.10.
+"""Linear test curves: Remark 4.7 (the direction of c), Remark 4.8 (curves parallel to c) and Proposition 4.10.
 Exact computations over F2.
 
-Remark 7.7.  For each q = 5, 7, ..., 13, all linear curves R (Definition 7.4) of direction (m, n) with |m|, |n| <= 6
+Remark 4.7.  For each q = 5, 7, ..., 13, all linear curves R (Definition 4.4) of direction (m, n) with |m|, |n| <= 6
 or parallel to alpha_q, on the lattice lines of both orbits, with every side pattern of period 2, 4 or 6, together
 with the simple closed curves: 1887 curves for each q.  For each q exactly 22 of them have
 dim HF(R, BN_q) != dim HF(R, alpha_q) + dim HF(R, (c, J_2)), all parallel to c: the 19 side patterns on the lattice
@@ -10,19 +10,19 @@ closed curve; none parallel to alpha_q.  The values for c (11 against 13 at q = 
 figure-eight around the arc from (0,0) to (pi,pi) (13 against 11, 9 against 7), and the equality for E_{-1}.  The
 constant patterns and the simple closed curve are isotopic to c (their encodings are strictly isomorphic to c).
 For q = 5, 7 the deformed object (N_q, b + kappa_q) is also compared with BN_q on every test curve.
-(Theorem 7.5 itself is proved in the paper; this census supports Remark 7.7.)
+(Theorem 4.5 itself is proved in the paper; this census supports Remark 4.7.)
 
-Remark 7.8.  c pairs to 11 with BN_7 and to 13 with (N_7, b_S18); (c, J_2) to 22 and 26;
+Remark 4.8.  c pairs to 11 with BN_7 and to 13 with (N_7, b_S18); (c, J_2) to 22 and 26;
 dim HF((c, J_2), (c, J_2)) = 4; the image under Phi of the special component of Kh~(T_7) (the component other than
 the figure-eight Kh~(Q_{-r_7})), which is a linear curve of direction c, pairs to 52 with BN_7 and to 44 with
 (N_7, b_S18).  At q = 5: 7, 9; 14, 18; 36, 28.
 
-Proposition 7.10.  BN_7 pairs to 9 with E_{-1/2} and to 31 with E_{-3/4}; among the objects allowed by Hypothesis
-6.13 (the 45 distinct switches of Proposition 6.10, the nine excluded census smoothings of Proposition 6.11, and the
-16 elements of the span of Proposition 6.12) only (N, b_S18) and (N, b_S25) have this pair, and they are strictly
+Proposition 4.10.  BN_7 pairs to 9 with E_{-1/2} and to 31 with E_{-3/4}; among the objects allowed by Hypothesis
+3.13 (the 45 distinct switches of Proposition 3.10, the nine excluded census smoothings of Proposition 3.11, and the
+16 elements of the span of Proposition 3.12) only (N, b_S18) and (N, b_S25) have this pair, and they are strictly
 isomorphic; dim HF((c, J_2), (N, b_S18)) = 22 + 4 = 26, whereas dim HF((c, J_2), BN_7) = 22.
 
-Option --quick: Remark 7.7 for q = 5, 7 only.
+Option --quick: Remark 4.7 for q = 5, 7 only.
 """
 import argparse, itertools, os, sys, time
 from fractions import Fraction as F
@@ -91,9 +91,9 @@ def main():
     ap.add_argument('--quick', action='store_true')
     args = ap.parse_args()
     t0 = time.time()
-    rep = A.Report('Remarks 7.7, 7.8 and Proposition 7.10')
+    rep = A.Report('Remarks 4.7, 4.8 and Proposition 4.10')
 
-    rep.section('Remark 7.7')
+    rep.section('Remark 4.7')
     exp = {7: {'c': (11, 13), 'f8': (13, 11)}, 5: {'c': (7, 9), 'f8': (9, 7)}}
     for q in ((5, 7) if args.quick else (5, 7, 9, 11, 13)):
         vals = census_remark77(rep, q, q in (5, 7))
@@ -108,7 +108,7 @@ def main():
     rep.check('the figure-eight around the arc (0,0)-(pi,pi) is not an earring: it differs from E_-1, the earring of '
               'its direction', True, not A.strictly_isomorphic(f8LR, G.earring(F(-1))))
 
-    rep.section('Remark 7.8')
+    rep.section('Remark 4.8')
     exp8 = {7: (11, 13, 22, 26, 52, 44), 5: (7, 9, 14, 18, 36, 28)}
     cJ = G.c_curve(2)
     rep.check('dim HF((c, J_2), (c, J_2))', 4, A.hom_dim(cJ, cJ))
@@ -130,7 +130,7 @@ def main():
                A.hom_dim(phiK, BN), A.hom_dim(phiK, X))
         rep.check(f'q={q}: c, (c, J_2) and Phi(special component) against BN_q and (N_q, b)', exp8[q], got)
 
-    rep.section('Proposition 7.10')
+    rep.section('Proposition 4.10')
     N7, L7 = O.N7()
     E, _ = O.E()
     Es, _ = O.Estar()

@@ -1,4 +1,4 @@
-"""Remark 7.11 (the cases q >= 11): finite searches among reduced loop-type twisted complexes over F2.
+"""Remark 4.11 (the cases q >= 11): finite searches among reduced loop-type twisted complexes over F2.
 
 N_q is the encoding of the piecewise-linear model (q = 5, 7, 11, 13) or, for q = 17, 19, the encoding of a numerical
 trace of Smith's curve (data/traced_curves.txt; kwz_traced_curves.py checks that the two agree for q <= 13).  The
@@ -100,7 +100,7 @@ def main():
     ap.add_argument('--quick', action='store_true')
     args = ap.parse_args()
     t0 = time.time()
-    rep = A.Report('Remark 7.11: the cases q >= 11')
+    rep = A.Report('Remark 4.11: the cases q >= 11')
     log = lambda s: rep.note(f'{s} ({time.time() - t0:.0f} s)')
 
     rep.section('1. edit distance from N_q to BN_q')

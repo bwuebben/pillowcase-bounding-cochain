@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Grounded tangle character varieties from REP THEORY -- no Smith conventions.
+"""Tangle character varieties computed directly from representation theory,
+independently of Smith's conventions.
 A 2-string tangle's pillowcase curve = {traceless SU(2) reps of the tangle group,
 restricted to the 4-punctured boundary} in (gamma,theta) coords. We compute the
-boundary meridians X1..X4 as quaternion WORDS in the arc-meridian generators,
-solve for traceless reps, and read off (gamma,theta). Ground truth, no Psi."""
+boundary meridians X1..X4 as quaternion words in the arc-meridian generators,
+solve for traceless reps, and read off (gamma,theta). No further
+symplectomorphism (such as the map Psi in Smith's construction) is applied."""
 import math
 Q1=(1,0,0,0)
 def qm(p,q):
@@ -45,7 +47,7 @@ def pillowcase_coords(Xs):
 
 def tangle_curve(boundary_words, ngen=2, N=240):
     """Trace the traceless character variety of a 2-string tangle whose boundary
-    meridians X1..X4 are the given WORDS in `ngen` arc-meridian generators.
+    meridians X1..X4 are the given words in `ngen` arc-meridian generators.
     Parametrize reps: generator 0 = i (fixed); generator 1 = axis at angle eta in
     the i-j plane; (for ngen>2, further generators need more params -- here ngen=2)."""
     pts=[]
@@ -63,10 +65,10 @@ def tangle_curve(boundary_words, ngen=2, N=240):
     return pts
 
 if __name__=="__main__":
-    # TRIVIAL infinity-tangle: strands connect punctures 1-2 and 3-4, untwisted.
-    #   X1=m1, X2=m1^{-1}? Try the version that satisfies X1X2X3X4=1 with tracefree gens.
+    # Trivial infinity-tangle: strands connect punctures 1-2 and 3-4, untwisted.
+    #   The boundary words are chosen so that X1X2X3X4=1 with tracefree gens.
     #   Two arcs, meridians m1 (arc through punctures 1,2) and m2 (through 3,4).
-    #   Standard: X1=m1, X2=m1, X3=m2, X4=m2 gives X1X2X3X4=m1^2 m2^2 = (-1)(-1)=1. OK.
+    #   Standard: X1=m1, X2=m1, X3=m2, X4=m2 gives X1X2X3X4=m1^2 m2^2 = (-1)(-1)=1.
     inf_tangle=[[(0,1)],[(0,1)],[(1,1)],[(1,1)]]   # X1=X2=m1, X3=X4=m2
     zero_tangle=[[(0,1)],[(1,1)],[(1,1)],[(0,1)]]  # X1=m1,X2=m2,X3=m2,X4=m1 -> m1 m2 m2 m1=1
     for name,tw in [("infinity",inf_tangle),("zero",zero_tangle)]:
@@ -78,7 +80,7 @@ if __name__=="__main__":
               f"=> {'gamma=0 (vertical edge)' if max(gam)<2 else ('theta=0 (horiz edge)' if max(th)<2 else 'diagonal')}")
 
 
-# --- braid/twist action on the 4 boundary meridian WORDS (rational tangles) ---
+# --- braid/twist action on the 4 boundary meridian words (rational tangles) ---
 def winv(w): return [(gi,-s) for gi,s in reversed(w)]
 def braid(words, i, inv=False):
     """Artin generator sigma_i on boundary words (i in {0,1,2}). Builds rational
@@ -128,9 +130,9 @@ if __name__=="__main__":
 def rotate(words):
     """90-degree tangle rotation (the 'turn' of rational-tangle calculus, s -> -1/s):
     cyclic relabel of the 4 boundary punctures (X1,X2,X3,X4) -> (X2,X3,X4,X1).
-    NOTE (2026-07-14): this produces a valid straight-line curve for each rotated
-    integer tangle, but the slope reads steep (the rotation swaps the gamma/theta
-    roles in pillowcase_coords), so the 1/q vs q labeling still needs pinning
-    against the assembled knot (does P(-2,3,5) recover T(3,5)'s 9 earring reps?).
-    Convention TBD -- see RESEARCH_LOG sec 21."""
+    Returns the relabeled list of boundary words; the labeling convention is the
+    one fixed by this relabeling. For a rotated integer tangle the curve is a
+    straight line whose slope reads steep (the rotation swaps the gamma/theta roles
+    in pillowcase_coords); this function does not decide between the 1/q and q
+    labelings. tangles.py does not use it and defines its own rotate()."""
     return [words[1], words[2], words[3], words[0]]

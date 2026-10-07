@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Lemma 4.6(a) and Appendix A.3(iv): the regluing by t_e^h acts on the pillowcase by the shear S_h.
+r"""Lemma 4.6(a) and Appendix A.1(iv): the regluing by t_e^h acts on the pillowcase by the shear S_h.
 
 At points of the traced variety W_eps of the T(3,5) tangle (perturbation (5 eps_A, eps_B) = (0.3, 0.05)), the boundary
 representation (a, b, c) is computed and the twisted identification (4.3) is applied:

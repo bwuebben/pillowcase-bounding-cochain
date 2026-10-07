@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-r"""Section 4 and Appendix A.3(ii): the combinatorics of the sheared polygons, in exact rational arithmetic, for every
+r"""Section 4 and Appendix A.1(ii): the combinatorics of the sheared polygons, in exact rational arithmetic, for every
 odd q with 7 <= q <= 401 (or up to the bound given on the command line).
 
 Coordinates are in units of pi.  The lift of the unperturbed curve of the T(3,5) tangle (Corollary 4.8) is the polygon
 
-    O = (0,0) -B_0-> J_1 = (1/6, 0) -H-> J_2 = (5/6, 4) -B_1^-1-> J_3 = (1/6, 4) -H'-> J_4 = (5/6, 8) -B_2-> E = (1, 8),
+    O = (0,0) -Om_0-> J_1 = (1/6, 0) -H-> J_2 = (5/6, 4) -Om_1^-1-> J_3 = (1/6, 4) -H'-> J_4 = (5/6, 8) -Om_2-> Z = (1, 8),
 
-with E' = (1, 4) when B_2 follows H (split case), and the remnant circle B_1^-1 . H' is (0,4)-periodic.  The shear is
-S_{-m}(gamma, theta) = (gamma, theta + (q-5) gamma), phi = theta - gamma, and Delta_k = {phi = 2k}.  For each q the script
+with Z' = (1, 4) when Om_2 follows H (split case), and the remnant circle Om_1^-1 . H' is (0,4)-periodic (Om_i is the
+paper's Omega_i).  The shear is
+S_{-m}(gamma, theta) = (gamma, theta + (q-5) gamma), phi = theta - gamma, and D_k = {phi = 2k} (the paper's \mathcal D_k).  For each q the script
 checks:
 
   * the values (4.5) of phi at the sheared vertices, and that phi_1, ..., phi_4 lie at distance >= 1/6 from 2Z;
@@ -23,7 +24,7 @@ checks:
     gamma_3 = (2k-3)/q, the two differences are the displayed fractions and are >= 1/(q(q-6)), and
     5/6 > gamma_1 > gamma_2 > gamma_3 > 1/6;
   * Proposition 4.15 and Theorem 4.18(3): the degrees 2k (up) and 2k+1 (down) of x^+, and 2k-1, 2k of x^-; the graded
-    homology of the strand complexes of Proposition 4.17 equals (1 + N_3, N_1, N_1, N_3) in both resolutions, and the
+    homology of the complexes on the lifts of L_0 of Proposition 4.17 equals (1 + N_3, N_1, N_1, N_3) in both resolutions, and the
     rank of the differential is 2 N_q;
   * Remark 4.19: q + 2 + 4 N_q = q - 6 + 4 (floor((5q+6)/12) - floor((q+6)/12)).
 
@@ -53,7 +54,7 @@ def Nq(q):
 
 
 def crossings(P, Q, q):
-    """Crossings of the sheared segment P -> Q with the lines Delta_k, k >= 1: (k, gamma, 'up' or 'down')."""
+    """Crossings of the sheared segment P -> Q with the lines D_k, k >= 1: (k, gamma, 'up' or 'down')."""
     (g0, t0), (g1, t1) = P, Q
     f0, f1 = t0 + (q - 6) * g0, t1 + (q - 6) * g1          # phi o S_{-m} = theta + (q-6) gamma
     out = []
@@ -68,7 +69,7 @@ def crossings(P, Q, q):
 
 
 def graded(gens_by_line):
-    """Graded homology (degrees mod 4) of the strand complexes of Proposition 4.17, plus r_+ in degree 0."""
+    """Graded homology (degrees mod 4) of the complexes on the lifts of L_0 of Proposition 4.17, plus r_+ in degree 0."""
     H = [1, 0, 0, 0]
     rank = 0
     for k, dirs in gens_by_line.items():
@@ -93,7 +94,7 @@ def one_q(q, verbose):
     phi = [t + (q - 6) * g for (g, t) in V]
     phiEp = Ep[1] + (q - 6) * Ep[0]
     claim = [F(0), F(q - 6, 6), 4 + F(5 * (q - 6), 6), 4 + F(q - 6, 6), 8 + F(5 * (q - 6), 6), F(q + 2)]
-    check(f'q={q}: values (4.5) of phi at O, J_1, ..., J_4, E, E\'', phi == claim and phiEp == q - 2, quiet=not verbose)
+    check(f'q={q}: values (4.5) of phi at O, J_1, ..., J_4, Z, Z\'', phi == claim and phiEp == q - 2, quiet=not verbose)
     for i in (1, 2, 3, 4):
         r = phi[i] % 2
         check(f'q={q}: phi_{i} at distance >= 1/6 from 2Z', min(r, 2 - r) >= F(1, 6), quiet=True)
@@ -135,13 +136,13 @@ def one_q(q, verbose):
     pred = [1 + (q + 1) // 4, -(-(q + 1) // 4), -(-(q + 1) // 4), (q + 1) // 4]
     check(f'q={q}: joined homology {tuple(H)} = (1 + N_3, N_1, N_1, N_3), rank of d = 2 N_q = {2 * Nq(q)}',
           H == pred and rank == 2 * Nq(q), quiet=not verbose)
-    # split case: the arc O -> J_1 -> J_2 -> E'
+    # split case: the arc O -> J_1 -> J_2 -> Z'
     arc_split = crossings(V[0], V[1], q) + crossings(V[1], V[2], q) + crossings(V[2], Ep, q)
     ks = sorted(k for (k, _, _) in arc_split)
     check(f'q={q}: split arc crosses Delta_1, ..., Delta_{(q - 3) // 2} once (up), q - 2 = {q - 2} generators',
           ks == list(range(1, (q - 3) // 2 + 1)) and all(d == 'up' for (_, _, d) in arc_split)
           and 1 + 2 * len(arc_split) == q - 2, quiet=not verbose)
-    dec = crossings(V[2], V[3], q)                       # one period: B_1^-1 then H'
+    dec = crossings(V[2], V[3], q)                       # one period: Om_1^-1 then H'
     inc = crossings(V[3], (V[4][0], V[4][1]), q)
     check(f'q={q}: one period of the remnant circle crosses N_q lines down and N_q + 2 up; 4 + 4 N_q = '
           f'{4 + 4 * Nq(q)} generators', len(dec) == Nq(q) and len(inc) == Nq(q) + 2

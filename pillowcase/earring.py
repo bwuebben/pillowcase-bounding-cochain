@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
 """
-earring.py -- step (c): the earring (figure-eight) curve of a rational tangle
-(RESEARCH_LOG sec 26).
+earring.py -- the earring (figure-eight) curve of a rational tangle.
 
-Decoded from Smith's Unlink figures + HK's model formula, now understood:
+Read off from Smith's Unlink figures and the model formula of Herald--Kirk (HK):
 R^natural of a rational tangle whose pillowcase curve is the line ell(t) = t*(q,p)
-through two corners is the DOUBLED arc with ONE swap:
+through two corners is the doubled arc with one swap:
 
     C_+ = { ell(t) + eps*cos(t+phi)*nhat : t in [0,2pi) },   C_- = iota(C_+),
 
 where nhat is the unit normal. The two copies' ends connect through the pillowcase
-fold edges AROUND the two corners (the fold identification (0,eps)~(0,2pi-eps) does
-the corner-looping for free -- this is why HK's formula [sigma, -2s cos sigma]
-needed no extra symplectomorphism: the sec-20 "Psi wall" was a misreading of the
-fold). The single P self-crossing (the F8 pinch, support of the would-be b, which
-is 0 for rational tangles by Smith lem:trivialbc) is FORCED to the arc's parameter
-midpoint t = pi/2; phi shifts it slightly off the base line (keep sin(phi) != 0).
+fold edges around the two corners (the fold identification (0,eps)~(0,2pi-eps) does
+the corner-looping automatically -- this is why HK's formula [sigma, -2s cos sigma]
+needs no extra symplectomorphism). The single P self-crossing (the F8 pinch,
+support of the would-be b, which is 0 for rational tangles by Smith lem:trivialbc)
+is forced to the arc's parameter midpoint t = pi/2; phi shifts it slightly off the
+base line (keep sin(phi) != 0).
 
-Pairing frame (derived in sec 26 and confirmed by Smith's hat: phi^* intertwines
-with diag(1,-1), his line 763): for K = num(T1+T2) split along T1's Conway sphere,
-the outside tangle's curve enters the pairing MIRRORED, (gamma,theta) -> (gamma,
+Pairing frame (in agreement with Smith's hat: phi^* intertwines with diag(1,-1),
+his line 763): for K = num(T1+T2) split along T1's Conway sphere,
+the outside tangle's curve enters the pairing mirrored, (gamma,theta) -> (gamma,
 -theta). Equivalently (Smith's choice, adopted here): red = F8 of the mirrored
 base line of Q_{-1/2} = the slope +1/2 line, blue = R_t(Q_{1/3}+Q_{1/5}) as built.
 Det check: |2*8 - 1*15| = 1 = det P(-2,3,5), one corner point (the abelian rep).
@@ -105,7 +104,7 @@ if __name__ == "__main__":
         results.append(bool(ok))
         print(f"  [{'PASS' if ok else 'FAIL'}] {name}")
 
-    print("== the earring curve (RESEARCH_LOG sec 26) ==\n")
+    print("== the earring curve ==\n")
 
     print("(14) calibration: the unlink U_2 = Q_0 u Q_0^natural  [Smith Fig UnlinkA]")
     red_u = f8((1, 0), eps=0.30, phi=0.20)
@@ -124,7 +123,7 @@ if __name__ == "__main__":
     check(f"|R^nat(Q_0) ^ sheared R(Q_0)| = 2 P-points x,y (got {nPi}, T^2 {len(xi)})",
           nPi == 2 and len(xi) == 4)
 
-    print("\n(15) THE GATE: red x blue for P(-2,3,5)  [Smith thm:main: 9 points]")
+    print("\n(15) red x blue for P(-2,3,5)  [Smith thm:main: 9 points]")
     # blue as built in resolve.py
     s3 = segments(curve(south_twists(3)))[0]
     s5 = segments(curve(south_twists(5)))[0]

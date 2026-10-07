@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Run the computations for Section 7, Remark 6.17 and Appendix A.1-A.3 and report which scripts pass.
-# Usage: ./run_section_7.sh            (the interpreter can be set with PY=/path/to/python)
-#        ./run_section_7.sh --quick    (shorter runs of kwz_linear_pairings.py and switches_search.py)
+# Run the computations for Section 4, Remark 3.17, Example 3.19 and Appendix A.1, A.2 and A.4 and report which scripts pass.
+# Usage: ./run_all.sh            (the interpreter can be set with PY=/path/to/python)
+#        ./run_all.sh --quick    (shorter runs of kwz_linear_pairings.py and switches_search.py)
 # The Khovanov ranks are read from data/khovanov_ranks.txt; to recompute them with Khoca run
 #        $PY closures_rational.py --khoca
 set -u
@@ -18,7 +18,7 @@ else
   search="switches_search.py"
 fi
 jobs=("kwz_encoder_check.py" "kwz_hom_check.py" "bn_structure.py" "corner_terms.py" "closures_rational.py"
-      "$linear" "sign_positive_t.py" "kwz_traced_curves.py" "$search")
+      "$linear" "sign_positive_t.py" "yoneda_example.py" "kwz_traced_curves.py" "$search")
 
 status=0
 summary=""

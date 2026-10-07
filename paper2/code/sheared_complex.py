@@ -1,4 +1,4 @@
-r"""Floer complexes of the sheared curves of Section 4, computed numerically (Remark 4.21 and Appendix A.3(v)).
+r"""Floer complexes of the sheared curves of Section 4, computed numerically (Appendix A.1(v), summarized in Remark 4.21).
 
 The perturbed variety W_eps of the tangle of Hedden, Herald and Kirk for T(3,5), (r, s) = (2, -1), is traced with the
 continuation code of the companion paper on T(3,n) (module t3n_pillowcase).  Everything downstream is computed here,
@@ -7,14 +7,14 @@ independently of that module's complex code:
   * the restriction map to the pillowcase, from the quaternion representation [HHK2, (31)], and a continuous lift
     to R^2, compared with the lift returned by the continuation code;
   * the shear S_{-m}(gamma, theta) = (gamma, theta + (q-5) gamma) of Lemma 4.6;
-  * the strands S^k_+- of the earring curve L_0 (Section 2.2) as graphs over gamma, and the generators as the
-    crossings of the sheared curve with the strands;
+  * the lifts S^k_+- of the earring curve L_0 (Section 2.2) as graphs over gamma, and the generators as the
+    crossings of the sheared curve with these lifts;
   * degrees from (2.3): deg x^+ = 2k + mu and deg x^- = deg x^+ - 1, where mu is the Maslov index of the sub-path from
     r_+, computed on the unsheared curve against the line field spanned by (1, 6-q).  By Lemma 4.6(f) this equals the
     index of the sheared sub-path against the line field of slope one.  (An index obtained by unwrapping tangent
     angles along the sheared polygonal curve is unreliable near the junctions when eps is small or q is large,
     because a single step can turn by more than pi/2 there.)
-  * bigons: for two generators on the same strand, the loop formed by the strand arc and the sub-path of the curve is
+  * bigons: for two generators on the same lift of L_0, the loop formed by the arc of that lift and the sub-path of the curve is
     accepted if it is a simple closed curve, encloses no lattice point, is oriented counterclockwise and has convex
     corners (that is, if its lift bounds an embedded disc in R^2 \ (pi Z)^2);
   * graded homology over F_2.
@@ -116,9 +116,9 @@ def shear(L, q):
     return L
 
 
-# ------------------------------------------------------------------ the earring strands and the generators
+# ------------------------------------------------------------------ the lifts of the earring curve and the generators
 def strand_theta(sig, gam, eps):
-    """theta of the strand S^0_sig over gamma (Section 2.2): S_+ is t -> (t + eps sin t + pi/2, t - eps sin t + pi/2)
+    """theta of the lift S^0_sig of L_0 over gamma (Section 2.2): S_+ is t -> (t + eps sin t + pi/2, t - eps sin t + pi/2)
     and S_- its image under (gamma, theta) -> (-gamma, -theta)."""
     target = (gam - PI / 2) if sig > 0 else (-gam - PI / 2)
     t = np.array(target, float)
@@ -128,7 +128,7 @@ def strand_theta(sig, gam, eps):
 
 
 def generators(L, eps):
-    """Crossings of the polyline L with the strands S^k_sig: dicts with sig, k, pos (fractional index), pt, dir."""
+    """Crossings of the polyline L with the lifts S^k_sig of L_0: dicts with sig, k, pos (fractional index), pt, dir."""
     out = []
     for sig in (1, -1):
         f = L[:, 1] - strand_theta(sig, L[:, 0], eps)
@@ -240,7 +240,7 @@ def area(loop):
 
 
 def bigon_test(L, G, p, q, eps):
-    """Is there an embedded bigon from the generator p to the generator q (same strand)?  Returns (bigon, blocked,
+    """Is there an embedded bigon from the generator p to the generator q (same lift of L_0)?  Returns (bigon, blocked,
     winding, area)."""
     g0, g1 = p['pt'][0], q['pt'][0]
     lo_pos, hi_pos = sorted((p['pos'], q['pos']))

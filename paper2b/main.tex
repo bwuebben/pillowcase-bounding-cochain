@@ -1,0 +1,191 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{computation}[theorem]{Computation}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Inat}{I^{\natural}}
+\newcommand{\HF}{\mathit{HF}}
+\newcommand{\CF}{\mathit{CF}}
+\newcommand{\Kh}{\mathit{Kh}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\pill}{\mathcal{P}}
+\newcommand{\Rnat}{\mathcal{R}^{\natural}}
+\newcommand{\Rp}{\mathcal{R}}
+\newcommand{\iss}{\looparrowright}
+\newcommand{\bc}{b}
+\newcommand{\Qh}[1]{\widehat{Q_{#1}}}
+
+\newcommand{\Hnat}{H^{\natural}}
+\newcommand{\Pst}{P^{*}}
+\newcommand{\tC}{\widetilde C}
+\newcommand{\sm}{\mathfrak{s}}   % Smith's symmetry (x,t) -> (-x,-t); sigma is the signature
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\title[Maurer--Cartan elements and the Bar-Natan invariant]
+{Maurer--Cartan elements in the pillowcase\\ and the Bar-Natan invariant for the $(-2,3,q)$ pretzel knots}
+
+\author{Bernd Johannes Wuebben}
+\subjclass[2020]{57K18 (primary); 53D40, 57R58, 57K10 (secondary)}
+\keywords{Pillowcase, immersed curves, bounding cochains, Maurer--Cartan elements, Bar-Natan invariant,
+Khovanov homology, singular instanton homology, pretzel knots}
+\date{October 6, 2026}
+
+\begin{abstract}
+Cazassus, Herald, Kirk and Kotelskiy conjectured that the reduced singular instanton homology of a knot is
+recovered from any decomposition along a Conway sphere by Lagrangian Floer homology in the pillowcase, once the
+immersed curves of the two tangles carry suitable bounding cochains. For Smith's decomposition of the pretzel knots
+$P(-2,3,q)$, which separates a rational tangle carrying the earring from the sum of two other rational tangles,
+zero bounding cochains give the wrong rank. Working in the
+algebraic model of Kotelskiy, Watson and Zibrowius, where the Maurer--Cartan equation is a finite identity, we
+construct for $P(-2,3,5)$ and $P(-2,3,7)$ explicit Maurer--Cartan elements, each obtained by smoothing a model of
+Smith's curve at a single self-intersection, that restore the rank; for $P(-2,3,7)$ a second closure of the tangle
+selects one of them, conditionally on the conjecture and on a hypothesis about the support of the cochain. The
+resulting object is a rational arc together with a closed curve carrying a two-dimensional local system, and one
+further term near a corner turns it into the Bar-Natan invariant of the tangle; granting one case of an
+intersection formula of Kotelskiy, Watson and Zibrowius, no rational closure distinguishes the two. We ask whether
+the object that the conjecture assigns to this tangle is its Bar-Natan invariant, and record evidence on both
+sides.
+\end{abstract}
+
+\maketitle
+
+\input{sections/01_intro}
+\input{sections/02_background}
+\input{sections/03_smith}
+\input{sections/04_khovanov}
+\input{sections/05_discussion}
+\appendix
+\input{sections/06_appendix}
+
+\begin{thebibliography}{CHKK22}
+
+\bibitem[AJ10]{AkahoJoyce} M.~Akaho, D.~Joyce, \emph{Immersed Lagrangian Floer theory}, J.\ Differential
+Geom.\ \textbf{86} (2010), 381--500. arXiv:0803.0717.
+
+\bibitem[AKP26]{AKP} S.~Alexander, V.~Kapovitch, A.~Petrunin, \emph{An invitation to Alexandrov
+geometry: CAT(0) spaces}, 2nd ed., Lecture Notes in Math., Springer, Cham, 2026. arXiv:1701.03483v4; theorem
+numbers as in that version.
+
+\bibitem[AS21]{AurouxSmith} D.~Auroux, I.~Smith, \emph{Fukaya categories of surfaces, spherical
+objects and mapping class groups}, Forum Math.\ Sigma \textbf{9} (2021), Paper No.~e26. arXiv:2006.09689.
+
+\bibitem[Boc16]{Bocklandt} R.~Bocklandt, \emph{Noncommutative mirror symmetry for punctured
+surfaces}, with an appendix by M.~Abouzaid, Trans.\ Amer.\ Math.\ Soc.\ \textbf{368} (2016),
+429--469. arXiv:1111.3392; theorem numbers as in v2.
+
+\bibitem[BW18]{BottmanWehrheim} N.~Bottman, K.~Wehrheim, \emph{Gromov compactness for squiggly
+strip shrinking in pseudoholomorphic quilts}, Selecta Math.\ (N.S.)\ \textbf{24} (2018), 3381--3443.
+arXiv:1503.03486.
+
+\bibitem[CDGW]{SnapPy} M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks, \emph{SnapPy, a
+computer program for studying the geometry and topology of $3$-manifolds}, version~3.3,
+\texttt{http://snappy.computop.org}.
+
+\bibitem[CHKK22]{CHKK} G.~Cazassus, C.~Herald, P.~Kirk, A.~Kotelskiy, \emph{The correspondence induced on the
+pillowcase by the earring tangle}, J.\ Topol.\ \textbf{15} (2022), 2472--2543. arXiv:2010.04320.
+
+\bibitem[dSRS14]{dSRS} V.~de~Silva, J.~Robbin, D.~Salamon, \emph{Combinatorial Floer homology}, Mem.\ Amer.\
+Math.\ Soc.\ \textbf{230} (2014), no.\ 1080.
+
+\bibitem[Fuk25]{FukayaCorr} K.~Fukaya, \emph{Unobstructed immersed Lagrangian correspondence and
+filtered $A_\infty$ functor}, SIGMA \textbf{21} (2025), Paper No.~031, 284 pp.
+doi:10.3842/SIGMA.2025.031. arXiv:1706.02131.
+
+\bibitem[Gao17]{Gao} Y.~Gao, \emph{Functors of wrapped Fukaya categories from Lagrangian
+correspondences}, arXiv:1712.00225v2.
+
+\bibitem[HHHK20]{HHHK} M.~Hedden, C.~Herald, M.~Hogancamp, P.~Kirk, \emph{The Fukaya category of the pillowcase,
+traceless character varieties, and Khovanov cohomology}, Trans.\ Amer.\ Math.\ Soc.\ \textbf{373} (2020),
+8391--8437. arXiv:1808.06957.
+
+\bibitem[HHK14]{HHK1} M.~Hedden, C.~Herald, P.~Kirk, \emph{The pillowcase and perturbations of traceless
+representations of knot groups}, Geom.\ Topol.\ \textbf{18} (2014), 211--287. arXiv:1301.0164.
+
+\bibitem[HHK18]{HHK2} M.~Hedden, C.~Herald, P.~Kirk, \emph{The pillowcase and traceless representations of
+knot groups II: a Lagrangian--Floer theory in the pillowcase}, J.\ Symplectic Geom.\ \textbf{16}
+(2018), 721--815. arXiv:1501.00028.
+
+\bibitem[HK24]{HK} C.~Herald, P.~Kirk, \emph{An endomorphism on immersed curves in the pillowcase},
+arXiv:2407.11247.
+
+\bibitem[HKK17]{HKK} F.~Haiden, L.~Katzarkov, M.~Kontsevich, \emph{Flat surfaces and stability
+structures}, Publ.\ Math.\ IH\'ES \textbf{126} (2017), 247--318. arXiv:1409.8611.
+
+\bibitem[KM10]{KMAlex} P.~B.~Kronheimer, T.~S.~Mrowka, \emph{Instanton Floer homology and the
+Alexander polynomial}, Algebr.\ Geom.\ Topol.\ \textbf{10} (2010), 1715--1738. arXiv:0907.4639.
+
+\bibitem[KM11a]{KM1} P.~B.~Kronheimer, T.~S.~Mrowka, \emph{Knot homology groups from instantons}, J.\ Topol.\
+\textbf{4} (2011), 835--918. arXiv:0806.1053.
+
+\bibitem[KM11b]{KM2} P.~B.~Kronheimer, T.~S.~Mrowka, \emph{Khovanov homology is an unknot-detector}, Publ.\ Math.\
+IH\'ES \textbf{113} (2011), 97--208. arXiv:1005.4346.
+
+\bibitem[KWZ19]{KWZ} A.~Kotelskiy, L.~Watson, C.~Zibrowius, \emph{Immersed curves in Khovanov
+homology}, arXiv:1910.14584.
+
+\bibitem[KWZ20]{KWZagree} A.~Kotelskiy, L.~Watson, C.~Zibrowius, \emph{Khovanov invariants via Fukaya
+categories: the tangle invariants agree}, arXiv:2004.01619.
+
+\bibitem[KWZ26]{KWZmut} A.~Kotelskiy, L.~Watson, C.~Zibrowius, \emph{On mutation invariance in Khovanov
+homology}, arXiv:2602.23442.
+
+\bibitem[Lew26]{Khoca} L.~Lewark, \emph{Khoca: a knot homology calculator}, version 1.5,
+\texttt{https://github.com/LLewark/khoca}, 2026; see also L.~Lewark, A.~Lobb, \emph{New quantum
+obstructions to sliceness}, Proc.\ Lond.\ Math.\ Soc.\ (3) \textbf{112} (2016), 81--114.
+
+\bibitem[OS05]{OSbranched} P.~Ozsv\'ath, Z.~Szab\'o, \emph{On the Heegaard Floer homology of branched double-covers},
+Adv.\ Math.\ \textbf{194} (2005), 1--33. arXiv:math/0309170.
+
+\bibitem[PW26]{PalmerWoodward} J.~Palmer, C.~Woodward, \emph{Invariance of immersed Floer
+cohomology under Lagrangian surgery}, Quantum Topol., published online January 7, 2026.
+doi:10.4171/QT/250. arXiv:1903.01943.
+
+\bibitem[Smi24]{Smith} K.~Smith, \emph{Perturbed traceless $\SU$ character varieties of tangle sums},
+arXiv:2412.06066.
+
+\bibitem[Wue26]{WuebbenII} B.~J.~Wuebben, \emph{Instanton and pillowcase homology of the $(-2,3,q)$ pretzel knots},
+arXiv:2607.26096.
+
+\bibitem[Zib]{Zibkht} C.~Zibrowius, \emph{kht++}, a program for computing Khovanov invariants for links and tangles,
+\url{https://cbz20.raspberryip.com/code/khtpp/docs/}, source at \url{https://github.com/cbz20/khtpp}.
+
+\bibitem[Zib20]{Zibrowius} C.~Zibrowius, \emph{Peculiar modules for $4$-ended tangles}, J.\ Topol.\ \textbf{13}
+(2020), 77--158. arXiv:1712.05050.
+
+\end{thebibliography}
+
+\bigskip
+\noindent{\sc Bernd Johannes Wuebben, New York, NY,} \texttt{wuebben@gmail.com}
+
+\end{document}
