@@ -1,5 +1,7 @@
 # Atiyah–Floer pillowcase papers and exact computations
 
+Bernd Johannes Wuebben · [bwuebben.github.io](https://bwuebben.github.io/)
+
 This repository contains five papers on the knot version of the **Atiyah–Floer correspondence**,
 which relates Kronheimer–Mrowka's reduced singular instanton homology I♮(K) to Lagrangian Floer
 homology of immersed curves in the pillowcase, the traceless SU(2) character variety of the
@@ -9,11 +11,11 @@ Each paper cites the others where their results meet.
 
 | directory | paper | pages |
 |---|---|---|
-| [`paper1/`](paper1) | *Traceless SU(2) characters and ℤ/4 instanton gradings for two-bridge and (3,n)-torus knots*, arXiv:2607.26095 | 15 |
-| [`paper2/`](paper2) | *Instanton and pillowcase homology of the (−2,3,q) pretzel knots*, arXiv:2607.26096 | 37 |
-| [`paper2b/`](paper2b) | *Maurer–Cartan elements in the pillowcase and the Bar-Natan invariant for the (−2,3,q) pretzel knots* | 33 |
-| [`paper4/`](paper4) | *The S-complex differential of torus knots* | 12 |
-| [`paper5/`](paper5) | *Pillowcase Floer homology of the torus knots T(3,n)* | 40 |
+| [`paper1/`](paper1) | [*Traceless SU(2) characters and ℤ/4 instanton gradings for two-bridge and (3,n)-torus knots*](https://bwuebben.github.io/papers/traceless-characters-instanton-gradings/), [arXiv:2607.26095](https://arxiv.org/abs/2607.26095) | 15 |
+| [`paper2/`](paper2) | [*Instanton and pillowcase homology of the (−2,3,q) pretzel knots*](https://bwuebben.github.io/papers/pretzel-instanton-pillowcase/), [arXiv:2607.26096](https://arxiv.org/abs/2607.26096) | 37 |
+| [`paper2b/`](paper2b) | [*Maurer–Cartan elements in the pillowcase and the Bar-Natan invariant for the (−2,3,q) pretzel knots*](https://bwuebben.github.io/papers/pretzel-maurer-cartan/), [Zenodo:23643150](https://zenodo.org/records/23643150) | 33 |
+| [`paper4/`](paper4) | [*The S-complex differential of torus knots*](https://bwuebben.github.io/papers/s-complex-torus-knots/), [Zenodo:23643177](https://zenodo.org/records/23643177) | 12 |
+| [`paper5/`](paper5) | [*Pillowcase Floer homology of the torus knots T(3,n)*](https://bwuebben.github.io/papers/pillowcase-torus-knots/), [Zenodo:23643181](https://zenodo.org/records/23643181) | 40 |
 
 For the torus knots, read papers 1, 4 and 5 in that order. Paper 1 assembles the instanton-side
 facts, paper 4 proves new results about the S-complex differential for every torus knot, and paper 5
